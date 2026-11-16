@@ -915,7 +915,7 @@ code {
    ========================================================================== */
 .plans-grid-5 {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 16px;
     align-items: stretch;
 }
@@ -1142,6 +1142,7 @@ code {
     max-width: 100%;
     min-width: 0;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
@@ -1261,7 +1262,7 @@ code {
 }
 
 .modal-box {
-    width: 100%;
+    width: min(94vw, 860px);
     max-width: 860px;
     max-height: 90vh;
     background: var(--bg-card);
@@ -1274,7 +1275,8 @@ code {
 }
 
 .modal-box.modal-narrow {
-    max-width: 580px;
+    width: min(94vw, 520px);
+    max-width: 520px;
 }
 
 .modal-top {
@@ -1895,6 +1897,12 @@ code {
 }
 
 /* Responsive */
+@media (max-width: 1279px) {
+    .plans-grid-5 {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+}
+
 @media (max-width: 1120px) {
     .brand-sub {
         display: none;
@@ -1908,10 +1916,6 @@ code {
     .nav-menu a,
     .nav-dropdown-trigger {
         padding: 5px 8px;
-    }
-
-    .plans-grid-5 {
-        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -1930,6 +1934,10 @@ code {
     .legal-clauses-grid,
     .footer-grid {
         grid-template-columns: 1fr;
+    }
+
+    .modal-box {
+        width: min(94vw, 520px);
     }
 
     .footer-grid-4 {
@@ -2058,7 +2066,7 @@ code {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
     .plans-grid-5,
     .checkout-actions-row,
     .footer-grid-4,
@@ -2073,6 +2081,23 @@ code {
     .plan-quotas {
         min-height: auto;
     }
+
+    .simulator-card {
+        padding: 18px;
+    }
+
+    .sim-result-box {
+        padding: 16px;
+    }
+
+    .sim-actions > * {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
 
     .brand {
         font-size: 16px;
@@ -2180,9 +2205,10 @@ code {
 
 .sim-range-head {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
+    gap: 8px 12px;
     font-size: 14px;
     font-weight: 700;
     color: var(--text-main);
@@ -2221,6 +2247,9 @@ code {
     font-weight: 600;
     padding: 7px 12px;
     border-radius: 99px;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
     cursor: pointer;
     transition: background 0.18s, border-color 0.18s, color 0.18s;
 }
@@ -2309,6 +2338,10 @@ code {
     margin-top: 28px;
 }
 
+a.portal-doc-card,
+a.portal-doc-card:hover,
+a.portal-doc-card:focus,
+a.portal-doc-card:visited,
 .portal-doc-card {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
@@ -2318,12 +2351,23 @@ code {
     flex-direction: column;
     justify-content: space-between;
     gap: 14px;
+    text-decoration: none;
     transition: border-color 0.2s, transform 0.2s;
 }
 
+a.portal-doc-card:hover,
 .portal-doc-card:hover {
     border-color: var(--border-highlight);
     transform: translateY(-2px);
+    text-decoration: none;
+}
+
+a.portal-doc-card .eyebrow,
+a.portal-doc-card h3,
+a.portal-doc-card p,
+.portal-doc-card h3,
+.portal-doc-card p {
+    text-decoration: none;
 }
 
 .portal-doc-card h3 {
