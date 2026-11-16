@@ -446,6 +446,8 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         "appearance: none",
         "z-index: 9999",
         "@media (max-width: 768px)",
+        "height: 100%;",
+        "margin-top: auto;",
         ".os-sha-box",
         ".os-verify-cmd",
     ]:
@@ -467,8 +469,16 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
 
     # Simulador y bloque descargas verificadas v2.5.0 en index.html
     index_html, index_dom = pages_html["index.html"]
-    for sim_id in ("simRucsRange", "simDocsRange", "simPlanNombre", "simBtnAdquirirPlan"):
+    for sim_id in ("simRucsRange", "simDocsRange", "simPcsRange", "simPcsVal", "simPlanNombre", "simBtnAdquirirPlan"):
         _assert(sim_id in index_dom.ids, f"Falta elemento simulador #{sim_id} en index.html")
+    for preset_txt in (
+        "Personal (3 RUCs · 1 PC)",
+        "Contador (18 RUCs · 1 PC)",
+        "Estudio Pro (45 RUCs · 2 PCs)",
+        "Enterprise Team (120 RUCs · 5 PCs)",
+        "Corporativo (300+ RUCs · 10+ PCs)",
+    ):
+        _assert(preset_txt in index_html, f"Falta escenario rápido '{preset_txt}' en index.html")
     _assert("btnDescargaDetectada" in index_dom.ids, "Falta botón descarga #btnDescargaDetectada en index.html")
     for os_k, (expected_url, expected_sha) in EXPECTED_DOWNLOADS.items():
         _assert(expected_url in index_dom.hrefs, f"Falta enlace descarga v2.5.0 de {os_k} en index.html")
@@ -647,6 +657,31 @@ assert.equal(sec.PLANES_V240.ESTUDIO_PRO.precioUsd, 299);
 assert.equal(sec.PLANES_V240.ENTERPRISE_TEAM.precioUsd, 890);
 assert.equal(sec.PLANES_V240.ENTERPRISE_CORP.precioUsd, 1490);
 assert.equal(sec.CONFIG_COMERCIAL.PRECIO_SEAT_EXTRA_USD, 150);
+
+// 4b. Simulador 3 ejes (RUCs + comprobantes + PCs) para los 5 planes sin texto duplicado
+assert.equal(sec.calcularEstimacionSimulador(3, 90, 1).planId, 'PERSONAL_PRO');
+assert.equal(sec.calcularEstimacionSimulador(18, 450, 1).planId, 'CONTADOR_MASTER');
+
+const sim45 = sec.calcularEstimacionSimulador(45, 1000, 2);
+assert.equal(sim45.planId, 'ESTUDIO_PRO');
+assert.ok(sim45.horasAhorradasMes >= 20 && sim45.horasAhorradasMes <= 60, 'Horas mensuales irreales Estudio Pro: ' + sim45.horasAhorradasMes);
+assert.equal(sim45.detalle.split('Hasta 60 RUCs').length - 1, 1, 'Texto duplicado en Estudio Pro: ' + sim45.detalle);
+assert.equal(sec.calcularEstimacionSimulador(10, 200, 2).planId, 'ESTUDIO_PRO');
+
+const simTeamByPcs = sec.calcularEstimacionSimulador(15, 300, 5);
+assert.equal(simTeamByPcs.planId, 'ENTERPRISE_TEAM');
+assert.equal(sec.calcularEstimacionSimulador(120, 1500, 5).planId, 'ENTERPRISE_TEAM');
+
+const simCorp = sec.calcularEstimacionSimulador(300, 2000, 10);
+assert.equal(simCorp.planId, 'ENTERPRISE_CORP');
+assert.equal(simCorp.extraSeats, 0);
+assert.equal(simCorp.precioEstimadoUsd, 1490);
+assert.ok(simCorp.horasAhorradasMes >= 100 && simCorp.horasAhorradasMes <= 180, 'Horas irreales Enterprise Corp: ' + simCorp.horasAhorradasMes);
+
+const simCorp12 = sec.calcularEstimacionSimulador(20, 300, 12);
+assert.equal(simCorp12.planId, 'ENTERPRISE_CORP');
+assert.equal(simCorp12.extraSeats, 2);
+assert.equal(simCorp12.precioEstimadoUsd, 1790);
 
 // 5. Detección inteligente por SO (Windows táctil permitido; Android/iOS/iPadOS bloqueados)
 const osProfiles = [

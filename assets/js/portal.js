@@ -65,6 +65,11 @@
         PAYPHONE_BADGES: "Visa · Mastercard · Diners · Discover · Alia",
         PAYPHONE_GARANTIA: "🛡️ Pago protegido con verificación 3D Secure Ecuador",
         PRECIO_SEAT_EXTRA_USD: 150,
+        SIMULADOR_AHORRO: {
+            HORAS_MANUAL_POR_RUC: 0.45,
+            HORAS_MANUAL_POR_COMPROBANTE: 0.022,
+            FACTOR_AUTOMATIZACION: 0.82,
+        },
         DEMO_RUC_PRINCIPAL: "1790012345001",
         DEMO_RAZON_PRINCIPAL: "EMPRESA DEMOSTRACIÓN S.A.",
         DEMO_RUC_SECUNDARIO: "0999999999001",
@@ -111,7 +116,7 @@
             rucsLabel: "Hasta 60 RUCs (o 30/PC en hasta 2 PCs)",
             masivaLabel: "Auditor Fantasma EFOS + Contingencia ATS + .tfbkp",
             estacionesBase: 2,
-            estacionesLabel: "Hasta 2 PCs (60 RUCs o 30/PC)",
+            estacionesLabel: "Hasta 2 PCs",
             modoLabel: "Modo Local + .tfbkp AES-256-GCM (Sin Red LAN/UNC)",
             esEnterprise: false,
             permiteExtraSeats: false,
@@ -1549,6 +1554,59 @@
         });
     }
 
+    let runtimeSimCfg = { ...CONFIG_COMERCIAL.SIMULADOR_AHORRO };
+    let refrescarSimuladorHook = null;
+
+    function calcularEstimacionSimulador(rucsRaw, docsRaw, pcsOrCfg, cfgOverride) {
+        const hasCfgAsThird = pcsOrCfg && typeof pcsOrCfg === "object";
+        const pcsRaw = hasCfgAsThird ? 1 : pcsOrCfg;
+        const cfg = hasCfgAsThird ? pcsOrCfg : cfgOverride && typeof cfgOverride === "object" ? cfgOverride : runtimeSimCfg;
+
+        const rucs = Math.max(1, Math.min(300, Math.round(Number(rucsRaw || 12))));
+        const docs = Math.max(20, Math.min(2000, Math.round(Number(docsRaw || 250))));
+        const pcs = Math.max(1, Math.min(15, Math.round(Number(pcsRaw || 1))));
+
+        // Modelo proporcional realista: gestión fija por RUC + procesamiento XML/RIDE/ATS sobre cartera total
+        const horasManuales = rucs * cfg.HORAS_MANUAL_POR_RUC + docs * cfg.HORAS_MANUAL_POR_COMPROBANTE;
+        const horasAhorradasMes = Math.max(1, Math.round(horasManuales * cfg.FACTOR_AUTOMATIZACION));
+        const horasAhorradasAnio = horasAhorradasMes * 12;
+
+        let planId = "PERSONAL_PRO";
+        let detalle = "Hasta 3 RUCs · 1 PC — Sincronización SRI/RIDE/XML y bóveda local cifrada AES-256.";
+        if (pcs >= 10) {
+            planId = "ENTERPRISE_CORP";
+            detalle =
+                "RUCs ilimitados · 10+ estaciones escalables (+$150/PC extra) — Red LAN + Bóveda UNC y Conector Multi-Regional HTTPS / Gateway seguro.";
+        } else if (rucs > 60 || pcs >= 3) {
+            planId = "ENTERPRISE_TEAM";
+            detalle =
+                "RUCs ilimitados · 3 a 9 estaciones (5 base) — Red LAN TCP/IP centralizada anti-colisión y Bóveda Compartida UNC.";
+        } else if (rucs > 25 || pcs === 2) {
+            planId = "ESTUDIO_PRO";
+            detalle =
+                "Hasta 60 RUCs (o 30/PC en hasta 2 PCs) — Auditor Fantasma EFOS en tiempo real, Modo Contingencia ATS y respaldo portátil .tfbkp (AES-256-GCM + HMAC).";
+        } else if (rucs > 3) {
+            planId = "CONTADOR_MASTER";
+            detalle = "Hasta 25 RUCs · 1 PC — Lote Multi-RUC y Generador/Validador oficial ATS (XML/XSD/Excel).";
+        }
+
+        const extraSeats = planId === "ENTERPRISE_CORP" ? Math.max(0, pcs - 10) : 0;
+        const planMeta = PLAN_LOOKUP[planId];
+        const precioEstimadoUsd = planMeta.precioUsd + extraSeats * CONFIG_COMERCIAL.PRECIO_SEAT_EXTRA_USD;
+
+        return {
+            rucs,
+            docs,
+            pcs,
+            extraSeats,
+            precioEstimadoUsd,
+            horasAhorradasMes,
+            horasAhorradasAnio,
+            planId,
+            detalle,
+        };
+    }
+
     function sincronizarConfiguracionPortal() {
         if (window.location.protocol !== "http:" && window.location.protocol !== "https:") return;
         if (typeof window.fetch !== "function") return;
@@ -1557,6 +1615,30 @@
             .then((resp) => (resp.ok ? resp.json() : null))
             .then((data) => {
                 if (!data || typeof data !== "object" || Array.isArray(data)) return;
+                if (
+                    Object.prototype.hasOwnProperty.call(data, "simulador_ahorro") &&
+                    data.simulador_ahorro &&
+                    typeof data.simulador_ahorro === "object"
+                ) {
+                    const s = data.simulador_ahorro;
+                    const hRuc = Number(s.horas_manual_por_ruc);
+                    const hDoc = Number(s.horas_manual_por_comprobante);
+                    const fAuto = Number(s.factor_automatizacion);
+                    if (
+                        Number.isFinite(hRuc) && hRuc > 0 && hRuc <= 2 &&
+                        Number.isFinite(hDoc) && hDoc > 0 && hDoc <= 0.1 &&
+                        Number.isFinite(fAuto) && fAuto > 0 && fAuto <= 0.95
+                    ) {
+                        runtimeSimCfg = {
+                            HORAS_MANUAL_POR_RUC: hRuc,
+                            HORAS_MANUAL_POR_COMPROBANTE: hDoc,
+                            FACTOR_AUTOMATIZACION: fAuto,
+                        };
+                        if (typeof refrescarSimuladorHook === "function") {
+                            refrescarSimuladorHook();
+                        }
+                    }
+                }
                 if (Object.prototype.hasOwnProperty.call(data, "version")) {
                     aplicarVersionEnDOM(data.version);
                     hidratarDescargasPorSistemaOperativo();
@@ -1571,9 +1653,11 @@
         const rucsRange = document.getElementById("simRucsRange");
         const docsRange = document.getElementById("simDocsRange");
         if (!(rucsRange instanceof HTMLInputElement) || !(docsRange instanceof HTMLInputElement)) return;
+        const pcsRange = document.getElementById("simPcsRange");
 
         const rucsVal = document.getElementById("simRucsVal");
         const docsVal = document.getElementById("simDocsVal");
+        const pcsVal = document.getElementById("simPcsVal");
         const horasMesEl = document.getElementById("simHorasMes");
         const horasAnioEl = document.getElementById("simHorasAnio");
         const planNombreEl = document.getElementById("simPlanNombre");
@@ -1582,60 +1666,59 @@
         const presetBtns = document.querySelectorAll("[data-sim-rucs]");
 
         function actualizarSimulador() {
-            const rucs = Math.max(1, Math.min(200, Number(rucsRange.value || 12)));
-            const docs = Math.max(20, Math.min(2000, Number(docsRange.value || 250)));
+            const pcsInput = pcsRange instanceof HTMLInputElement ? pcsRange.value : 1;
+            const sim = calcularEstimacionSimulador(rucsRange.value, docsRange.value, pcsInput);
 
-            if (rucsVal) rucsVal.textContent = rucs === 1 ? "1 contribuyente" : `${rucs} RUCs`;
-            if (docsVal) docsVal.textContent = `${docs} comp./mes`;
-
-            // Estimación conservadora: carga/cruce/ATS manual ~0.42 h base por RUC + ~0.0055 h por comprobante;
-            // TributaFlow Pro automatiza ~86 % del trabajo operativo repetitivo.
-            const horasManuales = rucs * (0.42 + docs * 0.0055);
-            const horasAhorradasMes = Math.max(2, Math.round(horasManuales * 0.86));
-            const horasAhorradasAnio = horasAhorradasMes * 12;
-
-            let planId = "PERSONAL_PRO";
-            let motivo = "Hasta 3 RUCs en 1 PC con sincronización SRI/RIDE/XML y bóveda local cifrada AES-256.";
-            if (rucs > 3 && rucs <= 25) {
-                planId = "CONTADOR_MASTER";
-                motivo = "Hasta 25 RUCs en 1 PC con Lote Multi-RUC y Generador/Validador oficial ATS (XML/XSD/Excel).";
-            } else if (rucs > 25 && rucs <= 60) {
-                planId = "ESTUDIO_PRO";
-                motivo = "Hasta 60 RUCs (o 30/PC en hasta 2 PCs), Auditor Fantasma EFOS, Contingencia ATS y respaldo .tfbkp (AES-256-GCM + HMAC).";
-            } else if (rucs > 60 && rucs <= 100) {
-                planId = "ENTERPRISE_TEAM";
-                motivo = "RUCs ilimitados, 5 estaciones base, Red LAN TCP/IP centralizada anti-colisión y Bóveda Compartida UNC.";
-            } else if (rucs > 100) {
-                planId = "ENTERPRISE_CORP";
-                motivo = "RUCs ilimitados, 10+ estaciones escalables (+$150/PC extra) y Conector Multi-Regional HTTPS / Gateway seguro.";
+            if (rucsVal) {
+                rucsVal.textContent = sim.rucs === 1 ? "1 contribuyente" : sim.rucs >= 300 ? "300+ RUCs" : `${sim.rucs} RUCs`;
             }
+            if (docsVal) docsVal.textContent = `${sim.docs} comp./mes`;
+            if (pcsVal) pcsVal.textContent = sim.pcs === 1 ? "1 PC" : sim.pcs >= 15 ? "15+ PCs" : `${sim.pcs} PCs`;
 
-            const planMeta = PLAN_LOOKUP[planId];
-            if (horasMesEl) horasMesEl.textContent = `${horasAhorradasMes} h/mes`;
-            if (horasAnioEl) horasAnioEl.textContent = `${horasAhorradasAnio} h/año`;
+            const planMeta = PLAN_LOOKUP[sim.planId];
+            if (horasMesEl) horasMesEl.textContent = `${sim.horasAhorradasMes} h/mes`;
+            if (horasAnioEl) horasAnioEl.textContent = `${sim.horasAhorradasAnio} h/año`;
             if (planNombreEl) {
-                planNombreEl.textContent = `${planMeta.nombre} — ${formatearUsd(planMeta.precioUsd)} USD/año`;
+                const sufijoExtra =
+                    sim.extraSeats > 0
+                        ? ` (${10 + sim.extraSeats} PCs = ${formatearUsd(sim.precioEstimadoUsd)} USD/año)`
+                        : ` — ${formatearUsd(planMeta.precioUsd)} USD/año`;
+                planNombreEl.textContent = `${planMeta.nombre}${sufijoExtra}`;
             }
             if (planDetalleEl) {
-                planDetalleEl.textContent = `${planMeta.rucsLabel} • ${planMeta.estacionesLabel}. ${motivo}`;
+                planDetalleEl.textContent = sim.detalle;
             }
             if (btnComprarEl instanceof HTMLElement) {
                 btnComprarEl.setAttribute("data-checkout-plan", planMeta.id);
-                btnComprarEl.textContent = `💳 Adquirir ${planMeta.nombre} (${formatearUsd(planMeta.precioUsd)})`;
+                if (sim.extraSeats > 0) {
+                    btnComprarEl.setAttribute("data-checkout-extra-seats", String(sim.extraSeats));
+                } else {
+                    btnComprarEl.removeAttribute("data-checkout-extra-seats");
+                }
+                btnComprarEl.textContent = `💳 Adquirir ${planMeta.nombre} (${formatearUsd(sim.precioEstimadoUsd)})`;
             }
 
             presetBtns.forEach((btn) => {
                 const targetRucs = Number(btn.getAttribute("data-sim-rucs") || 0);
-                btn.classList.toggle("is-active", targetRucs === rucs);
+                const targetPcs = Number(btn.getAttribute("data-sim-pcs") || 1);
+                btn.classList.toggle("is-active", targetRucs === sim.rucs && targetPcs === sim.pcs);
             });
         }
 
+        refrescarSimuladorHook = actualizarSimulador;
+
         rucsRange.addEventListener("input", actualizarSimulador);
         docsRange.addEventListener("input", actualizarSimulador);
+        if (pcsRange instanceof HTMLInputElement) {
+            pcsRange.addEventListener("input", actualizarSimulador);
+        }
         presetBtns.forEach((btn) => {
             btn.addEventListener("click", () => {
-                rucsRange.value = String(Math.max(1, Math.min(200, Number(btn.getAttribute("data-sim-rucs") || 12))));
+                rucsRange.value = String(Math.max(1, Math.min(300, Number(btn.getAttribute("data-sim-rucs") || 12))));
                 docsRange.value = String(Math.max(20, Math.min(2000, Number(btn.getAttribute("data-sim-docs") || 250))));
+                if (pcsRange instanceof HTMLInputElement) {
+                    pcsRange.value = String(Math.max(1, Math.min(15, Number(btn.getAttribute("data-sim-pcs") || 1))));
+                }
                 actualizarSimulador();
             });
         });
@@ -2133,7 +2216,9 @@
             btn.addEventListener("click", (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                abrirModalPago(btn.getAttribute("data-checkout-plan"));
+                const extraAttr = btn.getAttribute("data-checkout-extra-seats");
+                const extraOverride = extraAttr !== null ? Number(extraAttr) : undefined;
+                abrirModalPago(btn.getAttribute("data-checkout-plan"), Number.isFinite(extraOverride) ? extraOverride : undefined);
             });
         });
 
@@ -2189,6 +2274,7 @@
                 esSistemaOperativoSoportado,
                 sanitizarIdentificador,
                 resolverPlan,
+                calcularEstimacionSimulador,
                 abrirModalDescargaSO,
                 abrirModalPago,
                 obtenerTelemetria: () => Object.freeze({ ...telemetriaInterna }),

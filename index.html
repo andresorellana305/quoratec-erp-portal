@@ -8,7 +8,7 @@
     <title>TributaFlow Pro v2.5.0 | Automatización SRI, Bóveda Documental y ATS — Ecuador</title>
     <meta name="description" content="Suite contable de escritorio 100 % local para Ecuador. Automatiza descargas XML/PDF del SRI, auditoría EFOS y Anexo Transaccional Simplificado (ATS). Prueba gratis 15 días hasta 60 RUCs sin tarjeta en Windows, macOS y Linux.">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
-    <link rel="stylesheet" href="assets/css/portal.css" integrity="sha384-W53OtvnraZKQK/S9IxmVjMcnorIeEk4mMjjocVcGidfk0cZArhZURZpDkPi8EuM6" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/portal.css" integrity="sha384-6LCuHE9z1vy7HWbpB7n8NZeOrM6W38f6RpPIJgMfclHxxyJ8g8MkPwn8jxF1cnWA" crossorigin="anonymous">
 </head>
 <body>
 
@@ -140,7 +140,7 @@
                                     <label for="simRucsRange">Cantidad de RUCs que gestionas</label>
                                     <span class="sim-range-val" id="simRucsVal">12 RUCs</span>
                                 </div>
-                                <input class="sim-range" type="range" id="simRucsRange" min="1" max="200" step="1" value="12">
+                                <input class="sim-range" type="range" id="simRucsRange" min="1" max="300" step="1" value="12">
                             </div>
 
                             <div class="sim-field">
@@ -151,13 +151,22 @@
                                 <input class="sim-range" type="range" id="simDocsRange" min="20" max="2000" step="10" value="250">
                             </div>
 
+                            <div class="sim-field">
+                                <div class="sim-range-head">
+                                    <label for="simPcsRange">Cantidad de PCs / Estaciones</label>
+                                    <span class="sim-range-val" id="simPcsVal">1 PC</span>
+                                </div>
+                                <input class="sim-range" type="range" id="simPcsRange" min="1" max="15" step="1" value="1">
+                            </div>
+
                             <div>
                                 <p class="muted-note">Escenarios rápidos frecuentes:</p>
                                 <div class="sim-presets mt-8">
-                                    <button type="button" class="sim-preset-btn" data-sim-rucs="3" data-sim-docs="90">Profesional (3 RUCs)</button>
-                                    <button type="button" class="sim-preset-btn is-active" data-sim-rucs="18" data-sim-docs="450">Contador (18 RUCs)</button>
-                                    <button type="button" class="sim-preset-btn" data-sim-rucs="52" data-sim-docs="1200">Estudio Dual-PC (52 RUCs)</button>
-                                    <button type="button" class="sim-preset-btn" data-sim-rucs="140" data-sim-docs="2000">Estudio / Corporativo (+100 RUCs)</button>
+                                    <button type="button" class="sim-preset-btn" data-sim-rucs="3" data-sim-docs="90" data-sim-pcs="1">Personal (3 RUCs · 1 PC)</button>
+                                    <button type="button" class="sim-preset-btn" data-sim-rucs="18" data-sim-docs="450" data-sim-pcs="1">Contador (18 RUCs · 1 PC)</button>
+                                    <button type="button" class="sim-preset-btn" data-sim-rucs="45" data-sim-docs="1000" data-sim-pcs="2">Estudio Pro (45 RUCs · 2 PCs)</button>
+                                    <button type="button" class="sim-preset-btn" data-sim-rucs="120" data-sim-docs="1500" data-sim-pcs="5">Enterprise Team (120 RUCs · 5 PCs)</button>
+                                    <button type="button" class="sim-preset-btn" data-sim-rucs="300" data-sim-docs="2000" data-sim-pcs="10">Corporativo (300+ RUCs · 10+ PCs)</button>
                                 </div>
                             </div>
                         </div>
@@ -166,18 +175,18 @@
                             <div class="sim-kpi-row">
                                 <div class="sim-kpi">
                                     <small>Tiempo ahorrado / mes</small>
-                                    <strong id="simHorasMes">~18 h/mes</strong>
+                                    <strong id="simHorasMes">8 h/mes</strong>
                                 </div>
                                 <div class="sim-kpi">
                                     <small>Tiempo ahorrado / año</small>
-                                    <strong id="simHorasAnio">~216 h/año</strong>
+                                    <strong id="simHorasAnio">96 h/año</strong>
                                 </div>
                             </div>
 
                             <div class="sim-plan-rec">
                                 <span class="eyebrow">Plan Recomendado para Tu Volumen</span>
-                                <h3 id="simPlanNombre">Contador Master ($139/año)</h3>
-                                <p id="simPlanDetalle">Hasta 25 RUCs en 1 PC · Descarga SRI XML/PDF, Generador ATS XML/XSD y Excel Consolidado.</p>
+                                <h3 id="simPlanNombre">Contador Master — $139.00 USD/año</h3>
+                                <p id="simPlanDetalle">Hasta 25 RUCs · 1 PC — Lote Multi-RUC y Generador/Validador oficial ATS (XML/XSD/Excel).</p>
                             </div>
 
                             <div class="sim-actions">
@@ -832,6 +841,6 @@
         <span>💬 Soporte 0996459771</span>
     </a>
 
-    <script src="assets/js/portal.js" integrity="sha384-hwMtF36JNZtrntSyQAKxeoDPNm3LG3sToaX8HUpFvX3CPjgSDvpSaPg0m+tJisTL" crossorigin="anonymous" defer></script>
+    <script src="assets/js/portal.js" integrity="sha384-botrycnIno8UM/FdO6n9PvIfXzhrF7g1AHCinJN4bkxS0qAUHb9hb+KPUs3DianH" crossorigin="anonymous" defer></script>
 </body>
 </html>

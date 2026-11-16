@@ -926,7 +926,9 @@ code {
     border-radius: var(--radius-lg);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    height: 100%;
+    padding: 36px 0 0 0;
+    gap: 12px;
     position: relative;
     overflow: hidden;
     cursor: default;
@@ -943,37 +945,67 @@ code {
 }
 
 .popular-ribbon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     background: linear-gradient(90deg, var(--primary), var(--accent));
     color: #ffffff;
     text-align: center;
     font-size: 10.5px;
     font-weight: 800;
     letter-spacing: 1.1px;
+    line-height: 1.3;
     padding: 5px 8px;
 }
 
 .plan-info-box {
-    padding: 20px 18px 14px 18px;
+    padding: 0 18px 14px 18px;
     display: flex;
     flex-direction: column;
     gap: 12px;
     flex: 1;
 }
 
+.plan-card > .plan-header,
+.plan-card > .plan-pricing,
+.plan-card > .plan-quotas,
+.plan-card > .plan-list {
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.plan-header {
+    min-height: 118px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
 .plan-header h3 {
     font-size: 18px;
     font-weight: 800;
-    margin-bottom: 4px;
+    line-height: 1.25;
+    min-height: 46px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: flex-start;
 }
 
 .plan-header p {
     font-size: 12.5px;
+    line-height: 1.45;
     color: var(--text-muted);
-    min-height: 38px;
+    min-height: 58px;
 }
 
 .plan-pricing {
-    padding: 12px 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    min-height: 114px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border-top: 1px solid var(--border-subtle);
     border-bottom: 1px solid var(--border-subtle);
 }
@@ -1004,15 +1036,18 @@ code {
 .price-note {
     display: block;
     font-size: 11.5px;
+    line-height: 1.35;
     color: #fbbf24;
     font-weight: 600;
-    margin-top: 2px;
+    margin-top: 4px;
 }
 
 .plan-quotas {
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     gap: 6px;
+    min-height: 66px;
 }
 
 .quota-pill {
@@ -1031,6 +1066,8 @@ code {
     flex-direction: column;
     gap: 8px;
     font-size: 12.5px;
+    flex: 1 0 auto;
+    margin-bottom: 6px;
 }
 
 .plan-list li.ok {
@@ -1043,20 +1080,30 @@ code {
 
 /* Casilla inferior independiente para botón de compra */
 .plan-action-box {
+    margin-top: auto;
     padding: 14px 18px 18px 18px;
     background: rgba(3, 7, 18, 0.55);
     border-top: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .btn-open-checkout {
     width: 100%;
-    padding: 12px 14px;
+    min-height: 46px;
+    padding: 10px 12px;
     border-radius: 10px;
     border: 1px solid rgba(56, 189, 248, 0.35);
     background: var(--primary);
     color: #ffffff;
     font-weight: 800;
     font-size: 13px;
+    line-height: 1.25;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     cursor: pointer;
     transition: background 0.2s, transform 0.15s;
 }
@@ -1077,11 +1124,15 @@ code {
 }
 
 .action-hint {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-size: 11px;
+    line-height: 1.3;
+    min-height: 30px;
     color: var(--text-muted);
-    margin-top: 6px;
+    margin-top: 8px;
 }
 
 /* Tabla comparativa técnica */
@@ -2013,6 +2064,14 @@ code {
     .footer-grid-4,
     .sim-kpi-row {
         grid-template-columns: 1fr;
+    }
+
+    .plan-header,
+    .plan-header h3,
+    .plan-header p,
+    .plan-pricing,
+    .plan-quotas {
+        min-height: auto;
     }
 
     .brand {

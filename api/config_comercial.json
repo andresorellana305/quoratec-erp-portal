@@ -8,6 +8,11 @@
   "trial_modalidad": "ESTUDIO_PRO",
   "trial_texto": "15 días de evaluación gratuita (hasta 60 RUCs, modalidad Estudio Contable Pro, sin tarjeta de crédito)",
   "precio_seat_extra_usd": 150.0,
+  "simulador_ahorro": {
+    "horas_manual_por_ruc": 0.45,
+    "horas_manual_por_comprobante": 0.022,
+    "factor_automatizacion": 0.82
+  },
   "canal_soporte": {
     "whatsapp_numero": "593996459771",
     "whatsapp_local": "0996459771",
