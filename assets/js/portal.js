@@ -1848,7 +1848,10 @@
             if (tag === "SCRIPT") {
                 const src = nodo.getAttribute("src") || "";
                 const permitidoLocal =
-                    (src === "assets/js/portal.js" || src === "../assets/js/portal.js") &&
+                    (src === "assets/js/portal.js" ||
+                        src === "../assets/js/portal.js" ||
+                        src === `assets/js/portal.js?v=${CONFIG_COMERCIAL.VERSION}` ||
+                        src === `../assets/js/portal.js?v=${CONFIG_COMERCIAL.VERSION}`) &&
                     !nodo.textContent.trim();
                 if (permitidoLocal) return;
             }

@@ -323,7 +323,8 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
         base_dir = (PORTAL_DIR / rel).parent
         for src in parser.srcs:
             if not src.startswith(("http://", "https://", "data:")):
-                if not (base_dir / src).resolve().is_file():
+                src_clean = src.partition("?")[0]
+                if not (base_dir / src_clean).resolve().is_file():
                     broken_links.append(f"{rel} src={src}")
         for href in parser.hrefs:
             if href.startswith(("http://", "https://", "mailto:", "tel:")):
@@ -331,7 +332,8 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
                     _assert(href in PAYPHONE_OFICIALES.values(), f"PayPhone link alterado en {rel}: {href}")
                 continue
             path_part, _, frag = href.partition("#")
-            target_rel = rel if not path_part else os.path.normpath(str((base_dir.relative_to(PORTAL_DIR) / path_part))).replace("\\", "/")
+            path_clean = path_part.partition("?")[0]
+            target_rel = rel if not path_clean else os.path.normpath(str((base_dir.relative_to(PORTAL_DIR) / path_clean))).replace("\\", "/")
             target_file = PORTAL_DIR / target_rel
             if not target_file.is_file():
                 broken_links.append(f"{rel} href={href}")
@@ -395,16 +397,20 @@ def test_http_server_headers_and_sri(base_url: str) -> dict[str, int]:
 
         csp_metas = [m.get("content") for m in dom.metas if (m.get("http-equiv") or "").lower() == "content-security-policy"]
         _assert(csp_metas and csp_metas[0] == CSP_META_ESPERADA, f"Meta CSP inconsistente en {rel}: {csp_metas}")
+        cc_metas = [m.get("content") for m in dom.metas if (m.get("http-equiv") or "").lower() == "cache-control"]
+        _assert(cc_metas and cc_metas[0] == "no-cache, no-store, must-revalidate", f"Meta Cache-Control ausente en {rel}: {cc_metas}")
         ref_metas = [m.get("content") for m in dom.metas if (m.get("name") or "").lower() == "referrer"]
         _assert(ref_metas and ref_metas[0] == "strict-origin-when-cross-origin", f"Meta Referrer inconsistente en {rel}")
 
         css_links = [s for s in dom.stylesheets if "portal.css" in (s.get("href") or "")]
         _assert(len(css_links) == 1, f"Falta stylesheet portal.css en {rel}")
+        _assert("?v=2.5.0" in (css_links[0].get("href") or ""), f"Falta query ?v=2.5.0 en portal.css de {rel}")
         _assert(css_links[0].get("integrity") == expected_css_sri, f"SRI portal.css mismatch en {rel}: {css_links[0].get('integrity')}")
         _assert(css_links[0].get("crossorigin") == "anonymous", f"Falta crossorigin='anonymous' en portal.css de {rel}")
 
         js_tags = [s for s in dom.scripts if "portal.js" in (s.get("src") or "")]
         _assert(len(js_tags) == 1, f"Falta script portal.js en {rel}")
+        _assert("?v=2.5.0" in (js_tags[0].get("src") or ""), f"Falta query ?v=2.5.0 en portal.js de {rel}")
         _assert(js_tags[0].get("integrity") == expected_js_sri, f"SRI portal.js mismatch en {rel}: {js_tags[0].get('integrity')}")
         _assert(js_tags[0].get("crossorigin") == "anonymous", f"Falta crossorigin='anonymous' en portal.js de {rel}")
         _assert("defer" in js_tags[0], f"Script portal.js sin defer en {rel}")
