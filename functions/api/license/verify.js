@@ -1,5 +1,5 @@
 /**
- * Endpoint Anti-Enumeración de Verificación de Licencia — TributaFlow Pro v2.4.0.
+ * Endpoint Anti-Enumeración de Verificación de Licencia — TributaFlow Pro v2.5.0.
  * Comparación constant-time y respuesta uniforme para no filtrar existencia de RUCs/licencias/correos.
  */
 
@@ -83,7 +83,7 @@ export async function onRequestPost(context) {
             {
                 ok: true,
                 valid: true,
-                version: "2.4.0",
+                version: "2.5.0",
                 plan_id: planId,
                 estaciones_autorizadas: Number(estAut),
             },

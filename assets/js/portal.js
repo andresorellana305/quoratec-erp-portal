@@ -1,5 +1,5 @@
 /**
- * TributaFlow Pro v2.4.0 — Motor Comercial, Detección Multiplataforma y Blindaje Web
+ * TributaFlow Pro v2.5.0 — Motor Comercial, Detección Multiplataforma y Blindaje Web
  * Dominio oficial: https://tributaflow.quoratec.com
  * Desarrollado por Quoratec Software Solutions (Ecuador).
  */
@@ -32,7 +32,7 @@
     const URL_PORTAL_DESCARGAS = "https://tributaflow.quoratec.com/#descargas";
 
     const CONFIG_COMERCIAL = congelarProfundo({
-        VERSION: "2.4.0",
+        VERSION: "2.5.0",
         TRIAL_DIAS: 15,
         TRIAL_RUCS: 60,
         TRIAL_MODALIDAD: "Estudio Contable Pro",
@@ -61,7 +61,7 @@
         MAILTO_URL_PREFIX: "mailto:soportetributaflow@quoratec.com",
         ASUNTO_SOPORTE: "Consulta Soporte Técnico — TributaFlow Pro",
         DOMINIOS_PAYPHONE: ["ppls.me", "payphone.app"],
-        GITHUB_RELEASES_PREFIX: "/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/",
+        GITHUB_RELEASES_PREFIX: "/andresorellana305/tributaflow-portal/releases/download/v2.5.0/",
         PAYPHONE_BADGES: "Visa · Mastercard · Diners · Discover · Alia",
         PAYPHONE_GARANTIA: "🛡️ Pago protegido con verificación 3D Secure Ecuador",
         PRECIO_SEAT_EXTRA_USD: 150,
@@ -155,14 +155,14 @@
             modalId: "modalDescargaWindows",
             titulo: "Descargar para Windows 10 / 11 (x64 y Tablets Windows)",
             badge: "INSTALADOR OFICIAL WINDOWS .EXE",
-            archivo: "TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
+        archivo: "TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
             tamano: "Instalador Windows x64 • Verificado SHA-256",
-            url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
-            sha256: "534211af20180824e4d203ec3e9eedd411de847303e6f11423a31e54e2fed092",
-            sha256Url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe.sha256",
-            comandoSha256: 'certutil -hashfile "TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe" SHA256',
+            url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
+            sha256: "649ff3598fcb07b7ceff97400468a963c12dfdb5eaccbd168d04226ed62bad6d",
+            sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe.sha256",
+            comandoSha256: 'certutil -hashfile "TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe" SHA256',
             pasos: [
-                "1. Descarga TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe (compatible con PC, laptop táctil y tablets con Windows).",
+                "1. Descarga TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe (compatible con PC, laptop táctil y tablets con Windows).",
                 "2. Comprueba que el hash SHA-256 local coincida exactamente con el resumen publicado abajo.",
                 "3. Evalúa gratis por 15 días con hasta 60 RUCs (modalidad Estudio Contable Pro, sin tarjeta) o carga tu llave anual .lic.",
             ],
@@ -173,14 +173,14 @@
             modalId: "modalDescargaMacos",
             titulo: "Descargar para macOS (Apple Silicon / Intel)",
             badge: "IMAGEN OFICIAL MACOS .DMG",
-            archivo: "TributaFlow_Pro_v2.4.0_macOS.dmg",
+            archivo: "TributaFlow_Pro_v2.5.0_macOS.dmg",
             tamano: "Imagen de disco macOS • Verificado SHA-256",
-            url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_macOS.dmg",
-            sha256: "c11460fd02b0470c64efe6de0f565ed804e24ba83c9e24f50e09a84b494c0ae6",
-            sha256Url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_macOS.dmg.sha256",
-            comandoSha256: "shasum -a 256 TributaFlow_Pro_v2.4.0_macOS.dmg",
+            url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg",
+            sha256: "41aeb4ffdb42924d3478aaaa7613e90a8d3745121205d56d0473f7197379144d",
+            sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg.sha256",
+            comandoSha256: "shasum -a 256 TributaFlow_Pro_v2.5.0_macOS.dmg",
             pasos: [
-                "1. Abre TributaFlow_Pro_v2.4.0_macOS.dmg tras validar su firma SHA-256 y arrastra TributaFlow Pro a Aplicaciones.",
+                "1. Abre TributaFlow_Pro_v2.5.0_macOS.dmg tras validar su firma SHA-256 y arrastra TributaFlow Pro a Aplicaciones.",
                 "2. La primera vez, haz clic derecho (o Control + clic) sobre TributaFlow Pro y selecciona Abrir.",
                 "3. Disfruta de 15 días de evaluación gratuita con hasta 60 RUCs (modalidad Estudio Contable Pro) antes de activar tu plan.",
             ],
@@ -191,14 +191,14 @@
             modalId: "modalDescargaLinux",
             titulo: "Descargar para Linux (Ubuntu / Debian / Mint amd64)",
             badge: "PAQUETE OFICIAL LINUX .DEB",
-            archivo: "TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
+            archivo: "TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
             tamano: "Paquete Debian amd64 • Verificado SHA-256",
-            url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
-            sha256: "1d0e0d7830264fe63ac4e14b1b75cc72e30e1242bfe8b1a54225d7396ffdd9a0",
-            sha256Url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Linux_amd64.deb.sha256",
-            comandoSha256: "sha256sum TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
+            url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
+            sha256: "fe271781bf363b672fc991f373a0ae1eb2cd907fad59818869295f9191548368",
+            sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb.sha256",
+            comandoSha256: "sha256sum TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
             pasos: [
-                "1. Verifica el hash SHA-256 e instala con: sudo apt install ./TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
+                "1. Verifica el hash SHA-256 e instala con: sudo apt install ./TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
                 "2. Inicia la aplicación para acceder a la evaluación gratuita de 15 días (hasta 60 RUCs, modalidad Estudio Pro).",
                 "3. Opera con bóveda SQLite cifrada AES-256 y respaldo portátil .tfbkp (AES-256-GCM + HMAC).",
             ],
@@ -207,7 +207,7 @@
 
     const TEXTOS_LEGALES = congelarProfundo({
         terminos: {
-            titulo: "Acuerdo de Licencia de Usuario Final y Condiciones de Uso — v2.4.0",
+            titulo: "Acuerdo de Licencia de Usuario Final y Condiciones de Uso — v2.5.0",
             secciones: [
                 {
                     sub: "1. Suscripción Anual (365 Días) y 5 Planes Oficiales",
@@ -1504,7 +1504,7 @@
             }
         }
 
-        // Neutraliza cualquier enlace directo en móviles/iPadOS y en escritorio vincula al release oficial v2.4.0
+        // Neutraliza cualquier enlace directo en móviles/iPadOS y en escritorio vincula al release oficial v2.5.0
         document.querySelectorAll("[data-download-os]").forEach((el) => {
             if (el instanceof HTMLAnchorElement) {
                 if (soInfo.esMovil || !soInfo.soportado) {

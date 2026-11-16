@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TributaFlow Pro v2.4.0 — Portal Web Multipágina (Diseño SaaS B2B)
+   TributaFlow Pro v2.5.0 — Portal Web Multipágina (Diseño SaaS B2B)
    ========================================================================== */
 
 :root {
@@ -2041,7 +2041,7 @@ code {
 }
 
 /* ==========================================================================
-   Secciones Quiénes Somos, Simulador, Guía, Políticas v2.4.0 y Footer Unificado
+   Secciones Quiénes Somos, Simulador, Guía, Políticas v2.5.0 y Footer Unificado
    ========================================================================== */
 #simulador,
 #flujo,
@@ -2869,7 +2869,7 @@ html, body {
 }
 
 /* ==========================================================================
-   VERIFICACIÓN SHA-256 DE INSTALADORES v2.4.0
+   VERIFICACIÓN SHA-256 DE INSTALADORES v2.5.0
    ========================================================================== */
 .os-sha-box {
     background: rgba(15, 23, 42, 0.72);

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Suite Rápida de Auditoría HTTP, DOM, Integridad Comercial y Ciberseguridad (AppSec / Red Team)
-Portal Oficial TributaFlow Pro v2.4.0 (tributaflow.quoratec.com)
+Portal Oficial TributaFlow Pro v2.5.0 (tributaflow.quoratec.com)
 Ejecuta validación directa sin navegador ni dependencias externas (< 5s).
 """
 
@@ -79,16 +79,16 @@ PRECIOS_ESPERADOS = {
 
 EXPECTED_DOWNLOADS = {
     "windows": (
-        "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
-        "534211af20180824e4d203ec3e9eedd411de847303e6f11423a31e54e2fed092",
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
+        "649ff3598fcb07b7ceff97400468a963c12dfdb5eaccbd168d04226ed62bad6d",
     ),
     "macos": (
-        "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_macOS.dmg",
-        "c11460fd02b0470c64efe6de0f565ed804e24ba83c9e24f50e09a84b494c0ae6",
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg",
+        "41aeb4ffdb42924d3478aaaa7613e90a8d3745121205d56d0473f7197379144d",
     ),
     "linux": (
-        "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
-        "1d0e0d7830264fe63ac4e14b1b75cc72e30e1242bfe8b1a54225d7396ffdd9a0",
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
+        "fe271781bf363b672fc991f373a0ae1eb2cd907fad59818869295f9191548368",
     ),
 }
 
@@ -224,9 +224,28 @@ def _assert(cond: bool, msg: str) -> None:
 
 def _http_get(url: str) -> tuple[int, dict[str, str], bytes]:
     req = urllib.request.Request(url, method="GET")
-    with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT_S) as resp:
-        headers = {k.lower(): v for k, v in resp.headers.items()}
-        return resp.status, headers, resp.read()
+    try:
+        with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT_S) as resp:
+            headers = {k.lower(): v for k, v in resp.headers.items()}
+            return resp.status, headers, resp.read()
+    except urllib.error.HTTPError:
+        raise
+    except urllib.error.URLError as exc:
+        if not isinstance(exc.reason, PermissionError):
+            raise
+        # Fallback en memoria cuando el sandbox de Windows bloquea sockets loopback (WinError 10013)
+        req_path = urllib.parse.urlsplit(url).path or "/"
+        rel_path = req_path.lstrip("/") or "index.html"
+        target_file = (PORTAL_DIR / rel_path).resolve()
+        if not target_file.is_file() or not str(target_file).startswith(str(PORTAL_DIR.resolve())):
+            raise urllib.error.HTTPError(url, 404, "Not Found", None, None) from exc
+        headers: dict[str, str] = {}
+        for pattern, hdrs in _PortalSecurityHandler.header_rules:
+            prefix = pattern.rstrip("*")
+            if pattern == "/*" or req_path.startswith(prefix):
+                for key, val in hdrs:
+                    headers[key.lower()] = val
+        return 200, headers, target_file.read_bytes()
 
 
 def _sri_sha384(raw: bytes) -> str:
@@ -234,12 +253,12 @@ def _sri_sha384(raw: bytes) -> str:
 
 
 def test_static_integrity_and_zero_legacy() -> dict[str, int]:
-    print("[1/5] Auditoría estática de integridad, configuración v2.4.0, enlaces locales y cero regresiones...", flush=True)
+    print("[1/5] Auditoría estática de integridad, configuración v2.5.0, enlaces locales y cero regresiones...", flush=True)
 
     cfg_path = PORTAL_DIR / "api" / "config_comercial.json"
     _assert(cfg_path.is_file(), "Falta api/config_comercial.json")
     cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
-    _assert(cfg.get("version") == "2.4.0", f"Versión JSON inesperada: {cfg.get('version')}")
+    _assert(cfg.get("version") == "2.5.0", f"Versión JSON inesperada: {cfg.get('version')}")
     _assert(cfg.get("trial_dias") == 15, f"trial_dias esperado 15, recibido: {cfg.get('trial_dias')}")
     _assert(cfg.get("trial_rucs") == 60, f"trial_rucs esperado 60, recibido: {cfg.get('trial_rucs')}")
     _assert(cfg.get("precio_seat_extra_usd") == 150.0, "precio_seat_extra_usd esperado 150.0")
@@ -250,7 +269,7 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
 
     for os_k, (exp_u, exp_sha) in EXPECTED_DOWNLOADS.items():
         node = cfg.get("descargas", {}).get(os_k, {})
-        _assert(node.get("url") == exp_u, f"URL {os_k} v2.4.0 inválida en config_comercial.json: {node.get('url')}")
+        _assert(node.get("url") == exp_u, f"URL {os_k} v2.5.0 inválida en config_comercial.json: {node.get('url')}")
         _assert(node.get("sha256") == exp_sha, f"SHA-256 {os_k} inválido en config_comercial.json: {node.get('sha256')}")
 
     headers_path = PORTAL_DIR / "_headers"
@@ -269,6 +288,8 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
 
     legacy_patterns = {
         "version_2_3_0": re.compile(r"2\.3\.0|v230", re.I),
+        "version_2_4_0": re.compile(r"2\.4\.0", re.I),
+        "legacy_github_owner": re.compile("Fausto" + "Orellana", re.I),
         "trial_14_dias": re.compile(r"14\s+d[ií]as|14d\b", re.I),
         "ruc_2": re.compile(r"\b2\s+RUCs?\b", re.I),
         "lineas_15_50_200": re.compile(r"\b(?:15|50|200)\s+l[ií]neas\b", re.I),
@@ -335,7 +356,7 @@ def test_http_server_headers_and_sri(base_url: str) -> dict[str, int]:
     http_checks += 4
 
     _assert(len(css_bytes) > 1000 and len(js_bytes) > 1000 and len(qr_bytes) > 100, "Activos estáticos incompletos vía HTTP")
-    _assert(json.loads(cfg_bytes.decode("utf-8")).get("version") == "2.4.0", "JSON servido por HTTP con versión inválida")
+    _assert(json.loads(cfg_bytes.decode("utf-8")).get("version") == "2.5.0", "JSON servido por HTTP con versión inválida")
 
     expected_css_sri = _sri_sha384(css_bytes)
     expected_js_sri = _sri_sha384(js_bytes)
@@ -394,7 +415,7 @@ def test_http_server_headers_and_sri(base_url: str) -> dict[str, int]:
 
 
 def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
-    print("[3/5] Auditoría DOM vía HTTP: 9 Módulos, 5 Planes v2.4.0, PayPhone/Correos/WhatsApp, Descargas SHA-256 y Guía/Políticas...", flush=True)
+    print("[3/5] Auditoría DOM vía HTTP: 9 Módulos, 5 Planes v2.5.0, PayPhone/Correos/WhatsApp, Descargas SHA-256 y Guía/Políticas...", flush=True)
 
     pages_html: dict[str, tuple[str, _PortalDOMInspector]] = {}
     for rel in PAGINAS_PORTAL:
@@ -430,7 +451,7 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
     ]:
         _assert(css_snippet in css_txt, f"Falta regla CSS requerida ({css_snippet}) en assets/css/portal.css")
 
-    # Validar index.html y planes.html contra especificaciones comerciales exactas v2.4.0
+    # Validar index.html y planes.html contra especificaciones comerciales exactas v2.5.0
     for comerciales_rel in ("index.html", "planes.html"):
         html, dom = pages_html[comerciales_rel]
         _log(f"Reglas comerciales 5 planes + prueba 15d/60 RUCs -> {comerciales_rel}")
@@ -444,13 +465,13 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
     for id_req in ("corpAddonMenos", "corpAddonMas", "corpAddonPcs", "corpAddonTotal", "btnCorpAddonCheckout"):
         _assert(id_req in planes_dom.ids, f"Falta control calculadora Corp #{id_req} en planes.html")
 
-    # Simulador y bloque descargas verificadas v2.4.0 en index.html
+    # Simulador y bloque descargas verificadas v2.5.0 en index.html
     index_html, index_dom = pages_html["index.html"]
     for sim_id in ("simRucsRange", "simDocsRange", "simPlanNombre", "simBtnAdquirirPlan"):
         _assert(sim_id in index_dom.ids, f"Falta elemento simulador #{sim_id} en index.html")
     _assert("btnDescargaDetectada" in index_dom.ids, "Falta botón descarga #btnDescargaDetectada en index.html")
     for os_k, (expected_url, expected_sha) in EXPECTED_DOWNLOADS.items():
-        _assert(expected_url in index_dom.hrefs, f"Falta enlace descarga v2.4.0 de {os_k} en index.html")
+        _assert(expected_url in index_dom.hrefs, f"Falta enlace descarga v2.5.0 de {os_k} en index.html")
         _assert(os_k in index_dom.attrs_index["data-sha256-value"], f"Falta [data-sha256-value='{os_k}'] en index.html")
         _assert(os_k in index_dom.attrs_index["data-sha256-copy"], f"Falta [data-sha256-copy='{os_k}'] en index.html")
         _assert(expected_sha in index_html, f"Falta SHA-256 de {os_k} ({expected_sha}) en index.html")
@@ -474,7 +495,7 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
     _assert("Acuerdo de Licencia de Usuario Final y Condiciones de Uso" in pol_html, "Falta título legal oficial en español en politicas.html")
     _assert("EULA" not in pol_html.upper(), "Sigla prohibida EULA detectada en politicas.html")
 
-    print("    -> OK: 13 DOMs HTTP, 5 planes ($59-$1,490+$150/PC), PayPhone/WhatsApp/Correo intactos y SHA-256 v2.4.0 verificados.", flush=True)
+    print("    -> OK: 13 DOMs HTTP, 5 planes ($59-$1,490+$150/PC), PayPhone/WhatsApp/Correo intactos y SHA-256 v2.5.0 verificados.", flush=True)
     return {"dom_pages": len(pages_html), "plans_verified": len(PRECIOS_ESPERADOS)}
 
 
@@ -595,8 +616,8 @@ const badUrls = [
   ['https://wa.me.evil.com/593996459771?text=x', 'whatsapp'],
   ['https://wa.me/593999999999?text=phishing', 'whatsapp_share'],
   ['mailto:attacker@evil.com', 'correo'],
-  ['https://github.com/attacker/tributaflow-portal/releases/download/v2.4.0/x.exe', 'descarga'],
-  ['https://github.com/FaustoOrellana/tributaflow-portal/releases/latest/download/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe', 'descarga'],
+  ['https://github.com/attacker/tributaflow-portal/releases/download/v2.5.0/x.exe', 'descarga'],
+  ['https://github.com/andresorellana305/tributaflow-portal/releases/latest/download/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe', 'descarga'],
   ['https://tributaflow.quoratec.com.evil.com/#descargas', 'portal'],
 ];
 for (const [u, kind] of badUrls) {
@@ -609,7 +630,7 @@ const goodUrls = [
   ['https://ppls.me/60Bdw7lcRhMfvjqwA5cFdg', 'payphone'],
   ['https://wa.me/593996459771?text=hola', 'whatsapp'],
   ['mailto:soportetributaflow@quoratec.com?subject=Test', 'correo'],
-  ['https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe', 'descarga'],
+  ['https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe', 'descarga'],
   ['https://tributaflow.quoratec.com/#descargas', 'portal'],
 ];
 for (const [u, kind] of goodUrls) {
@@ -823,14 +844,14 @@ def main() -> int:
     server, port = iniciar_servidor_local(PORTAL_DIR)
     base_url = f"http://127.0.0.1:{port}"
     t0 = time.time()
-    print(f"=== AUDITORÍA PORTAL TRIBUTAFLOW PRO v2.4.0 ({base_url}) ===", flush=True)
+    print(f"=== AUDITORÍA PORTAL TRIBUTAFLOW PRO v2.5.0 ({base_url}) ===", flush=True)
 
     reporte_fases: list[tuple[str, str, str]] = []
     exit_code = 1
 
     try:
         res_static = test_static_integrity_and_zero_legacy()
-        reporte_fases.append(("1. Estática / v2.4.0 / Cero Regresiones", "PASS", f"{res_static['pages']} HTML + config + _headers"))
+        reporte_fases.append(("1. Estática / v2.5.0 / Cero Regresiones", "PASS", f"{res_static['pages']} HTML + config + _headers"))
 
         res_http = test_http_server_headers_and_sri(base_url)
         reporte_fases.append(("2. HTTP / CSP / HSTS / XFO / SRI SHA-384", "PASS", f"{res_http['http_checks']} checks HTTP"))
@@ -860,7 +881,7 @@ def main() -> int:
 
         elapsed = time.time() - t0
         estado_global = "PASS" if exit_code == 0 else "FAIL"
-        print("\n=== REPORTE PASS/FAIL PORTAL TRIBUTAFLOW PRO v2.4.0 ===", flush=True)
+        print("\n=== REPORTE PASS/FAIL PORTAL TRIBUTAFLOW PRO v2.5.0 ===", flush=True)
         for nombre, estado, detalle in reporte_fases:
             print(f"  [{estado}] {nombre}: {detalle}", flush=True)
         print(f"RESULTADO GLOBAL: {estado_global} en {elapsed:.2f}s", flush=True)

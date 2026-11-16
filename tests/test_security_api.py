@@ -1,4 +1,4 @@
-"""Suite defensiva estática, de cadena de suministro SRI y de seguridad Edge/API v2.4.0.
+"""Suite defensiva estática, de cadena de suministro SRI y de seguridad Edge/API v2.5.0.
 
 Ejecutable completamente offline dentro o fuera del sandbox (Node.js + Python stdlib).
 """
@@ -32,16 +32,16 @@ PAYPHONE_OFICIALES = {
 
 SHA256_OFICIALES = {
     "windows": (
-        "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
-        "534211af20180824e4d203ec3e9eedd411de847303e6f11423a31e54e2fed092",
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
+        "649ff3598fcb07b7ceff97400468a963c12dfdb5eaccbd168d04226ed62bad6d",
     ),
     "macos": (
-        "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_macOS.dmg",
-        "c11460fd02b0470c64efe6de0f565ed804e24ba83c9e24f50e09a84b494c0ae6",
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg",
+        "41aeb4ffdb42924d3478aaaa7613e90a8d3745121205d56d0473f7197379144d",
     ),
     "linux": (
-        "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
-        "1d0e0d7830264fe63ac4e14b1b75cc72e30e1242bfe8b1a54225d7396ffdd9a0",
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
+        "fe271781bf363b672fc991f373a0ae1eb2cd907fad59818869295f9191548368",
     ),
 }
 
@@ -115,12 +115,12 @@ class _EdgeClient:
 
 
 def test_1_static_commercial_and_supply_chain() -> None:
-    print("[1/4] Verificación comercial v2.4.0, SRI SHA-384, SHA-256 binarios y cero secretos...")
+    print("[1/4] Verificación comercial v2.5.0, SRI SHA-384, SHA-256 binarios y cero secretos...")
     _assert(len(HTML_FILES) == 13, f"Se esperaban 13 páginas HTML, encontradas: {len(HTML_FILES)}")
 
     # 1. Config JSON comercial + SHA-256
     cfg = json.loads((PORTAL_DIR / "api" / "config_comercial.json").read_text(encoding="utf-8"))
-    _assert(cfg.get("version") == "2.4.0", f"version inválida: {cfg.get('version')}")
+    _assert(cfg.get("version") == "2.5.0", f"version inválida: {cfg.get('version')}")
     _assert(cfg.get("trial_dias") == 15, f"trial_dias esperado 15, recibido: {cfg.get('trial_dias')}")
     _assert(cfg.get("trial_rucs") == 60, f"trial_rucs esperado 60, recibido: {cfg.get('trial_rucs')}")
     _assert(cfg.get("trial_modalidad") == "ESTUDIO_PRO", "trial_modalidad esperada ESTUDIO_PRO")
@@ -144,6 +144,8 @@ def test_1_static_commercial_and_supply_chain() -> None:
         re.compile(r"\b15\s+l[ií]neas\b|\b50\s+l[ií]neas\b|\b200\s+l[ií]neas\b", re.I),
         re.compile(r"\bEULA\b|\bEd25519\b|\bRSA-2048\b", re.I),
         re.compile(r"no-referrer|releases/latest", re.I),
+        re.compile("Fausto" + "Orellana", re.I),
+        re.compile(r"2\.4\.0", re.I),
     ]
 
     for rel in HTML_FILES:
@@ -160,7 +162,7 @@ def test_1_static_commercial_and_supply_chain() -> None:
 
     idx_html = (PORTAL_DIR / "index.html").read_text(encoding="utf-8")
     for _, (expected_url, expected_sha) in SHA256_OFICIALES.items():
-        _assert(expected_url in idx_html, f"Enlace release v2.4.0 faltante en index.html: {expected_url}")
+        _assert(expected_url in idx_html, f"Enlace release v2.5.0 faltante en index.html: {expected_url}")
         _assert(expected_sha in idx_html, f"Hash SHA-256 faltante en index.html: {expected_sha}")
 
     # 3. Sin sourcemaps (.map) ni secretos embebidos en el repositorio
@@ -183,7 +185,7 @@ def test_1_static_commercial_and_supply_chain() -> None:
         "frame-ancestors 'none'",
     ]:
         _assert(req_h in headers_txt, f"Falta cabecera en _headers: {req_h}")
-    print("    -> OK: 13 HTML con SRI SHA-384, reglas v2.4.0, SHA-256 reales y cero secretos.")
+    print("    -> OK: 13 HTML con SRI SHA-384, reglas v2.5.0, SHA-256 reales y cero secretos.")
 
 
 def test_2_syntax_all_scripts() -> None:
@@ -408,7 +410,7 @@ def main() -> int:
         proc.kill()
         proc.wait(timeout=3)
 
-    print("SUITE SEGURIDAD EDGE & CADENA DE SUMINISTRO v2.4.0: ALL PASS")
+    print("SUITE SEGURIDAD EDGE & CADENA DE SUMINISTRO v2.5.0: ALL PASS")
     return 0
 
 

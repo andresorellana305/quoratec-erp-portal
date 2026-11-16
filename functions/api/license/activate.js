@@ -1,5 +1,5 @@
 /**
- * Endpoint Endurecido de Emisión/Registro de Activación — TributaFlow Pro v2.4.0.
+ * Endpoint Endurecido de Emisión/Registro de Activación — TributaFlow Pro v2.5.0.
  * Rechaza manipulación de precio/descuento/días y exige firma HMAC-SHA256 del servidor emisor.
  */
 
@@ -108,7 +108,7 @@ export async function onRequestPost(context) {
     return jsonSegura(
         {
             ok: true,
-            version: "2.4.0",
+            version: "2.5.0",
             plan_id: cotizacion.plan.id,
             monto_autorizado_usd: cotizacion.montoAutoritativoUsd,
             rucs_max: cotizacion.plan.rucsMax,

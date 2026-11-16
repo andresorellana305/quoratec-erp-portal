@@ -1,5 +1,5 @@
 /**
- * Seguridad defensiva compartida para Cloudflare Pages Functions (v2.4.0).
+ * Seguridad defensiva compartida para Cloudflare Pages Functions (v2.5.0).
  * Cero secretos embebidos y validación estricta OWASP ASVS / Anti-Tampering.
  */
 
@@ -18,11 +18,11 @@ export const SECURITY_HEADERS = Object.freeze({
 });
 
 /**
- * Catálogo comercial oficial inmutable v2.4.0 en el servidor.
+ * Catálogo comercial oficial inmutable v2.5.0 en el servidor.
  * Regla inquebrantable: enlaces PayPhone y correo oficial intocables.
  */
 export const CATALOGO_OFICIAL_V240 = Object.freeze({
-    version: "2.4.0",
+    version: "2.5.0",
     trialDias: 15,
     trialRucs: 60,
     trialModalidad: "ESTUDIO_PRO",
