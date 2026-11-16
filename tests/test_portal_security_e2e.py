@@ -79,16 +79,16 @@ PRECIOS_ESPERADOS = {
 
 EXPECTED_DOWNLOADS = {
     "windows": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
-        "649ff3598fcb07b7ceff97400468a963c12dfdb5eaccbd168d04226ed62bad6d",
+        "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
+        "e7dd586935e54b88fce1d8d6e8015aaa5cbca2eaa3d99b8c115bf0879d9cd778",
     ),
     "macos": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg",
-        "41aeb4ffdb42924d3478aaaa7613e90a8d3745121205d56d0473f7197379144d",
+        "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg",
+        "b2ef53335d29280f4644c738dd9976c4cfba9ac8381edfee9e9e760f2a0d8a12",
     ),
     "linux": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
-        "fe271781bf363b672fc991f373a0ae1eb2cd907fad59818869295f9191548368",
+        "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
+        "06e3773ccbb8b0d7697482cbdb14b812311a77159928eb40cd716ca83eb0823b",
     ),
 }
 
@@ -442,6 +442,10 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         _assert(bool(dom.attrs_index["data-app-version-tag"]), f"Falta data-app-version-tag en {rel}")
         _assert("0996459771" in html and "593996459771" in html, f"Canal WhatsApp oficial alterado o ausente en {rel}")
         _assert("soportetributaflow@quoratec.com" in html, f"Correo soporte oficial alterado o ausente en {rel}")
+        # Reglas exactas de target en enlaces estáticos HTML: descargas/mailto sin target="_blank"; wa.me con target="_blank" rel="noopener noreferrer"
+        _assert(not re.search(r'<a\b[^>]*href=["\'](?:mailto:|[^"\']*releases/download/)[^>]*target=["\']_blank["\']', html, re.I), f"Enlace descarga o mailto con target=_blank prohibido en {rel}")
+        for wa_tag in re.findall(r'<a\b[^>]*href=["\']https://wa\.me/[^>]*>', html, re.I):
+            _assert('target="_blank"' in wa_tag and 'rel="noopener noreferrer"' in wa_tag, f"Enlace WhatsApp sin target/_blank o noopener en {rel}: {wa_tag}")
         # Protección QR: no debe exponerse qr-deuna.png directamente en el DOM HTML fuera del modal dinámico
         _assert(not any("qr-deuna" in (img.get("src") or "") for img in dom.imgs), f"QR Deuna expuesto estáticamente en HTML de {rel}")
 
@@ -540,6 +544,23 @@ let navState = {
 };
 
 function Noop() {}
+function MockAnchor() {
+  this.attrs = {};
+  this._target = '';
+  this._rel = '';
+}
+MockAnchor.prototype.setAttribute = function(k, v) { this.attrs[k] = String(v); if (k === 'target') this._target = String(v); if (k === 'rel') this._rel = String(v); };
+MockAnchor.prototype.getAttribute = function(k) { return Object.prototype.hasOwnProperty.call(this.attrs, k) ? this.attrs[k] : null; };
+MockAnchor.prototype.removeAttribute = function(k) { delete this.attrs[k]; if (k === 'target') this._target = ''; if (k === 'rel') this._rel = ''; };
+Object.defineProperty(MockAnchor.prototype, 'target', {
+  get() { return this._target; },
+  set(v) { this._target = String(v); this.attrs.target = String(v); },
+});
+Object.defineProperty(MockAnchor.prototype, 'rel', {
+  get() { return this._rel; },
+  set(v) { this._rel = String(v); this.attrs.rel = String(v); },
+});
+
 const sandbox = {
   console,
   URL,
@@ -562,7 +583,7 @@ const sandbox = {
   clearTimeout,
   Element: Noop,
   HTMLElement: Noop,
-  HTMLAnchorElement: Noop,
+  HTMLAnchorElement: MockAnchor,
   HTMLInputElement: Noop,
   MutationObserver: function() { return { observe() {}, disconnect() {} }; },
   navigator: {
@@ -639,8 +660,9 @@ const badUrls = [
   ['https://wa.me.evil.com/593996459771?text=x', 'whatsapp'],
   ['https://wa.me/593999999999?text=phishing', 'whatsapp_share'],
   ['mailto:attacker@evil.com', 'correo'],
-  ['https://github.com/attacker/tributaflow-portal/releases/download/v2.5.0/x.exe', 'descarga'],
-  ['https://github.com/andresorellana305/tributaflow-portal/releases/latest/download/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe', 'descarga'],
+  ['https://github.com/attacker/TributaFlow_Pro/releases/download/v2.5.0/x.exe', 'descarga'],
+  ['https://github.com/andresorellana305/TributaFlow_Pro/releases/latest/download/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe', 'descarga'],
+  ['https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe', 'descarga'],
   ['https://tributaflow.quoratec.com.evil.com/#descargas', 'portal'],
 ];
 for (const [u, kind] of badUrls) {
@@ -653,12 +675,35 @@ const goodUrls = [
   ['https://ppls.me/60Bdw7lcRhMfvjqwA5cFdg', 'payphone'],
   ['https://wa.me/593996459771?text=hola', 'whatsapp'],
   ['mailto:soportetributaflow@quoratec.com?subject=Test', 'correo'],
-  ['https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe', 'descarga'],
+  ['https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe', 'descarga'],
   ['https://tributaflow.quoratec.com/#descargas', 'portal'],
 ];
 for (const [u, kind] of goodUrls) {
   assert.equal(sec.validarDestinoSeguro(u, kind), true, 'URL legítima bloqueada: ' + u);
 }
+
+// 3b. Verificación de comportamiento de apertura de enlaces (target / rel) según tipo
+const aDl = new sandbox.HTMLAnchorElement();
+aDl.target = '_blank';
+assert.equal(sec.asignarEnlaceSeguro(aDl, 'https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe', 'download_release'), true);
+assert.equal(aDl.target, '');
+
+const aPay = new sandbox.HTMLAnchorElement();
+aPay.target = '_blank';
+assert.equal(sec.asignarEnlaceSeguro(aPay, 'https://ppls.me/5S1Y89pBi1vYHBTEgEzRA', 'payphone'), true);
+assert.equal(aPay.target, '');
+
+const aMail = new sandbox.HTMLAnchorElement();
+aMail.target = '_blank';
+assert.equal(sec.asignarEnlaceSeguro(aMail, 'mailto:soportetributaflow@quoratec.com?subject=Pago&body=Plan%20Pro', 'correo'), true);
+assert.equal(aMail.target, '');
+assert.ok(aMail.getAttribute('href').includes('subject=Pago&body=Plan%20Pro'));
+
+const aWp = new sandbox.HTMLAnchorElement();
+assert.equal(sec.asignarEnlaceSeguro(aWp, 'https://wa.me/593996459771?text=Hola%20Soporte', 'whatsapp'), true);
+assert.equal(aWp.target, '_blank');
+assert.equal(aWp.rel, 'noopener noreferrer');
+assert.ok(aWp.getAttribute('href').includes('?text=Hola%20Soporte'));
 
 // 4. Sanitización XSS HWID
 const cleaned = sec.sanitizarIdentificador('<script>alert(1)</script>"\' TF-AB12CD-99');

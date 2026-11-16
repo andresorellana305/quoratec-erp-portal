@@ -32,16 +32,16 @@ PAYPHONE_OFICIALES = {
 
 SHA256_OFICIALES = {
     "windows": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
-        "649ff3598fcb07b7ceff97400468a963c12dfdb5eaccbd168d04226ed62bad6d",
+        "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
+        "e7dd586935e54b88fce1d8d6e8015aaa5cbca2eaa3d99b8c115bf0879d9cd778",
     ),
     "macos": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg",
-        "41aeb4ffdb42924d3478aaaa7613e90a8d3745121205d56d0473f7197379144d",
+        "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg",
+        "b2ef53335d29280f4644c738dd9976c4cfba9ac8381edfee9e9e760f2a0d8a12",
     ),
     "linux": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
-        "fe271781bf363b672fc991f373a0ae1eb2cd907fad59818869295f9191548368",
+        "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
+        "06e3773ccbb8b0d7697482cbdb14b812311a77159928eb40cd716ca83eb0823b",
     ),
 }
 

@@ -61,7 +61,7 @@
         MAILTO_URL_PREFIX: "mailto:soportetributaflow@quoratec.com",
         ASUNTO_SOPORTE: "Consulta Soporte Técnico — TributaFlow Pro",
         DOMINIOS_PAYPHONE: ["ppls.me", "payphone.app"],
-        GITHUB_RELEASES_PREFIX: "/andresorellana305/tributaflow-portal/releases/download/v2.5.0/",
+        GITHUB_RELEASES_PREFIX: "/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/",
         PAYPHONE_BADGES: "Visa · Mastercard · Diners · Discover · Alia",
         PAYPHONE_GARANTIA: "🛡️ Pago protegido con verificación 3D Secure Ecuador",
         PRECIO_SEAT_EXTRA_USD: 150,
@@ -162,9 +162,9 @@
             badge: "INSTALADOR OFICIAL WINDOWS .EXE",
         archivo: "TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
             tamano: "Instalador Windows x64 • Verificado SHA-256",
-            url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
-            sha256: "649ff3598fcb07b7ceff97400468a963c12dfdb5eaccbd168d04226ed62bad6d",
-            sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe.sha256",
+            url: "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
+            sha256: "e7dd586935e54b88fce1d8d6e8015aaa5cbca2eaa3d99b8c115bf0879d9cd778",
+            sha256Url: "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe.sha256",
             comandoSha256: 'certutil -hashfile "TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe" SHA256',
             pasos: [
                 "1. Descarga TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe (compatible con PC, laptop táctil y tablets con Windows).",
@@ -180,9 +180,9 @@
             badge: "IMAGEN OFICIAL MACOS .DMG",
             archivo: "TributaFlow_Pro_v2.5.0_macOS.dmg",
             tamano: "Imagen de disco macOS • Verificado SHA-256",
-            url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg",
-            sha256: "41aeb4ffdb42924d3478aaaa7613e90a8d3745121205d56d0473f7197379144d",
-            sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg.sha256",
+            url: "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg",
+            sha256: "b2ef53335d29280f4644c738dd9976c4cfba9ac8381edfee9e9e760f2a0d8a12",
+            sha256Url: "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg.sha256",
             comandoSha256: "shasum -a 256 TributaFlow_Pro_v2.5.0_macOS.dmg",
             pasos: [
                 "1. Abre TributaFlow_Pro_v2.5.0_macOS.dmg tras validar su firma SHA-256 y arrastra TributaFlow Pro a Aplicaciones.",
@@ -198,9 +198,9 @@
             badge: "PAQUETE OFICIAL LINUX .DEB",
             archivo: "TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
             tamano: "Paquete Debian amd64 • Verificado SHA-256",
-            url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
-            sha256: "fe271781bf363b672fc991f373a0ae1eb2cd907fad59818869295f9191548368",
-            sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb.sha256",
+            url: "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
+            sha256: "06e3773ccbb8b0d7697482cbdb14b812311a77159928eb40cd716ca83eb0823b",
+            sha256Url: "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb.sha256",
             comandoSha256: "sha256sum TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
             pasos: [
                 "1. Verifica el hash SHA-256 e instala con: sudo apt install ./TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
@@ -425,9 +425,12 @@
             return false;
         }
         anchorEl.setAttribute("href", url);
-        if (tipo !== "correo") {
+        if (tipo === "whatsapp" || tipo === "whatsapp_share" || tipo === "portal") {
             anchorEl.target = "_blank";
             anchorEl.rel = "noopener noreferrer";
+        } else {
+            anchorEl.removeAttribute("target");
+            anchorEl.removeAttribute("rel");
         }
         return true;
     }
@@ -1527,6 +1530,8 @@
                         el.setAttribute("href", meta.url);
                         el.setAttribute("download", meta.archivo);
                         el.setAttribute("data-tf-canal-seguro", "download_release");
+                        el.removeAttribute("target");
+                        el.removeAttribute("rel");
                     }
                 }
             }
@@ -2272,6 +2277,7 @@
                 esUrlCorreoSegura,
                 esUrlDescargaOficialSegura,
                 esUrlPortalOficialSegura,
+                asignarEnlaceSeguro,
                 detectarSistemaOperativo,
                 detectarInfoSistemaOperativo,
                 esSistemaOperativoSoportado,

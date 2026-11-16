@@ -122,23 +122,23 @@
   "descargas": {
     "windows": {
       "archivo": "TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
-      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
-      "sha256": "649ff3598fcb07b7ceff97400468a963c12dfdb5eaccbd168d04226ed62bad6d",
-      "sha256_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe.sha256",
+      "url": "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
+      "sha256": "e7dd586935e54b88fce1d8d6e8015aaa5cbca2eaa3d99b8c115bf0879d9cd778",
+      "sha256_url": "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe.sha256",
       "plataforma": "Windows 10 / 11 (x64 y Tablets Windows)"
     },
     "macos": {
       "archivo": "TributaFlow_Pro_v2.5.0_macOS.dmg",
-      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg",
-      "sha256": "41aeb4ffdb42924d3478aaaa7613e90a8d3745121205d56d0473f7197379144d",
-      "sha256_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg.sha256",
+      "url": "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg",
+      "sha256": "b2ef53335d29280f4644c738dd9976c4cfba9ac8381edfee9e9e760f2a0d8a12",
+      "sha256_url": "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg.sha256",
       "plataforma": "macOS (Apple Silicon / Intel)"
     },
     "linux": {
       "archivo": "TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
-      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
-      "sha256": "fe271781bf363b672fc991f373a0ae1eb2cd907fad59818869295f9191548368",
-      "sha256_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb.sha256",
+      "url": "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
+      "sha256": "06e3773ccbb8b0d7697482cbdb14b812311a77159928eb40cd716ca83eb0823b",
+      "sha256_url": "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb.sha256",
       "plataforma": "Linux (Ubuntu / Debian / Mint amd64)"
     }
   }
