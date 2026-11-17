@@ -1,0 +1,46 @@
+{
+  "version": "3.0.0",
+  "tag_name": "v3.0.0",
+  "name": "TributaFlow ERP v3.0.0 — Edición 2026",
+  "published_at": "2026-01-01T00:00:00Z",
+  "html_url": "https://github.com/andresorellana305/tributaflow-portal/releases/tag/v3.0.0",
+  "body": "Lanzamiento oficial TributaFlow ERP v3.0.0 — Edición 2026 (QUORATEC). Arquitectura Local-First con cifrado AES-256-GCM, interfaz MDI cero-destellos con calendario embebido, sincronización selectiva Oficina+Casa desde Estudio Contable Pro, POS .p12, Inventario & Kardex, CxC/CxP, Contabilidad NIIF, Auditoría EFOS, ATS, Form. 103/104.",
+  "assets": [
+    {
+      "name": "Setup_TributaFlow_ERP_v3.0.0.exe",
+      "size": 69101158,
+      "digest": "sha256:c2ecdaa0092a2d236968898e130a3bc63ce5e7998f358985fdade1c383ed3808",
+      "browser_download_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe"
+    },
+    {
+      "name": "TributaFlow_ERP_v3.0.0_Windows_x64.zip",
+      "size": 90177536,
+      "digest": "sha256:9be4b60b3d0220d8d71b31941ced2a12722b9d1f9441458cfec719194089cc41",
+      "browser_download_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip"
+    },
+    {
+      "name": "TributaFlow_ERP_v3.0.0_macOS.dmg",
+      "size": 97727283,
+      "digest": "sha256:084317c123ce603c82091ed01137ce05b9ca5eee5b5c37fd2cdc4c0f64091cf4",
+      "browser_download_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_macOS.dmg"
+    },
+    {
+      "name": "TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
+      "size": 99719577,
+      "digest": "sha256:41626f54383f0755a16b6373e5ba6be29da09cc7d1c64ee61b8174b84956cc39",
+      "browser_download_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_amd64.deb"
+    },
+    {
+      "name": "TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
+      "size": 128974848,
+      "digest": "sha256:21130e004c66fb0a59b7862055b84bf255ca7c7e15e8a761bc8df887c6e653cb",
+      "browser_download_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "size": 660,
+      "digest": "sha256:c7c8ce6fb934be64708f173ae2099459f8903b7fe81aa4c1af94d5d79611783",
+      "browser_download_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt"
+    }
+  ]
+}

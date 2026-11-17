@@ -1,5 +1,5 @@
 /**
- * Seguridad defensiva compartida para Cloudflare Pages Functions (v2.5.0).
+ * Seguridad defensiva compartida para Cloudflare Pages Functions (v3.0.0 — Edición 2026).
  * Cero secretos embebidos y validación estricta OWASP ASVS / Anti-Tampering.
  */
 
@@ -18,21 +18,24 @@ export const SECURITY_HEADERS = Object.freeze({
 });
 
 /**
- * Catálogo comercial oficial inmutable v2.5.0 en el servidor.
- * Regla inquebrantable: enlaces PayPhone y correo oficial intocables.
+ * Catálogo comercial oficial inmutable v3.0.0 — Edición 2026 en el servidor.
+ * Regla inquebrantable: canales oficiales QUORATEC intocables.
  */
 export const CATALOGO_OFICIAL_V240 = Object.freeze({
-    version: "2.5.0",
-    trialDias: 15,
+    version: "3.0.0",
+    edicion: "Edición 2026",
+    trialDias: 7,
     trialRucs: 60,
     trialModalidad: "ESTUDIO_PRO",
     precioSeatExtraUsd: 150,
+    payphoneActivo: false,
+    payphoneEstado: "Próximamente / En actualización",
     correoSoporte: "soportetributaflow@quoratec.com",
     whatsappOficial: "https://wa.me/593996459771",
     planes: Object.freeze({
         PERSONAL_PRO: Object.freeze({
             id: "PERSONAL_PRO",
-            precioUsd: 59,
+            precioUsd: 69,
             rucsMax: 3,
             estacionesBase: 1,
             permiteExtraSeats: false,
@@ -40,7 +43,7 @@ export const CATALOGO_OFICIAL_V240 = Object.freeze({
         }),
         CONTADOR_MASTER: Object.freeze({
             id: "CONTADOR_MASTER",
-            precioUsd: 139,
+            precioUsd: 159,
             rucsMax: 25,
             estacionesBase: 1,
             permiteExtraSeats: false,
@@ -48,7 +51,7 @@ export const CATALOGO_OFICIAL_V240 = Object.freeze({
         }),
         ESTUDIO_PRO: Object.freeze({
             id: "ESTUDIO_PRO",
-            precioUsd: 299,
+            precioUsd: 379,
             rucsMax: 60,
             estacionesBase: 2,
             permiteExtraSeats: false,

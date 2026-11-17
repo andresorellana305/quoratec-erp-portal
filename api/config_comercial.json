@@ -1,145 +1,176 @@
 {
-  "version": "2.5.0",
-  "producto": "TributaFlow Pro",
-  "fabricante": "Quoratec Software Solutions",
-  "dominio_oficial": "https://tributaflow.quoratec.com",
-  "trial_dias": 15,
+  "version": "3.0.0",
+  "edicion": "Edición 2026",
+  "producto": "TributaFlow ERP — Edición 2026",
+  "empresa": "QUORATEC",
+  "actualizado": "2026",
+  "trial_dias": 7,
   "trial_rucs": 60,
   "trial_modalidad": "ESTUDIO_PRO",
-  "trial_texto": "15 días de evaluación gratuita (hasta 60 RUCs, modalidad Estudio Contable Pro, sin tarjeta de crédito)",
   "precio_seat_extra_usd": 150.0,
-  "simulador_ahorro": {
-    "horas_manual_por_ruc": 0.45,
-    "horas_manual_por_comprobante": 0.022,
-    "factor_automatizacion": 0.82
-  },
-  "canal_soporte": {
-    "whatsapp_numero": "593996459771",
-    "whatsapp_local": "0996459771",
-    "whatsapp_url": "https://wa.me/593996459771",
-    "correo": "soportetributaflow@quoratec.com"
-  },
+  "iva_nota": "Precios netos en dólares USD por suscripción anual. Renovación anual.",
+  "politica_expiracion": "Al finalizar el periodo de prueba de 7 días o vencer la licencia anual, la aplicación transiciona de forma segura al Modo Solo Lectura sin eliminar bases de datos ni información local hasta renovar mediante archivo .lic.",
+  "politica_reembolsos": "No aplican devoluciones ni reembolsos una vez emitido e instalado el archivo de licencia .lic, al disponerse previamente de una prueba gratuita y funcional de 7 días para validar el software en el equipo.",
+  "payphone_habilitado": false,
+  "payphone_estado": "Próximamente / En actualización",
   "payphone_links": {
-    "PERSONAL_PRO": "https://ppls.me/5S1Y89pBi1vYHBTEgEzRA",
-    "CONTADOR_MASTER": "https://ppls.me/dxope7VBAjK5LR1mO4UitA",
-    "ESTUDIO_PRO": "https://ppls.me/60Bdw7lcRhMfvjqwA5cFdg",
+    "PERSONAL_PRO": null,
+    "CONTADOR_MASTER": null,
+    "ESTUDIO_PRO": null,
     "ENTERPRISE_TEAM": null,
     "ENTERPRISE_CORP": null
   },
-  "planes": {
-    "PERSONAL_PRO": {
-      "tier": "PERSONAL_PRO",
-      "nombre": "Personal Pro",
-      "nombre_comercial": "TF Personal Pro",
-      "precio_base_usd": 59.0,
-      "precio_regular_usd": 69.0,
-      "estaciones_base": 1,
-      "estaciones_texto": "1 PC",
-      "rucs_max": 3,
-      "rucs_texto": "Hasta 3 RUCs",
-      "modo": "Sincronización SRI/RIDE/XML y bóveda local cifrada",
-      "exclusiones": [
-        "Sin lote multi-RUC",
-        "Sin Generador ATS",
-        "Sin Auditor Fantasma EFOS",
-        "Sin respaldo .tfbkp",
-        "Sin Red LAN"
-      ],
-      "admite_addon_pc": false,
-      "url_payphone": "https://ppls.me/5S1Y89pBi1vYHBTEgEzRA"
+  "canales_pago": {
+    "deuna": {
+      "activo": true,
+      "etiqueta": "Deuna! (Banco Pichincha) — Canal Principal Activo",
+      "nota": "Disponible para los 5 planes anuales. Envía tu comprobante con el código de pedido para emisión inmediata de tu licencia .lic."
     },
-    "CONTADOR_MASTER": {
-      "tier": "CONTADOR_MASTER",
-      "nombre": "Contador Master",
-      "nombre_comercial": "TF Contador Master",
-      "precio_base_usd": 139.0,
-      "precio_regular_usd": 169.0,
-      "estaciones_base": 1,
-      "estaciones_texto": "1 PC",
-      "rucs_max": 25,
-      "rucs_texto": "Hasta 25 RUCs",
-      "modo": "Lote Multi-RUC y Generador/Validador oficial ATS (XML/XSD/Excel)",
-      "exclusiones": [
-        "Sin Auditor Fantasma EFOS",
-        "Sin Multi-PC",
-        "Sin respaldo .tfbkp",
-        "Sin Red LAN"
-      ],
-      "admite_addon_pc": false,
-      "url_payphone": "https://ppls.me/dxope7VBAjK5LR1mO4UitA"
+    "transferencia": {
+      "activo": true,
+      "etiqueta": "Transferencia Bancaria Directa",
+      "nota": "Titular oficial QUORATEC. Solicita los datos bancarios actualizados por WhatsApp o correo oficial."
     },
-    "ESTUDIO_PRO": {
-      "tier": "ESTUDIO_PRO",
-      "nombre": "Estudio Contable Pro",
-      "nombre_comercial": "TF Estudio Pro",
-      "precio_base_usd": 299.0,
-      "precio_regular_usd": 399.0,
-      "estaciones_base": 2,
-      "estaciones_texto": "Hasta 2 PCs (60 RUCs o 30/PC)",
-      "rucs_max": 60,
-      "rucs_texto": "Hasta 60 RUCs (o 30/PC en hasta 2 PCs)",
-      "modo": "Auditor Fantasma EFOS en tiempo real, Modo Contingencia ATS y Respaldo Portátil Cifrado (.tfbkp AES-256-GCM + HMAC)",
-      "exclusiones": [
-        "Sin Red LAN TCP/IP",
-        "Sin Bóveda UNC"
-      ],
-      "admite_addon_pc": false,
-      "url_payphone": "https://ppls.me/60Bdw7lcRhMfvjqwA5cFdg"
-    },
-    "ENTERPRISE_TEAM": {
-      "tier": "ENTERPRISE_TEAM",
-      "nombre": "Enterprise Team",
-      "nombre_comercial": "TF Enterprise Team",
-      "precio_base_usd": 890.0,
-      "precio_regular_usd": 1190.0,
-      "estaciones_base": 5,
-      "estaciones_texto": "5 estaciones base",
-      "rucs_max": -1,
-      "rucs_texto": "RUCs ilimitados",
-      "modo": "Red LAN TCP/IP Centralizada con cola anti-colisión y Bóveda Compartida UNC (\\\\SERVIDOR\\...)",
-      "exclusiones": [
-        "Sin Conector Multi-Regional HTTPS"
-      ],
-      "admite_addon_pc": false,
-      "url_payphone": null
-    },
-    "ENTERPRISE_CORP": {
-      "tier": "ENTERPRISE_CORP",
-      "nombre": "Enterprise Corporativo",
-      "nombre_comercial": "TF Enterprise Corp",
-      "precio_base_usd": 1490.0,
-      "precio_regular_usd": 1890.0,
-      "estaciones_base": 10,
-      "estaciones_texto": "10+ estaciones escalables (+$150/PC extra)",
-      "rucs_max": -1,
-      "rucs_texto": "RUCs ilimitados",
-      "modo": "Red LAN TCP/IP + Bóveda UNC + Conector Multi-Regional HTTPS / Gateway seguro",
-      "exclusiones": [],
-      "admite_addon_pc": true,
-      "url_payphone": null
+    "payphone": {
+      "activo": false,
+      "etiqueta": "PayPhone (Tarjeta Visa / Mastercard)",
+      "estado": "Próximamente / En actualización"
     }
   },
+  "canal_soporte": {
+    "whatsapp_numero": "593996459771",
+    "whatsapp_display": "0996459771",
+    "whatsapp_url": "https://wa.me/593996459771",
+    "correo": "soportetributaflow@quoratec.com",
+    "horario": "Lunes a Viernes 08:30–18:00 (ECT)"
+  },
+  "arquitectura_seguridad": {
+    "cifrado_local": "AES-256-GCM",
+    "modo": "Local-First",
+    "nube_opcional": "Sincronización selectiva Oficina + Casa vía Supabase RLS (disponible desde Estudio Contable Pro)",
+    "cumplimiento_legal": "LOPDP Ecuador + Deslinde Tributario"
+  },
+  "planes": [
+    {
+      "id": "PERSONAL_PRO",
+      "nombre": "Personal Pro",
+      "subtitulo": "Profesionales Independientes",
+      "precio_usd": 69,
+      "periodo": "año",
+      "equipos": "1 PC",
+      "estaciones": 1,
+      "rucs": 3,
+      "nube_oficina_casa": false,
+      "pago_deuna": true,
+      "pago_payphone": false,
+      "url_payphone": null
+    },
+    {
+      "id": "CONTADOR_MASTER",
+      "nombre": "Contador Master",
+      "subtitulo": "Contadores con Cartera Propia",
+      "precio_usd": 159,
+      "periodo": "año",
+      "equipos": "1 PC",
+      "estaciones": 1,
+      "rucs": 25,
+      "nube_oficina_casa": false,
+      "pago_deuna": true,
+      "pago_payphone": false,
+      "url_payphone": null
+    },
+    {
+      "id": "ESTUDIO_PRO",
+      "nombre": "Estudio Contable Pro",
+      "subtitulo": "Estudios y Dúo Oficina + Casa",
+      "precio_usd": 379,
+      "periodo": "año",
+      "equipos": "Hasta 2 PCs (Oficina + Casa)",
+      "estaciones": 2,
+      "rucs": 60,
+      "nube_oficina_casa": true,
+      "pago_deuna": true,
+      "pago_payphone": false,
+      "url_payphone": null
+    },
+    {
+      "id": "ENTERPRISE_TEAM",
+      "nombre": "Enterprise Team ERP",
+      "subtitulo": "Pymes y Firmas en Red",
+      "precio_usd": 890,
+      "periodo": "año",
+      "equipos": "5 PCs en Red LAN + Nube",
+      "estaciones": 5,
+      "rucs": "Ilimitados",
+      "nube_oficina_casa": true,
+      "pago_deuna": true,
+      "pago_payphone": false,
+      "url_payphone": null
+    },
+    {
+      "id": "ENTERPRISE_CORP",
+      "nombre": "Enterprise Corp ERP",
+      "subtitulo": "Corporativos Multi-Sucursal",
+      "precio_usd": 1490,
+      "periodo": "año",
+      "equipos": "10+ PCs (base 10 PCs, +$150/PC adicional)",
+      "estaciones_base": 10,
+      "precio_seat_extra_usd": 150,
+      "rucs": "Ilimitados",
+      "nube_oficina_casa": true,
+      "pago_deuna": true,
+      "pago_payphone": false,
+      "url_payphone": null
+    }
+  ],
   "descargas": {
     "windows": {
-      "archivo": "TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
-      "url": "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
-      "sha256": "e7dd586935e54b88fce1d8d6e8015aaa5cbca2eaa3d99b8c115bf0879d9cd778",
-      "sha256_url": "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe.sha256",
-      "plataforma": "Windows 10 / 11 (x64 y Tablets Windows)"
+      "nombre": "Windows x64 (Instalador .exe)",
+      "archivo": "Setup_TributaFlow_ERP_v3.0.0.exe",
+      "version": "3.0.0",
+      "tamano": "65.9 MB",
+      "sha256": "c2ecdaa0092a2d236968898e130a3bc63ce5e7998f358985fdade1c383ed3808",
+      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe"
+    },
+    "windows_zip": {
+      "nombre": "Windows x64 (Portable .zip)",
+      "archivo": "TributaFlow_ERP_v3.0.0_Windows_x64.zip",
+      "version": "3.0.0",
+      "tamano": "86 MB",
+      "sha256": "9be4b60b3d0220d8d71b31941ced2a12722b9d1f9441458cfec719194089cc41",
+      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip"
     },
     "macos": {
-      "archivo": "TributaFlow_Pro_v2.5.0_macOS.dmg",
-      "url": "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg",
-      "sha256": "b2ef53335d29280f4644c738dd9976c4cfba9ac8381edfee9e9e760f2a0d8a12",
-      "sha256_url": "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg.sha256",
-      "plataforma": "macOS (Apple Silicon / Intel)"
+      "nombre": "macOS (Universal .dmg)",
+      "archivo": "TributaFlow_ERP_v3.0.0_macOS.dmg",
+      "version": "3.0.0",
+      "tamano": "93.2 MB",
+      "sha256": "084317c123ce603c82091ed01137ce05b9ca5eee5b5c37fd2cdc4c0f64091cf4",
+      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_macOS.dmg"
     },
     "linux": {
-      "archivo": "TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
-      "url": "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
-      "sha256": "06e3773ccbb8b0d7697482cbdb14b812311a77159928eb40cd716ca83eb0823b",
-      "sha256_url": "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb.sha256",
-      "plataforma": "Linux (Ubuntu / Debian / Mint amd64)"
+      "nombre": "Linux Debian / Ubuntu (.deb)",
+      "archivo": "TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
+      "version": "3.0.0",
+      "tamano": "95.1 MB",
+      "sha256": "41626f54383f0755a16b6373e5ba6be29da09cc7d1c64ee61b8174b84956cc39",
+      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_amd64.deb"
+    },
+    "linux_tar": {
+      "nombre": "Linux Genérico (.tar.gz)",
+      "archivo": "TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
+      "version": "3.0.0",
+      "tamano": "123 MB",
+      "sha256": "21130e004c66fb0a59b7862055b84bf255ca7c7e15e8a761bc8df887c6e653cb",
+      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz"
+    },
+    "sha256sums": {
+      "nombre": "Manifiesto Maestro de Verificación (SHA256SUMS.txt)",
+      "archivo": "SHA256SUMS.txt",
+      "version": "3.0.0",
+      "tamano": "660 B",
+      "sha256": "c7c8ce6fb934be64708f173ae2099459f8903b7fe81aa4c1af94d5d79611783",
+      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt"
     }
   }
 }

@@ -1,5 +1,5 @@
 /**
- * Webhook Endurecido de PayPhone — TributaFlow Pro v2.5.0.
+ * Webhook Endurecido de PayPhone — TributaFlow ERP v3.0.0 (Edición 2026).
  * Verifica firma HMAC-SHA256, anti-replay, esquema estricto y monto autoritativo del servidor.
  */
 

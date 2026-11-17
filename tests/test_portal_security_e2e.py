@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Suite Rápida de Auditoría HTTP, DOM, Integridad Comercial y Ciberseguridad (AppSec / Red Team)
-Portal Oficial TributaFlow Pro v2.5.0 (tributaflow.quoratec.com)
+Portal Oficial TributaFlow ERP v3.0.0 — Edición 2026 (tributaflow.quoratec.com)
 Ejecuta validación directa sin navegador ni dependencias externas (< 5s).
 """
 
@@ -62,33 +62,45 @@ PAGINAS_PORTAL = [
 ]
 
 PAYPHONE_OFICIALES = {
-    "PERSONAL_PRO": "https://ppls.me/5S1Y89pBi1vYHBTEgEzRA",
-    "CONTADOR_MASTER": "https://ppls.me/dxope7VBAjK5LR1mO4UitA",
-    "ESTUDIO_PRO": "https://ppls.me/60Bdw7lcRhMfvjqwA5cFdg",
+    "PERSONAL_PRO": None,
+    "CONTADOR_MASTER": None,
+    "ESTUDIO_PRO": None,
     "ENTERPRISE_TEAM": None,
     "ENTERPRISE_CORP": None,
 }
 
 PRECIOS_ESPERADOS = {
-    "PERSONAL_PRO": "$59",
-    "CONTADOR_MASTER": "$139",
-    "ESTUDIO_PRO": "$299",
+    "PERSONAL_PRO": "$69",
+    "CONTADOR_MASTER": "$159",
+    "ESTUDIO_PRO": "$379",
     "ENTERPRISE_TEAM": "$890",
     "ENTERPRISE_CORP": "$1,490",
 }
 
 EXPECTED_DOWNLOADS = {
     "windows": (
-        "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
-        "e7dd586935e54b88fce1d8d6e8015aaa5cbca2eaa3d99b8c115bf0879d9cd778",
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe",
+        "c2ecdaa0092a2d236968898e130a3bc63ce5e7998f358985fdade1c383ed3808",
+    ),
+    "windows_zip": (
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip",
+        "9be4b60b3d0220d8d71b31941ced2a12722b9d1f9441458cfec719194089cc41",
     ),
     "macos": (
-        "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg",
-        "b2ef53335d29280f4644c738dd9976c4cfba9ac8381edfee9e9e760f2a0d8a12",
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_macOS.dmg",
+        "084317c123ce603c82091ed01137ce05b9ca5eee5b5c37fd2cdc4c0f64091cf4",
     ),
     "linux": (
-        "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
-        "06e3773ccbb8b0d7697482cbdb14b812311a77159928eb40cd716ca83eb0823b",
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
+        "41626f54383f0755a16b6373e5ba6be29da09cc7d1c64ee61b8174b84956cc39",
+    ),
+    "linux_tar": (
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
+        "21130e004c66fb0a59b7862055b84bf255ca7c7e15e8a761bc8df887c6e653cb",
+    ),
+    "sha256sums": (
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
+        "c7c8ce6fb934be64708f173ae2099459f8903b7fe81aa4c1af94d5d79611783",
     ),
 }
 
@@ -253,15 +265,16 @@ def _sri_sha384(raw: bytes) -> str:
 
 
 def test_static_integrity_and_zero_legacy() -> dict[str, int]:
-    print("[1/5] Auditoría estática de integridad, configuración v2.5.0, enlaces locales y cero regresiones...", flush=True)
+    print("[1/5] Auditoría estática de integridad, configuración v3.0.0, enlaces locales y cero regresiones...", flush=True)
 
     cfg_path = PORTAL_DIR / "api" / "config_comercial.json"
     _assert(cfg_path.is_file(), "Falta api/config_comercial.json")
     cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
-    _assert(cfg.get("version") == "2.5.0", f"Versión JSON inesperada: {cfg.get('version')}")
-    _assert(cfg.get("trial_dias") == 15, f"trial_dias esperado 15, recibido: {cfg.get('trial_dias')}")
+    _assert(cfg.get("version") == "3.0.0", f"Versión JSON inesperada: {cfg.get('version')}")
+    _assert(cfg.get("trial_dias") == 7, f"trial_dias esperado 7, recibido: {cfg.get('trial_dias')}")
     _assert(cfg.get("trial_rucs") == 60, f"trial_rucs esperado 60, recibido: {cfg.get('trial_rucs')}")
     _assert(cfg.get("precio_seat_extra_usd") == 150.0, "precio_seat_extra_usd esperado 150.0")
+    _assert(cfg.get("payphone_habilitado") is False, "PayPhone debe figurar pausado (payphone_habilitado=False)")
     _assert(cfg.get("payphone_links") == PAYPHONE_OFICIALES, f"PayPhone JSON alterado: {cfg.get('payphone_links')}")
     soporte = cfg.get("canal_soporte", {})
     _assert(soporte.get("whatsapp_numero") == "593996459771", "WhatsApp JSON alterado")
@@ -269,7 +282,7 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
 
     for os_k, (exp_u, exp_sha) in EXPECTED_DOWNLOADS.items():
         node = cfg.get("descargas", {}).get(os_k, {})
-        _assert(node.get("url") == exp_u, f"URL {os_k} v2.5.0 inválida en config_comercial.json: {node.get('url')}")
+        _assert(node.get("url") == exp_u, f"URL {os_k} v3.0.0 inválida en config_comercial.json: {node.get('url')}")
         _assert(node.get("sha256") == exp_sha, f"SHA-256 {os_k} inválido en config_comercial.json: {node.get('sha256')}")
 
     headers_path = PORTAL_DIR / "_headers"
@@ -288,9 +301,10 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
 
     legacy_patterns = {
         "version_2_3_0": re.compile(r"2\.3\.0|v230", re.I),
-        "version_2_4_0": re.compile(r"2\.4\.0", re.I),
-        "legacy_github_owner": re.compile("Fausto" + "Orellana", re.I),
-        "trial_14_dias": re.compile(r"14\s+d[ií]as|14d\b", re.I),
+        "version_2_4_0_or_2_5_0": re.compile(r"2\.[45]\.0", re.I),
+        "legacy_github_owner": re.compile("Fausto" + r"\s*" + ".*" + "Orellana", re.I),
+        "legacy_brand_pro": re.compile(r"TributaFlow Pro", re.I),
+        "trial_14_or_15_dias": re.compile(r"(?:14|15)\s+d[ií]as|\b14d\b", re.I),
         "ruc_2": re.compile(r"\b2\s+RUCs?\b", re.I),
         "lineas_15_50_200": re.compile(r"\b(?:15|50|200)\s+l[ií]neas\b", re.I),
         "legacy_crypto": re.compile(r"\bEd25519\b|\bRSA-2048\b", re.I),
@@ -358,7 +372,7 @@ def test_http_server_headers_and_sri(base_url: str) -> dict[str, int]:
     http_checks += 4
 
     _assert(len(css_bytes) > 1000 and len(js_bytes) > 1000 and len(qr_bytes) > 100, "Activos estáticos incompletos vía HTTP")
-    _assert(json.loads(cfg_bytes.decode("utf-8")).get("version") == "2.5.0", "JSON servido por HTTP con versión inválida")
+    _assert(json.loads(cfg_bytes.decode("utf-8")).get("version") == "3.0.0", "JSON servido por HTTP con versión inválida")
 
     expected_css_sri = _sri_sha384(css_bytes)
     expected_js_sri = _sri_sha384(js_bytes)
@@ -404,13 +418,13 @@ def test_http_server_headers_and_sri(base_url: str) -> dict[str, int]:
 
         css_links = [s for s in dom.stylesheets if "portal.css" in (s.get("href") or "")]
         _assert(len(css_links) == 1, f"Falta stylesheet portal.css en {rel}")
-        _assert("?v=2.5.0" in (css_links[0].get("href") or ""), f"Falta query ?v=2.5.0 en portal.css de {rel}")
+        _assert("?v=3.0.0" in (css_links[0].get("href") or ""), f"Falta query ?v=3.0.0 en portal.css de {rel}")
         _assert(css_links[0].get("integrity") == expected_css_sri, f"SRI portal.css mismatch en {rel}: {css_links[0].get('integrity')}")
         _assert(css_links[0].get("crossorigin") == "anonymous", f"Falta crossorigin='anonymous' en portal.css de {rel}")
 
         js_tags = [s for s in dom.scripts if "portal.js" in (s.get("src") or "")]
         _assert(len(js_tags) == 1, f"Falta script portal.js en {rel}")
-        _assert("?v=2.5.0" in (js_tags[0].get("src") or ""), f"Falta query ?v=2.5.0 en portal.js de {rel}")
+        _assert("?v=3.0.0" in (js_tags[0].get("src") or ""), f"Falta query ?v=3.0.0 en portal.js de {rel}")
         _assert(js_tags[0].get("integrity") == expected_js_sri, f"SRI portal.js mismatch en {rel}: {js_tags[0].get('integrity')}")
         _assert(js_tags[0].get("crossorigin") == "anonymous", f"Falta crossorigin='anonymous' en portal.js de {rel}")
         _assert("defer" in js_tags[0], f"Script portal.js sin defer en {rel}")
@@ -421,7 +435,7 @@ def test_http_server_headers_and_sri(base_url: str) -> dict[str, int]:
 
 
 def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
-    print("[3/5] Auditoría DOM vía HTTP: 9 Módulos, 5 Planes v2.5.0, PayPhone/Correos/WhatsApp, Descargas SHA-256 y Guía/Políticas...", flush=True)
+    print("[3/5] Auditoría DOM vía HTTP: 9 Módulos, 5 Planes v3.0.0, Deuna!/PayPhone Pausado, Descargas SHA-256 y LOPDP...", flush=True)
 
     pages_html: dict[str, tuple[str, _PortalDOMInspector]] = {}
     for rel in PAGINAS_PORTAL:
@@ -470,11 +484,13 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
     ]:
         _assert(css_snippet in css_txt, f"Falta regla CSS requerida ({css_snippet}) en assets/css/portal.css")
 
-    # Validar index.html y planes.html contra especificaciones comerciales exactas v2.5.0
+    # Validar index.html y planes.html contra especificaciones comerciales exactas v3.0.0
     for comerciales_rel in ("index.html", "planes.html"):
         html, dom = pages_html[comerciales_rel]
-        _log(f"Reglas comerciales 5 planes + prueba 15d/60 RUCs -> {comerciales_rel}")
-        _assert("15 días" in html and "60 RUCs" in html, f"Falta prueba oficial 15 días / 60 RUCs en {comerciales_rel}")
+        _log(f"Reglas comerciales 5 planes + prueba 7d/60 RUCs -> {comerciales_rel}")
+        _assert("7 días" in html and "60 RUCs" in html, f"Falta prueba oficial 7 días / 60 RUCs en {comerciales_rel}")
+        _assert("Modo Solo Lectura" in html, f"Falta aviso Modo Solo Lectura en {comerciales_rel}")
+        _assert("Próximamente / En actualización" in html, f"Falta aviso PayPhone Próximamente en {comerciales_rel}")
         for plan_id, price in PRECIOS_ESPERADOS.items():
             _assert(plan_id in dom.checkout_plans, f"Falta botón data-checkout-plan='{plan_id}' en {comerciales_rel}")
             _assert(price in html, f"Falta precio {price} en {comerciales_rel}")
@@ -484,7 +500,7 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
     for id_req in ("corpAddonMenos", "corpAddonMas", "corpAddonPcs", "corpAddonTotal", "btnCorpAddonCheckout"):
         _assert(id_req in planes_dom.ids, f"Falta control calculadora Corp #{id_req} en planes.html")
 
-    # Simulador y bloque descargas verificadas v2.5.0 en index.html
+    # Simulador y bloque descargas verificadas v3.0.0 en index.html
     index_html, index_dom = pages_html["index.html"]
     for sim_id in ("simRucsRange", "simDocsRange", "simPcsRange", "simPcsVal", "simPlanNombre", "simBtnAdquirirPlan"):
         _assert(sim_id in index_dom.ids, f"Falta elemento simulador #{sim_id} en index.html")
@@ -498,7 +514,7 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         _assert(preset_txt in index_html, f"Falta escenario rápido '{preset_txt}' en index.html")
     _assert("btnDescargaDetectada" in index_dom.ids, "Falta botón descarga #btnDescargaDetectada en index.html")
     for os_k, (expected_url, expected_sha) in EXPECTED_DOWNLOADS.items():
-        _assert(expected_url in index_dom.hrefs, f"Falta enlace descarga v2.5.0 de {os_k} en index.html")
+        _assert(expected_url in index_dom.hrefs, f"Falta enlace descarga v3.0.0 de {os_k} en index.html")
         _assert(os_k in index_dom.attrs_index["data-sha256-value"], f"Falta [data-sha256-value='{os_k}'] en index.html")
         _assert(os_k in index_dom.attrs_index["data-sha256-copy"], f"Falta [data-sha256-copy='{os_k}'] en index.html")
         _assert(expected_sha in index_html, f"Falta SHA-256 de {os_k} ({expected_sha}) en index.html")
@@ -507,7 +523,7 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
     guia_html, guia_dom = pages_html["guia-uso.html"]
     for tab_id, expected_snippet in [
         ("1pc", "25 RUCs"),
-        ("2pcs", "30 RUCs"),
+        ("2pcs", "60 RUCs"),
         ("lan", "Red LAN TCP/IP"),
         ("corp", "+$150/PC extra"),
         ("rapida", "SmartScreen"),
@@ -516,13 +532,14 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         _assert(tab_id in guia_dom.guide_panels, f"Falta panel guía '{tab_id}' en guia-uso.html")
         _assert(expected_snippet in guia_html, f"Falta detalle '{expected_snippet}' en guia-uso.html")
 
-    # politicas.html: 6 cláusulas legales y cero siglas EULA
+    # politicas.html: 6 cláusulas legales, LOPDP, Deslinde y cero siglas EULA
     pol_html, pol_dom = pages_html["politicas.html"]
     _assert(pol_dom.classes.count("legal-clause-card") == 6, "Se esperaban 6 cláusulas .legal-clause-card en politicas.html")
     _assert("Acuerdo de Licencia de Usuario Final y Condiciones de Uso" in pol_html, "Falta título legal oficial en español en politicas.html")
+    _assert("LOPDP" in pol_html and "Deslinde Tributario" in pol_html and "Modo Solo Lectura" in pol_html, "Falta LOPDP, Deslinde Tributario o Solo Lectura en politicas.html")
     _assert("EULA" not in pol_html.upper(), "Sigla prohibida EULA detectada en politicas.html")
 
-    print("    -> OK: 13 DOMs HTTP, 5 planes ($59-$1,490+$150/PC), PayPhone/WhatsApp/Correo intactos y SHA-256 v2.5.0 verificados.", flush=True)
+    print("    -> OK: 13 DOMs HTTP, 5 planes ($69-$1,490+$150/PC), Deuna!/PayPhone Próximamente, LOPDP y SHA-256 v3.0.0 verificados.", flush=True)
     return {"dom_pages": len(pages_html), "plans_verified": len(PRECIOS_ESPERADOS)}
 
 
@@ -625,9 +642,10 @@ assert.ok(sec, 'No se exportó window.__TF_SECURITY__');
 assert.equal(Object.isFrozen(sec.CONFIG_COMERCIAL), true);
 assert.equal(Object.isFrozen(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS), true);
 assert.equal(Object.isFrozen(sec.PLANES_V240), true);
-assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.PERSONAL_PRO, 'https://ppls.me/5S1Y89pBi1vYHBTEgEzRA');
-assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.CONTADOR_MASTER, 'https://ppls.me/dxope7VBAjK5LR1mO4UitA');
-assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.ESTUDIO_PRO, 'https://ppls.me/60Bdw7lcRhMfvjqwA5cFdg');
+assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_ACTIVO, false);
+assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.PERSONAL_PRO, null);
+assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.CONTADOR_MASTER, null);
+assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.ESTUDIO_PRO, null);
 assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.ENTERPRISE_TEAM, null);
 assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.ENTERPRISE_CORP, null);
 assert.equal(sec.CONFIG_COMERCIAL.WHATSAPP_NUMERO, '593996459771');
@@ -660,9 +678,9 @@ const badUrls = [
   ['https://wa.me.evil.com/593996459771?text=x', 'whatsapp'],
   ['https://wa.me/593999999999?text=phishing', 'whatsapp_share'],
   ['mailto:attacker@evil.com', 'correo'],
-  ['https://github.com/attacker/TributaFlow_Pro/releases/download/v2.5.0/x.exe', 'descarga'],
-  ['https://github.com/andresorellana305/TributaFlow_Pro/releases/latest/download/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe', 'descarga'],
-  ['https://github.com/andresorellana305/tributaflow-portal/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe', 'descarga'],
+  ['https://github.com/attacker/tributaflow-portal/releases/download/v3.0.0/x.exe', 'descarga'],
+  ['https://github.com/andresorellana305/tributaflow-portal/releases/latest/download/Setup_TributaFlow_ERP_v3.0.0.exe', 'descarga'],
+  ['https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe', 'descarga'],
   ['https://tributaflow.quoratec.com.evil.com/#descargas', 'portal'],
 ];
 for (const [u, kind] of badUrls) {
@@ -670,12 +688,11 @@ for (const [u, kind] of badUrls) {
 }
 
 const goodUrls = [
-  ['https://ppls.me/5S1Y89pBi1vYHBTEgEzRA', 'payphone'],
-  ['https://ppls.me/dxope7VBAjK5LR1mO4UitA', 'payphone'],
-  ['https://ppls.me/60Bdw7lcRhMfvjqwA5cFdg', 'payphone'],
   ['https://wa.me/593996459771?text=hola', 'whatsapp'],
   ['mailto:soportetributaflow@quoratec.com?subject=Test', 'correo'],
-  ['https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe', 'descarga'],
+  ['https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe', 'descarga'],
+  ['https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip', 'descarga'],
+  ['https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt', 'descarga'],
   ['https://tributaflow.quoratec.com/#descargas', 'portal'],
 ];
 for (const [u, kind] of goodUrls) {
@@ -685,13 +702,8 @@ for (const [u, kind] of goodUrls) {
 // 3b. Verificación de comportamiento de apertura de enlaces (target / rel) según tipo
 const aDl = new sandbox.HTMLAnchorElement();
 aDl.target = '_blank';
-assert.equal(sec.asignarEnlaceSeguro(aDl, 'https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe', 'download_release'), true);
+assert.equal(sec.asignarEnlaceSeguro(aDl, 'https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe', 'download_release'), true);
 assert.equal(aDl.target, '');
-
-const aPay = new sandbox.HTMLAnchorElement();
-aPay.target = '_blank';
-assert.equal(sec.asignarEnlaceSeguro(aPay, 'https://ppls.me/5S1Y89pBi1vYHBTEgEzRA', 'payphone'), true);
-assert.equal(aPay.target, '');
 
 const aMail = new sandbox.HTMLAnchorElement();
 aMail.target = '_blank';
@@ -709,9 +721,9 @@ assert.ok(aWp.getAttribute('href').includes('?text=Hola%20Soporte'));
 const cleaned = sec.sanitizarIdentificador('<script>alert(1)</script>"\' TF-AB12CD-99');
 assert.ok(!/[<>'"]/.test(cleaned) && cleaned.includes('TF-AB12CD-99'), 'Sanitización HWID débil: ' + cleaned);
 
-assert.equal(sec.PLANES_V240.PERSONAL_PRO.precioUsd, 59);
-assert.equal(sec.PLANES_V240.CONTADOR_MASTER.precioUsd, 139);
-assert.equal(sec.PLANES_V240.ESTUDIO_PRO.precioUsd, 299);
+assert.equal(sec.PLANES_V240.PERSONAL_PRO.precioUsd, 69);
+assert.equal(sec.PLANES_V240.CONTADOR_MASTER.precioUsd, 159);
+assert.equal(sec.PLANES_V240.ESTUDIO_PRO.precioUsd, 379);
 assert.equal(sec.PLANES_V240.ENTERPRISE_TEAM.precioUsd, 890);
 assert.equal(sec.PLANES_V240.ENTERPRISE_CORP.precioUsd, 1490);
 assert.equal(sec.CONFIG_COMERCIAL.PRECIO_SEAT_EXTRA_USD, 150);
@@ -891,7 +903,7 @@ def test_edge_api_anti_tampering_and_security() -> dict[str, int]:
             "transaction_id": "PP-TX-240901",
             "client_transaction_id": "TF-PERSONAL_PRO-2401",
             "plan_id": "PERSONAL_PRO",
-            "amount_cents": 5900,
+            "amount_cents": 6900,
             "currency": "USD",
             "status_code": 3,
             "hwid": "A1B2-C3D4-E5F6",
@@ -914,7 +926,7 @@ def test_edge_api_anti_tampering_and_security() -> dict[str, int]:
 
         wh_hdrs = {"content-type": "application/json", **sign_body(payphone_secret, wh_payload)}
         st_wh_ok, _, body_wh_ok = call_edge("POST", "/api/webhook/payphone", headers=wh_hdrs, body=wh_payload)
-        _assert(st_wh_ok == 200 and json.loads(body_wh_ok).get("monto_verificado_usd") == 59, f"Webhook firmado válido rechazado: {st_wh_ok} {body_wh_ok}")
+        _assert(st_wh_ok == 200 and json.loads(body_wh_ok).get("monto_verificado_usd") == 69, f"Webhook firmado válido rechazado: {st_wh_ok} {body_wh_ok}")
 
         st_wh_replay, _, _ = call_edge("POST", "/api/webhook/payphone", headers=wh_hdrs, body=wh_payload)
         _assert(st_wh_replay == 409, f"Anti-Replay webhook falló: HTTP {st_wh_replay}")
@@ -937,20 +949,20 @@ def main() -> int:
     server, port = iniciar_servidor_local(PORTAL_DIR)
     base_url = f"http://127.0.0.1:{port}"
     t0 = time.time()
-    print(f"=== AUDITORÍA PORTAL TRIBUTAFLOW PRO v2.5.0 ({base_url}) ===", flush=True)
+    print(f"=== AUDITORÍA PORTAL TRIBUTAFLOW ERP v3.0.0 ({base_url}) ===", flush=True)
 
     reporte_fases: list[tuple[str, str, str]] = []
     exit_code = 1
 
     try:
         res_static = test_static_integrity_and_zero_legacy()
-        reporte_fases.append(("1. Estática / v2.5.0 / Cero Regresiones", "PASS", f"{res_static['pages']} HTML + config + _headers"))
+        reporte_fases.append(("1. Estática / v3.0.0 / Cero Regresiones", "PASS", f"{res_static['pages']} HTML + config + _headers"))
 
         res_http = test_http_server_headers_and_sri(base_url)
         reporte_fases.append(("2. HTTP / CSP / HSTS / XFO / SRI SHA-384", "PASS", f"{res_http['http_checks']} checks HTTP"))
 
         res_dom = test_dom_plans_payments_and_navigation(base_url)
-        reporte_fases.append(("3. DOM / 5 Planes / PayPhone & Correos", "PASS", f"{res_dom['dom_pages']} DOMs, {res_dom['plans_verified']} planes"))
+        reporte_fases.append(("3. DOM / 5 Planes / Deuna! & LOPDP", "PASS", f"{res_dom['dom_pages']} DOMs, {res_dom['plans_verified']} planes"))
 
         res_js = test_js_runtime_guards_and_os_matrix()
         reporte_fases.append(("4. Node VM JS Guards / Allowlist / SO", "PASS", f"{res_js['blockedUrls']}+{res_js['goodUrls']} URLs, {res_js['osProfiles']} SO"))
@@ -974,7 +986,7 @@ def main() -> int:
 
         elapsed = time.time() - t0
         estado_global = "PASS" if exit_code == 0 else "FAIL"
-        print("\n=== REPORTE PASS/FAIL PORTAL TRIBUTAFLOW PRO v2.5.0 ===", flush=True)
+        print("\n=== REPORTE PASS/FAIL PORTAL TRIBUTAFLOW ERP v3.0.0 ===", flush=True)
         for nombre, estado, detalle in reporte_fases:
             print(f"  [{estado}] {nombre}: {detalle}", flush=True)
         print(f"RESULTADO GLOBAL: {estado_global} en {elapsed:.2f}s", flush=True)

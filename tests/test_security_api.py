@@ -1,4 +1,4 @@
-"""Suite defensiva estática, de cadena de suministro SRI y de seguridad Edge/API v2.5.0.
+"""Suite defensiva estática, de cadena de suministro SRI y de seguridad Edge/API v3.0.0 (Edición 2026).
 
 Ejecutable completamente offline dentro o fuera del sandbox (Node.js + Python stdlib).
 """
@@ -23,25 +23,37 @@ import urllib.request
 PORTAL_DIR = Path(__file__).resolve().parent.parent
 
 PAYPHONE_OFICIALES = {
-    "PERSONAL_PRO": "https://ppls.me/5S1Y89pBi1vYHBTEgEzRA",
-    "CONTADOR_MASTER": "https://ppls.me/dxope7VBAjK5LR1mO4UitA",
-    "ESTUDIO_PRO": "https://ppls.me/60Bdw7lcRhMfvjqwA5cFdg",
+    "PERSONAL_PRO": None,
+    "CONTADOR_MASTER": None,
+    "ESTUDIO_PRO": None,
     "ENTERPRISE_TEAM": None,
     "ENTERPRISE_CORP": None,
 }
 
 SHA256_OFICIALES = {
     "windows": (
-        "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe",
-        "e7dd586935e54b88fce1d8d6e8015aaa5cbca2eaa3d99b8c115bf0879d9cd778",
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe",
+        "c2ecdaa0092a2d236968898e130a3bc63ce5e7998f358985fdade1c383ed3808",
+    ),
+    "windows_zip": (
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip",
+        "9be4b60b3d0220d8d71b31941ced2a12722b9d1f9441458cfec719194089cc41",
     ),
     "macos": (
-        "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_macOS.dmg",
-        "b2ef53335d29280f4644c738dd9976c4cfba9ac8381edfee9e9e760f2a0d8a12",
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_macOS.dmg",
+        "084317c123ce603c82091ed01137ce05b9ca5eee5b5c37fd2cdc4c0f64091cf4",
     ),
     "linux": (
-        "https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Linux_amd64.deb",
-        "06e3773ccbb8b0d7697482cbdb14b812311a77159928eb40cd716ca83eb0823b",
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
+        "41626f54383f0755a16b6373e5ba6be29da09cc7d1c64ee61b8174b84956cc39",
+    ),
+    "linux_tar": (
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
+        "21130e004c66fb0a59b7862055b84bf255ca7c7e15e8a761bc8df887c6e653cb",
+    ),
+    "sha256sums": (
+        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
+        "c7c8ce6fb934be64708f173ae2099459f8903b7fe81aa4c1af94d5d79611783",
     ),
 }
 
@@ -115,18 +127,22 @@ class _EdgeClient:
 
 
 def test_1_static_commercial_and_supply_chain() -> None:
-    print("[1/4] Verificación comercial v2.5.0, SRI SHA-384, SHA-256 binarios y cero secretos...")
+    print("[1/4] Verificación comercial v3.0.0 (Edición 2026), SRI SHA-384, SHA-256 binarios y cero secretos...")
     _assert(len(HTML_FILES) == 13, f"Se esperaban 13 páginas HTML, encontradas: {len(HTML_FILES)}")
 
-    # 1. Config JSON comercial + SHA-256
+    # 1. Config JSON comercial + version.json + SHA-256
     cfg = json.loads((PORTAL_DIR / "api" / "config_comercial.json").read_text(encoding="utf-8"))
-    _assert(cfg.get("version") == "2.5.0", f"version inválida: {cfg.get('version')}")
-    _assert(cfg.get("trial_dias") == 15, f"trial_dias esperado 15, recibido: {cfg.get('trial_dias')}")
+    _assert(cfg.get("version") == "3.0.0", f"version inválida: {cfg.get('version')}")
+    _assert(cfg.get("trial_dias") == 7, f"trial_dias esperado 7, recibido: {cfg.get('trial_dias')}")
     _assert(cfg.get("trial_rucs") == 60, f"trial_rucs esperado 60, recibido: {cfg.get('trial_rucs')}")
     _assert(cfg.get("trial_modalidad") == "ESTUDIO_PRO", "trial_modalidad esperada ESTUDIO_PRO")
-    _assert(cfg.get("payphone_links") == PAYPHONE_OFICIALES, "PayPhone JSON alterado")
+    _assert(cfg.get("payphone_habilitado") is False, "PayPhone debe estar pausado en v3.0.0")
+    _assert(cfg.get("payphone_links") == PAYPHONE_OFICIALES, "PayPhone JSON debe permanecer pausado (None)")
     _assert(cfg.get("canal_soporte", {}).get("correo") == "soportetributaflow@quoratec.com", "Email alterado")
     _assert(cfg.get("canal_soporte", {}).get("whatsapp_numero") == "593996459771", "WhatsApp alterado")
+
+    ver_json = json.loads((PORTAL_DIR / "version.json").read_text(encoding="utf-8"))
+    _assert(ver_json.get("version") == "3.0.0" and ver_json.get("tag_name") == "v3.0.0", "version.json inválido")
 
     descargas = cfg.get("descargas", {})
     for os_key, (expected_url, expected_sha) in SHA256_OFICIALES.items():
@@ -139,13 +155,13 @@ def test_1_static_commercial_and_supply_chain() -> None:
     js_sri = "sha384-" + base64.b64encode(hashlib.sha384((PORTAL_DIR / "assets" / "js" / "portal.js").read_bytes()).digest()).decode()
 
     legacy_ban = [
-        re.compile(r"\b14\s*d[ií]as\b|\b14d\b", re.I),
+        re.compile(r"\b14\s*d[ií]as\b|\b14d\b|\b15\s+d[ií]as\b", re.I),
         re.compile(r"\b2\s+RUCs?\b", re.I),
         re.compile(r"\b15\s+l[ií]neas\b|\b50\s+l[ií]neas\b|\b200\s+l[ií]neas\b", re.I),
         re.compile(r"\bEULA\b|\bEd25519\b|\bRSA-2048\b", re.I),
         re.compile(r"no-referrer|releases/latest", re.I),
-        re.compile("Fausto" + "Orellana", re.I),
-        re.compile(r"2\.4\.0", re.I),
+        re.compile("Fausto" + r"\s+" + ".*?" + "Orellana", re.I),
+        re.compile(r"2\.[45]\.0|TributaFlow Pro", re.I),
     ]
 
     for rel in HTML_FILES:
@@ -162,7 +178,7 @@ def test_1_static_commercial_and_supply_chain() -> None:
 
     idx_html = (PORTAL_DIR / "index.html").read_text(encoding="utf-8")
     for _, (expected_url, expected_sha) in SHA256_OFICIALES.items():
-        _assert(expected_url in idx_html, f"Enlace release v2.5.0 faltante en index.html: {expected_url}")
+        _assert(expected_url in idx_html, f"Enlace release v3.0.0 faltante en index.html: {expected_url}")
         _assert(expected_sha in idx_html, f"Hash SHA-256 faltante en index.html: {expected_sha}")
 
     # 3. Sin sourcemaps (.map) ni secretos embebidos en el repositorio
@@ -185,7 +201,7 @@ def test_1_static_commercial_and_supply_chain() -> None:
         "frame-ancestors 'none'",
     ]:
         _assert(req_h in headers_txt, f"Falta cabecera en _headers: {req_h}")
-    print("    -> OK: 13 HTML con SRI SHA-384, reglas v2.5.0, SHA-256 reales y cero secretos.")
+    print("    -> OK: 13 HTML con SRI SHA-384, reglas v3.0.0, SHA-256 reales y cero secretos.")
 
 
 def test_2_syntax_all_scripts() -> None:
@@ -231,7 +247,7 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
         "transaction_id": "PP-TX-900001",
         "client_transaction_id": "TF-ESTUDIO_PRO-AB12",
         "plan_id": "ESTUDIO_PRO",
-        "amount_cents": 29900,
+        "amount_cents": 37900,
         "currency": "USD",
         "status_code": 3,
         "hwid": "A1B2-C3D4-E5F6",
@@ -266,7 +282,7 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
         "transaction_id": "PP-TX-900003",
         "client_transaction_id": "TF-ESTUDIO_PRO-AB12",
         "plan_id": "ESTUDIO_PRO",
-        "amount_cents": 29900,
+        "amount_cents": 37900,
         "currency": "USD",
         "status_code": 3,
         "hwid": "A1B2-C3D4-E5F6",
@@ -285,7 +301,7 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
     # Webhook legítimo firmado -> 200 y luego replay del mismo TX -> 409
     ts, sig = _sign_body(payphone_secret, valid_webhook)
     st, hdrs, txt = client.post("/api/webhook/payphone", valid_webhook, {"X-Timestamp": str(ts), "X-Signature-256": sig})
-    _assert(st == 200 and '"monto_verificado_usd":299' in txt, f"Webhook válido falló: {st} {txt}")
+    _assert(st == 200 and '"monto_verificado_usd":379' in txt, f"Webhook válido falló: {st} {txt}")
     _assert("no-store" in hdrs.get("cache-control", ""), "Cache-Control no-store ausente en respuesta API")
 
     st_replay, _, _ = client.post("/api/webhook/payphone", valid_webhook, {"X-Timestamp": str(ts), "X-Signature-256": sig})
@@ -410,7 +426,7 @@ def main() -> int:
         proc.kill()
         proc.wait(timeout=3)
 
-    print("SUITE SEGURIDAD EDGE & CADENA DE SUMINISTRO v2.5.0: ALL PASS")
+    print("SUITE SEGURIDAD EDGE & CADENA DE SUMINISTRO v3.0.0: ALL PASS")
     return 0
 
 
