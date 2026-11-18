@@ -39,24 +39,21 @@
                 <a href="{{ROOT}}index.html#flujo">Cómo Funciona</a>
                 <div class="nav-dropdown" data-nav-dropdown>
                     <button type="button" class="nav-dropdown-trigger{{ACTIVE_MODULOS}}" aria-expanded="false" aria-haspopup="true">
-                        <span>9 Módulos</span>
+                        <span>6 Suites ERP</span>
                         <span class="nav-caret" aria-hidden="true">▾</span>
                     </button>
                     <div class="nav-dropdown-panel" role="menu">
-                        <div class="nav-dropdown-header">Suite Completa — 9 Módulos TributaFlow ERP v{{VERSION}}</div>
+                        <div class="nav-dropdown-header">6 Suites Reales — TributaFlow ERP v{{VERSION}} ({{EDITION}} · {{COMPANY}})</div>
                         <div class="nav-dropdown-grid">
-                            <a href="{{ROOT}}modulos/panel-general.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📊</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">1. Panel General</span><span class="nav-dropdown-desc">Resumen gerencial, KPIs e historial por RUC</span></span></a>
-                            <a href="{{ROOT}}modulos/mis-contribuyentes.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🏢</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">2. Mis Contribuyentes</span><span class="nav-dropdown-desc">Bóveda Multi-RUC cifrada AES-256 sin nube</span></span></a>
-                            <a href="{{ROOT}}modulos/sincronizar-sri.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">⚡</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">3. Sincronizar SRI</span><span class="nav-dropdown-desc">Extracción masiva de XML y PDF oficiales</span></span></a>
-                            <a href="{{ROOT}}modulos/importar-comprobantes.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📥</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">4. Importar Comprobantes</span><span class="nav-dropdown-desc">Ingesta masiva TXT y archivos ZIP locales</span></span></a>
-                            <a href="{{ROOT}}modulos/auditor-fantasma.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🔍</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">5. Auditor Fantasma</span><span class="nav-dropdown-desc">Cruce forense de facturas y Alertas EFOS</span></span></a>
-                            <a href="{{ROOT}}modulos/busqueda-ruc.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🆔</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">6. Búsqueda por RUC</span><span class="nav-dropdown-desc">Ficha integral, estado SRI y obligaciones</span></span></a>
-                            <a href="{{ROOT}}modulos/consulta-masiva.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📋</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">7. Consulta Masiva</span><span class="nav-dropdown-desc">Validación por lotes a Excel y CSV estructurado</span></span></a>
-                            <a href="{{ROOT}}modulos/generador-ats.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📑</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">8. Generador ATS Oficial</span><span class="nav-dropdown-desc">Anexo Transaccional XML validado por XSD</span></span></a>
-                            <a href="{{ROOT}}modulos/ajustes-seguridad.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🛡️</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">9. Ajustes y Respaldos</span><span class="nav-dropdown-desc">Red LAN, respaldos .tfbkp y traslados PC</span></span></a>
+                            <a href="{{ROOT}}index.html#suite-inicio-sri" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">⚡</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">1. Inicio &amp; Portal SRI</span><span class="nav-dropdown-desc">Panel General, Multi-RUC y Sincronización XML/RIDE</span></span></a>
+                            <a href="{{ROOT}}index.html#suite-comercial-pos" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🧾</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">2. Comercial &amp; Facturación POS .p12</span><span class="nav-dropdown-desc">Firma XAdES-BES .p12, IVA 0/5/8/15% y RIDE</span></span></a>
+                            <a href="{{ROOT}}index.html#suite-inventario-cartera" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📦</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">3. Inventario, Kardex &amp; Cartera</span><span class="nav-dropdown-desc">Multi-bodega, Kardex promedio y CxC/CxP</span></span></a>
+                            <a href="{{ROOT}}index.html#suite-contabilidad-niif" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📊</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">4. Contabilidad NIIF &amp; Nómina IESS</span><span class="nav-dropdown-desc">Libro Diario, Balances NIIF, roles y décimos</span></span></a>
+                            <a href="{{ROOT}}index.html#suite-impuestos-auditoria" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🔍</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">5. Impuestos, Auditoría &amp; Consultas</span><span class="nav-dropdown-desc">EFOS, Masiva RUC, ATS XSD y Form. 103/104</span></span></a>
+                            <a href="{{ROOT}}index.html#suite-sistema-lan" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🛡️</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">6. Sistema, Red LAN &amp; Seguridad</span><span class="nav-dropdown-desc">AES-256-GCM, Red LAN, Oficina+Casa y .tfbkp</span></span></a>
                         </div>
                         <div class="nav-dropdown-footer">
-                            <a href="{{ROOT}}index.html#modulos" class="nav-dropdown-all">Ver resumen completo en portada ➔</a>
+                            <a href="{{ROOT}}index.html#modulos" class="nav-dropdown-all">Explorar Mapa de 14 Módulos ➔</a>
                         </div>
                     </div>
                 </div>
@@ -107,7 +104,7 @@
                 <div class="footer-col footer-links-col">
                     <h4>Navegación del Portal</h4>
                     <a href="{{ROOT}}index.html">Inicio</a>
-                    <a href="{{ROOT}}index.html#modulos">9 Módulos del Sistema</a>
+                    <a href="{{ROOT}}index.html#modulos">6 Suites y 14 Módulos</a>
                     <a href="{{ROOT}}planes.html">Planes y Precios (5)</a>
                     <a href="{{ROOT}}descargas.html">Descargas Oficiales v{{VERSION}}</a>
                     <a href="{{ROOT}}guia-uso.html">Guía de Uso y Tour 15 Vistas</a>

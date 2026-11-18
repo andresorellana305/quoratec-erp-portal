@@ -1,7 +1,7 @@
 -- Esquema Supabase PostgreSQL + RLS para Checkout Híbrido, Licencias y Equipos (+1 PC Adicional)
 -- TributaFlow ERP v3.0.0 — Edición 2026 (QUORATEC)
 
-create extension if not exists pgcrypto;
+create extension if not exists pgcrypto with schema extensions;
 
 create table if not exists public.orders (
     id uuid primary key default gen_random_uuid(),
@@ -126,7 +126,7 @@ as $$
     from public.orders o
     where o.order_ref = p_order_ref
       and lower(o.email) = lower(trim(p_email))
-      and o.order_token_hash = encode(digest(p_order_token, 'sha256'), 'hex')
+      and o.order_token_hash = encode(extensions.digest(convert_to(p_order_token, 'UTF8'), 'sha256'), 'hex')
     limit 1;
 $$;
 

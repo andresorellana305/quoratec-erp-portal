@@ -3,17 +3,610 @@
                 <div class="breadcrumb">
                     <a href="index.html">Inicio</a>
                     <span>/</span>
-                    <span>Guía de Uso e Implementación</span>
+                    <span>Manual Operativo y Guía de Uso</span>
                 </div>
-                <span class="eyebrow">Manual Operativo Edición 2026 <span data-app-version-tag>v3.0.0</span></span>
-                <h1>Guía de Uso e Implementación por Plan</h1>
-                <p class="lead-sub">Selecciona tu escenario de trabajo en las pestañas inferiores para ver pasos claros de instalación SHA-256, cifrado AES-256-GCM Local-First, sincronización Oficina + Casa y activación .lic.</p>
+                <span class="eyebrow">Manual Operativo Edición 2026 <span data-app-version-tag>v3.0.0</span> · QUORATEC</span>
+                <h1>Manual Operativo y Guía de Uso de TributaFlow ERP</h1>
+                <p class="lead-sub">Comprende en segundos cómo está distribuida la pantalla del sistema, cómo iniciar sesión, configurar tu empresa y ejecutar paso a paso cada operación contable, tributaria y comercial.</p>
+
+                <nav class="guide-toc-strip" aria-label="Índice de la guía de uso">
+                    <a href="#anatomia-interfaz" class="guide-toc-pill">1. Anatomía (5 Zonas)</a>
+                    <a href="#primer-acceso" class="guide-toc-pill">2. Primer Acceso y .p12</a>
+                    <a href="#manual-operativo" class="guide-toc-pill">3. Manual por Suite (6 Pestañas)</a>
+                    <a href="#buscador-funciones" class="guide-toc-pill">4. Buscador y Atajos F1–F12</a>
+                    <a href="#recorridos-operativos" class="guide-toc-pill">5. Despliegue, Playbooks y Vistas</a>
+                </nav>
             </div>
         </section>
 
-        <section class="section">
+        <!-- SECCIÓN 1: ANATOMÍA DE LA INTERFAZ ("Cómo se distribuye TributaFlow ERP") -->
+        <section class="section bg-subtle" id="anatomia-interfaz">
             <div class="container">
-                <!-- PESTAÑAS INTERACTIVAS DE LA GUÍA -->
+                <div class="section-head">
+                    <span class="eyebrow">Sección 1 · Ubicación Visual Inmediata</span>
+                    <h2>Anatomía de la Interfaz: Cómo se distribuye TributaFlow ERP</h2>
+                    <p>La ventana principal divide tu trabajo en <strong>5 zonas fijas</strong> para que contadores, asistentes y gerentes ubiquen siempre el contexto del RUC, la Suite activa y los atajos rápidos sin perderse entre submenús.</p>
+                </div>
+
+                <!-- Esquema Visual de las 5 Zonas del Escritorio ERP -->
+                <div class="erp-anatomy-shell" aria-label="Mapa visual de las 5 zonas de TributaFlow ERP">
+                    <div class="anatomy-bar-strip">
+                        <strong>Zona 1 · Barra Superior de Control</strong>
+                        <div class="anatomy-chips-inline">
+                            <span class="anatomy-mini-tag">Selector RUC Activo</span>
+                            <span class="anatomy-mini-tag">Rol: Administrador / Operador</span>
+                            <span class="anatomy-mini-tag">BD: Local SQLite / Red LAN</span>
+                            <span class="anatomy-mini-tag">Firma .p12</span>
+                            <span class="anatomy-mini-tag">Sesión SRI</span>
+                            <span class="anatomy-mini-tag">Bloqueo Rápido</span>
+                            <span class="anatomy-mini-tag">Tema Oscuro/Claro</span>
+                            <span class="anatomy-mini-tag">Licencia / Prueba 7d</span>
+                        </div>
+                    </div>
+
+                    <div class="anatomy-bar-strip is-ribbon">
+                        <strong>Zona 2 · Cinta Ribbon Superior (6 Suites)</strong>
+                        <div class="anatomy-chips-inline">
+                            <span class="anatomy-mini-tag">Inicio &amp; SRI</span>
+                            <span class="anatomy-mini-tag">Comercial &amp; POS</span>
+                            <span class="anatomy-mini-tag">Inventario &amp; Cartera</span>
+                            <span class="anatomy-mini-tag">Contabilidad &amp; Nómina</span>
+                            <span class="anatomy-mini-tag">Impuestos &amp; Auditoría</span>
+                            <span class="anatomy-mini-tag">Sistema &amp; Seguridad</span>
+                            <span class="anatomy-mini-tag">Bodega: 001 Matriz</span>
+                            <span class="anatomy-mini-tag">Alerta Auditoría 72h</span>
+                        </div>
+                    </div>
+
+                    <div class="anatomy-workspace-split">
+                        <div class="anatomy-sidebar-box">
+                            <strong>Zona 3 · Menú Lateral (14 Módulos)</strong>
+                            <span class="muted-note">5 bloques fijos: Operación SRI · Comercial y Facturación v3.0 · Contabilidad NIIF · Auditoría y Declaraciones · Consultas y Sistema.</span>
+                        </div>
+                        <div class="anatomy-mdi-box">
+                            <strong>Zona 4 · Espacio Multitarea con Pestañas (MDI)</strong>
+                            <div class="anatomy-chips-inline">
+                                <span class="anatomy-mini-tag">Panel General</span>
+                                <span class="anatomy-mini-tag">Mis Contribuyentes</span>
+                                <span class="anatomy-mini-tag">Sincronizar SRI</span>
+                                <span class="anatomy-mini-tag">Bandeja Documentos</span>
+                                <span class="anatomy-mini-tag">Facturador POS .p12</span>
+                            </div>
+                            <span class="muted-note">Mantén varias pestañas abiertas a la vez o desacopla cualquier vista en ventana aparte.</span>
+                        </div>
+                    </div>
+
+                    <div class="anatomy-bar-strip">
+                        <strong>Zona 5 · Grillas de Datos y Barra Inferior de Atajos (F1–F12)</strong>
+                        <div class="anatomy-chips-inline">
+                            <span class="anatomy-mini-tag">Buscador en Grilla</span>
+                            <span class="anatomy-mini-tag">Exportar Excel / PDF</span>
+                            <span class="anatomy-mini-tag">Totales al Pie</span>
+                            <span class="anatomy-mini-tag">F1 Ayuda ➔ F12 Grabar / Emitir</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="anatomy-zones-grid">
+                    <article class="anatomy-zone-card">
+                        <span class="anatomy-zone-tag">Zona 1 · Superior</span>
+                        <h3>Barra Superior de Control</h3>
+                        <p class="muted-note">Verifica siempre en qué empresa trabajas: muestra el <strong>Selector de RUC activo</strong>, Rol (<code>Administrador</code> / operador), base (<code>Local SQLite</code> o <code>Red LAN</code>), estado de <code>Firma .p12</code>, estado de <code>Sesión SRI</code>, bloqueo rápido de pantalla, cambio de tema (<code>Oscuro Quoratec</code> / <code>Claro</code>) y vigencia de licencia/prueba.</p>
+                    </article>
+
+                    <article class="anatomy-zone-card">
+                        <span class="anatomy-zone-tag">Zona 2 · Ribbon</span>
+                        <h3>Cinta Ribbon Superior (6 Suites)</h3>
+                        <p class="muted-note">Acceso inmediato por área funcional: <code>Inicio &amp; SRI</code>, <code>Comercial &amp; POS</code>, <code>Inventario &amp; Cartera</code>, <code>Contabilidad &amp; Nómina</code>, <code>Impuestos &amp; Auditoría</code> y <code>Sistema &amp; Seguridad</code>, junto al selector de <code>Bodega</code> y la alerta en vivo de <code>Auditoría 72h</code>.</p>
+                    </article>
+
+                    <article class="anatomy-zone-card">
+                        <span class="anatomy-zone-tag">Zona 3 · Lateral</span>
+                        <h3>Menú Lateral de 14 Módulos</h3>
+                        <p class="muted-note">Navegación vertical siempre visible agrupada en 5 bloques lógicos: <code>Operación SRI</code>, <code>Comercial y Facturación v3.0</code>, <code>Contabilidad NIIF</code>, <code>Auditoría y Declaraciones</code> y <code>Consultas y Sistema</code>.</p>
+                    </article>
+
+                    <article class="anatomy-zone-card">
+                        <span class="anatomy-zone-tag">Zona 4 · Centro MDI</span>
+                        <h3>Espacio Multitarea con Pestañas</h3>
+                        <p class="muted-note">Trabaja en paralelo sin perder cambios: abre <code>Panel General</code>, <code>Mis Contribuyentes</code>, <code>Sincronizar SRI</code>, <code>Bandeja Documentos</code> y <code>Facturador POS .p12</code> en pestañas simultáneas o en ventana independiente.</p>
+                    </article>
+
+                    <article class="anatomy-zone-card">
+                        <span class="anatomy-zone-tag">Zona 5 · Grillas y Pie</span>
+                        <h3>Grillas y Barra Inferior F1–F12</h3>
+                        <p class="muted-note">Cada tabla incorpora buscador instantáneo, exportación directa a <code>Excel</code> / <code>PDF</code>, barra de totales al pie y botones clicables de atajos desde <code>F1 Ayuda</code> hasta <code>F12 Grabar / Emitir</code>.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: PRIMER ACCESO, LOGIN, ROLES Y CONFIGURACIÓN INICIAL -->
+        <section class="section" id="primer-acceso">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Sección 2 · Puesta en Marcha sin Errores</span>
+                    <h2>Primer Acceso, Login, Roles y Configuración Inicial</h2>
+                    <p>Sigue estos <strong>4 pasos secuenciales</strong> la primera vez que abres TributaFlow ERP v3.0.0 para dejar tu estación lista para descargar XML, contabilizar y facturar con firma <code>.p12</code>.</p>
+                </div>
+
+                <div class="onboarding-steps-grid">
+                    <article class="guide-step-card">
+                        <span class="step-num">Paso 01</span>
+                        <h3>Instalación, Prueba 7 Días o Carga de Licencia .lic</h3>
+                        <p>Al abrir el instalador oficial accedes directamente con <code>Prueba 7d · Enterprise Team ERP</code> sin tarjeta. Si ya adquiriste tu plan anual, ingresa a <strong>Sistema &amp; Seguridad ➔ Planes y Licencia</strong> (o <strong>Configuración ERP ➔ Pestaña 4. Plan y Licencia</strong>), copia tu código HWID y carga el archivo oficial <code>.lic</code>.</p>
+                    </article>
+
+                    <article class="guide-step-card">
+                        <span class="step-num">Paso 02</span>
+                        <h3>Login, Usuarios, Roles y Auto-Bloqueo</h3>
+                        <p>Inicia sesión con tu usuario inicial y configura cuentas para asistentes o cajeros en <strong>Configuración ERP ➔ Pestaña 6. Usuarios y Roles</strong> (perfil <code>Administrador</code>, contador o facturador). Ajusta el tiempo de auto-bloqueo por inactividad y el tema visual en <strong>Pestaña 1. General y Tema</strong>.</p>
+                    </article>
+
+                    <article class="guide-step-card">
+                        <span class="step-num">Paso 03</span>
+                        <h3>Alta de Contribuyente (Multi-RUC) y Clave SRI</h3>
+                        <p>Dirígete a <strong>Operación SRI ➔ Mis Contribuyentes</strong>, registra el RUC, razón social y opcionalmente guarda la clave del portal SRI en Línea. Todas las credenciales quedan cifradas localmente en tu PC con <strong>AES-256-GCM</strong> vinculadas a tu HWID.</p>
+                    </article>
+
+                    <article class="guide-step-card">
+                        <span class="step-num">Paso 04</span>
+                        <h3>Carga y Validación de Firma Electrónica .p12</h3>
+                        <p>Entra a <strong>Configuración ERP ➔ Pestaña 2. Firma .p12 y POS</strong>, vincula tu certificado <code>.p12</code> y su contraseña cifrada, comprueba la fecha de vencimiento, elige ambiente (<code>1 — Pruebas SRI</code> o <code>2 — Producción SRI</code>) y define el formato de RIDE (<code>A4</code> o <code>Ticket 80mm</code>).</p>
+                    </article>
+                </div>
+
+                <div class="module-progressive-stack">
+                    <details class="policy-accordion">
+                        <summary class="policy-summary">
+                            <span class="policy-summary-title"><span class="policy-num">SO</span> Ver notas de instalación y verificación SHA-256 (Windows SmartScreen / macOS / Linux)</span>
+                            <span class="policy-chevron" aria-hidden="true">▾</span>
+                        </summary>
+                        <div class="policy-body">
+                            <p><strong>Windows 10/11:</strong> Valida el SHA-256 de <code>Setup_TributaFlow_ERP_v3.0.0.exe</code> o <code>TributaFlow_ERP_v3.0.0_Windows_x64.zip</code>; ante Windows SmartScreen pulsa <em>"Más información" ➔ "Ejecutar de todas formas"</em>. <strong>macOS (.dmg):</strong> verifica con <code>shasum -a 256</code> y usa <em>Control + clic ➔ Abrir</em> en el primer arranque. <strong>Linux (.deb / .tar.gz):</strong> valida con <code>sha256sum</code> e instala vía <code>sudo apt install</code>.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: MANUAL OPERATIVO POR ACCIÓN (6 PESTAÑAS ESTILO RIBBON) -->
+        <section class="section bg-subtle" id="manual-operativo">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Sección 3 · Procedimientos Paso a Paso</span>
+                    <h2>Manual Operativo por Acción (6 Suites Estilo Ribbon)</h2>
+                    <p>Selecciona la Suite que necesitas operar para ver exactamente <strong>qué hace cada herramienta</strong>, <strong>dónde entrar</strong> y <strong>cómo ejecutarla sin errores</strong>.</p>
+                </div>
+
+                <div class="ribbon-tabs-bar" role="tablist" aria-label="Suites operativas del manual TributaFlow ERP">
+                    <button type="button" class="ribbon-tab-btn is-active" role="tab" aria-selected="true" data-manual-tab="sri-operacion">⚡ 1. Operación SRI</button>
+                    <button type="button" class="ribbon-tab-btn" role="tab" aria-selected="false" data-manual-tab="comercial-pos">🧾 2. Comercial y POS .p12</button>
+                    <button type="button" class="ribbon-tab-btn" role="tab" aria-selected="false" data-manual-tab="inventario-cartera">📦 3. Inventario y Cartera</button>
+                    <button type="button" class="ribbon-tab-btn" role="tab" aria-selected="false" data-manual-tab="contabilidad-niif">📊 4. Contabilidad NIIF y Nómina</button>
+                    <button type="button" class="ribbon-tab-btn" role="tab" aria-selected="false" data-manual-tab="auditoria-ats">🔍 5. Auditoría EFOS, Consultas y ATS</button>
+                    <button type="button" class="ribbon-tab-btn" role="tab" aria-selected="false" data-manual-tab="sistema-lan">🛡️ 6. Respaldos .tfbkp, LAN y Nube</button>
+                </div>
+
+                <!-- PESTAÑA 1: OPERACIÓN Y SINCRONIZACIÓN SRI -->
+                <article class="manual-suite-panel is-active" role="tabpanel" data-manual-panel="sri-operacion">
+                    <div class="ribbon-panel-head">
+                        <div>
+                            <span class="eyebrow">Pestaña 1 · Ingesta y Contabilización SRI</span>
+                            <h3>Operación y Sincronización SRI</h3>
+                        </div>
+                        <a href="modulos/panel-general.html" class="module-link">Explorar Panel General ➔</a>
+                    </div>
+
+                    <div class="manual-proc-grid">
+                        <div class="manual-proc-card">
+                            <span class="manual-proc-label">Sincronización en Línea</span>
+                            <h4>Descarga Masiva Recibidos y Emitidos</h4>
+                            <span class="erp-path-pill">Operación SRI ➔ Sincronizar SRI</span>
+                            <p class="muted-note"><strong>Qué hace:</strong> Conecta con el portal SRI en Línea y descarga XML, RIDE PDF y borrador ATS sin perder progreso.</p>
+                            <ol class="manual-step-list">
+                                <li>Elige rango de fechas y flujo (<code>Recibidos</code>, <code>Emitidos</code> o <code>Ambos</code>).</li>
+                                <li>Marca la conservación de XML clasificados, RIDE PDF y borrador ATS.</li>
+                                <li>Pulsa <strong>Iniciar Sincronización SRI</strong> (guardado incremental cada 20 docs).</li>
+                            </ol>
+                            <a href="modulos/sincronizar-sri.html" class="module-link">Ver Módulo Sincronizar SRI ➔</a>
+                        </div>
+
+                        <div class="manual-proc-card">
+                            <span class="manual-proc-label">Importación Offline .txt / .xml</span>
+                            <h4>Ingesta desde Listados SRI o Carpetas</h4>
+                            <span class="erp-path-pill">Operación SRI ➔ Importar .txt / .xml</span>
+                            <p class="muted-note"><strong>Qué hace:</strong> Incorpora comprobantes descargados previamente sin conexión y evita registros duplicados por clave de acceso.</p>
+                            <ol class="manual-step-list">
+                                <li>Define si el lote corresponde a comprobantes recibidos o emitidos.</li>
+                                <li>Carga archivos <code>.txt</code> de claves del SRI o selecciona carpetas completas de <code>.xml</code> (atajo <code>F8</code>).</li>
+                                <li>Revisa el resumen de comprobantes validados y deduplicados.</li>
+                            </ol>
+                            <a href="modulos/importar-comprobantes.html" class="module-link">Ver Módulo Importador ➔</a>
+                        </div>
+
+                        <div class="manual-proc-card">
+                            <span class="manual-proc-label">Bandeja Documentos (4 Pasos)</span>
+                            <h4>Clasificación, Retención y Asiento NIIF</h4>
+                            <span class="erp-path-pill">Operación SRI ➔ Bandeja Documentos</span>
+                            <p class="muted-note"><strong>Qué hace:</strong> Convierte cada factura XML en retención electrónica, ingreso de inventario y asiento contable NIIF + ATS.</p>
+                            <ol class="manual-step-list">
+                                <li>Filtra por año, mes y tipo, y sigue la secuencia guiada: <code>Paso 1 Selección XML/Proveedor ➔ Paso 2 Homologación e Inventario ➔ Paso 3 Retención Fuente/IVA (49 dígitos) ➔ Paso 4 Kardex + Asiento NIIF + ATS</code>.</li>
+                                <li>Para agilizar lotes recurrentes, usa <strong>Clasificar Automáticamente</strong> o <strong>Procesar como Compra + Retención</strong>.</li>
+                            </ol>
+                            <a href="modulos/bandeja-documentos.html" class="module-link">Ver Bandeja Documentos ➔</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PESTAÑA 2: FACTURACIÓN POS .P12 Y GESTIÓN COMERCIAL -->
+                <article class="manual-suite-panel" role="tabpanel" data-manual-panel="comercial-pos">
+                    <div class="ribbon-panel-head">
+                        <div>
+                            <span class="eyebrow">Pestaña 2 · Emisión XAdES-BES y Ventas</span>
+                            <h3>Facturación Electrónica POS .p12 y Gestión Comercial</h3>
+                        </div>
+                        <a href="modulos/facturador-pos.html" class="module-link">Ver Facturador POS .p12 ➔</a>
+                    </div>
+
+                    <div class="manual-proc-grid">
+                        <div class="manual-proc-card">
+                            <span class="manual-proc-label">Nueva Emisión / POS .p12</span>
+                            <h4>Emitir Factura, N.C., Guía o Retención</h4>
+                            <span class="erp-path-pill">Comercial y Facturación ➔ Facturador POS .p12 ➔ Nueva Emisión / POS</span>
+                            <p class="muted-note"><strong>Qué hace:</strong> Firma electrónicamente con tu certificado <code>.p12</code> y envía el comprobante directo al SRI sin terceros.</p>
+                            <ol class="manual-step-list">
+                                <li>Selecciona tipo de comprobante (<code>01 Factura</code>, <code>04 N.C.</code>, <code>06 Guía</code> o <code>07 Retención</code>) y consulta el RUC/Cédula del cliente en línea.</li>
+                                <li>Agrega ítems (<code>F9</code>) aplicando IVA <code>0/5/8/15%</code>, selecciona forma de pago SRI o marca <code>Venta a Crédito</code> para generar CxC automática.</li>
+                                <li>Presiona <strong>F12 Grabar / Emitir</strong> para firmar con <code>.p12</code> y despachar a la cola SOAP del SRI.</li>
+                            </ol>
+                            <a href="modulos/facturador-pos.html" class="module-link">Ver Módulo POS .p12 ➔</a>
+                        </div>
+
+                        <div class="manual-proc-card">
+                            <span class="manual-proc-label">Reimpresión, Anulación y Ribbon Comercial</span>
+                            <h4>Pedidos, Proformas, Secuencias y Caja</h4>
+                            <span class="erp-path-pill">Comercial &amp; POS ➔ Ribbon Comercial</span>
+                            <p class="muted-note"><strong>Qué hace:</strong> Controla todo el ciclo comercial antes y después de facturar desde la cinta superior y el historial de emitidos.</p>
+                            <ol class="manual-step-list">
+                                <li>Consulta XML/RIDE anteriores y reimprime A4 o Ticket 80mm desde la pestaña <strong>Comprobantes Emitidos</strong>.</li>
+                                <li>Gestiona <code>Proformas</code> (<code>F5</code>), <code>Pedidos</code> (<code>F7</code>), <code>Guías de Remisión</code>, <code>Secuencias Fact./N.C.</code>, <code>Anulación Docs</code> y el <code>Arqueo de Caja</code> diario desde el Ribbon <strong>Comercial &amp; POS</strong>.</li>
+                            </ol>
+                            <a href="modulos/comercial-ribbon.html" class="module-link">Ver Suite Comercial Ribbon ➔</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PESTAÑA 3: INVENTARIO, KARDEX Y CARTERA -->
+                <article class="manual-suite-panel" role="tabpanel" data-manual-panel="inventario-cartera">
+                    <div class="ribbon-panel-head">
+                        <div>
+                            <span class="eyebrow">Pestaña 3 · Existencias y Flujo de Caja</span>
+                            <h3>Inventario, Kardex y Cartera (CxC / CxP)</h3>
+                        </div>
+                        <a href="modulos/inventario-kardex.html" class="module-link">Explorar Inventario &amp; Kardex ➔</a>
+                    </div>
+
+                    <div class="manual-proc-grid">
+                        <div class="manual-proc-card">
+                            <span class="manual-proc-label">Control de Productos y Kardex</span>
+                            <h4>Multi-Bodega, Costo Promedio y Stock Mínimo</h4>
+                            <span class="erp-path-pill">Comercial y Facturación ➔ Inventario &amp; Kardex</span>
+                            <p class="muted-note"><strong>Qué hace:</strong> Mantiene actualizado el stock físico y valorizado de cada bodega conectado al POS y compras.</p>
+                            <ol class="manual-step-list">
+                                <li>Alterna entre <strong>Catálogo y Existencias</strong> y <strong>Movimientos Kardex</strong> para revisar saldos por artículo.</li>
+                                <li>Administra múltiples bodegas (desde <code>001 Matriz Principal</code>), registra compras/ajustes y supervisa alertas de stock mínimo y costo promedio ponderado.</li>
+                            </ol>
+                            <a href="modulos/inventario-kardex.html" class="module-link">Ver Módulo Kardex ➔</a>
+                        </div>
+
+                        <div class="manual-proc-card">
+                            <span class="manual-proc-label">Cobros, Pagos y Tesorería</span>
+                            <h4>Cuentas por Cobrar, Pagar y Bancos</h4>
+                            <span class="erp-path-pill">Comercial y Facturación ➔ Cartera CxC / CxP</span>
+                            <p class="muted-note"><strong>Qué hace:</strong> Centraliza abonos de clientes, pagos a proveedores y conciliación automática con Contabilidad NIIF.</p>
+                            <ol class="manual-step-list">
+                                <li>Cambia de vista entre <strong>Cuentas por Cobrar (CxC)</strong>, <strong>Cuentas por Pagar (CxP)</strong> y <strong>Tesorería y Bancos</strong>.</li>
+                                <li>Filtra por antigüedad de saldos, selecciona la factura y registra abonos totales o parciales con asiento NIIF automático.</li>
+                            </ol>
+                            <a href="modulos/cartera-tesoreria.html" class="module-link">Ver Módulo Cartera &amp; Tesorería ➔</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PESTAÑA 4: CONTABILIDAD NIIF Y NÓMINA IESS -->
+                <article class="manual-suite-panel" role="tabpanel" data-manual-panel="contabilidad-niif">
+                    <div class="ribbon-panel-head">
+                        <div>
+                            <span class="eyebrow">Pestaña 4 · Libros Oficiales Ecuador</span>
+                            <h3>Contabilidad NIIF Ecuador y Nómina IESS</h3>
+                        </div>
+                        <a href="modulos/contabilidad-niif.html" class="module-link">Ver Módulo Contabilidad NIIF ➔</a>
+                    </div>
+
+                    <div class="manual-proc-grid">
+                        <div class="manual-proc-card">
+                            <span class="manual-proc-label">Ciclo Contable en 4 Pasos</span>
+                            <h4>Del Diario Balanceado a Estados Financieros</h4>
+                            <span class="erp-path-pill">Contabilidad NIIF ➔ Contabilidad NIIF</span>
+                            <p class="muted-note"><strong>Qué hace:</strong> Integra asientos de compras, ventas POS, retenciones, cartera, activos fijos y nómina en un solo ciclo cerrado.</p>
+                            <ol class="manual-step-list">
+                                <li>Ejecuta el flujo de 4 pasos: <code>Diario NIIF Balanceado ➔ Conciliación Bancaria/Cartera ➔ Activos Fijos NIIF y Nómina IESS ➔ Pre-validación ATS y 103/104</code>.</li>
+                                <li>Navega por las 7 pestañas nativas: <code>Libro Diario</code>, <code>Libro Mayor</code>, <code>Balance Comprobación</code>, <code>Estados Financieros</code>, <code>Plan de Cuentas NIIF</code>, <code>Activos Fijos NIIF</code> y <code>Nómina Ecuador</code>.</li>
+                            </ol>
+                            <a href="modulos/contabilidad-niif.html" class="module-link">Explorar las 7 Pestañas NIIF ➔</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PESTAÑA 5: AUDITORÍA EFOS, CONSULTAS Y ATS -->
+                <article class="manual-suite-panel" role="tabpanel" data-manual-panel="auditoria-ats">
+                    <div class="ribbon-panel-head">
+                        <div>
+                            <span class="eyebrow">Pestaña 5 · Blindaje Fiscal y Anexos SRI</span>
+                            <h3>Auditoría EFOS, Consultas SRI y Declaraciones (ATS / 103 / 104 / AGP)</h3>
+                        </div>
+                        <a href="modulos/generador-ats.html" class="module-link">Ir a ATS y Form. 103/104 ➔</a>
+                    </div>
+
+                    <div class="manual-proc-grid">
+                        <div class="manual-proc-card">
+                            <span class="manual-proc-label">Detección Empresas Fantasma (72h)</span>
+                            <h4>Auditoría Integral y Duplicados</h4>
+                            <span class="erp-path-pill">Auditoría y Declaraciones ➔ Auditoria Integral</span>
+                            <p class="muted-note"><strong>Qué hace:</strong> Detecta proveedores fantasma/EFOS y descuadros contables antes de enviar declaraciones al SRI.</p>
+                            <ol class="manual-step-list">
+                                <li>Pulsa <strong>Actualizar Catastro SRI</strong> y luego <strong>Ejecutar Auditoría</strong>.</li>
+                                <li>Revisa alertas en las pestañas <code>Empresas Fantasma (EFOS)</code>, <code>SRI vs Contabilidad NIIF</code> y <code>Duplicados y Secuenciales</code>.</li>
+                            </ol>
+                            <a href="modulos/auditor-fantasma.html" class="module-link">Ver Auditor EFOS ➔</a>
+                        </div>
+
+                        <div class="manual-proc-card">
+                            <span class="manual-proc-label">Consultas Unitarias y Masivas</span>
+                            <h4>Validación Rápida de RUC y Cédula</h4>
+                            <span class="erp-path-pill">Consultas y Sistema ➔ Búsqueda RUC/Cédula / Consulta Masiva</span>
+                            <p class="muted-note"><strong>Qué hace:</strong> Verifica estado tributario, régimen y obligaciones de terceros al instante o en lote.</p>
+                            <ol class="manual-step-list">
+                                <li>Usa <strong>Búsqueda RUC/Cédula</strong> (atajo <code>F3</code>) para verificar un contribuyente puntual en pantalla.</li>
+                                <li>Abre <strong>Consulta Masiva</strong> para pegar listados completos de RUCs/Cédulas y exportar resultados a <code>Excel</code>.</li>
+                            </ol>
+                            <div class="flex-wrap-actions">
+                                <a href="modulos/busqueda-ruc.html" class="module-link">Búsqueda Unitaria ➔</a>
+                                <a href="modulos/consulta-masiva.html" class="module-link">Consulta Masiva ➔</a>
+                            </div>
+                        </div>
+
+                        <div class="manual-proc-card">
+                            <span class="manual-proc-label">Generación ATS y Borradores 103/104/AGP</span>
+                            <h4>Pre-Validación XSD y Exportación Oficial</h4>
+                            <span class="erp-path-pill">Auditoría y Declaraciones ➔ ATS, Form. 103/104 y AGP</span>
+                            <p class="muted-note"><strong>Qué hace:</strong> Construye y pre-valida el XML oficial del Anexo Transaccional Simplificado y calcula casilleros 103/104/AGP.</p>
+                            <ol class="manual-step-list">
+                                <li>Selecciona Año y Mes Fiscal y verifica las 7 grillas: <code>ATS: Compras</code>, <code>Ventas</code>, <code>Retenciones</code>, <code>Anulados</code>, <code>Form. 104 IVA</code>, <code>Form. 103 Renta</code> y <code>Anexo Gastos Personales</code>.</li>
+                                <li>Presiona <strong>Generar ATS Oficial (.xml/.zip)</strong> listo para cargar al DIMM / SRI en Línea.</li>
+                            </ol>
+                            <a href="modulos/generador-ats.html" class="module-link">Ver Generador ATS &amp; 103/104 ➔</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PESTAÑA 6: RESPALDOS .TFBKP, RED LAN Y NUBE -->
+                <article class="manual-suite-panel" role="tabpanel" data-manual-panel="sistema-lan">
+                    <div class="ribbon-panel-head">
+                        <div>
+                            <span class="eyebrow">Pestaña 6 · Continuidad, Red Local y Cloud</span>
+                            <h3>Respaldos .tfbkp, Red LAN y Nube</h3>
+                        </div>
+                        <a href="modulos/ajustes-seguridad.html" class="module-link">Ver Configuración ERP ➔</a>
+                    </div>
+
+                    <div class="manual-proc-grid">
+                        <div class="manual-proc-card">
+                            <span class="manual-proc-label">Copias de Seguridad Cifradas</span>
+                            <h4>Generar y Restaurar Paquetes .tfbkp</h4>
+                            <span class="erp-path-pill">Consultas y Sistema ➔ Configuración ERP ➔ Pestaña 7. Respaldos .tfbkp</span>
+                            <p class="muted-note"><strong>Qué hace:</strong> Empaqueta tu base contable, RUCs y documentos bajo cifrado <code>AES-256-GCM + HMAC</code> para respaldo o migración de PC.</p>
+                            <ol class="manual-step-list">
+                                <li>Ingresa a <strong>Pestaña 7. Respaldos .tfbkp</strong> y haz clic en generar respaldo completo <code>.tfbkp</code>.</li>
+                                <li>En otro equipo nuevo, usa la opción de restaurar para recuperar todo tu historial sin reconfigurar desde cero.</li>
+                            </ol>
+                            <a href="modulos/ajustes-seguridad.html" class="module-link">Ver Módulo Respaldos .tfbkp ➔</a>
+                        </div>
+
+                        <div class="manual-proc-card">
+                            <span class="manual-proc-label">Modo Red LAN y Complemento Cloud</span>
+                            <h4>Trabajo Multi-PC y Oficina + Casa</h4>
+                            <span class="erp-path-pill">Consultas y Sistema ➔ Configuración ERP ➔ Pestaña 5 / Sistema &amp; Seguridad</span>
+                            <p class="muted-note"><strong>Qué hace:</strong> Conecta varias estaciones contables en red local TCP/IP/UNC o sincroniza selectivamente Oficina + Casa vía nube protegida.</p>
+                            <ol class="manual-step-list">
+                                <li>Configura la ruta compartida cliente/servidor <code>TCP/IP / UNC</code> (<code>\\SERVIDOR\BovedaTributaFlow</code>) en planes Team/Corp ERP.</li>
+                                <li>Activa <code>Complemento + Cloud 24/7</code> desde <strong>Pestaña 5</strong> cuando desees sincronizar RUCs selectivos con Supabase RLS.</li>
+                            </ol>
+                            <a href="modulos/ajustes-seguridad.html" class="module-link">Ver Red LAN y Cloud ➔</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: BUSCADOR INTERACTIVO "¿DÓNDE ESTÁ Y CÓMO SE HACE?" + ATAJOS F1-F12 -->
+        <section class="section" id="buscador-funciones">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Sección 4 · Localizador Instantáneo y Productividad</span>
+                    <h2>¿Dónde está y cómo se hace? + Atajos F1–F12</h2>
+                    <p>Escribe cualquier acción o palabra clave (<code>tfbkp</code>, <code>firma .p12</code>, <code>retencion</code>, <code>fantasma</code>, <code>ats</code>, <code>kardex</code>, <code>bodega</code>, <code>nomina</code>, <code>anular</code>, <code>cxc</code>, <code>lan</code>) para ver su ruta exacta y cómo ejecutarla en 2 líneas.</p>
+                </div>
+
+                <div class="guide-search-box">
+                    <div class="guide-search-row">
+                        <input type="search" id="guiaBuscadorInput" class="guide-search-input" placeholder="Buscar acción o pestaña (ej: tfbkp, firma .p12, retencion, fantasma, ats, kardex, lan)..." aria-label="Buscar función en TributaFlow ERP">
+                        <button type="button" id="guiaBuscadorLimpiar" class="btn-glass">Limpiar Filtro</button>
+                    </div>
+                    <div class="guide-chips-row" aria-label="Búsquedas rápidas frecuentes">
+                        <button type="button" class="guide-chip-btn" data-guide-chip="tfbkp">tfbkp</button>
+                        <button type="button" class="guide-chip-btn" data-guide-chip="firma .p12">firma .p12</button>
+                        <button type="button" class="guide-chip-btn" data-guide-chip="retencion">retencion</button>
+                        <button type="button" class="guide-chip-btn" data-guide-chip="fantasma">fantasma</button>
+                        <button type="button" class="guide-chip-btn" data-guide-chip="ats">ats</button>
+                        <button type="button" class="guide-chip-btn" data-guide-chip="kardex">kardex</button>
+                        <button type="button" class="guide-chip-btn" data-guide-chip="bodega">bodega</button>
+                        <button type="button" class="guide-chip-btn" data-guide-chip="nomina">nomina</button>
+                        <button type="button" class="guide-chip-btn" data-guide-chip="anular">anular</button>
+                        <button type="button" class="guide-chip-btn" data-guide-chip="cxc">cxc</button>
+                        <button type="button" class="guide-chip-btn" data-guide-chip="lan">lan</button>
+                    </div>
+                    <small id="guiaBuscadorCount" class="muted-note" aria-live="polite">Mostrando 15 de 15 rutas oficiales de TributaFlow ERP v3.0.0</small>
+                </div>
+
+                <div class="guide-func-grid">
+                    <article class="guide-func-card" data-guide-func-card data-keywords="panel kpis calendario 9no digito vencimientos">
+                        <h4>KPIs en Vivo y Calendario por 9no Dígito</h4>
+                        <span class="erp-path-pill">Operación SRI ➔ Panel General ➔ Tablero Principal</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Selecciona tu RUC en la Barra Superior para actualizar al instante compras, crédito IVA, ventas .p12 y alertas según tu 9no dígito del RUC.</p>
+                        <a href="modulos/panel-general.html" class="module-link">Ver Módulo 01 ➔</a>
+                    </article>
+
+                    <article class="guide-func-card" data-guide-func-card data-keywords="ruc clave sri multi ruc hwid contribuyentes">
+                        <h4>Registrar Empresas Multi-RUC y Clave SRI</h4>
+                        <span class="erp-path-pill">Operación SRI ➔ Mis Contribuyentes ➔ Cartera RUC</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Crea el RUC y razón social con su clave SRI cifrada AES-256-GCM por HWID; cada contribuyente opera sobre su propia base SQLite aislada.</p>
+                        <a href="modulos/mis-contribuyentes.html" class="module-link">Ver Módulo 02 ➔</a>
+                    </article>
+
+                    <article class="guide-func-card" data-guide-func-card data-keywords="sincronizar sri descarga xml ride incremental 20">
+                        <h4>Descargar XML, RIDE y ATS desde SRI en Línea</h4>
+                        <span class="erp-path-pill">Operación SRI ➔ Sincronizar SRI ➔ Recibidos / Emitidos / Ambos</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Escoge el rango de fechas, marca XML/RIDE/borrador ATS y pulsa Iniciar Sincronización SRI con guardado automático cada 20 docs.</p>
+                        <a href="modulos/sincronizar-sri.html" class="module-link">Ver Módulo 03 ➔</a>
+                    </article>
+
+                    <article class="guide-func-card" data-guide-func-card data-keywords="importar txt xml carpeta claves F8">
+                        <h4>Importar Listados .txt o Carpetas XML Offline (F8)</h4>
+                        <span class="erp-path-pill">Operación SRI ➔ Importar .txt / .xml ➔ Carga Masiva</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Pulsa F8, define flujo Recibido o Emitido y selecciona archivos .txt de claves o carpetas de XML para indexar sin duplicados.</p>
+                        <a href="modulos/importar-comprobantes.html" class="module-link">Ver Módulo 04 ➔</a>
+                    </article>
+
+                    <article class="guide-func-card" data-guide-func-card data-keywords="retencion 49 digitos homologacion compras ventas bandeja">
+                        <h4>Homologar Compras, Emitir Retención y Contabilizar</h4>
+                        <span class="erp-path-pill">Operación SRI ➔ Bandeja Documentos ➔ Pasos 1 al 4</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Filtra año/mes y ejecuta Seleccionar XML ➔ Homologar Ítems ➔ Retención 49 dígitos ➔ Kardex + Asiento NIIF + ATS (o Clasificar Automáticamente).</p>
+                        <a href="modulos/bandeja-documentos.html" class="module-link">Ver Módulo 05 ➔</a>
+                    </article>
+
+                    <article class="guide-func-card" data-guide-func-card data-keywords="firma .p12 pos factura nota credito guia ticket 80mm F12">
+                        <h4>Emitir Facturas, N.C., Guías y Retenciones POS (F12)</h4>
+                        <span class="erp-path-pill">Comercial y Facturación ➔ Facturador POS .p12 ➔ Nueva Emisión / POS</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Elige tipo 01/04/06/07, busca al cliente, añade ítems con IVA 0/5/8/15% o Venta a Crédito y pulsa F12 Grabar / Emitir para firmar .p12.</p>
+                        <a href="modulos/facturador-pos.html" class="module-link">Ver Módulo 06 ➔</a>
+                    </article>
+
+                    <article class="guide-func-card" data-guide-func-card data-keywords="firma .p12 certificado configurar pruebas produccion ride">
+                        <h4>Instalar Firma Electrónica .p12 y RIDE A4 / 80mm</h4>
+                        <span class="erp-path-pill">Consultas y Sistema ➔ Configuración ERP ➔ Pestaña 2. Firma .p12 y POS</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Carga tu archivo .p12 y clave cifrada, verifica vigencia, selecciona ambiente Pruebas o Producción y define RIDE A4 o Ticket 80mm.</p>
+                        <a href="modulos/ajustes-seguridad.html" class="module-link">Ver Módulo 14 ➔</a>
+                    </article>
+
+                    <article class="guide-func-card" data-guide-func-card data-keywords="anular anulacion proforma pedido secuencia vendedor arqueo caja F5 F7">
+                        <h4>Anular Documentos, Proformas (F5), Pedidos (F7) y Caja</h4>
+                        <span class="erp-path-pill">Comercial &amp; POS ➔ Ribbon Comercial ➔ Anulación / Proformas / Arqueo</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Usa el Ribbon Comercial &amp; POS para crear proformas F5, pedidos F7, ajustar secuencias Fact./N.C., anular docs y cerrar Arqueo de Caja.</p>
+                        <a href="modulos/comercial-ribbon.html" class="module-link">Ver Módulo 07 ➔</a>
+                    </article>
+
+                    <article class="guide-func-card" data-guide-func-card data-keywords="kardex bodega matriz stock minimo costo pvp inventario">
+                        <h4>Controlar Inventario, Kardex y Bodega 001 Matriz</h4>
+                        <span class="erp-path-pill">Comercial y Facturación ➔ Inventario &amp; Kardex ➔ Catálogo / Movimientos</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Gestiona bodegas (001 Matriz Principal), registra compras o ajustes de stock y revisa costo promedio ponderado y alertas mínimas.</p>
+                        <a href="modulos/inventario-kardex.html" class="module-link">Ver Módulo 08 ➔</a>
+                    </article>
+
+                    <article class="guide-func-card" data-guide-func-card data-keywords="cxc cxp cartera cobrar pagar tesoreria bancos abonos">
+                        <h4>Cobrar Cartera CxC, Pagar CxP y Conciliar Bancos</h4>
+                        <span class="erp-path-pill">Comercial y Facturación ➔ Cartera CxC / CxP ➔ CxC / CxP / Tesorería</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Filtra saldos por antigüedad en CxC o CxP, registra abonos totales o parciales y concilia movimientos en Tesorería con asiento NIIF.</p>
+                        <a href="modulos/cartera-tesoreria.html" class="module-link">Ver Módulo 09 ➔</a>
+                    </article>
+
+                    <article class="guide-func-card" data-guide-func-card data-keywords="nomina iess diario mayor balance niif activos fijos">
+                        <h4>Operar Ciclo Contable NIIF y Nómina Ecuador IESS</h4>
+                        <span class="erp-path-pill">Contabilidad NIIF ➔ Contabilidad NIIF ➔ 7 Pestañas Oficiales</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Avanza por el ciclo de 4 pasos y revisa Diario, Mayor, Balance, Estados Financieros, Plan NIIF, Activos Fijos y Nómina Ecuador.</p>
+                        <a href="modulos/contabilidad-niif.html" class="module-link">Ver Módulo 10 ➔</a>
+                    </article>
+
+                    <article class="guide-func-card" data-guide-func-card data-keywords="fantasma efos auditoria riesgo fiscal 72h duplicados">
+                        <h4>Detectar Empresas Fantasma (EFOS) y Duplicados</h4>
+                        <span class="erp-path-pill">Auditoría y Declaraciones ➔ Auditoria Integral ➔ EFOS / NIIF / Duplicados</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Presiona Actualizar Catastro SRI y Ejecutar Auditoría para detectar EFOS en 72h, diferencias SRI vs NIIF y secuenciales duplicados.</p>
+                        <a href="modulos/auditor-fantasma.html" class="module-link">Ver Módulo 11 ➔</a>
+                    </article>
+
+                    <article class="guide-func-card" data-guide-func-card data-keywords="ats 103 104 agp xsd xml zip declaraciones anulados">
+                        <h4>Generar ATS (.xml/.zip) y Borradores 103 / 104 / AGP</h4>
+                        <span class="erp-path-pill">Auditoría y Declaraciones ➔ ATS, Form. 103/104 y AGP ➔ 7 Grillas</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Elige Año/Mes Fiscal, valida las 7 grillas (Compras, Ventas, Retenciones, Anulados, 104, 103, AGP) y pulsa Generar ATS Oficial (.xml/.zip).</p>
+                        <a href="modulos/generador-ats.html" class="module-link">Ver Módulo 12 ➔</a>
+                    </article>
+
+                    <article class="guide-func-card" data-guide-func-card data-keywords="buscar ruc cedula masiva excel pdf F3">
+                        <h4>Consultar RUC/Cédula Individual (F3) o en Lote</h4>
+                        <span class="erp-path-pill">Consultas y Sistema ➔ Búsqueda RUC/Cédula &amp; Consulta Masiva</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Pulsa F3 para verificar un RUC/Cédula al instante o abre Consulta Masiva para pegar lotes completos y exportarlos a Excel (.xlsx).</p>
+                        <a href="modulos/busqueda-ruc.html" class="module-link">Ver Módulo 13 ➔</a>
+                    </article>
+
+                    <article class="guide-func-card" data-guide-func-card data-keywords="tfbkp backup respaldo lan tcp ip unc cloud 24/7 licencia usuarios roles">
+                        <h4>Crear Respaldos .tfbkp, Red LAN TCP/IP y Usuarios</h4>
+                        <span class="erp-path-pill">Consultas y Sistema ➔ Configuración ERP ➔ Pestañas 4, 5, 6 y 7</span>
+                        <p class="guide-howto-text"><strong>Cómo se ejecuta:</strong> Usa Pestaña 7 para backups .tfbkp cifrados, Pestaña 6 para Usuarios/Roles y Pestaña 5 para Red LAN UNC o Complemento + Cloud 24/7.</p>
+                        <a href="modulos/ajustes-seguridad.html" class="module-link">Ver Módulo 14 ➔</a>
+                    </article>
+                </div>
+
+                <!-- TABLA OFICIAL DE ATAJOS DE TECLADO F1-F12 -->
+                <div class="section-head mt-36" id="atajos-teclado">
+                    <span class="eyebrow">Productividad en Ventana Activa</span>
+                    <h3>Tabla Oficial de Atajos de Teclado (F1–F12)</h3>
+                </div>
+                <div class="sha-table-wrap">
+                    <table class="sha-matrix-table">
+                        <thead>
+                            <tr>
+                                <th>Tecla Rápida</th>
+                                <th>Acción en TributaFlow ERP</th>
+                                <th>Módulos Donde Aplica</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><span class="kbd-badge">F1</span></td><td><strong>Ayuda</strong></td><td>Ayuda contextual en cualquier pantalla y guía rápida</td></tr>
+                            <tr><td><span class="kbd-badge">F3</span></td><td><strong>Buscar</strong></td><td>Búsqueda RUC/Cédula, productos, clientes y comprobantes</td></tr>
+                            <tr><td><span class="kbd-badge">F5</span></td><td><strong>Proforma / Nuevo</strong></td><td>Crear proforma o limpiar nuevo documento en POS / NIIF</td></tr>
+                            <tr><td><span class="kbd-badge">F7</span></td><td><strong>Pedidos</strong></td><td>Abrir módulo de pedidos y reserva de stock en Suite Comercial</td></tr>
+                            <tr><td><span class="kbd-badge">F8</span></td><td><strong>Importar XML</strong></td><td>Carga rápida de comprobantes <code>.xml</code> o <code>.txt</code> en Operación SRI</td></tr>
+                            <tr><td><span class="kbd-badge">F9</span></td><td><strong>Nueva Línea</strong></td><td>Insertar nueva fila de ítem en factura POS o línea en Diario NIIF</td></tr>
+                            <tr><td><span class="kbd-badge">F10</span></td><td><strong>Eliminar</strong></td><td>Quitar línea seleccionada o anular registro borrador</td></tr>
+                            <tr><td><span class="kbd-badge">F11</span></td><td><strong>Modificar</strong></td><td>Editar cantidad, descuento o detalle contable seleccionado</td></tr>
+                            <tr><td><span class="kbd-badge">F12</span></td><td><strong>Grabar / Emitir</strong></td><td>Guardar transacción o firmar <code>.p12</code> y enviar al SRI</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: DESPLIEGUE POR PLANES, RECORRIDOS Y LAS 15 VISTAS -->
+        <section class="section bg-subtle" id="despliegue-planes">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Sección 5 · Modalidades de Uso y Arquitectura</span>
+                    <h2>Despliegue por Modalidad y Plan (<span data-app-version-tag>v3.0.0</span>)</h2>
+                    <p>Elige cómo operar según tu plan: desde instalación en 1 PC hasta red LAN multi-estación y multi-sucursal corporativa.</p>
+                </div>
+
+                <!-- PESTAÑAS INTERACTIVAS DE MODALIDADES / PLANES -->
                 <div class="guide-tabs-bar" role="tablist" aria-label="Escenarios de implementación TributaFlow ERP">
                     <button type="button" class="guide-tab-btn is-active" role="tab" aria-selected="true" data-guide-tab="rapida">🚀 Instalación Rápida (SO)</button>
                     <button type="button" class="guide-tab-btn" role="tab" aria-selected="false" data-guide-tab="1pc">💻 1 PC (Personal / Master)</button>
@@ -168,16 +761,71 @@
                         <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20ERP" target="_blank" rel="noopener noreferrer" class="btn-support-link" data-support-link="whatsapp">💬 Coordinar Onboarding Corporativo</a>
                     </div>
                 </article>
-            </div>
-        </section>
 
-        <!-- TOUR DE LAS 15 VISTAS OFICIALES DE TRIBUTAFLOW ERP v3.0.0 -->
-        <section class="section bg-subtle" id="tour-15-vistas">
-            <div class="container">
-                <div class="section-head">
-                    <span class="eyebrow">Tour Completo de Arquitectura · Cifrado AES-256-GCM y Firma .p12</span>
+                <!-- 5 RECORRIDOS PASO A PASO POR ESCENARIO -->
+                <div class="section-head mt-36" id="recorridos-operativos">
+                    <span class="eyebrow">Playbooks Operativos Edición 2026</span>
+                    <h2>5 Recorridos Paso a Paso en TributaFlow ERP</h2>
+                    <p>Despliega cada escenario para seguir el flujo completo de principio a fin.</p>
+                </div>
+
+                <div class="policies-accordion-list">
+                    <details class="policy-accordion" open>
+                        <summary class="policy-summary">
+                            <span class="policy-summary-title"><span class="policy-num">01</span> Instalación, Activación .lic y Configuración de Firma .p12</span>
+                            <span class="policy-chevron" aria-hidden="true">▾</span>
+                        </summary>
+                        <div class="policy-body">
+                            <p>1) Verifica el SHA-256 e instala v3.0.0 (7 días gratis). 2) Abre <strong>Consultas y Sistema ➔ Configuración ERP ➔ Pestaña 4. Plan y Licencia</strong> para cargar tu llave <code>.lic</code>. 3) Ve a <strong>Configuración ERP ➔ Pestaña 2. Firma .p12 y POS</strong>, carga tu certificado <code>.p12</code> cifrado en disco local y selecciona formato A4 o Ticket 80mm.</p>
+                        </div>
+                    </details>
+
+                    <details class="policy-accordion">
+                        <summary class="policy-summary">
+                            <span class="policy-summary-title"><span class="policy-num">02</span> Cierre Tributario Mensual Completo</span>
+                            <span class="policy-chevron" aria-hidden="true">▾</span>
+                        </summary>
+                        <div class="policy-body">
+                            <p>Sigue la ruta oficial: <strong>Sincronizar SRI</strong> (guardado c/ 20 docs) ➔ <strong>Bandeja Documentos (4 Pasos)</strong> para homologar XML, calcular retención de 49 dígitos y contabilizar NIIF ➔ <strong>Auditoría Integral EFOS (72h)</strong> ➔ <strong>ATS, Form. 103/104 y AGP</strong> para validar esquema XSD y exportar <code>ATMMAAAA.xml / .zip</code>.</p>
+                        </div>
+                    </details>
+
+                    <details class="policy-accordion">
+                        <summary class="policy-summary">
+                            <span class="policy-summary-title"><span class="policy-num">03</span> Emisión POS .p12, Control Kardex Multi-Bodega y Cartera CxC/CxP</span>
+                            <span class="policy-chevron" aria-hidden="true">▾</span>
+                        </summary>
+                        <div class="policy-body">
+                            <p>Emite 01 Facturas, 04 N.C., 06 Guías y 07 Retenciones desde <strong>Facturador POS .p12</strong> (tecla <code>F12</code> Grabar/Emitir). Cada venta descuenta existencias en <strong>Inventario &amp; Kardex</strong> (<code>001 Matriz Principal</code>) y actualiza saldos/cobros en <strong>Cartera (CxC/CxP) y Tesorería</strong>.</p>
+                        </div>
+                    </details>
+
+                    <details class="policy-accordion">
+                        <summary class="policy-summary">
+                            <span class="policy-summary-title"><span class="policy-num">04</span> Gestión Multi-RUC para Estudios Contables y Respaldos .tfbkp</span>
+                            <span class="policy-chevron" aria-hidden="true">▾</span>
+                        </summary>
+                        <div class="policy-body">
+                            <p>Registra hasta 25, 60 o RUCs ilimitados en <strong>Operación SRI ➔ Mis Contribuyentes</strong> con bases SQLite aisladas. Para migrar de equipo o resguardar toda la cartera, ejecuta <strong>Configuración ERP ➔ Pestaña 7. Respaldos .tfbkp</strong> (AES-256-GCM + HMAC).</p>
+                        </div>
+                    </details>
+
+                    <details class="policy-accordion">
+                        <summary class="policy-summary">
+                            <span class="policy-summary-title"><span class="policy-num">05</span> Despliegue Red LAN Multi-Estación (TCP/IP / UNC) y Complemento + Cloud 24/7</span>
+                            <span class="policy-chevron" aria-hidden="true">▾</span>
+                        </summary>
+                        <div class="policy-body">
+                            <p>En <strong>Configuración ERP ➔ Pestaña 6. Usuarios y Roles</strong> define permisos de estación y ruta compartida UNC (<code>\\SERVIDOR\BovedaTributaFlow</code>) en Enterprise Team/Corp. Activa <strong>Pestaña 5. Complemento + Cloud 24/7</strong> cuando necesites sincronización selectiva Oficina + Casa vía Supabase RLS.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- TOUR DE LAS 15 VISTAS OFICIALES DE TRIBUTAFLOW ERP v3.0.0 -->
+                <div class="section-head mt-36" id="tour-15-vistas">
+                    <span class="eyebrow">Mapa Completo de Ventanas · Cifrado AES-256-GCM y Firma .p12</span>
                     <h2>Las 15 Vistas Nativas de TributaFlow ERP v3.0.0</h2>
-                    <p>Explora el ecosistema completo de ventanas MDI cero-destellos diseñadas bajo arquitectura <strong>Local-First AES-256-GCM</strong> y facturación electrónica directa con certificado <code>.p12</code>.</p>
+                    <p>Explora directamente el detalle y las pestañas internas de cada módulo del sistema.</p>
                 </div>
 
                 <div class="views-tour-grid">
@@ -189,13 +837,13 @@
                     <article class="view-tour-card"><div class="view-tour-head"><strong>06. Búsqueda RUC / Cédula</strong><span class="view-tour-num">Vista 06</span></div><p class="muted-note">Validación directa de estado tributario y actividades económicas.</p><a href="modulos/busqueda-ruc.html" class="module-link">Explorar Vista ➔</a></article>
                     <article class="view-tour-card"><div class="view-tour-head"><strong>07. Consulta Masiva Lote</strong><span class="view-tour-num">Vista 07</span></div><p class="muted-note">Verificación por lotes con exportación limpia a Excel y CSV.</p><a href="modulos/consulta-masiva.html" class="module-link">Explorar Vista ➔</a></article>
                     <article class="view-tour-card"><div class="view-tour-head"><strong>08. Generador y Validador ATS</strong><span class="view-tour-num">Vista 08</span></div><p class="muted-note">Construcción de XML ATS y validación offline contra esquema XSD.</p><a href="modulos/generador-ats.html" class="module-link">Explorar Vista ➔</a></article>
-                    <article class="view-tour-card"><div class="view-tour-head"><strong>09. Facturación POS Firma .p12</strong><span class="view-tour-num">Vista 09</span></div><p class="muted-note">Emisión y firma XAdES-BES local con certificado <code>.p12</code> AES-256-GCM.</p><a href="planes.html#planes" class="module-link">Ver Planes POS ➔</a></article>
-                    <article class="view-tour-card"><div class="view-tour-head"><strong>10. Inventario &amp; Kardex</strong><span class="view-tour-num">Vista 10</span></div><p class="muted-note">Control de stock promedio ponderado, multi-bodega y costos.</p><a href="planes.html#planes" class="module-link">Incluido ERP ➔</a></article>
-                    <article class="view-tour-card"><div class="view-tour-head"><strong>11. Cartera CxC / CxP</strong><span class="view-tour-num">Vista 11</span></div><p class="muted-note">Cobros, pagos, vencimientos y conciliación de retenciones.</p><a href="planes.html#planes" class="module-link">Ver Detalles ➔</a></article>
-                    <article class="view-tour-card"><div class="view-tour-head"><strong>12. Contabilidad NIIF &amp; Balances</strong><span class="view-tour-num">Vista 12</span></div><p class="muted-note">Libro diario automático, balance general y estado de resultados NIIF.</p><a href="planes.html#planes" class="module-link">Desde Estudio Pro ➔</a></article>
-                    <article class="view-tour-card"><div class="view-tour-head"><strong>13. Formularios 103 y 104</strong><span class="view-tour-num">Vista 13</span></div><p class="muted-note">Preliquidación de IVA mensual/semestral y retenciones en la fuente.</p><a href="planes.html#planes" class="module-link">Ver Cobertura ➔</a></article>
-                    <article class="view-tour-card"><div class="view-tour-head"><strong>14. Nube Oficina + Casa RLS</strong><span class="view-tour-num">Vista 14</span></div><p class="muted-note">Sincronización selectiva opcional cifrada vía Supabase RLS.</p><a href="modulos/ajustes-seguridad.html" class="module-link">Ver Arquitectura ➔</a></article>
-                    <article class="view-tour-card"><div class="view-tour-head"><strong>15. Bóveda AES-256-GCM &amp; .tfbkp</strong><span class="view-tour-num">Vista 15</span></div><p class="muted-note">Respaldos portátiles HMAC, Red LAN TCP/IP y activación HWID.</p><a href="modulos/ajustes-seguridad.html" class="module-link">Explorar Seguridad ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>09. Facturación POS Firma .p12</strong><span class="view-tour-num">Vista 09</span></div><p class="muted-note">Emisión y firma XAdES-BES local con certificado <code>.p12</code> AES-256-GCM.</p><a href="modulos/facturador-pos.html" class="module-link">Ver Facturador POS ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>10. Inventario &amp; Kardex</strong><span class="view-tour-num">Vista 10</span></div><p class="muted-note">Control de stock promedio ponderado, multi-bodega y costos.</p><a href="modulos/inventario-kardex.html" class="module-link">Ver Kardex ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>11. Cartera CxC / CxP</strong><span class="view-tour-num">Vista 11</span></div><p class="muted-note">Cobros, pagos, vencimientos y conciliación de retenciones.</p><a href="modulos/cartera-tesoreria.html" class="module-link">Ver Cartera &amp; Tesorería ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>12. Contabilidad NIIF &amp; Balances</strong><span class="view-tour-num">Vista 12</span></div><p class="muted-note">Libro diario automático, balance general y estado de resultados NIIF.</p><a href="modulos/contabilidad-niif.html" class="module-link">Ver Contabilidad NIIF ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>13. Bandeja Documentos 4 Pasos</strong><span class="view-tour-num">Vista 13</span></div><p class="muted-note">Homologación XML, retención 49 dígitos y asiento contable automático.</p><a href="modulos/bandeja-documentos.html" class="module-link">Ver Bandeja ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>14. Suite Comercial Ribbon POS</strong><span class="view-tour-num">Vista 14</span></div><p class="muted-note">Proformas, pedidos, vendedores, guías y arqueo de caja.</p><a href="modulos/comercial-ribbon.html" class="module-link">Ver Ribbon POS ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>15. Bóveda AES-256-GCM &amp; .tfbkp</strong><span class="view-tour-num">Vista 15</span></div><p class="muted-note">7 pestañas de Configuración, Cloud 24/7, Red LAN TCP/IP y .tfbkp.</p><a href="modulos/ajustes-seguridad.html" class="module-link">Explorar Seguridad ➔</a></article>
                 </div>
             </div>
         </section>

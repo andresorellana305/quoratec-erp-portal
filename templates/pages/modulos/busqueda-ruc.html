@@ -3,13 +3,18 @@
                 <nav class="breadcrumb" aria-label="Ruta de navegación">
                     <a href="../index.html">Inicio</a>
                     <span>/</span>
-                    <a href="../index.html#modulos">Módulos</a>
+                    <a href="../index.html#suite-impuestos-auditoria">Consultas y Sistema</a>
                     <span>/</span>
-                    <span>6. Búsqueda RUC / Cédula</span>
+                    <span>13. Búsqueda RUC/Cédula y Consulta Masiva</span>
                 </nav>
-                <span class="eyebrow">MÓDULO 06 • DISPONIBLE EN LOS 5 PLANES</span>
-                <h1>Búsqueda Instantánea de RUC y Contribuyentes</h1>
-                <p class="lead-sub">Consulta al instante el estado del RUC (Activo / Suspendido / Pasivo), régimen RIMPE o General, razón social, actividad económica principal y establecimientos autorizados sin abrir navegadores externos.</p>
+                <span class="eyebrow">MÓDULO 13 · CONSULTAS Y SISTEMA ➔ BÚSQUEDA RUC/CÉDULA &amp; CONSULTA MASIVA</span>
+                <h1>Búsqueda RUC/Cédula Individual y Consulta Masiva en Lote</h1>
+                <p class="lead-sub">Consulta unitaria al catastro público del SRI por RUC o Cédula y verificación masiva por lotes con exportación estructurada a <strong>Excel (.xlsx)</strong> y <strong>PDF</strong>.</p>
+                <div class="module-tabs-strip">
+                    <span class="module-tab-pill">🔎 Búsqueda Individual RUC / Cédula</span>
+                    <span class="module-tab-pill">📚 Consulta Masiva por Lotes</span>
+                    <span class="module-tab-pill">📊 Exportación Excel / PDF</span>
+                </div>
             </div>
         </section>
 
@@ -18,50 +23,48 @@
                 <div class="module-detail-grid">
                     <div class="step-cards">
                         <article class="step-card">
-                            <h4>🔎 Validación Algorítmica Previa</h4>
-                            <p>Verifica dígito verificador de cédula y RUC (sociedad pública, privada o persona natural) antes de consultar.</p>
+                            <h4>🆔 Ficha Oficial Catastro SRI</h4>
+                            <p>Obtiene razón social, nombre comercial, estado tributario (Activo / Suspendido), régimen (RIMPE / General), agente de retención y establecimientos.</p>
                         </article>
                         <article class="step-card">
-                            <h4>🏢 Ficha Tributaria Completa</h4>
-                            <p>Obtiene razón social (ej. <code>1790012345001 — EMPRESA DEMOSTRACIÓN S.A.</code>), categoría de contribuyente, agente de retención y establecimientos.</p>
+                            <h4>📚 Validación Masiva de Carteras</h4>
+                            <p>Pega o importa cientos de RUCs de clientes o proveedores para verificar vigencia tributaria en bloque antes de facturar o declarar.</p>
                         </article>
                         <article class="step-card">
-                            <h4>⚙️ Alta Rápida Multi-RUC</h4>
-                            <p>Autocompleta la ficha técnica al dar de alta clientes o validar emisores antes de contabilizar comprobantes.</p>
+                            <h4>📊 Exportación Directa a Excel y PDF</h4>
+                            <p>Genera matrices limpias en <code>.xlsx</code> o reportes ejecutivos en <code>.pdf</code> con sello de auditoría de fecha y hora de consulta.</p>
                         </article>
                         <article class="step-card">
-                            <h4>✅ Chequeo de Vigencia</h4>
-                            <p>Evita recibir facturas de RUCs suspendidos o no autorizados antes de cerrar el mes fiscal.</p>
+                            <h4>🏢 Creación Instantánea de Terceros</h4>
+                            <p>Agrega el proveedor o cliente verificado directamente a tu catálogo en Bandeja Documentos o Facturador POS <code>.p12</code>.</p>
                         </article>
                     </div>
 
                     <div class="terminal-card">
                         <div class="terminal-top">
                             <div class="win-controls"><span></span><span></span><span></span></div>
-                            <div class="terminal-tab">busqueda_ruc — Ficha Demo Estandarizada</div>
+                            <div class="terminal-tab">Consultas y Sistema ➔ Búsqueda RUC / Masiva</div>
                         </div>
                         <div class="terminal-content">
-                            <div class="log-line"><span class="t-info">RUC CONSULTADO:</span> 1790012345001</div>
-                            <div class="log-line"><span class="t-ok">RAZÓN SOCIAL:</span> EMPRESA DEMOSTRACIÓN S.A.</div>
-                            <div class="log-line"><span class="t-ok">✔ ESTADO:</span> ACTIVO • RÉGIMEN GENERAL</div>
-                            <div class="log-line"><span class="t-info">SECUNDARIO DEMO:</span> 0999999999001 — Verificación de dígito y vigencia OK</div>
+                            <div class="log-line"><span class="t-info">RUC CONSULTADO:</span> 1790012345001 · Estado: ACTIVO</div>
+                            <div class="log-line"><span class="t-ok">✔ RÉGIMEN:</span> Contribuyente Especial / Agente Retención</div>
+                            <div class="log-line"><span class="t-ok">✔ LOTE MASIVO:</span> 85 RUCs procesados (0 errores)</div>
                             <div class="terminal-summary">
                                 <div>
-                                    <small>Establecimientos Matriz / Sucursales</small>
-                                    <strong>001 Abierto</strong>
+                                    <small>Salida Lista para Auditoría y CRM</small>
+                                    <strong>Exportado: Excel .xlsx + PDF</strong>
                                 </div>
-                                <span class="badge-ready">CONTRIBUYENTE ACTIVO</span>
+                                <span class="badge-ready">CATASTRO SRI OK</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="module-nav-footer">
-                    <a href="auditor-fantasma.html" class="btn-glass">← Anterior: Auditor Fantasma</a>
+                    <a href="generador-ats.html" class="btn-glass">← Anterior: 12. ATS y Form. 103/104</a>
                     <div class="flex-wrap-actions">
-                        <button type="button" class="btn-glass" data-download-os="auto">⬇ Descargar v3.0.0</button>
-                        <button type="button" class="btn-primary" data-checkout-plan="PERSONAL_PRO">💳 Adquirir Personal Pro ($69)</button>
-                        <a href="consulta-masiva.html" class="btn-glass">Siguiente: Consulta Masiva →</a>
+                        <a href="consulta-masiva.html" class="btn-glass">Ver Ficha Lote Masivo</a>
+                        <a href="ajustes-seguridad.html" class="btn-glass">Siguiente: 14. Configuración y .tfbkp →</a>
                     </div>
                 </div>
             </div>

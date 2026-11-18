@@ -56,10 +56,16 @@ PAGINAS_PORTAL = [
     "modulos/mis-contribuyentes.html",
     "modulos/sincronizar-sri.html",
     "modulos/importar-comprobantes.html",
+    "modulos/bandeja-documentos.html",
+    "modulos/facturador-pos.html",
+    "modulos/comercial-ribbon.html",
+    "modulos/inventario-kardex.html",
+    "modulos/cartera-tesoreria.html",
+    "modulos/contabilidad-niif.html",
     "modulos/auditor-fantasma.html",
+    "modulos/generador-ats.html",
     "modulos/busqueda-ruc.html",
     "modulos/consulta-masiva.html",
-    "modulos/generador-ats.html",
     "modulos/ajustes-seguridad.html",
 ]
 
@@ -377,7 +383,7 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
 
 
 def test_http_server_headers_and_sri(base_url: str) -> dict[str, int]:
-    print("[2/5] Validación HTTP directa sobre servidor local (15 páginas, activos, CSP, HSTS, XFO y SRI sha384)...", flush=True)
+    print("[2/5] Validación HTTP directa sobre servidor local (21 páginas, activos, CSP, HSTS, XFO y SRI sha384)...", flush=True)
 
     http_checks = 0
 
@@ -457,14 +463,14 @@ def test_http_server_headers_and_sri(base_url: str) -> dict[str, int]:
     st_sitemap, _, sitemap_bytes = _http_get(f"{base_url}/sitemap.xml")
     http_checks += 2
     _assert(st_robots == 200 and b"sitemap.xml" in robots_bytes, "robots.txt inválido vía HTTP")
-    _assert(st_sitemap == 200 and sitemap_bytes.decode("utf-8").count("<loc>") == 15, "sitemap.xml inválido vía HTTP")
+    _assert(st_sitemap == 200 and sitemap_bytes.decode("utf-8").count("<loc>") == 21, "sitemap.xml inválido vía HTTP")
 
-    print(f"    -> OK: {http_checks} peticiones HTTP verificadas (15 HTML + 4 activos + robots/sitemap + 404, HSTS/XFO/CSP y SRI SHA-384 100 % exacto).", flush=True)
+    print(f"    -> OK: {http_checks} peticiones HTTP verificadas (21 HTML + 4 activos + robots/sitemap + 404, HSTS/XFO/CSP y SRI SHA-384 100 % exacto).", flush=True)
     return {"http_checks": http_checks}
 
 
 def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
-    print("[3/5] Auditoría DOM vía HTTP: 9 Módulos, 5 Planes v3.0.0, Deuna!/PayPhone Pausado, Descargas SHA-256 y LOPDP...", flush=True)
+    print("[3/5] Auditoría DOM vía HTTP: 6 Suites, 14 Módulos, 5 Planes v3.0.0, Deuna!/PayPhone Pausado, Descargas SHA-256 y LOPDP...", flush=True)
 
     pages_html: dict[str, tuple[str, _PortalDOMInspector]] = {}
     for rel in PAGINAS_PORTAL:
@@ -478,7 +484,7 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         viewport_metas = [m.get("content") or "" for m in dom.metas if (m.get("name") or "").lower() == "viewport"]
         _assert(viewport_metas and "width=device-width" in viewport_metas[0], f"Falta meta viewport responsivo en {rel}")
         _assert("navToggle" in dom.ids and "navMenu" in dom.ids, f"Falta navbar móvil #navToggle/#navMenu en {rel}")
-        _assert("nav-dropdown-trigger" in dom.classes and "nav-dropdown-panel" in dom.classes, f"Falta dropdown 9 Módulos en {rel}")
+        _assert("nav-dropdown-trigger" in dom.classes and "nav-dropdown-panel" in dom.classes, f"Falta dropdown 6 Suites ERP en {rel}")
         _assert("pre-footer-cta" in dom.classes and "footer-grid-4" in dom.classes, f"Falta footer unificado en {rel}")
         _assert(dom.classes.count("footer-col") == 4, f"Footer no tiene exactamente 4 .footer-col en {rel}")
         _assert(bool(dom.attrs_index["data-scroll-top"]), f"Falta botón ↑ Subir en {rel}")
@@ -514,6 +520,9 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         ".sha-matrix-table",
         ".views-tour-grid",
         ".hybrid-tabs-bar",
+        "background: #0b1220;",
+        ".ribbon-tabs-bar",
+        ".before-after-grid",
     ]:
         _assert(css_snippet in css_txt, f"Falta regla CSS requerida ({css_snippet}) en assets/css/portal.css")
 
@@ -556,6 +565,17 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
     ):
         _assert(preset_txt in index_html, f"Falta escenario rápido '{preset_txt}' en index.html")
     _assert("btnDescargaDetectada" in index_dom.ids, "Falta botón descarga #btnDescargaDetectada en index.html")
+    _assert("assets/img/hero-uso-erp.webp" in index_html, "Falta escena visual hero-uso-erp.webp en index.html")
+    for badge_txt in (
+        "✓ Firma XAdES-BES .p12 Activa",
+        "✓ 0 Proveedores Fantasma EFOS",
+        "✓ ATS ATMMAAAA.xml Listo",
+        "✓ SQLite Local + Red LAN",
+        "Antes vs. Con TributaFlow ERP",
+        "IVA 0% · 5% · 8% · 15%",
+    ):
+        _assert(badge_txt in index_html, f"Falta bloque/insignia de portada '{badge_txt}' en index.html")
+    _assert(index_dom.classes.count("ribbon-tab-btn") == 6 and index_dom.classes.count("ribbon-panel") == 6, "Se esperaban 6 pestañas y 6 paneles Ribbon en index.html")
     for os_k, (expected_url, expected_sha) in EXPECTED_DOWNLOADS.items():
         _assert(expected_url in index_dom.hrefs, f"Falta enlace descarga v3.0.0 de {os_k} en index.html")
         _assert(os_k in index_dom.attrs_index["data-sha256-value"], f"Falta [data-sha256-value='{os_k}'] en index.html")
@@ -575,6 +595,10 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         _assert(tab_id in guia_dom.guide_panels, f"Falta panel guía '{tab_id}' en guia-uso.html")
         _assert(expected_snippet in guia_html, f"Falta detalle '{expected_snippet}' en guia-uso.html")
     _assert("tour-15-vistas" in guia_dom.ids and guia_dom.classes.count("view-tour-card") == 15, "Se esperaban 15 vistas en #tour-15-vistas de guia-uso.html")
+    _assert("guiaBuscadorInput" in guia_dom.ids and guia_dom.classes.count("guide-func-card") == 15, "Falta buscador instantáneo o 15 tarjetas de rutas en guia-uso.html")
+    _assert("recorridos-operativos" in guia_dom.ids and "atajos-teclado" in guia_dom.ids, "Faltan recorridos paso a paso o tabla de atajos en guia-uso.html")
+    for kbd in ("F1", "F3", "F5", "F7", "F8", "F9", "F10", "F11", "F12"):
+        _assert(f">{kbd}<" in guia_html, f"Falta tecla rápida {kbd} en guia-uso.html")
 
     # politicas.html: 6 cláusulas legales, LOPDP, EULA, Deslinde y Solo Lectura
     pol_html, pol_dom = pages_html["politicas.html"]
@@ -582,7 +606,27 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
     _assert("Acuerdo de Licencia de Usuario Final (EULA) y Condiciones de Uso" in pol_html, "Falta título legal oficial EULA en politicas.html")
     _assert("LOPDP" in pol_html and "EULA" in pol_html and "Deslinde Tributario" in pol_html and "Modo Solo Lectura" in pol_html, "Falta LOPDP, EULA, Deslinde Tributario o Solo Lectura en politicas.html")
 
-    print("    -> OK: 15 DOMs HTTP, 5 planes ($69-$1,490+$150/PC), Tour 15 vistas, Deuna!/PayPhone Próximamente, LOPDP+EULA y SHA-256 v3.0.0 verificados.", flush=True)
+    # Validar los 14 módulos reales y sus pestañas internas
+    module_specs = [
+        ("modulos/panel-general.html", "9no dígito"),
+        ("modulos/mis-contribuyentes.html", "HWID"),
+        ("modulos/sincronizar-sri.html", "cada 20 documentos"),
+        ("modulos/importar-comprobantes.html", "49 dígitos"),
+        ("modulos/bandeja-documentos.html", "Compras / Recibidos"),
+        ("modulos/facturador-pos.html", "Ticket 80mm"),
+        ("modulos/comercial-ribbon.html", "Arqueo de Caja"),
+        ("modulos/inventario-kardex.html", "001 Matriz Principal"),
+        ("modulos/cartera-tesoreria.html", "Tesorería y Bancos"),
+        ("modulos/contabilidad-niif.html", "Nómina Ecuador"),
+        ("modulos/auditor-fantasma.html", "72h"),
+        ("modulos/generador-ats.html", "ATMMAAAA.xml"),
+        ("modulos/busqueda-ruc.html", "Excel / PDF"),
+        ("modulos/ajustes-seguridad.html", "7. Respaldos .tfbkp"),
+    ]
+    for mod_rel, marker in module_specs:
+        _assert(marker in pages_html[mod_rel][0], f"Falta especificación '{marker}' en {mod_rel}")
+
+    print("    -> OK: 21 DOMs HTTP, 14 Módulos/pestañas, 5 planes ($69-$1,490+$150/PC), Tour 15 vistas, Deuna!/PayPhone Próximamente, LOPDP+EULA y SHA-256 v3.0.0 verificados.", flush=True)
     return {"dom_pages": len(pages_html), "plans_verified": len(PRECIOS_ESPERADOS)}
 
 

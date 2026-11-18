@@ -1863,9 +1863,9 @@
         const btnPrincipalDl = document.getElementById("btnDescargaDetectada");
         if (btnPrincipalDl instanceof HTMLElement) {
             if (soInfo.esMovil || !soInfo.soportado) {
-                btnPrincipalDl.textContent = `⬇ Descarga Gratuita ${CONFIG_COMERCIAL.TRIAL_DIAS} Días (Solo PC)`;
+                btnPrincipalDl.textContent = `⬇ Probar Gratis ${CONFIG_COMERCIAL.TRIAL_DIAS} Días (Enterprise Team ERP · Solo PC)`;
             } else {
-                btnPrincipalDl.textContent = `⬇ Descarga Gratuita ${CONFIG_COMERCIAL.TRIAL_DIAS} Días (${soInfo.etiqueta} v${runtimeVersion})`;
+                btnPrincipalDl.textContent = `⬇ Probar Gratis ${CONFIG_COMERCIAL.TRIAL_DIAS} Días (Enterprise Team ERP · ${soInfo.etiqueta})`;
             }
         }
         const btnPaginaDl = document.getElementById("btnDescargaPaginaPrincipal");
@@ -2529,6 +2529,158 @@
         if (modal instanceof HTMLElement) modal.style.display = "flex";
     }
 
+    function inicializarExploradorSuitesRibbon() {
+        const suiteTabs = Array.from(document.querySelectorAll("[data-suite-tab]"));
+        const suitePanels = Array.from(document.querySelectorAll("[data-suite-panel]"));
+        if (suiteTabs.length && suitePanels.length) {
+            const PERMITIDAS = new Set([
+                "inicio-sri",
+                "comercial-pos",
+                "inventario-cartera",
+                "contabilidad-niif",
+                "impuestos-auditoria",
+                "sistema-lan",
+            ]);
+
+            function activarSuite(suiteId) {
+                const limpia = PERMITIDAS.has(suiteId) ? suiteId : "inicio-sri";
+                suiteTabs.forEach((btn) => {
+                    const activo = btn.getAttribute("data-suite-tab") === limpia;
+                    btn.classList.toggle("is-active", activo);
+                    btn.setAttribute("aria-selected", activo ? "true" : "false");
+                });
+                suitePanels.forEach((panel) => {
+                    panel.classList.toggle("is-active", panel.getAttribute("data-suite-panel") === limpia);
+                });
+            }
+
+            suiteTabs.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    activarSuite(btn.getAttribute("data-suite-tab") || "inicio-sri");
+                });
+            });
+
+            const syncFromHash = () => {
+                const h = String(window.location.hash || "").replace(/^#suite-/, "").toLowerCase();
+                if (PERMITIDAS.has(h)) activarSuite(h);
+            };
+            window.addEventListener("hashchange", syncFromHash);
+            syncFromHash();
+        }
+
+        const heroBtns = Array.from(document.querySelectorAll("[data-hero-view-btn]"));
+        const heroScreens = Array.from(document.querySelectorAll("[data-hero-view-panel]"));
+        if (heroBtns.length && heroScreens.length) {
+            heroBtns.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const target = btn.getAttribute("data-hero-view-btn");
+                    heroBtns.forEach((b) => b.classList.toggle("is-active", b === btn));
+                    heroScreens.forEach((s) => s.classList.toggle("is-active", s.getAttribute("data-hero-view-panel") === target));
+                });
+            });
+        }
+    }
+
+    function inicializarManualOperativoTabs() {
+        const tabs = Array.from(document.querySelectorAll("[data-manual-tab]"));
+        const panels = Array.from(document.querySelectorAll("[data-manual-panel]"));
+        if (!tabs.length || !panels.length) return;
+
+        const PERMITIDAS = new Set([
+            "sri-operacion",
+            "comercial-pos",
+            "inventario-cartera",
+            "contabilidad-niif",
+            "auditoria-ats",
+            "sistema-lan",
+        ]);
+
+        function activar(tabId) {
+            const limpia = PERMITIDAS.has(tabId) ? tabId : "sri-operacion";
+            tabs.forEach((btn) => {
+                const activo = btn.getAttribute("data-manual-tab") === limpia;
+                btn.classList.toggle("is-active", activo);
+                btn.setAttribute("aria-selected", activo ? "true" : "false");
+            });
+            panels.forEach((panel) => {
+                const activo = panel.getAttribute("data-manual-panel") === limpia;
+                panel.classList.toggle("is-active", activo);
+            });
+        }
+
+        tabs.forEach((btn, idx) => {
+            btn.addEventListener("click", () => {
+                activar(btn.getAttribute("data-manual-tab") || "sri-operacion");
+            });
+            btn.addEventListener("keydown", (ev) => {
+                if (ev.key !== "ArrowRight" && ev.key !== "ArrowLeft" && ev.key !== "Home" && ev.key !== "End") return;
+                ev.preventDefault();
+                let nextIdx = idx;
+                if (ev.key === "ArrowRight") nextIdx = (idx + 1) % tabs.length;
+                if (ev.key === "ArrowLeft") nextIdx = (idx - 1 + tabs.length) % tabs.length;
+                if (ev.key === "Home") nextIdx = 0;
+                if (ev.key === "End") nextIdx = tabs.length - 1;
+                const nextBtn = tabs[nextIdx];
+                if (nextBtn instanceof HTMLElement) {
+                    activar(nextBtn.getAttribute("data-manual-tab") || "sri-operacion");
+                    nextBtn.focus();
+                }
+            });
+        });
+
+        activar("sri-operacion");
+    }
+
+    function inicializarBuscadorFuncionesGuia() {
+        const input = document.getElementById("guiaBuscadorInput");
+        const clearBtn = document.getElementById("guiaBuscadorLimpiar");
+        const countEl = document.getElementById("guiaBuscadorCount");
+        const cards = Array.from(document.querySelectorAll("[data-guide-func-card]"));
+        const chipBtns = Array.from(document.querySelectorAll("[data-guide-chip]"));
+        if (!(input instanceof HTMLInputElement) || !cards.length) return;
+
+        function normalizarTexto(s) {
+            return String(s || "")
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase()
+                .trim();
+        }
+
+        function filtrar() {
+            const q = normalizarTexto(input.value);
+            let visibles = 0;
+            cards.forEach((card) => {
+                if (!(card instanceof HTMLElement)) return;
+                const haystack = normalizarTexto(`${card.getAttribute("data-keywords") || ""} ${card.textContent || ""}`);
+                const match = !q || haystack.includes(q);
+                card.style.display = match ? "flex" : "none";
+                if (match) visibles += 1;
+            });
+            if (countEl) {
+                countEl.textContent = visibles === 0
+                    ? "0 coincidencias. Prueba: tfbkp, firma .p12, retencion, fantasma, ats, kardex, bodega, nomina, anular, cxc o lan."
+                    : `Mostrando ${visibles} de ${cards.length} rutas oficiales de TributaFlow ERP v${runtimeVersion}`;
+            }
+        }
+
+        input.addEventListener("input", filtrar);
+        if (clearBtn) {
+            clearBtn.addEventListener("click", () => {
+                input.value = "";
+                filtrar();
+                input.focus();
+            });
+        }
+        chipBtns.forEach((chip) => {
+            chip.addEventListener("click", () => {
+                input.value = chip.getAttribute("data-guide-chip") || "";
+                filtrar();
+            });
+        });
+        filtrar();
+    }
+
     function inicializarSoporteOrdenes() {
         const btn = document.getElementById("btnLookupGuestOrder");
         const inRef = document.getElementById("lookupOrderRef");
@@ -2570,6 +2722,9 @@
         inicializarCalculadoraAddonCorp();
         inicializarSelectorFacturacion();
         inicializarPestanasGuiaUso();
+        inicializarManualOperativoTabs();
+        inicializarExploradorSuitesRibbon();
+        inicializarBuscadorFuncionesGuia();
         inicializarSoporteOrdenes();
 
         // Fallback seguro CSP para logotipos SVG -> PNG
@@ -2583,21 +2738,18 @@
             });
         });
 
-        // Menú desplegable "9 Módulos ▾" en todas las páginas
-        const MODULOS_PORTAL = [
-            { icon: "📊", title: "1. Panel General", desc: "Tablero KPIs, vencimientos y cupo ético", href: "modulos/panel-general.html" },
-            { icon: "🏢", title: "2. Mis Contribuyentes", desc: "Multi-RUC, SQLite HWID y respaldo .tfbkp", href: "modulos/mis-contribuyentes.html" },
-            { icon: "⚡", title: "3. Sincronizar SRI", desc: "Árbol contable jerárquico XML y RIDE", href: "modulos/sincronizar-sri.html" },
-            { icon: "📥", title: "4. Importar Comprobantes", desc: "Claves .txt del SRI y lotes XML masivos", href: "modulos/importar-comprobantes.html" },
-            { icon: "🕵️", title: "5. Auditor Fantasma SRI", desc: "Cruce preventivo contra empresas fantasma", href: "modulos/auditor-fantasma.html" },
-            { icon: "🔎", title: "6. Búsqueda RUC / Cédula", desc: "Consulta tributaria directa sin bloqueos", href: "modulos/busqueda-ruc.html" },
-            { icon: "📚", title: "7. Consulta Masiva", desc: "Verificación en lote y exportación Excel/CSV", href: "modulos/consulta-masiva.html" },
-            { icon: "📑", title: "8. Generador y Validador ATS", desc: "XML ATS oficial, XSD y clave contingencia", href: "modulos/generador-ats.html" },
-            { icon: "🔐", title: "9. Ajustes, Red LAN y Blindaje", desc: "Permisos ✓/🔒, estaciones TCP/IP y UNC", href: "modulos/ajustes-seguridad.html" },
+        // Menú desplegable "6 Suites ERP ▾" en todas las páginas
+        const SUITES_PORTAL = [
+            { icon: "⚡", title: "1. Inicio & Portal SRI", desc: "Panel General, Multi-RUC y Sincronización XML/RIDE", href: "index.html#suite-inicio-sri" },
+            { icon: "🧾", title: "2. Comercial & Facturación POS .p12", desc: "Firma XAdES-BES .p12, IVA 0/5/8/15% y RIDE", href: "index.html#suite-comercial-pos" },
+            { icon: "📦", title: "3. Inventario, Kardex & Cartera", desc: "Multi-bodega, Kardex promedio y CxC/CxP", href: "index.html#suite-inventario-cartera" },
+            { icon: "📊", title: "4. Contabilidad NIIF & Nómina IESS", desc: "Libro Diario, Balances NIIF, roles y décimos", href: "index.html#suite-contabilidad-niif" },
+            { icon: "🔍", title: "5. Impuestos, Auditoría & Consultas", desc: "EFOS, Masiva RUC, ATS XSD y Form. 103/104", href: "index.html#suite-impuestos-auditoria" },
+            { icon: "🛡️", title: "6. Sistema, Red LAN & Seguridad", desc: "AES-256-GCM, Red LAN, Oficina+Casa y .tfbkp", href: "index.html#suite-sistema-lan" },
         ];
 
         const navRoot = obtenerPrefijoRuta();
-        const currentPage = (window.location.pathname || "").split("/").pop() || "";
+        const currentHash = String(window.location.hash || "");
 
         function esModoMovilNav() {
             return window.matchMedia && window.matchMedia("(max-width: 768px)").matches;
@@ -2621,24 +2773,25 @@
             const panel = dd.querySelector(".nav-dropdown-panel");
             if (!(trigger instanceof HTMLElement) || !(panel instanceof HTMLElement)) return;
 
-            const header = crearEl("div", "nav-dropdown-header", "Suite Completa — 9 Módulos TributaFlow ERP v3.0.0");
+            const header = crearEl("div", "nav-dropdown-header", `6 Suites Reales — TributaFlow ERP v${runtimeVersion} (Edición 2026 · QUORATEC)`);
             const grid = crearEl("div", "nav-dropdown-grid");
 
-            MODULOS_PORTAL.forEach((mod) => {
+            SUITES_PORTAL.forEach((suite) => {
                 const link = document.createElement("a");
-                const isCurrent = Boolean(currentPage && mod.href.endsWith("/" + currentPage));
-                link.href = `${navRoot}${mod.href}`;
+                const isCurrent = Boolean(currentHash && suite.href.endsWith(currentHash));
+                link.href = `${navRoot}${suite.href}`;
                 link.className = isCurrent ? "nav-dropdown-item is-current" : "nav-dropdown-item";
                 link.setAttribute("role", "menuitem");
                 if (isCurrent) link.setAttribute("aria-current", "page");
 
-                const iconSpan = crearEl("span", "nav-dropdown-icon", mod.icon);
+                const iconSpan = crearEl("span", "nav-dropdown-icon", suite.icon);
                 iconSpan.setAttribute("aria-hidden", "true");
                 const textWrap = crearEl("span", "nav-dropdown-text");
-                textWrap.appendChild(crearEl("span", "nav-dropdown-title", mod.title));
-                textWrap.appendChild(crearEl("span", "nav-dropdown-desc", mod.desc));
+                textWrap.appendChild(crearEl("span", "nav-dropdown-title", suite.title));
+                textWrap.appendChild(crearEl("span", "nav-dropdown-desc", suite.desc));
                 link.appendChild(iconSpan);
                 link.appendChild(textWrap);
+                link.addEventListener("click", () => cerrarDd());
                 grid.appendChild(link);
             });
 
@@ -2646,7 +2799,8 @@
             const allLink = document.createElement("a");
             allLink.href = `${navRoot}index.html#modulos`;
             allLink.className = "nav-dropdown-all";
-            allLink.textContent = "Ver resumen completo en portada ➔";
+            allLink.textContent = "Explorar Mapa de 14 Módulos ➔";
+            allLink.addEventListener("click", () => cerrarDd());
             footer.appendChild(allLink);
 
             panel.textContent = "";

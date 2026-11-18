@@ -187,7 +187,7 @@ code {
     object-fit: contain;
 }
 
-/* Menú desplegable responsivo "9 Módulos ▾" */
+/* Menú desplegable responsivo "6 Suites ERP ▾" */
 .nav-dropdown {
     position: static;
     display: flex;
@@ -242,15 +242,15 @@ code {
     pointer-events: none;
     transform: translateY(-6px);
     position: absolute;
-    top: calc(100% + 4px);
+    top: calc(100% + 6px);
     right: 24px;
-    width: min(650px, calc(100vw - 48px));
-    background: rgba(15, 23, 42, 0.98);
-    backdrop-filter: blur(18px);
-    border: 1px solid rgba(56, 189, 248, 0.28);
+    width: min(680px, calc(100vw - 48px));
+    background: #0b1220;
+    backdrop-filter: none;
+    border: 1px solid rgba(148, 163, 184, 0.24);
     border-radius: 14px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
-    padding: 14px;
+    box-shadow: 0 28px 68px rgba(2, 6, 23, 0.92), 0 0 0 1px rgba(56, 189, 248, 0.14);
+    padding: 16px;
     z-index: 9999;
 }
 
@@ -681,7 +681,7 @@ code {
     color: var(--text-muted);
 }
 
-/* Exploración de los 9 Módulos (Multipágina) */
+/* Exploración de las 6 Suites y 14 Módulos (Multipágina) */
 .modules-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2044,13 +2044,14 @@ code {
         pointer-events: auto;
         transform: none;
         transition: none;
-        background: rgba(15, 23, 42, 0.72);
+        background: #0b1220;
         backdrop-filter: none;
-        border: 1px solid rgba(56, 189, 248, 0.22);
+        border: 1px solid rgba(148, 163, 184, 0.24);
         border-radius: 10px;
-        box-shadow: none;
-        padding: 10px;
+        box-shadow: 0 18px 36px rgba(2, 6, 23, 0.8);
+        padding: 12px;
         margin-top: 6px;
+        z-index: 9999;
     }
 
     .nav-dropdown-panel::before {
@@ -3251,6 +3252,18 @@ html, body {
     border-color: rgba(15, 23, 42, 0.14);
 }
 
+:root[data-theme="light"] .nav-dropdown-title {
+    color: #0f172a;
+}
+
+:root[data-theme="light"] .nav-dropdown-desc {
+    color: #475569;
+}
+
+:root[data-theme="light"] .nav-dropdown-item {
+    color: #0f172a !important;
+}
+
 :root[data-theme="light"] .terminal-content,
 :root[data-theme="light"] .tree-box pre {
     background: #0f172a;
@@ -3586,4 +3599,653 @@ html, body {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================================================
+   FASE 1 (Portada Conversión + Escena Hero + Ribbon 6 Suites + Antes vs Con)
+   ========================================================================== */
+
+.hero-visual-stage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.hero-photo-frame {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(56, 189, 248, 0.32);
+    background: #0b1220;
+    box-shadow: 0 24px 64px rgba(2, 6, 23, 0.72);
+}
+
+.hero-photo-img {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    opacity: 0.92;
+}
+
+.hero-mockup-window {
+    background: #0b1220;
+    border-top: 1px solid rgba(148, 163, 184, 0.18);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hero-mockup-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.hero-mockup-tab {
+    appearance: none;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    background: rgba(30, 41, 59, 0.75);
+    color: #cbd5e1;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.hero-mockup-tab.is-active {
+    background: rgba(37, 99, 235, 0.28);
+    border-color: #38bdf8;
+    color: #ffffff;
+}
+
+.hero-mockup-screen {
+    display: none;
+    padding: 14px;
+    border-radius: 10px;
+    background: #060b16;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    flex-direction: column;
+    gap: 8px;
+}
+
+.hero-mockup-screen.is-active {
+    display: flex;
+}
+
+.hero-screen-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12.5px;
+    color: #e2e8f0;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed rgba(148, 163, 184, 0.16);
+}
+
+.hero-screen-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.hero-float-badges {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.hero-float-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 11px;
+    border-radius: 10px;
+    background: #0b1220;
+    border: 1px solid rgba(16, 185, 129, 0.34);
+    color: #6ee7b7;
+    font-size: 11.5px;
+    font-weight: 700;
+    box-shadow: 0 10px 24px rgba(2, 6, 23, 0.45);
+}
+
+:root[data-theme="light"] .hero-photo-frame,
+:root[data-theme="light"] .hero-mockup-window,
+:root[data-theme="light"] .hero-float-pill {
+    background: #ffffff;
+    border-color: rgba(15, 23, 42, 0.14);
+}
+
+:root[data-theme="light"] .hero-float-pill {
+    color: #047857;
+    border-color: rgba(16, 185, 129, 0.42);
+}
+
+:root[data-theme="light"] .hero-mockup-tab {
+    background: #f1f5f9;
+    color: #334155;
+}
+
+:root[data-theme="light"] .hero-mockup-tab.is-active {
+    background: #1d4ed8;
+    color: #ffffff;
+}
+
+.ribbon-tabs-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px;
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    margin-bottom: 20px;
+}
+
+.ribbon-tab-btn {
+    appearance: none;
+    flex: 1 1 160px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 11px 12px;
+    border-radius: 9px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.ribbon-tab-btn:hover {
+    color: var(--text-main);
+    background: rgba(148, 163, 184, 0.1);
+}
+
+.ribbon-tab-btn.is-active {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.26), rgba(2, 132, 199, 0.22));
+    border-color: rgba(56, 189, 248, 0.48);
+    color: var(--text-main);
+}
+
+.ribbon-panel {
+    display: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 26px;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.ribbon-panel.is-active {
+    display: flex;
+}
+
+.ribbon-panel-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 14px;
+}
+
+.ribbon-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+}
+
+.ribbon-module-card {
+    background: var(--bg-card-alt);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.before-after-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.compare-card--before,
+.compare-card--after {
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.compare-card--before {
+    background: rgba(239, 68, 68, 0.06);
+    border: 1px solid rgba(239, 68, 68, 0.28);
+}
+
+.compare-card--after {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.36);
+}
+
+.compare-list-clean {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-soft);
+}
+
+.guarantees-strip {
+    margin-top: 22px;
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    background: var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13.5px;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .hero-float-badges,
+    .before-after-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.module-tabs-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.module-tab-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 9px;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    color: var(--accent);
+    font-size: 12.5px;
+    font-weight: 700;
+}
+
+.module-progressive-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+/* ==========================================================================
+   FASE 3: Buscador Instantáneo de Funciones y Tabla de Atajos F1-F12
+   ========================================================================== */
+
+.guide-search-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-highlight);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.guide-search-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.guide-search-input {
+    flex: 1 1 300px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-card-alt);
+    color: var(--text-main);
+    font-size: 14.5px;
+}
+
+.guide-search-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.guide-chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.guide-chip-btn {
+    appearance: none;
+    padding: 5px 11px;
+    border-radius: 99px;
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    background: rgba(56, 189, 248, 0.08);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.guide-chip-btn:hover {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: var(--accent);
+}
+
+.guide-func-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 14px;
+}
+
+.guide-func-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.erp-path-pill {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.32);
+    color: #10b981;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.kbd-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    padding: 4px 10px;
+    border-radius: 7px;
+    background: rgba(37, 99, 235, 0.18);
+    border: 1px solid rgba(56, 189, 248, 0.42);
+    color: var(--text-main);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    font-weight: 800;
+}
+
+/* ==========================================================================
+   IHC Manual Operativo Progresivo (guia-uso.html v3.0.0)
+   ========================================================================== */
+
+.guide-toc-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 22px;
+}
+
+.guide-toc-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 99px;
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-soft);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.guide-toc-pill:hover,
+.guide-toc-pill:focus-visible {
+    border-color: var(--accent);
+    color: var(--text-main);
+    background: rgba(37, 99, 235, 0.16);
+}
+
+:root[data-theme="light"] .guide-toc-pill {
+    background: #ffffff;
+    color: #334155;
+}
+
+.erp-anatomy-shell {
+    background: #0b1220;
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+    box-shadow: 0 18px 44px rgba(2, 6, 23, 0.45);
+}
+
+:root[data-theme="light"] .erp-anatomy-shell {
+    background: #f8fafc;
+    border-color: rgba(15, 23, 42, 0.16);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.anatomy-bar-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    background: rgba(30, 41, 59, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    font-size: 12px;
+    color: #e2e8f0;
+}
+
+.anatomy-bar-strip.is-ribbon {
+    background: rgba(37, 99, 235, 0.16);
+    border-color: rgba(56, 189, 248, 0.34);
+}
+
+:root[data-theme="light"] .anatomy-bar-strip {
+    background: #ffffff;
+    color: #0f172a;
+    border-color: rgba(15, 23, 42, 0.14);
+}
+
+:root[data-theme="light"] .anatomy-bar-strip.is-ribbon {
+    background: #eff6ff;
+    border-color: rgba(37, 99, 235, 0.28);
+}
+
+.anatomy-chips-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.anatomy-mini-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    font-size: 11px;
+    font-weight: 700;
+    color: #cbd5e1;
+}
+
+:root[data-theme="light"] .anatomy-mini-tag {
+    background: #f1f5f9;
+    color: #334155;
+    border-color: rgba(15, 23, 42, 0.14);
+}
+
+.anatomy-workspace-split {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 10px;
+}
+
+.anatomy-sidebar-box,
+.anatomy-mdi-box {
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: rgba(15, 23, 42, 0.65);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12.5px;
+    color: #cbd5e1;
+}
+
+:root[data-theme="light"] .anatomy-sidebar-box,
+:root[data-theme="light"] .anatomy-mdi-box {
+    background: #ffffff;
+    color: #334155;
+    border-color: rgba(15, 23, 42, 0.14);
+}
+
+.anatomy-zones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+.anatomy-zone-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.anatomy-zone-tag {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 99px;
+    background: rgba(56, 189, 248, 0.14);
+    border: 1px solid rgba(56, 189, 248, 0.34);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.onboarding-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.manual-suite-panel {
+    display: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 26px;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.manual-suite-panel.is-active {
+    display: flex;
+}
+
+.manual-proc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 16px;
+}
+
+.manual-proc-card {
+    background: var(--bg-card-alt);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.manual-proc-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+}
+
+.manual-step-list {
+    margin: 0;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13.5px;
+    color: var(--text-soft);
+}
+
+.guide-howto-text {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-soft);
+    padding-top: 6px;
+    border-top: 1px dashed var(--border-subtle);
+}
+
+@media (max-width: 900px) {
+    .anatomy-workspace-split,
+    .onboarding-steps-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .manual-suite-panel {
+        padding: 18px 16px;
+    }
+}
+
+
+
 

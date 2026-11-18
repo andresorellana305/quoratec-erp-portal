@@ -66,8 +66,24 @@
   {
     "output": "modulos/auditor-fantasma.html",
     "template": "pages/modulos/auditor-fantasma.html",
-    "title": "Auditor Fantasma SRI en Tiempo Real | TributaFlow ERP v3.0.0",
-    "description": "Cruce preventivo automático contra el catastro de empresas fantasmas e inexistentes del SRI antes de declarar impuestos. Disponible desde Estudio Pro.",
+    "title": "Auditoría Integral y Riesgo Fiscal SRI (72h) | TributaFlow ERP v3.0.0",
+    "description": "Auditoría integral SRI con 3 pestañas: Empresas Fantasma (EFOS), SRI vs Contabilidad NIIF y Duplicados/Secuenciales.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/bandeja-documentos.html",
+    "template": "pages/modulos/bandeja-documentos.html",
+    "title": "Bandeja Documentos ERP (4 Pasos) | TributaFlow ERP v3.0.0",
+    "description": "Flujo guiado en 4 pasos y 4 pestañas: homologación XML, retención 49 dígitos, Kardex, asiento NIIF y ATS.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
@@ -82,8 +98,40 @@
   {
     "output": "modulos/busqueda-ruc.html",
     "template": "pages/modulos/busqueda-ruc.html",
-    "title": "Búsqueda RUC / Cédula | TributaFlow ERP v3.0.0",
-    "description": "Consulta instantánea de estado tributario, actividad económica, tipo de contribuyente y validación de RUC o identificación Ecuador.",
+    "title": "Búsqueda RUC/Cédula y Consulta Masiva | TributaFlow ERP v3.0.0",
+    "description": "Consulta individual al catastro SRI y validación masiva en lote con exportación Excel y PDF.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/cartera-tesoreria.html",
+    "template": "pages/modulos/cartera-tesoreria.html",
+    "title": "Cartera (CxC / CxP) y Tesorería | TributaFlow ERP v3.0.0",
+    "description": "Gestión de Cuentas por Cobrar, Cuentas por Pagar y Tesorería y Bancos con conciliación contable NIIF.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/comercial-ribbon.html",
+    "template": "pages/modulos/comercial-ribbon.html",
+    "title": "Suite Comercial Ribbon (Comercial & POS) | TributaFlow ERP v3.0.0",
+    "description": "Facturas Clientes, Anulación, Secuencias Fact./N.C., Vendedores, Pedidos, Proformas, Guías de Remisión y Arqueo de Caja.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
@@ -147,7 +195,55 @@
     "output": "modulos/mis-contribuyentes.html",
     "template": "pages/modulos/mis-contribuyentes.html",
     "title": "Mis Contribuyentes (Multi-RUC) | TributaFlow ERP v3.0.0",
-    "description": "Gestión multi-empresa aislada con SQLite cifrada por HWID (PBKDF2 + AES-256-GCM + HMAC), sellado ético SRI y respaldo cifrado .tfbkp.",
+    "description": "Gestión multi-empresa aislada con SQLite cifrada por HWID (PBKDF2 + AES-256-GCM + HMAC), clave SRI local y respaldo .tfbkp.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/contabilidad-niif.html",
+    "template": "pages/modulos/contabilidad-niif.html",
+    "title": "Contabilidad NIIF Ecuador (7 Pestañas) | TributaFlow ERP v3.0.0",
+    "description": "Libro Diario, Libro Mayor, Balance de Comprobación, Estados Financieros NIIF, Plan de Cuentas, Activos Fijos y Nómina Ecuador IESS.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/facturador-pos.html",
+    "template": "pages/modulos/facturador-pos.html",
+    "title": "Facturador Electrónico SRI (.p12) y POS | TributaFlow ERP v3.0.0",
+    "description": "Emisión 01 Factura, 04 N.C., 06 Guía y 07 Retención con firma XAdES-BES .p12, IVA 0/5/8/15%, Ticket 80mm / A4 y cola SOAP SRI.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/inventario-kardex.html",
+    "template": "pages/modulos/inventario-kardex.html",
+    "title": "Inventario & Kardex Promedio Ponderado | TributaFlow ERP v3.0.0",
+    "description": "Multi-bodega 001 Matriz Principal, grupos/subgrupos, compras/devoluciones, stock mínimo, Catálogo y Existencias y Movimientos Kardex.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {

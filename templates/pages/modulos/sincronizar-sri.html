@@ -3,54 +3,69 @@
                 <nav class="breadcrumb" aria-label="Ruta de navegación">
                     <a href="../index.html">Inicio</a>
                     <span>/</span>
-                    <a href="../index.html#modulos">Módulos</a>
+                    <a href="../index.html#suite-inicio-sri">Operación SRI</a>
                     <span>/</span>
-                    <span>3. Sincronizar SRI (Árbol Contable Jerárquico)</span>
+                    <span>3. Sincronizar SRI en Línea</span>
                 </nav>
-                <span class="eyebrow">MÓDULO 03 • MOTOR PLAYWRIGHT + BÓVEDA CONTABLE JERÁRQUICA</span>
-                <h1>Sincronización SRI y Árbol Contable Jerárquico</h1>
-                <p class="lead-sub">Automatiza la extracción de comprobantes electrónicos emitidos y recibidos desde el SRI en Línea, genera sus RIDE PDF y archiva todo en carpetas ordenadas por contribuyente, año, mes, dirección, tipo y formato.</p>
+                <span class="eyebrow">MÓDULO 03 · OPERACIÓN SRI ➔ SINCRONIZAR SRI · MOTOR INCREMENTAL</span>
+                <h1>Sincronizar SRI en Línea: Guardado Incremental y Borrador ATS</h1>
+                <p class="lead-sub">Descarga masiva de comprobantes Recibidos, Emitidos o Ambos directamente desde el SRI con guardado incremental cada 20 documentos, conservación automática de XML clasificados, RIDE PDF y pre-construcción del borrador ATS.</p>
+                <div class="module-tabs-strip">
+                    <span class="module-tab-pill">📥 Recibidos / Emitidos / Ambos</span>
+                    <span class="module-tab-pill">💾 Guardado Incremental c/ 20 Docs</span>
+                    <span class="module-tab-pill">📄 XML + RIDE PDF + Borrador ATS</span>
+                </div>
             </div>
         </section>
 
         <section class="section">
             <div class="container">
-                <div class="architecture-split">
-                    <div class="tree-box">
-                        <span class="eyebrow">ÁRBOL JERÁRQUICO REAL EN DISCO</span>
-                        <pre>Boveda_TributaFlow/
-    └── &lt;RUC&gt;_&lt;EMPRESA&gt;/ (Ej: 1790012345001_EMPRESA_DEMOSTRACION_SA)
-        ├── &lt;AÑO&gt;/ (2026)
-        │   └── &lt;MM_MES&gt;/ (10_OCTUBRE)
-        │       ├── Emitidos/
-        │       │   └── &lt;TIPO&gt;/ (Facturas | Retenciones | Notas_Credito)
-        │       │       ├── XML/
-        │       │       └── RIDE/
-        │       └── Recibidos/
-        │           └── &lt;TIPO&gt;/
-        │               ├── XML/
-        │               └── RIDE/
-        └── Logs_Sincronizacion/
-            └── historial_2026_10.log</pre>
+                <div class="module-detail-grid">
+                    <div class="step-cards">
+                        <article class="step-card">
+                            <h4>⚡ Guardado Incremental cada 20 Documentos</h4>
+                            <p>Si el portal del SRI se vuelve lento o se corta internet, nunca pierdes avance: el motor persiste cada lote de 20 comprobantes en SQLite y reanuda sin duplicar.</p>
+                        </article>
+                        <article class="step-card">
+                            <h4>🗂️ Conservación de XML Clasificados y RIDE PDF</h4>
+                            <p>Almacena automáticamente cada XML oficial clasificado por tipo (Facturas, N.C., Retenciones, Liquidaciones, Guías) y regenera su RIDE PDF offline.</p>
+                        </article>
+                        <article class="step-card">
+                            <h4>📑 Pre-Generación de Borrador ATS</h4>
+                            <p>Mientras indexa tus comprobantes del periodo, alimenta al instante la Bandeja ERP y el borrador de Anexo Transaccional Simplificado.</p>
+                        </article>
+                        <article class="step-card">
+                            <h4>🖥️ Ejecución Fluida Cero-Consolas CMD</h4>
+                            <p>Interfaz nativa con selector de fechas integrado y progreso en vivo sin ventanas emergentes ni procesos bloqueantes.</p>
+                        </article>
                     </div>
 
-                    <div class="feature-list-panel">
-                        <h3>Capacidades Clave de Sincronización</h3>
-                        <ul>
-                            <li>✔ <strong>Deduplicación por Clave de Acceso (49 dígitos):</strong> Nunca descarga ni duplica dos veces el mismo XML o RIDE dentro de la bóveda o SQLite.</li>
-                            <li>✔ <strong>Sincronización en Lote Multi-RUC:</strong> Desde Contador Master (25 RUCs), Estudio Pro (60 RUCs en 1 o 2 PCs) hasta Enterprise (RUCs Ilimitados), procesa colas nocturnas o por período.</li>
-                            <li>✔ <strong>Trazabilidad en <code>Logs_Sincronizacion/</code>:</strong> Registro detallado de comprobantes nuevos, omitidos por duplicado y reintentos ante caídas del portal SRI.</li>
-                            <li>✔ <strong>Cola Anti-Colisión Red LAN:</strong> En Enterprise Team y Corp impide que dos PCs descarguen simultáneamente el mismo RUC y período.</li>
-                        </ul>
+                    <div class="terminal-card">
+                        <div class="terminal-top">
+                            <div class="win-controls"><span></span><span></span><span></span></div>
+                            <div class="terminal-tab">Operación SRI ➔ Sincronizar SRI (Batch Engine)</div>
+                        </div>
+                        <div class="terminal-content">
+                            <div class="log-line"><span class="t-info">MODO:</span> Recibidos + Emitidos (Ambos) • Periodo 10/2026</div>
+                            <div class="log-line"><span class="t-ok">✔ CHECKPOINT 1 (20 docs):</span> Guardados en SQLite + XML/RIDE locales</div>
+                            <div class="log-line"><span class="t-ok">✔ CHECKPOINT 2 (40 docs):</span> Deduplicación por clave de acceso 49 dígitos</div>
+                            <div class="log-line"><span class="t-ok">✔ COMPLETADO:</span> 418 XML clasificados · Borrador ATS actualizado</div>
+                            <div class="terminal-summary">
+                                <div>
+                                    <small>Integridad XML + RIDE Verificada</small>
+                                    <strong>Listo en Bandeja 4 Pasos</strong>
+                                </div>
+                                <span class="badge-ready">SYNC 100 % OK</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="module-nav-footer">
-                    <a href="mis-contribuyentes.html" class="btn-glass">← Anterior: Mis Contribuyentes</a>
+                    <a href="mis-contribuyentes.html" class="btn-glass">← Anterior: 2. Mis Contribuyentes</a>
                     <div class="flex-wrap-actions">
-                        <button type="button" class="btn-glass" data-download-os="auto">⬇ Descargar v3.0.0</button>
-                        <button type="button" class="btn-primary" data-checkout-plan="ESTUDIO_PRO">💳 Adquirir Estudio Pro ($379)</button>
-                        <a href="importar-comprobantes.html" class="btn-glass">Siguiente: Importar Comprobantes →</a>
+                        <button type="button" class="btn-primary" data-checkout-plan="ESTUDIO_PRO">💳 Activar Estudio Pro ($379)</button>
+                        <a href="importar-comprobantes.html" class="btn-glass">Siguiente: 4. Importar .txt / .xml →</a>
                     </div>
                 </div>
             </div>

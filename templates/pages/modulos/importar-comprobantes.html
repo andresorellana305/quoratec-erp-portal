@@ -3,13 +3,18 @@
                 <nav class="breadcrumb" aria-label="Ruta de navegación">
                     <a href="../index.html">Inicio</a>
                     <span>/</span>
-                    <a href="../index.html#modulos">Módulos</a>
+                    <a href="../index.html#suite-inicio-sri">Operación SRI</a>
                     <span>/</span>
-                    <span>4. Importar Comprobantes</span>
+                    <span>4. Importar .txt / .xml</span>
                 </nav>
-                <span class="eyebrow">MÓDULO 04 • DISPONIBLE EN LOS 5 PLANES</span>
-                <h1>Importar Comprobantes (.TXT Claves SRI y Carpetas XML)</h1>
-                <p class="lead-sub">Procesa archivos planos <code>.txt</code> descargados manualmente del portal SRI o directorios históricos de XML acumulados durante años para indexarlos en SQLite, generar sus RIDE PDF y acomodarlos en el árbol contable jerárquico.</p>
+                <span class="eyebrow">MÓDULO 04 · OPERACIÓN SRI ➔ IMPORTAR .TXT / .XML · INGESTA OFFLINE</span>
+                <h1>Importar .txt / .xml: Carga Masiva sin Límites</h1>
+                <p class="lead-sub">Procesa archivos <code>.txt</code> descargados manualmente desde el portal del SRI o carpetas completas de comprobantes electrónicos <code>.xml</code> locales con deduplicación instantánea por clave de acceso de 49 dígitos.</p>
+                <div class="module-tabs-strip">
+                    <span class="module-tab-pill">📄 Listados .txt del SRI</span>
+                    <span class="module-tab-pill">📁 Carpetas Completas .xml</span>
+                    <span class="module-tab-pill">🔁 Deduplicación 49 Dígitos</span>
+                </div>
             </div>
         </section>
 
@@ -18,50 +23,42 @@
                 <div class="module-detail-grid">
                     <div class="step-cards">
                         <article class="step-card">
-                            <h4>📄 Lectura de TXT del SRI</h4>
-                            <p>Importa listados oficiales de comprobantes recibidos o emitidos del SRI, consulta cada clave de acceso vía Web Service autorizado y descarga el XML completo.</p>
+                            <h4>📄 Lectura de Archivos .txt del Portal SRI</h4>
+                            <p>Parsea listados completos de comprobantes recibidos o emitidos exportados desde SRI en Línea y normaliza fechas, RUCs y bases imponibles (IVA 0/5/8/15%).</p>
                         </article>
                         <article class="step-card">
-                            <h4>📂 Reorganización de XML Existentes</h4>
-                            <p>¿Tienes cientos de XML sueltos en descargas? TributaFlow ERP los parsea, detecta empresa, período, tipo y los ubica en su carpeta exacta del árbol contable jerárquico.</p>
+                            <h4>📁 Ingesta Recursiva de Carpetas XML</h4>
+                            <p>Selecciona un directorio con cientos o miles de XML electrónicos locales para indexar sus detalles línea por línea dentro de la bóveda SQLite.</p>
                         </article>
                         <article class="step-card">
-                            <h4>🖨️ Reconstrucción RIDE PDF</h4>
-                            <p>Genera automáticamente la representación impresa PDF (código de barras de autorización, desglose de impuestos e ítems) para cada documento XML válido.</p>
+                            <h4>🛡️ Validación de Duplicados</h4>
+                            <p>Cada clave de autorización de 49 dígitos se verifica antes de insertar para evitar dobles contabilizaciones o errores en el ATS.</p>
                         </article>
                         <article class="step-card">
-                            <h4>🏷️ Auto-Sustento Contable</h4>
-                            <p>Asigna sugerencias de sustento tributario y alimenta de inmediato los reportes de Excel, Auditor Fantasma y Anexo ATS.</p>
+                            <h4>🚀 Paso Directo a Bandeja 4 Pasos</h4>
+                            <p>Al terminar la carga, los documentos quedan disponibles para homologación de inventario, cálculo de retenciones y asiento contable NIIF.</p>
                         </article>
                     </div>
 
-                    <div class="terminal-card">
-                        <div class="terminal-top">
-                            <div class="win-controls"><span></span><span></span><span></span></div>
-                            <div class="terminal-tab">importador_masivo — Flujo TXT / XML</div>
-                        </div>
-                        <div class="terminal-content">
-                            <div class="log-line"><span class="t-info">ENTRADA:</span> SRI_Recibidos_1790012345001_Oct2026.txt (614 claves)</div>
-                            <div class="log-line"><span class="t-ok">✔</span> XML recuperados: 614/614 válidos (UTF-8 / comprobante autorizado)</div>
-                            <div class="log-line"><span class="t-ok">✔</span> RIDE PDF renderizados: 614 archivos en .../Recibidos/Facturas/RIDE/</div>
-                            <div class="log-line"><span class="t-info">INDEXACIÓN:</span> SQLite cifrada actualizada • Base IVA 15%: $24,810.00</div>
-                            <div class="terminal-summary">
-                                <div>
-                                    <small>Comprobantes Listos para ATS y Auditoría</small>
-                                    <strong>100 % Clasificados</strong>
-                                </div>
-                                <span class="badge-ready">IMPORTACIÓN OK</span>
-                            </div>
-                        </div>
+                    <div class="tree-box">
+                        <span class="eyebrow">FLUJO DE INGESTA LOCAL</span>
+                        <pre>Entrada:
+├── Reporte_Recibidos_Oct2026.txt   (Portal SRI)
+└── Carpeta_XML_Clientes/           (1,240 XMLs locales)
+
+Procesamiento Offline:
+✔ Claves 49 dígitos validadas
+✔ Tarifas IVA 0% / 5% / 8% / 15% separadas
+✔ 0 comprobantes duplicados
+✔ Listo en Bandeja Documentos ERP (4 Pasos)</pre>
                     </div>
                 </div>
 
                 <div class="module-nav-footer">
-                    <a href="sincronizar-sri.html" class="btn-glass">← Anterior: Sincronizar SRI</a>
+                    <a href="sincronizar-sri.html" class="btn-glass">← Anterior: 3. Sincronizar SRI</a>
                     <div class="flex-wrap-actions">
-                        <button type="button" class="btn-glass" data-download-os="auto">⬇ Descargar v3.0.0</button>
-                        <button type="button" class="btn-primary" data-checkout-plan="PERSONAL_PRO">💳 Adquirir Personal Pro ($69)</button>
-                        <a href="auditor-fantasma.html" class="btn-glass">Siguiente: Auditor Fantasma →</a>
+                        <button type="button" class="btn-primary" data-checkout-plan="PERSONAL_PRO">💳 Desde Personal Pro ($69)</button>
+                        <a href="bandeja-documentos.html" class="btn-glass">Siguiente: 5. Bandeja Documentos →</a>
                     </div>
                 </div>
             </div>

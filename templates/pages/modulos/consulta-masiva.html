@@ -3,13 +3,18 @@
                 <nav class="breadcrumb" aria-label="Ruta de navegación">
                     <a href="../index.html">Inicio</a>
                     <span>/</span>
-                    <a href="../index.html#modulos">Módulos</a>
+                    <a href="../index.html#suite-impuestos-auditoria">Consultas y Sistema</a>
                     <span>/</span>
-                    <span>7. Consulta Masiva</span>
+                    <span>13B. Consulta Masiva RUC en Lote</span>
                 </nav>
-                <span class="eyebrow">MÓDULO 07 • AUDITORÍA DE LOTES Y REPORTES EXCEL</span>
-                <h1>Consulta Masiva de Comprobantes y Exportación Contable</h1>
-                <p class="lead-sub">Consulta por rangos, claves de acceso o filtros multicriterio cientos de facturas, retenciones y notas de crédito verificando su autorización vigente ante el SRI y exportando sábanas contables en Excel/CSV.</p>
+                <span class="eyebrow">MÓDULO 13 (VISTA LOTE) · CONSULTAS Y SISTEMA ➔ CONSULTA MASIVA EXCEL / PDF</span>
+                <h1>Consulta Masiva de RUCs y Validación en Lote</h1>
+                <p class="lead-sub">Procesamiento masivo de listados de clientes y proveedores frente al catastro SRI para auditorías previas al ATS y exportación directa a Excel y PDF.</p>
+                <div class="module-tabs-strip">
+                    <span class="module-tab-pill">📋 Pegado Rápido o CSV</span>
+                    <span class="module-tab-pill">🔍 Estado SRI + RIMPE</span>
+                    <span class="module-tab-pill">📑 Exportación Excel / PDF</span>
+                </div>
             </div>
         </section>
 
@@ -18,37 +23,36 @@
                 <div class="module-detail-grid">
                     <div class="step-cards">
                         <article class="step-card">
-                            <h4>📚 Filtros Multicriterio Rápidos</h4>
-                            <p>Filtra instantáneamente por RUC emisor/receptor (ej. <code>1790012345001</code> o <code>0999999999001</code>), tipo de documento, rango de fechas o estado SRI.</p>
+                            <h4>📋 Importación desde CSV, TXT o Portapapeles</h4>
+                            <p>Pega una columna de números de RUC/Cédula directamente desde Excel o carga un listado CSV para validación secuencial controlada.</p>
                         </article>
                         <article class="step-card">
-                            <h4>📊 Sábana Contable Excel (.xlsx)</h4>
-                            <p>Genera libros estructurados con bases imponibles (0 %, tarifa general, exento), IVA, retenciones efectuadas/recibidas y totales conciliados.</p>
+                            <h4>🚦 Alertas Tempranas de Estado</h4>
+                            <p>Resalta en rojo RUCs suspendidos o pasivos y marca agentes de retención / contribuyentes especiales antes del cierre fiscal.</p>
                         </article>
                         <article class="step-card">
-                            <h4>🔄 Revalidación de Claves</h4>
-                            <p>Detecta comprobantes anulados o con cambios posteriores en el portal SRI antes del cierre contable del período.</p>
+                            <h4>📊 Exportación Consolidada a Excel y PDF</h4>
+                            <p>Descarga una sábana limpia en <code>.xlsx</code> o reporte PDF firmado con la fecha de verificación SRI.</p>
                         </article>
                         <article class="step-card">
-                            <h4>🖨️ Exportación Masiva RIDE + ZIP</h4>
-                            <p>Empaqueta comprobantes seleccionados con sus XML y RIDE PDF organizados para auditorías externas o entrega al cliente.</p>
+                            <h4>🔗 Complemento de Búsqueda Individual</h4>
+                            <p>Forma parte del Módulo 13 junto a Búsqueda RUC/Cédula individual.</p>
                         </article>
                     </div>
 
                     <div class="terminal-card">
                         <div class="terminal-top">
                             <div class="win-controls"><span></span><span></span><span></span></div>
-                            <div class="terminal-tab">consulta_masiva — Exportación Excel</div>
+                            <div class="terminal-tab">Consulta Masiva RUC — Lote 120 Registros</div>
                         </div>
                         <div class="terminal-content">
-                            <div class="log-line"><span class="t-info">FILTRO:</span> EMPRESA DEMOSTRACIÓN S.A. (1790012345001) • Oct 2026</div>
-                            <div class="log-line"><span class="t-ok">✔ AUTORIZADOS:</span> 389 comprobantes verificados • 0 anulados</div>
-                            <div class="log-line"><span class="t-info">CONSOLIDADO:</span> Facturas + Retenciones + Notas Crédito conciliadas</div>
-                            <div class="log-line"><span class="t-ok">✔ EXPORTADO:</span> Libro_Compras_Ventas_1790012345001_2026_10.xlsx</div>
+                            <div class="log-line"><span class="t-ok">✔ 114 ACTIVOS</span> · Régimen General / RIMPE Emprendedor</div>
+                            <div class="log-line"><span class="t-warn">⚠ 4 SUSPENDIDOS</span> · Marcados para revisión previa al ATS</div>
+                            <div class="log-line"><span class="t-ok">✔ EXPORTADO:</span> Validacion_Proveedores_2026.xlsx / .pdf</div>
                             <div class="terminal-summary">
                                 <div>
-                                    <small>Reportes Contables Listos</small>
-                                    <strong>Excel + CSV + ZIP</strong>
+                                    <small>Módulo 13 · Consultas y Sistema</small>
+                                    <strong>Verificación 100 % Trazable</strong>
                                 </div>
                                 <span class="badge-ready">EXPORTACIÓN OK</span>
                             </div>
@@ -57,11 +61,10 @@
                 </div>
 
                 <div class="module-nav-footer">
-                    <a href="busqueda-ruc.html" class="btn-glass">← Anterior: Búsqueda RUC</a>
+                    <a href="busqueda-ruc.html" class="btn-glass">← Ver 13A. Búsqueda Individual RUC</a>
                     <div class="flex-wrap-actions">
-                        <button type="button" class="btn-glass" data-download-os="auto">⬇ Descargar v3.0.0</button>
-                        <button type="button" class="btn-primary" data-checkout-plan="CONTADOR_MASTER">💳 Adquirir Contador Master ($159)</button>
-                        <a href="generador-ats.html" class="btn-glass">Siguiente: Generador ATS →</a>
+                        <button type="button" class="btn-primary" data-checkout-plan="CONTADOR_MASTER">💳 Desde Contador Master ($159)</button>
+                        <a href="ajustes-seguridad.html" class="btn-glass">Siguiente: 14. Configuración y .tfbkp →</a>
                     </div>
                 </div>
             </div>

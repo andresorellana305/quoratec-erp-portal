@@ -128,7 +128,7 @@ class _EdgeClient:
 
 def test_1_static_commercial_and_supply_chain() -> None:
     print("[1/4] Verificación comercial v3.0.0 (Edición 2026), SRI SHA-384, SHA-256 binarios y cero secretos...")
-    _assert(len(HTML_FILES) == 15, f"Se esperaban 15 páginas HTML, encontradas: {len(HTML_FILES)}")
+    _assert(len(HTML_FILES) == 21, f"Se esperaban 21 páginas HTML, encontradas: {len(HTML_FILES)}")
 
     # 1. Config JSON comercial + version.json + SHA-256
     cfg = json.loads((PORTAL_DIR / "api" / "config_comercial.json").read_text(encoding="utf-8"))
@@ -162,6 +162,7 @@ def test_1_static_commercial_and_supply_chain() -> None:
         re.compile(r"no-referrer|releases/latest", re.I),
         re.compile("Fausto" + r"\s+" + ".*?" + "Orellana", re.I),
         re.compile(r"2\.[45]\.0|TributaFlow Pro", re.I),
+        re.compile(r"\b9\s+m[oó]dulos\b", re.I),
     ]
 
     for rel in HTML_FILES:
@@ -199,7 +200,7 @@ def test_1_static_commercial_and_supply_chain() -> None:
         _assert("innerhtml" not in ftxt.lower(), f"Uso inseguro de innerHTML en frontend: {ff}")
     _assert((PORTAL_DIR / "robots.txt").is_file() and "sitemap.xml" in (PORTAL_DIR / "robots.txt").read_text(encoding="utf-8"), "Falta robots.txt válido")
     sitemap_txt = (PORTAL_DIR / "sitemap.xml").read_text(encoding="utf-8")
-    _assert(sitemap_txt.count("<loc>") == 15, f"sitemap.xml debe listar 15 URLs, encontradas: {sitemap_txt.count('<loc>')}")
+    _assert(sitemap_txt.count("<loc>") == 21, f"sitemap.xml debe listar 21 URLs, encontradas: {sitemap_txt.count('<loc>')}")
 
     # 4. Cabeceras _headers
     headers_txt = (PORTAL_DIR / "_headers").read_text(encoding="utf-8")
@@ -218,7 +219,7 @@ def test_1_static_commercial_and_supply_chain() -> None:
     build_check = subprocess.run([sys.executable, str(build_script), "--check"], capture_output=True, text=True, check=False)
     _assert(build_check.returncode == 0, f"Desfase en plantillas modulares o CRLF: {build_check.stderr or build_check.stdout}")
 
-    print("    -> OK: 15 HTML con SRI SHA-384, plantillas modulares LF, reglas v3.0.0, SHA-256 reales y cero secretos.")
+    print("    -> OK: 21 HTML con SRI SHA-384, plantillas modulares LF, reglas v3.0.0, SHA-256 reales y cero secretos.")
 
 
 def test_2_syntax_all_scripts() -> None:
