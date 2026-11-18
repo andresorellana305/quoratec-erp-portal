@@ -42,10 +42,10 @@ def _read_lf_text(path: Path) -> str:
     return path.read_text(encoding="utf-8").replace("\r\n", "\n")
 
 
-def _sri_sha384_lf(path: Path) -> str:
+def _sri_sha384_lf(path: Path) -> tuple[str, str]:
     lf_bytes = _to_lf_bytes(path.read_bytes())
     digest = hashlib.sha384(lf_bytes).digest()
-    return "sha384-" + base64.b64encode(digest).decode("ascii")
+    return ("sha384-" + base64.b64encode(digest).decode("ascii"), digest.hex()[:8])
 
 
 def _compute_root_prefix(output_rel: str) -> str:
@@ -76,8 +76,8 @@ def render_all_pages(cfg: dict[str, Any], base_html: str, pages: list[dict[str, 
     whatsapp_url = f"{wa_base}?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20ERP"
     mailto_url = f"mailto:{support_email}?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20ERP"
 
-    css_sri = _sri_sha384_lf(CSS_ASSET)
-    js_sri = _sri_sha384_lf(JS_ASSET)
+    css_sri, css_hash = _sri_sha384_lf(CSS_ASSET)
+    js_sri, js_hash = _sri_sha384_lf(JS_ASSET)
 
     rendered: dict[Path, str] = {}
     for entry in pages:
@@ -139,7 +139,9 @@ def render_all_pages(cfg: dict[str, Any], base_html: str, pages: list[dict[str, 
             "{{EDITION}}": edition,
             "{{COMPANY}}": company,
             "{{CSS_SRI}}": css_sri,
+            "{{CSS_HASH}}": css_hash,
             "{{JS_SRI}}": js_sri,
+            "{{JS_HASH}}": js_hash,
             "{{WHATSAPP_URL}}": whatsapp_url,
             "{{WHATSAPP_DISPLAY}}": wa_display,
             "{{SUPPORT_EMAIL}}": support_email,

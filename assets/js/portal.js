@@ -2221,7 +2221,8 @@
                     (src === "assets/js/portal.js" ||
                         src === "../assets/js/portal.js" ||
                         src === `assets/js/portal.js?v=${CONFIG_COMERCIAL.VERSION}` ||
-                        src === `../assets/js/portal.js?v=${CONFIG_COMERCIAL.VERSION}`) &&
+                        src === `../assets/js/portal.js?v=${CONFIG_COMERCIAL.VERSION}` ||
+                        new RegExp(`^(\\.\\.\\/)?assets\\/js\\/portal\\.js\\?v=${CONFIG_COMERCIAL.VERSION.replace(/\./g, "\\.")}&h=[a-f0-9]{8}$`).test(src)) &&
                     !nodo.textContent.trim();
                 if (permitidoLocal) return;
             }
