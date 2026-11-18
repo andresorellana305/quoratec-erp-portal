@@ -108,7 +108,7 @@ export async function onRequestPost(context) {
     return jsonSegura(
         {
             ok: true,
-            version: "2.5.0",
+            version: "3.0.0",
             plan_id: cotizacion.plan.id,
             monto_autorizado_usd: cotizacion.montoAutoritativoUsd,
             rucs_max: cotizacion.plan.rucsMax,

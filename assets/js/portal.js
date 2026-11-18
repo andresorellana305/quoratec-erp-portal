@@ -162,36 +162,36 @@
             id: "windows",
             etiqueta: "Windows (.exe)",
             modalId: "modalDescargaWindows",
-            titulo: "Descargar para Windows 10 / 11 x64 (Instalador .exe — 65.9 MB)",
+            titulo: "Descargar para Windows 10 / 11 x64 (Instalador .exe — 66.2 MB)",
             badge: "INSTALADOR OFICIAL WINDOWS .EXE",
             archivo: "Setup_TributaFlow_ERP_v3.0.0.exe",
-            tamano: "65.9 MB • Instalador Windows x64",
+            tamano: "66.2 MB • Instalador Windows x64",
             url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe",
-            sha256: "c2ecdaa0092a2d236968898e130a3bc63ce5e7998f358985fdade1c383ed3808",
+            sha256: "350a7f2cb1ba50a8cea87563b7e773357b5f8e9fa9d0f359401e0e9dc4c9e232",
             sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
             comandoSha256: 'certutil -hashfile "Setup_TributaFlow_ERP_v3.0.0.exe" SHA256',
             alternativaId: "windows_zip",
             pasos: [
-                "1. Descarga Setup_TributaFlow_ERP_v3.0.0.exe (65.9 MB) o la versión Portable .zip (86 MB).",
-                "2. Comprueba que el hash SHA-256 coincida con el resumen publicado y el manifiesto SHA256SUMS.txt.",
-                "3. Evalúa gratis por 7 días con hasta 60 RUCs (Estudio Contable Pro, sin tarjeta) o carga tu llave .lic.",
+                "1. Descarga Setup_TributaFlow_ERP_v3.0.0.exe (66.2 MB) o la versión Portable .zip (86.3 MB).",
+                "2. Verifica el SHA-256 oficial (350a7f2c...c4c9e232) con certutil antes de ejecutar.",
+                "3. Ante Windows SmartScreen (ejecutable nuevo): haz clic en 'Más información' ➔ 'Ejecutar de todas formas'.",
             ],
         },
         windows_zip: {
             id: "windows_zip",
             etiqueta: "Windows Portable (.zip)",
             modalId: "modalDescargaWindowsZip",
-            titulo: "Descargar para Windows 10 / 11 x64 (Portable .zip — 86 MB)",
+            titulo: "Descargar para Windows 10 / 11 x64 (Portable .zip — 86.3 MB)",
             badge: "PORTABLE WINDOWS .ZIP",
             archivo: "TributaFlow_ERP_v3.0.0_Windows_x64.zip",
-            tamano: "86 MB • Portable sin instalación",
+            tamano: "86.3 MB • Portable sin instalación",
             url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip",
-            sha256: "9be4b60b3d0220d8d71b31941ced2a12722b9d1f9441458cfec719194089cc41",
+            sha256: "ca49bcd4eea13b496a618122aa742d5de5c898f176e7eda326ad2d8b33a0c051",
             sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
             comandoSha256: 'certutil -hashfile "TributaFlow_ERP_v3.0.0_Windows_x64.zip" SHA256',
             pasos: [
-                "1. Descarga y descomprime TributaFlow_ERP_v3.0.0_Windows_x64.zip en una carpeta de trabajo local.",
-                "2. Verifica el hash SHA-256 antes de ejecutar TributaFlow_ERP.exe.",
+                "1. Descarga y descomprime TributaFlow_ERP_v3.0.0_Windows_x64.zip (86.3 MB) en una carpeta local.",
+                "2. Verifica el SHA-256 (ca49bcd4...33a0c051) antes de ejecutar TributaFlow_ERP.exe.",
                 "3. Tus datos, claves SRI y firma .p12 quedan cifrados localmente con AES-256-GCM.",
             ],
         },
@@ -199,17 +199,17 @@
             id: "macos",
             etiqueta: "macOS (.dmg)",
             modalId: "modalDescargaMacos",
-            titulo: "Descargar para macOS Universal (Apple Silicon / Intel — 93.2 MB)",
+            titulo: "Descargar para macOS Universal (Apple Silicon / Intel — 93.6 MB)",
             badge: "IMAGEN OFICIAL MACOS .DMG",
             archivo: "TributaFlow_ERP_v3.0.0_macOS.dmg",
-            tamano: "93.2 MB • Imagen de disco macOS",
+            tamano: "93.6 MB • Imagen de disco macOS",
             url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_macOS.dmg",
-            sha256: "084317c123ce603c82091ed01137ce05b9ca5eee5b5c37fd2cdc4c0f64091cf4",
+            sha256: "374e5ca4444b290662e417403ea0848bb77fe0215243fe52299743d7d8ad24df",
             sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
             comandoSha256: "shasum -a 256 TributaFlow_ERP_v3.0.0_macOS.dmg",
             pasos: [
-                "1. Abre TributaFlow_ERP_v3.0.0_macOS.dmg (93.2 MB) tras validar su SHA-256 y arrastra la app a Aplicaciones.",
-                "2. La primera vez, haz clic derecho (o Control + clic) sobre TributaFlow ERP y selecciona Abrir.",
+                "1. Abre TributaFlow_ERP_v3.0.0_macOS.dmg (93.6 MB) tras validar su SHA-256 (374e5ca4...d8ad24df) y arrastra a Aplicaciones.",
+                "2. La primera vez, haz Control + clic sobre TributaFlow ERP y selecciona Abrir.",
                 "3. Disfruta 7 días de evaluación gratuita con hasta 60 RUCs antes de activar tu suscripción anual.",
             ],
         },
@@ -217,18 +217,18 @@
             id: "linux",
             etiqueta: "Linux .deb",
             modalId: "modalDescargaLinux",
-            titulo: "Descargar para Linux Debian / Ubuntu (.deb — 95.1 MB)",
+            titulo: "Descargar para Linux Debian / Ubuntu (.deb — 95.6 MB)",
             badge: "PAQUETE OFICIAL LINUX .DEB",
             archivo: "TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
-            tamano: "95.1 MB • Paquete Debian/Ubuntu amd64",
+            tamano: "95.6 MB • Paquete Debian/Ubuntu amd64",
             url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
-            sha256: "41626f54383f0755a16b6373e5ba6be29da09cc7d1c64ee61b8174b84956cc39",
+            sha256: "2c5e48ae14c8dfce3d3e5f975e236a93be663fd138ef6f81dcb9a4ec5c2d052a",
             sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
             comandoSha256: "sha256sum TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
             alternativaId: "linux_tar",
             pasos: [
-                "1. Verifica el hash SHA-256 e instala con: sudo apt install ./TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
-                "2. Para otras distros (Fedora/Arch), usa el paquete genérico .tar.gz (123 MB).",
+                "1. Verifica el SHA-256 (2c5e48ae...5c2d052a) e instala con: sudo apt install ./TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
+                "2. Para otras distros (Fedora/Arch), usa el paquete genérico .tar.gz (123.3 MB).",
                 "3. Opera con bóveda Local-First SQLite AES-256-GCM y transición segura a Solo Lectura al expirar.",
             ],
         },
@@ -236,16 +236,16 @@
             id: "linux_tar",
             etiqueta: "Linux Genérico (.tar.gz)",
             modalId: "modalDescargaLinuxTar",
-            titulo: "Descargar para Linux Genérico x64 (.tar.gz — 123 MB)",
+            titulo: "Descargar para Linux Genérico x64 (.tar.gz — 123.3 MB)",
             badge: "ARCHIVO LINUX .TAR.GZ",
             archivo: "TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
-            tamano: "123 MB • Distros Linux x64",
+            tamano: "123.3 MB • Distros Linux x64",
             url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
-            sha256: "21130e004c66fb0a59b7862055b84bf255ca7c7e15e8a761bc8df887c6e653cb",
+            sha256: "b4e5da23885fe7126dabe59a0120ef2fc688ad0a6124407a722bae4429c09b1b",
             sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
             comandoSha256: "sha256sum TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
             pasos: [
-                "1. Valida el SHA-256 y extrae con: tar -xzf TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
+                "1. Valida el SHA-256 (b4e5da23...29c09b1b) y extrae con: tar -xzf TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
                 "2. Ejecuta TributaFlow_ERP desde la carpeta extraída sin requerir privilegios root.",
                 "3. Accede a 7 días gratis con hasta 60 RUCs o activa tu archivo de licencia .lic.",
             ],
@@ -257,9 +257,9 @@
             titulo: "Manifiesto Oficial de Sumas SHA-256 (v3.0.0)",
             badge: "VERIFICACIÓN SHA-256",
             archivo: "SHA256SUMS.txt",
-            tamano: "Manifiesto Maestro v3.0.0",
+            tamano: "Manifiesto Maestro v3.0.0 (111 B)",
             url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
-            sha256: "c7c8ce6fb934be64708f173ae2099459f8903b7fe81aa4c1af94d5d79611783",
+            sha256: "a86675219f227ab4831dfa34e00253fc735e161eef1fd0dc88a40c35f25685ba",
             sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
             comandoSha256: "sha256sum -c SHA256SUMS.txt",
             pasos: [
@@ -1002,6 +1002,56 @@
         if (modal instanceof HTMLElement) modal.style.display = "flex";
     }
 
+    const estadoHibrido = {
+        mode: "guest",
+        gateway: "DEUNA_PERSONAL",
+        accessToken: null,
+        userEmail: null,
+        lastOrder: null,
+    };
+
+    function sanitizarCorreoInput(val) {
+        return String(val || "").trim().toLowerCase().slice(0, 120);
+    }
+
+    function sanitizarRazonInput(val) {
+        return String(val || "").replace(/[<>`"'$]/g, "").slice(0, 120);
+    }
+
+    async function calcularSha256Archivo(fileObj) {
+        if (!fileObj || typeof fileObj.arrayBuffer !== "function") return null;
+        if (typeof crypto === "undefined" || !crypto.subtle) return null;
+        try {
+            const buf = await fileObj.arrayBuffer();
+            const digest = await crypto.subtle.digest("SHA-256", buf);
+            return Array.from(new Uint8Array(digest))
+                .map((b) => b.toString(16).padStart(2, "0"))
+                .join("");
+        } catch {
+            return null;
+        }
+    }
+
+    async function postJsonSeguroApi(endpoint, payload, bearerToken) {
+        if (typeof window.fetch !== "function") {
+            return { ok: false, offline: true, error: "FETCH_UNAVAILABLE" };
+        }
+        const headers = { "Content-Type": "application/json" };
+        if (bearerToken) headers.Authorization = `Bearer ${bearerToken}`;
+        try {
+            const resp = await fetch(`${obtenerPrefijoRuta()}${endpoint.replace(/^\//, "")}`, {
+                method: "POST",
+                headers,
+                credentials: "same-origin",
+                body: JSON.stringify(payload),
+            });
+            const data = await resp.json().catch(() => ({}));
+            return { ok: resp.ok, status: resp.status, data };
+        } catch {
+            return { ok: false, offline: true, error: "NETWORK_UNAVAILABLE" };
+        }
+    }
+
     function asegurarModalPago() {
         if (document.getElementById("modalPago")) return;
 
@@ -1150,6 +1200,291 @@
         });
         refBanner.appendChild(refLeft);
         refBanner.appendChild(btnCopyRef);
+
+        // Selector Híbrido: Modo Invitado (order_token) vs Cuenta Supabase + 4 Pasarelas
+        const hybridTabs = crearEl("div", "hybrid-tabs-bar");
+        const tabGuestBtn = crearEl("button", "hybrid-tab-btn is-active", "⚡ Compra Rápida (Invitado)");
+        tabGuestBtn.type = "button";
+        tabGuestBtn.id = "hybridTabGuestBtn";
+        const tabAccountBtn = crearEl("button", "hybrid-tab-btn", "🔐 Usar / Crear Cuenta Supabase");
+        tabAccountBtn.type = "button";
+        tabAccountBtn.id = "hybridTabAccountBtn";
+        hybridTabs.appendChild(tabGuestBtn);
+        hybridTabs.appendChild(tabAccountBtn);
+
+        const hybridGuestPanel = crearEl("div", "hybrid-panel");
+        hybridGuestPanel.id = "hybridGuestPanel";
+        hybridGuestPanel.appendChild(
+            crearEl(
+                "small",
+                "muted-note",
+                "Modo Invitado sin contraseña previa: ingresa tu Correo, RUC/Cédula y Nombre/Razón Social para generar tu order_token criptográfico único."
+            )
+        );
+        const guestFields = crearEl("div", "hybrid-form-grid");
+        const mkField = (id, label, placeholder, type = "text", maxLen = 120) => {
+            const g = crearEl("div", "field-group");
+            const l = crearEl("label", "", label);
+            l.htmlFor = id;
+            const inp = crearEl("input", "text-input");
+            inp.type = type;
+            inp.id = id;
+            inp.placeholder = placeholder;
+            inp.maxLength = maxLen;
+            g.appendChild(l);
+            g.appendChild(inp);
+            return { g, inp };
+        };
+        const fEmail = mkField("checkoutEmailInput", "Correo Electrónico *", "contador@estudio.ec", "email", 120);
+        const fRuc = mkField("checkoutRucInput", "RUC / Cédula Ecuador *", "1790012345001", "text", 13);
+        const fRazon = mkField("checkoutRazonInput", "Nombre o Razón Social *", "ESTUDIO CONTABLE DEMO S.A.", "text", 120);
+        fEmail.inp.addEventListener("input", () => {
+            fEmail.inp.value = sanitizarCorreoInput(fEmail.inp.value);
+        });
+        fRuc.inp.addEventListener("input", () => {
+            fRuc.inp.value = fRuc.inp.value.replace(/\D/g, "").slice(0, 13);
+        });
+        fRazon.inp.addEventListener("input", () => {
+            fRazon.inp.value = sanitizarRazonInput(fRazon.inp.value);
+        });
+        guestFields.appendChild(fEmail.g);
+        guestFields.appendChild(fRuc.g);
+        guestFields.appendChild(fRazon.g);
+        hybridGuestPanel.appendChild(guestFields);
+
+        const hybridAccountBox = crearEl("div", "hybrid-panel");
+        hybridAccountBox.id = "hybridAccountPanel";
+        hybridAccountBox.style.display = "none";
+        hybridAccountBox.appendChild(
+            crearEl(
+                "small",
+                "muted-note",
+                "Autenticación segura Supabase Auth (contraseñas cifradas en servidor). Consulta órdenes, licencias y equipos +1 PC Adicional."
+            )
+        );
+        const accBtnRow = crearEl("div", "flex-wrap-actions");
+        const accStatusText = crearEl("span", "muted-note", "Sesión no iniciada");
+        accStatusText.id = "checkoutAccountStatus";
+        const btnOpenSupaAuth = crearEl("button", "btn-glass", "🔐 Iniciar Sesión / Crear Cuenta Supabase");
+        btnOpenSupaAuth.type = "button";
+        btnOpenSupaAuth.addEventListener("click", () => {
+            asegurarModalCuenta("account");
+        });
+        accBtnRow.appendChild(btnOpenSupaAuth);
+        accBtnRow.appendChild(accStatusText);
+        hybridAccountBox.appendChild(accBtnRow);
+
+        tabGuestBtn.addEventListener("click", () => {
+            estadoHibrido.mode = "guest";
+            tabGuestBtn.classList.add("is-active");
+            tabAccountBtn.classList.remove("is-active");
+            hybridAccountBox.style.display = "none";
+        });
+        tabAccountBtn.addEventListener("click", () => {
+            estadoHibrido.mode = "account";
+            tabAccountBtn.classList.add("is-active");
+            tabGuestBtn.classList.remove("is-active");
+            hybridAccountBox.style.display = "flex";
+        });
+
+        // Selector de 4 Pasarelas (2 Activas ahora + 2 Próximamente con Feature Flags)
+        const gatewayGrid = crearEl("div", "gateway-selector-grid");
+        const gatewaysMeta = [
+            { id: "DEUNA_PERSONAL", title: "Deuna! Personal (Pichincha)", badge: "Activo · 0 %", cls: "active is-selected", disabled: false },
+            { id: "TRANSFERENCIA", title: "Transferencia Bancaria", badge: "Activo · Ecuador", cls: "active", disabled: false },
+            { id: "DEUNA_NEGOCIOS", title: "Deuna! Negocios API", badge: "Próximamente", cls: "soon is-soon", disabled: true },
+            { id: "PAYPHONE_BUSINESS", title: "PayPhone Business", badge: "Próximamente", cls: "soon is-soon", disabled: true },
+        ];
+        const gatewayButtons = [];
+        gatewaysMeta.forEach((gw) => {
+            const btnGw = crearEl("button", `gateway-option-card ${gw.cls}`);
+            btnGw.type = "button";
+            btnGw.disabled = gw.disabled;
+            btnGw.setAttribute("data-gateway-id", gw.id);
+            const tag = crearEl("span", `gateway-status-tag ${gw.disabled ? "soon" : "active"}`, gw.badge);
+            const lbl = crearEl("strong", "", gw.title);
+            btnGw.appendChild(tag);
+            btnGw.appendChild(lbl);
+            if (!gw.disabled) {
+                btnGw.addEventListener("click", () => {
+                    estadoHibrido.gateway = gw.id;
+                    gatewayButtons.forEach((b) => b.classList.remove("is-selected"));
+                    btnGw.classList.add("is-selected");
+                });
+            }
+            gatewayButtons.push(btnGw);
+            gatewayGrid.appendChild(btnGw);
+        });
+
+        const orderActionRow = crearEl("div", "flex-wrap-actions mt-8");
+        const btnCrearOrden = crearEl("button", "btn-glow", "🛡️ Generar Orden Oficial y Token de Seguimiento ➔");
+        btnCrearOrden.type = "button";
+        btnCrearOrden.id = "btnCrearOrdenHibrida";
+        orderActionRow.appendChild(btnCrearOrden);
+
+        const orderResultBox = crearEl("div", "receipt-upload-box");
+        orderResultBox.id = "checkoutOrderResultBox";
+        orderResultBox.style.display = "none";
+
+        const receiptUploadWrap = crearEl("div", "receipt-upload-box");
+        receiptUploadWrap.appendChild(
+            crearEl("strong", "", "Subir Referencia o Comprobante Deuna! / Transferencia (estado: pendiente_verificacion)")
+        );
+        const recGrid = crearEl("div", "hybrid-form-grid");
+        const fVoucher = mkField("checkoutVoucherInput", "Nº de Comprobante / Referencia *", "PICH-998877", "text", 40);
+        const fFileWrap = crearEl("div", "field-group");
+        const fFileLbl = crearEl("label", "", "Adjuntar Imagen / PDF (opcional)");
+        fFileLbl.htmlFor = "checkoutReceiptFile";
+        const fFile = document.createElement("input");
+        fFile.type = "file";
+        fFile.id = "checkoutReceiptFile";
+        fFile.accept = ".png,.jpg,.jpeg,.webp,.pdf";
+        fFile.className = "text-input";
+        fFileWrap.appendChild(fFileLbl);
+        fFileWrap.appendChild(fFile);
+        recGrid.appendChild(fVoucher.g);
+        recGrid.appendChild(fFileWrap);
+
+        const btnEnviarComprobanteApi = crearEl("button", "btn-open-checkout", "📤 Registrar Comprobante (Pendiente de Verificación)");
+        btnEnviarComprobanteApi.type = "button";
+        btnEnviarComprobanteApi.id = "btnEnviarComprobanteApi";
+        const receiptApiFeedback = crearEl("small", "muted-note", "");
+        receiptApiFeedback.id = "checkoutReceiptFeedback";
+
+        receiptUploadWrap.appendChild(recGrid);
+        receiptUploadWrap.appendChild(btnEnviarComprobanteApi);
+        receiptUploadWrap.appendChild(receiptApiFeedback);
+
+        btnCrearOrden.addEventListener("click", async () => {
+            const emailVal = sanitizarCorreoInput(fEmail.inp.value);
+            const rucVal = String(fRuc.inp.value || "").trim();
+            const razonVal = sanitizarRazonInput(fRazon.inp.value).trim();
+            if (!emailVal || !emailVal.includes("@") || !/^\d{10}(\d{3})?$/.test(rucVal) || razonVal.length < 2) {
+                mostrarToastCopia("⚠️ Completa Correo válido, RUC/Cédula (10 o 13 dígitos) y Razón Social.");
+                return;
+            }
+            const res = calcularResumenCheckout();
+            btnCrearOrden.disabled = true;
+            const resp = await postJsonSeguroApi(
+                "api/orders/create",
+                {
+                    checkout_mode: estadoHibrido.mode === "account" && estadoHibrido.accessToken ? "account" : "guest",
+                    plan_id: res.plan.id,
+                    extra_seats: res.extras,
+                    email: emailVal,
+                    ruc_cedula: rucVal,
+                    razon_social: razonVal,
+                    payment_channel: estadoHibrido.gateway,
+                    hwid_inicial: res.hwidORef !== "SIN_ESPECIFICAR" ? res.hwidORef : undefined,
+                },
+                estadoHibrido.mode === "account" ? estadoHibrido.accessToken : null
+            );
+            btnCrearOrden.disabled = false;
+
+            const orderRef = resp.data?.order_ref || res.referencia;
+            const orderToken = resp.data?.order_token || `TFTK-${extraerCodigoCorto(rucVal)}${Date.now().toString(36).toUpperCase()}`;
+            estadoHibrido.lastOrder = {
+                order_ref: orderRef,
+                order_token: orderToken,
+                email: emailVal,
+                offline: !resp.ok,
+            };
+
+            orderResultBox.textContent = "";
+            orderResultBox.style.display = "flex";
+            orderResultBox.appendChild(
+                crearEl(
+                    "span",
+                    "order-status-pill",
+                    resp.ok ? "⏳ Estado: pendiente_verificacion (Orden Registrada)" : "ℹ️ Referencia Generada (Modo Estático)"
+                )
+            );
+            const tokRow = crearEl("div", "bank-row");
+            tokRow.appendChild(crearEl("span", "", `Orden: ${orderRef} • Token: ${orderToken}`));
+            const btnCopyTok = crearEl("button", "btn-copy-mini", "Copiar Token");
+            btnCopyTok.type = "button";
+            btnCopyTok.addEventListener("click", () => copiarAlPortapapeles(`${orderRef} | ${orderToken}`, "Orden y Token"));
+            tokRow.appendChild(btnCopyTok);
+            orderResultBox.appendChild(tokRow);
+
+            if (estadoHibrido.mode === "guest") {
+                const claimWrap = crearEl("div", "flex-wrap-actions mt-8");
+                const claimPass = document.createElement("input");
+                claimPass.type = "password";
+                claimPass.placeholder = "Contraseña (mín. 10 chars) para crear cuenta después";
+                claimPass.className = "text-input";
+                claimPass.style.flex = "1 1 220px";
+                const btnClaim = crearEl("button", "btn-glass", "✨ Crear Cuenta y Vincular Orden (1 Clic)");
+                btnClaim.type = "button";
+                btnClaim.addEventListener("click", async () => {
+                    if (claimPass.value.length < 10) {
+                        mostrarToastCopia("⚠️ La contraseña debe tener al menos 10 caracteres.");
+                        return;
+                    }
+                    const clResp = await postJsonSeguroApi("api/orders/claim", {
+                        order_ref: orderRef,
+                        order_token: orderToken,
+                        email: emailVal,
+                        password: claimPass.value,
+                    });
+                    if (clResp.ok) {
+                        mostrarToastCopia("✅ Cuenta Supabase creada y orden vinculada.");
+                    } else {
+                        mostrarToastCopia(`ℹ️ ${clResp.data?.error || "Activa SUPABASE_URL en Cloudflare Pages para vincular en la nube."}`);
+                    }
+                });
+                claimWrap.appendChild(claimPass);
+                claimWrap.appendChild(btnClaim);
+                orderResultBox.appendChild(claimWrap);
+            }
+        });
+
+        const MIMES_COMPROBANTE = new Set(["image/png", "image/jpeg", "image/webp", "application/pdf"]);
+        const MAX_COMPROBANTE_BYTES = 5 * 1024 * 1024;
+        fFile.addEventListener("change", () => {
+            const candidate = fFile.files && fFile.files[0] ? fFile.files[0] : null;
+            if (!candidate) return;
+            if (!MIMES_COMPROBANTE.has(String(candidate.type || "").toLowerCase()) || candidate.size <= 0 || candidate.size > MAX_COMPROBANTE_BYTES) {
+                fFile.value = "";
+                mostrarToastCopia("⛔ Comprobante rechazado: solo PNG, JPG, WEBP o PDF de hasta 5 MB.");
+            }
+        });
+
+        btnEnviarComprobanteApi.addEventListener("click", async () => {
+            const voucher = String(fVoucher.inp.value || "").trim().toUpperCase();
+            if (!/^[A-Z0-9-]{4,40}$/.test(voucher)) {
+                mostrarToastCopia("⚠️ Ingresa un número de comprobante válido (4-40 caracteres alfanuméricos).");
+                return;
+            }
+            const fileObj = fFile.files && fFile.files[0] ? fFile.files[0] : null;
+            if (fileObj && (!MIMES_COMPROBANTE.has(String(fileObj.type || "").toLowerCase()) || fileObj.size <= 0 || fileObj.size > MAX_COMPROBANTE_BYTES)) {
+                mostrarToastCopia("⛔ Archivo inválido: solo PNG, JPG, WEBP o PDF hasta 5 MB.");
+                return;
+            }
+            const fileSha = fileObj ? await calcularSha256Archivo(fileObj) : null;
+            const orderInfo = estadoHibrido.lastOrder;
+            if (!orderInfo) {
+                mostrarToastCopia("⚠️ Primero haz clic en 'Generar Orden Oficial y Token' arriba.");
+                return;
+            }
+            const resp = await postJsonSeguroApi(
+                "api/orders/receipt",
+                {
+                    order_ref: orderInfo.order_ref,
+                    order_token: orderInfo.order_token,
+                    voucher_ref: voucher,
+                    banco_origen: estadoHibrido.gateway === "TRANSFERENCIA" ? "Transferencia Ecuador" : "Deuna! / Banco Pichincha",
+                    comprobante_nombre: fileObj ? sanitizarNombrePlano(fileObj.name).replace(/\s+/g, "_") : undefined,
+                    comprobante_mime: fileObj && fileObj.type ? fileObj.type.toLowerCase() : undefined,
+                    comprobante_sha256: fileSha || undefined,
+                    comprobante_size_bytes: fileObj ? fileObj.size : undefined,
+                },
+                estadoHibrido.accessToken
+            );
+            receiptApiFeedback.textContent = resp.ok
+                ? `✅ Comprobante ${voucher} registrado en estado pendiente_verificacion.`
+                : `📲 Modo estático: envía tu comprobante ${voucher} por WhatsApp (0996459771) usando los botones inferiores.`;
+        });
 
         const channelsGrid = crearEl("div", "payment-channels-grid");
 
@@ -1324,8 +1659,15 @@
         content.appendChild(summary);
         content.appendChild(controlsGrid);
         content.appendChild(extraBar);
+        content.appendChild(hybridTabs);
+        content.appendChild(hybridGuestPanel);
+        content.appendChild(hybridAccountBox);
+        content.appendChild(gatewayGrid);
+        content.appendChild(orderActionRow);
+        content.appendChild(orderResultBox);
         content.appendChild(refBanner);
         content.appendChild(channelsGrid);
+        content.appendChild(receiptUploadWrap);
         content.appendChild(rulesBox);
 
         box.appendChild(top);
@@ -1337,7 +1679,7 @@
 
     function actualizarVistaModalPago() {
         const res = calcularResumenCheckout();
-        const { plan, montoTexto, estacionesTotales, referencia } = res;
+        const { plan, extras, montoTexto, estacionesTotales, referencia } = res;
 
         const elTitulo = document.getElementById("pagoModalTitulo");
         const elBadge = document.getElementById("pagoModalBadge");
@@ -1524,6 +1866,14 @@
                 btnPrincipalDl.textContent = `⬇ Descarga Gratuita ${CONFIG_COMERCIAL.TRIAL_DIAS} Días (Solo PC)`;
             } else {
                 btnPrincipalDl.textContent = `⬇ Descarga Gratuita ${CONFIG_COMERCIAL.TRIAL_DIAS} Días (${soInfo.etiqueta} v${runtimeVersion})`;
+            }
+        }
+        const btnPaginaDl = document.getElementById("btnDescargaPaginaPrincipal");
+        if (btnPaginaDl instanceof HTMLElement) {
+            if (soInfo.esMovil || !soInfo.soportado) {
+                btnPaginaDl.textContent = `⬇ Instalador Oficial (Solo Windows/macOS/Linux PC)`;
+            } else {
+                btnPaginaDl.textContent = `⬇ Descargar para ${soInfo.etiqueta} (v${runtimeVersion})`;
             }
         }
 
@@ -1975,6 +2325,230 @@
         }
     }
 
+    function inicializarTemaVisual() {
+        const rootEl = document.documentElement;
+        const btn = document.getElementById("themeToggleBtn");
+        let saved = "dark";
+        try {
+            if (typeof window.localStorage !== "undefined") {
+                const raw = window.localStorage.getItem("tf_theme");
+                if (raw === "light" || raw === "dark") saved = raw;
+            }
+        } catch {
+            saved = "dark";
+        }
+
+        function aplicarTema(tema) {
+            if (tema === "light") {
+                rootEl.setAttribute("data-theme", "light");
+                if (btn) btn.textContent = "🌙";
+            } else {
+                rootEl.removeAttribute("data-theme");
+                if (btn) btn.textContent = "☀️";
+            }
+            try {
+                if (typeof window.localStorage !== "undefined") {
+                    window.localStorage.setItem("tf_theme", tema);
+                }
+            } catch {
+                // Silencioso en contextos restringidos
+            }
+        }
+
+        aplicarTema(saved);
+        if (btn instanceof HTMLElement && !btn.dataset.themeBound) {
+            btn.dataset.themeBound = "1";
+            btn.addEventListener("click", () => {
+                const isLight = rootEl.getAttribute("data-theme") === "light";
+                aplicarTema(isLight ? "dark" : "light");
+            });
+        }
+    }
+
+    function inicializarSelectorFacturacion() {
+        const btns = document.querySelectorAll("[data-billing-view]");
+        if (!btns.length) return;
+
+        function actualizarVistaTarifas(mode) {
+            btns.forEach((b) => b.classList.toggle("is-active", b.getAttribute("data-billing-view") === mode));
+            document.querySelectorAll("[data-plan-price]").forEach((el) => {
+                const planId = el.getAttribute("data-plan-price");
+                const plan = planId && esClaveSegura(planId) ? PLAN_LOOKUP[planId] : null;
+                if (!plan) return;
+                el.textContent = "";
+                if (mode === "monthly") {
+                    const mensual = (plan.precioUsd / 12).toFixed(2);
+                    el.appendChild(document.createTextNode(`$${mensual} `));
+                    el.appendChild(crearEl("span", "period", "/ mes*"));
+                } else {
+                    el.appendChild(document.createTextNode(`${formatearUsd(plan.precioUsd).replace(".00", "")} `));
+                    el.appendChild(crearEl("span", "period", "/ año"));
+                }
+            });
+        }
+
+        btns.forEach((b) => {
+            b.addEventListener("click", () => actualizarVistaTarifas(b.getAttribute("data-billing-view") || "annual"));
+        });
+    }
+
+    function asegurarModalCuenta(tabInicial) {
+        let modal = document.getElementById("modalCuentaHibrida");
+        if (!modal) {
+            const overlay = crearEl("div", "modal-overlay");
+            overlay.id = "modalCuentaHibrida";
+            overlay.setAttribute("role", "dialog");
+            overlay.setAttribute("aria-modal", "true");
+
+            const box = crearEl("div", "modal-box");
+            const top = crearEl("div", "modal-top");
+            const tw = crearEl("div");
+            tw.appendChild(crearEl("span", "modal-badge", "PORTAL CLIENTES & INVITADOS — SUPABASE AUTH"));
+            tw.appendChild(crearEl("h3", "", "Mi Cuenta, Órdenes y Equipos (+1 PC Adicional)"));
+            const btnX = crearEl("button", "btn-close", "×");
+            btnX.type = "button";
+            btnX.setAttribute("aria-label", "Cerrar modal de cuenta");
+            btnX.addEventListener("click", () => cerrarModal("modalCuentaHibrida"));
+            top.appendChild(tw);
+            top.appendChild(btnX);
+
+            const content = crearEl("div", "modal-content");
+            const tabs = crearEl("div", "hybrid-tabs-bar");
+            const bGuest = crearEl("button", "hybrid-tab-btn is-active", "🔍 Consultar Orden (Invitado)");
+            bGuest.type = "button";
+            const bAcc = crearEl("button", "hybrid-tab-btn", "🔐 Mi Cuenta (Supabase Auth)");
+            bAcc.type = "button";
+            tabs.appendChild(bGuest);
+            tabs.appendChild(bAcc);
+
+            const pGuest = crearEl("div", "hybrid-panel");
+            const gGrid = crearEl("div", "hybrid-form-grid");
+            const iRef = crearEl("input", "mono-input");
+            iRef.placeholder = "Referencia TF-...";
+            const iTok = crearEl("input", "mono-input");
+            iTok.placeholder = "Token TFTK-...";
+            const iEmail = crearEl("input", "text-input");
+            iEmail.type = "email";
+            iEmail.placeholder = "Correo de compra";
+            gGrid.appendChild(iRef);
+            gGrid.appendChild(iTok);
+            gGrid.appendChild(iEmail);
+            const bLookup = crearEl("button", "btn-glow", "Consultar Estado sin Contraseña");
+            bLookup.type = "button";
+            const guestOut = crearEl("div", "muted-note", "");
+            bLookup.addEventListener("click", async () => {
+                const resp = await postJsonSeguroApi("api/orders/status", {
+                    order_ref: iRef.value.trim(),
+                    order_token: iTok.value.trim(),
+                    email: sanitizarCorreoInput(iEmail.value),
+                });
+                guestOut.textContent = resp.ok
+                    ? `Orden ${resp.data.order_ref} • Estado: ${resp.data.status} • Monto: ${formatearUsd(resp.data.monto_autorizado_usd)} • Estaciones: ${resp.data.estaciones_autorizadas} PC(s)`
+                    : `ℹ️ ${resp.data?.message || "No se encontró una orden activa con esa referencia, token y correo."}`;
+            });
+            pGuest.appendChild(gGrid);
+            pGuest.appendChild(bLookup);
+            pGuest.appendChild(guestOut);
+
+            const pAcc = crearEl("div", "hybrid-panel");
+            pAcc.style.display = "none";
+            const aGrid = crearEl("div", "hybrid-form-grid");
+            const aEmail = crearEl("input", "text-input");
+            aEmail.type = "email";
+            aEmail.placeholder = "correo@estudio.ec";
+            const aPass = crearEl("input", "text-input");
+            aPass.type = "password";
+            aPass.placeholder = "Contraseña (mín. 10 caracteres)";
+            aGrid.appendChild(aEmail);
+            aGrid.appendChild(aPass);
+
+            const aActions = crearEl("div", "flex-wrap-actions");
+            const bLogin = crearEl("button", "btn-glow", "Iniciar Sesión");
+            bLogin.type = "button";
+            const bSignup = crearEl("button", "btn-glass", "Crear Cuenta");
+            bSignup.type = "button";
+            const bRecover = crearEl("button", "btn-glass", "Recuperar Clave");
+            bRecover.type = "button";
+            aActions.appendChild(bLogin);
+            aActions.appendChild(bSignup);
+            aActions.appendChild(bRecover);
+
+            const accOut = crearEl("div", "muted-note", "Las contraseñas se cifran exclusivamente en Supabase Auth.");
+            async function runAuth(action) {
+                const resp = await postJsonSeguroApi("api/auth/supabase", {
+                    action,
+                    email: sanitizarCorreoInput(aEmail.value),
+                    password: action === "recover" ? undefined : aPass.value,
+                });
+                if (resp.ok && resp.data?.access_token) {
+                    estadoHibrido.accessToken = resp.data.access_token;
+                    estadoHibrido.userEmail = resp.data.user?.email || aEmail.value;
+                    const stLbl = document.getElementById("checkoutAccountStatus");
+                    if (stLbl) stLbl.textContent = `Sesión activa: ${estadoHibrido.userEmail}`;
+                    const dash = await postJsonSeguroApi("api/auth/supabase", { action: "dashboard" }, estadoHibrido.accessToken);
+                    if (dash.ok) {
+                        accOut.textContent = `Sesión ${estadoHibrido.userEmail}: ${dash.data.orders.length} orden(es), ${dash.data.licenses.length} licencia(s) activas (+1 PC Adicional incluido en detalle).`;
+                    } else {
+                        accOut.textContent = `Sesión iniciada correctamente como ${estadoHibrido.userEmail}.`;
+                    }
+                } else {
+                    accOut.textContent = resp.data?.message || `ℹ️ ${resp.data?.error || "Configura SUPABASE_URL y SUPABASE_ANON_KEY para habilitar Supabase Auth."}`;
+                }
+            }
+            bLogin.addEventListener("click", () => runAuth("login"));
+            bSignup.addEventListener("click", () => runAuth("signup"));
+            bRecover.addEventListener("click", () => runAuth("recover"));
+
+            pAcc.appendChild(aGrid);
+            pAcc.appendChild(aActions);
+            pAcc.appendChild(accOut);
+
+            function setAccTab(which) {
+                const isAcc = which === "account";
+                bGuest.classList.toggle("is-active", !isAcc);
+                bAcc.classList.toggle("is-active", isAcc);
+                pGuest.style.display = isAcc ? "none" : "flex";
+                pAcc.style.display = isAcc ? "flex" : "none";
+            }
+            bGuest.addEventListener("click", () => setAccTab("guest"));
+            bAcc.addEventListener("click", () => setAccTab("account"));
+
+            content.appendChild(tabs);
+            content.appendChild(pGuest);
+            content.appendChild(pAcc);
+            box.appendChild(top);
+            box.appendChild(content);
+            overlay.appendChild(box);
+            overlay._setAccTab = setAccTab;
+            document.body.appendChild(overlay);
+            modal = overlay;
+        }
+        if (typeof modal._setAccTab === "function") {
+            modal._setAccTab(tabInicial === "account" ? "account" : "guest");
+        }
+        if (modal instanceof HTMLElement) modal.style.display = "flex";
+    }
+
+    function inicializarSoporteOrdenes() {
+        const btn = document.getElementById("btnLookupGuestOrder");
+        const inRef = document.getElementById("lookupOrderRef");
+        const inTok = document.getElementById("lookupOrderToken");
+        const inEmail = document.getElementById("lookupOrderEmail");
+        const out = document.getElementById("lookupOrderResult");
+        if (btn && inRef instanceof HTMLInputElement && inTok instanceof HTMLInputElement && out) {
+            btn.addEventListener("click", async () => {
+                const resp = await postJsonSeguroApi("api/orders/status", {
+                    order_ref: inRef.value.trim(),
+                    order_token: inTok.value.trim(),
+                    email: inEmail instanceof HTMLInputElement ? sanitizarCorreoInput(inEmail.value) : "",
+                });
+                out.textContent = resp.ok
+                    ? `✅ Orden ${resp.data.order_ref} • Estado: ${resp.data.status} • Plan: ${resp.data.plan_id} (${resp.data.estaciones_autorizadas} PC) • Monto: ${formatearUsd(resp.data.monto_autorizado_usd)}`
+                    : `ℹ️ ${resp.data?.message || "No fue posible consultar la orden en este entorno."}`;
+            });
+        }
+    }
+
     /* ======================================================================
        Inicialización Principal
        ====================================================================== */
@@ -1985,6 +2559,7 @@
 
         iniciarGuardiaMutacionDOM();
         aplicarVersionEnDOM(CONFIG_COMERCIAL.VERSION);
+        inicializarTemaVisual();
 
         asegurarModalPago();
         asegurarModalLegal();
@@ -1993,7 +2568,9 @@
         sincronizarConfiguracionPortal();
         inicializarSimuladorAhorro();
         inicializarCalculadoraAddonCorp();
+        inicializarSelectorFacturacion();
         inicializarPestanasGuiaUso();
+        inicializarSoporteOrdenes();
 
         // Fallback seguro CSP para logotipos SVG -> PNG
         document.querySelectorAll("img[data-fallback]").forEach((img) => {
@@ -2242,6 +2819,14 @@
                 const extraAttr = btn.getAttribute("data-checkout-extra-seats");
                 const extraOverride = extraAttr !== null ? Number(extraAttr) : undefined;
                 abrirModalPago(btn.getAttribute("data-checkout-plan"), Number.isFinite(extraOverride) ? extraOverride : undefined);
+            });
+        });
+
+        // Modal Cuenta / Consulta Invitado Supabase
+        document.querySelectorAll("[data-open-account-modal]").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                asegurarModalCuenta("guest");
             });
         });
 

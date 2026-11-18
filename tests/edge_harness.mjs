@@ -11,8 +11,14 @@ import { fileURLToPath } from "node:url";
 
 import { onRequest as middlewareOnRequest } from "../functions/_middleware.js";
 import * as payphoneFn from "../functions/api/webhook/payphone.js";
+import * as deunaBusinessFn from "../functions/api/webhook/deuna-business.js";
 import * as activateFn from "../functions/api/license/activate.js";
 import * as verifyFn from "../functions/api/license/verify.js";
+import * as orderCreateFn from "../functions/api/orders/create.js";
+import * as orderReceiptFn from "../functions/api/orders/receipt.js";
+import * as orderStatusFn from "../functions/api/orders/status.js";
+import * as orderClaimFn from "../functions/api/orders/claim.js";
+import * as authSupabaseFn from "../functions/api/auth/supabase.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, "..");
@@ -53,23 +59,24 @@ async function despacharFuncion(request, pathname) {
     const method = request.method.toUpperCase();
     const ctx = { request, env: ENV };
 
-    if (pathname === "/api/webhook/payphone") {
-        if (method === "POST" && typeof payphoneFn.onRequestPost === "function") {
-            return payphoneFn.onRequestPost(ctx);
+    const ROUTES = {
+        "/api/webhook/payphone": payphoneFn,
+        "/api/webhook/deuna-business": deunaBusinessFn,
+        "/api/license/activate": activateFn,
+        "/api/license/verify": verifyFn,
+        "/api/orders/create": orderCreateFn,
+        "/api/orders/receipt": orderReceiptFn,
+        "/api/orders/status": orderStatusFn,
+        "/api/orders/claim": orderClaimFn,
+        "/api/auth/supabase": authSupabaseFn,
+    };
+
+    const handlerMod = Object.prototype.hasOwnProperty.call(ROUTES, pathname) ? ROUTES[pathname] : null;
+    if (handlerMod) {
+        if (method === "POST" && typeof handlerMod.onRequestPost === "function") {
+            return handlerMod.onRequestPost(ctx);
         }
-        return payphoneFn.onRequest(ctx);
-    }
-    if (pathname === "/api/license/activate") {
-        if (method === "POST" && typeof activateFn.onRequestPost === "function") {
-            return activateFn.onRequestPost(ctx);
-        }
-        return activateFn.onRequest(ctx);
-    }
-    if (pathname === "/api/license/verify") {
-        if (method === "POST" && typeof verifyFn.onRequestPost === "function") {
-            return verifyFn.onRequestPost(ctx);
-        }
-        return verifyFn.onRequest(ctx);
+        return handlerMod.onRequest(ctx);
     }
 
     return resolverEstatico(pathname);

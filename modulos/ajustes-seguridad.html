@@ -8,96 +8,133 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Ajustes, Red LAN TCP/IP y Blindaje | TributaFlow ERP v3.0.0</title>
     <meta name="description" content="Matriz de permisos ✓/🔒, Red LAN TCP/IP centralizada (5 a 10+ estaciones), bóveda compartida UNC con bloqueo atómico anti-colisión y backups .tfbkp.">
+    <link rel="canonical" href="https://tributaflow.quoratec.com/modulos/ajustes-seguridad.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TributaFlow ERP — QUORATEC">
+    <meta property="og:locale" content="es_EC">
+    <meta property="og:title" content="Ajustes, Red LAN TCP/IP y Blindaje | TributaFlow ERP v3.0.0">
+    <meta property="og:description" content="Matriz de permisos ✓/🔒, Red LAN TCP/IP centralizada (5 a 10+ estaciones), bóveda compartida UNC con bloqueo atómico anti-colisión y backups .tfbkp.">
+    <meta property="og:url" content="https://tributaflow.quoratec.com/modulos/ajustes-seguridad.html">
+    <meta property="og:image" content="https://tributaflow.quoratec.com/assets/img/logo-tributaflow.png">
+    <meta name="twitter:card" content="summary">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-    <link rel="stylesheet" href="../assets/css/portal.css?v=3.0.0" integrity="sha384-z2oO3lkmzg46TGeJnfFL87c6nx+/RNo8+QgBtXw9aE/RAEvtAsO2xFFUKi23fN9Q" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/portal.css?v=3.0.0" integrity="sha384-GuIVAnZi4vMdc33QdF3GydcNBiLjzDJn4ONTVnFgmQwq3aiksV8N5JF83kGEpd8P" crossorigin="anonymous">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TributaFlow ERP Edición 2026","softwareVersion":"3.0.0","operatingSystem":"Windows 10, Windows 11, macOS, Linux","applicationCategory":"BusinessApplication","url":"https://tributaflow.quoratec.com/modulos/ajustes-seguridad.html","downloadUrl":"https://tributaflow.quoratec.com/descargas.html","description":"Matriz de permisos ✓/🔒, Red LAN TCP/IP centralizada (5 a 10+ estaciones), bóveda compartida UNC con bloqueo atómico anti-colisión y backups .tfbkp.","publisher":{"@type":"Organization","name":"QUORATEC","email":"soportetributaflow@quoratec.com"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"69.00","highPrice":"1490.00","offerCount":5}}</script>
 </head>
 <body data-root="../">
-        <header class="navbar">
+
+    <header class="navbar">
         <div class="container nav-inner">
             <a href="../index.html" class="brand">
-                <img src="../assets/img/logo-tributaflow.svg" data-fallback="../assets/img/logo-tributaflow.png" alt="TributaFlow ERP" class="brand-logo-img" width="36" height="36">
+                <img src="../assets/img/logo-tributaflow.svg" alt="TributaFlow ERP" class="brand-logo-img" data-fallback="../assets/img/logo-tributaflow.png" width="36" height="36">
                 <div>
                     <strong>TributaFlow ERP <span data-app-version-tag>v3.0.0</span></strong>
                     <span class="brand-sub">Edición 2026 · QUORATEC</span>
                 </div>
             </a>
-            <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-            <nav id="navMenu" class="nav-menu" aria-label="Navegación principal">
+
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false">☰</button>
+
+            <nav class="nav-menu" id="navMenu" aria-label="Navegación principal">
                 <a href="../index.html#flujo">Cómo Funciona</a>
                 <div class="nav-dropdown" data-nav-dropdown>
                     <button type="button" class="nav-dropdown-trigger active" aria-expanded="false" aria-haspopup="true">
                         <span>9 Módulos</span>
                         <span class="nav-caret" aria-hidden="true">▾</span>
                     </button>
-                    <div class="nav-dropdown-panel" role="menu"></div>
+                    <div class="nav-dropdown-panel" role="menu">
+                        <div class="nav-dropdown-header">Suite Completa — 9 Módulos TributaFlow ERP v3.0.0</div>
+                        <div class="nav-dropdown-grid">
+                            <a href="../modulos/panel-general.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📊</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">1. Panel General</span><span class="nav-dropdown-desc">Resumen gerencial, KPIs e historial por RUC</span></span></a>
+                            <a href="../modulos/mis-contribuyentes.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🏢</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">2. Mis Contribuyentes</span><span class="nav-dropdown-desc">Bóveda Multi-RUC cifrada AES-256 sin nube</span></span></a>
+                            <a href="../modulos/sincronizar-sri.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">⚡</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">3. Sincronizar SRI</span><span class="nav-dropdown-desc">Extracción masiva de XML y PDF oficiales</span></span></a>
+                            <a href="../modulos/importar-comprobantes.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📥</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">4. Importar Comprobantes</span><span class="nav-dropdown-desc">Ingesta masiva TXT y archivos ZIP locales</span></span></a>
+                            <a href="../modulos/auditor-fantasma.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🔍</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">5. Auditor Fantasma</span><span class="nav-dropdown-desc">Cruce forense de facturas y Alertas EFOS</span></span></a>
+                            <a href="../modulos/busqueda-ruc.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🆔</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">6. Búsqueda por RUC</span><span class="nav-dropdown-desc">Ficha integral, estado SRI y obligaciones</span></span></a>
+                            <a href="../modulos/consulta-masiva.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📋</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">7. Consulta Masiva</span><span class="nav-dropdown-desc">Validación por lotes a Excel y CSV estructurado</span></span></a>
+                            <a href="../modulos/generador-ats.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📑</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">8. Generador ATS Oficial</span><span class="nav-dropdown-desc">Anexo Transaccional XML validado por XSD</span></span></a>
+                            <a href="../modulos/ajustes-seguridad.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🛡️</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">9. Ajustes y Respaldos</span><span class="nav-dropdown-desc">Red LAN, respaldos .tfbkp y traslados PC</span></span></a>
+                        </div>
+                        <div class="nav-dropdown-footer">
+                            <a href="../index.html#modulos" class="nav-dropdown-all">Ver resumen completo en portada ➔</a>
+                        </div>
+                    </div>
                 </div>
                 <a href="../planes.html">Planes (5)</a>
+                <a href="../descargas.html">Descargas</a>
                 <a href="../guia-uso.html">Guía de Uso</a>
+                <a href="../soporte.html">Soporte</a>
                 <a href="../politicas.html">Políticas</a>
-                <a href="../index.html#descargas">Descargas</a>
-                <button type="button" class="nav-cta" data-checkout-plan="ENTERPRISE_TEAM">Activar Red LAN</button>
+                <div class="nav-actions-cluster">
+                    <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Cambiar modo oscuro o claro" title="Alternar modo oscuro/claro">☀️</button>
+                    <button type="button" class="nav-account-btn" id="navAccountBtn" data-open-account-modal>👤 Cuenta / Orden</button>
+                    <button type="button" class="nav-cta" data-checkout-plan="ESTUDIO_PRO">Adquirir Licencia</button>
+                </div>
             </nav>
         </div>
     </header>
 
+    <main>
     <section class="module-hero">
-        <div class="container">
-            <nav class="breadcrumb" aria-label="Ruta de navegación">
-                <a href="../index.html">Inicio</a>
-                <span>/</span>
-                <a href="../index.html#modulos">Módulos</a>
-                <span>/</span>
-                <span>9. Ajustes, Red LAN TCP/IP y Blindaje</span>
-            </nav>
-            <span class="eyebrow">MÓDULO 09 • PERMISOS EN VIVO, RED LAN TCP/IP Y BACKUPS .TFBKP</span>
-            <h1>Ajustes, Arquitectura Red LAN TCP/IP y Blindaje</h1>
-            <p class="lead-sub">Visualiza en tiempo real qué funciones están activas (✔) o bloqueadas (🔒) según tu plan, configura tu estudio contable en Red LAN TCP/IP centralizada para 5 a 10+ estaciones concurrentes sobre bóveda compartida UNC y genera respaldos cifrados portátiles.</p>
-        </div>
-    </section>
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Ruta de navegación">
+                    <a href="../index.html">Inicio</a>
+                    <span>/</span>
+                    <a href="../index.html#modulos">Módulos</a>
+                    <span>/</span>
+                    <span>9. Ajustes, Red LAN TCP/IP y Blindaje</span>
+                </nav>
+                <span class="eyebrow">MÓDULO 09 • PERMISOS EN VIVO, RED LAN TCP/IP Y BACKUPS .TFBKP</span>
+                <h1>Ajustes, Arquitectura Red LAN TCP/IP y Blindaje</h1>
+                <p class="lead-sub">Visualiza en tiempo real qué funciones están activas (✔) o bloqueadas (🔒) según tu plan, configura tu estudio contable en Red LAN TCP/IP centralizada para 5 a 10+ estaciones concurrentes sobre bóveda compartida UNC y genera respaldos cifrados portátiles.</p>
+            </div>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <div class="architecture-split">
-                <div class="feature-list-panel">
-                    <h3>Matriz de Capacidades y Gobernanza en Ajustes</h3>
-                    <ul>
-                        <li>✔ <strong>Modo Local Cifrado (Personal, Contador Master y Estudio Pro):</strong> Base SQLite cifrada por HWID con <code>PBKDF2 + AES-256-GCM + HMAC</code> sin requerir servidor.</li>
-                        <li>✔ <strong>Red LAN TCP/IP Centralizada (Enterprise Team 5 estaciones / Corp 10+ estaciones):</strong> Operación concurrente multi-estación en oficina sin Conector Multi-Regional HTTPS en Team.</li>
-                        <li>✔ <strong>Bóveda Compartida UNC (<code>\\SERVIDOR\Boveda_TributaFlow\...</code>):</strong> Repositorio único en red para Enterprise Team/Corp con <strong>cola anti-colisión</strong>; Conector Multi-Regional HTTPS / Gateway seguro incluido en Enterprise Corporativo ($1,490+ base, +$150/PC extra).</li>
-                        <li>✔ <strong>Respaldo Portátil Cifrado <code>.tfbkp</code> (Desde Estudio Pro $299+):</strong> Exporta o restaura bóvedas cifradas con <code>AES-256-GCM + HMAC</code>.</li>
-                    </ul>
+        <section class="section">
+            <div class="container">
+                <div class="architecture-split">
+                    <div class="feature-list-panel">
+                        <h3>Matriz de Capacidades y Gobernanza en Ajustes</h3>
+                        <ul>
+                            <li>✔ <strong>Modo Local Cifrado (Personal, Contador Master y Estudio Pro):</strong> Base SQLite cifrada por HWID con <code>PBKDF2 + AES-256-GCM + HMAC</code> sin requerir servidor.</li>
+                            <li>✔ <strong>Red LAN TCP/IP Centralizada (Enterprise Team 5 estaciones / Corp 10+ estaciones):</strong> Operación concurrente multi-estación en oficina sin Conector Multi-Regional HTTPS en Team.</li>
+                            <li>✔ <strong>Bóveda Compartida UNC (<code>\\SERVIDOR\Boveda_TributaFlow\...</code>):</strong> Repositorio único en red para Enterprise Team/Corp con <strong>cola anti-colisión</strong>; Conector Multi-Regional HTTPS / Gateway seguro incluido en Enterprise Corporativo ($1,490+ base, +$150/PC extra).</li>
+                            <li>✔ <strong>Respaldo Portátil Cifrado <code>.tfbkp</code> (Desde Estudio Pro $299+):</strong> Exporta o restaura bóvedas cifradas con <code>AES-256-GCM + HMAC</code>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tree-box">
+                        <span class="eyebrow">TOPOLOGÍA RED LAN TCP/IP ENTERPRISE</span>
+                        <pre>[Estación 1 - Auxiliar] ──┐
+    [Estación 2 - Contador] ──┼──(TCP/IP Red LAN + UNC)──▶ [SERVIDOR OFICINA]
+    [Estación 3 - Auditor ] ──┘                             ├── DB Centralizada
+                                                            ├── \\SERVIDOR\Boveda_TributaFlow\
+                                                            │   └── Cola Anti-Colisión
+                                                            └── 1790012345001_EMPRESA_DEMOSTRACION_SA
+
+    Panel Ajustes en App:
+    ✓ Bóveda Jerárquica Local (Personal Pro+)
+    ✓ Generador ATS XML/XSD (Contador Master+)
+    ✓ Auditor Fantasma EFOS + .tfbkp (Estudio Pro+)
+    🔒 Red LAN 5 estaciones &amp; UNC (Enterprise Team $890+)
+    🔒 10+ Estaciones (+$150/PC) + Multi-Regional HTTPS (Enterprise Corp $1,490+)</pre>
+                    </div>
                 </div>
 
-                <div class="tree-box">
-                    <span class="eyebrow">TOPOLOGÍA RED LAN TCP/IP ENTERPRISE</span>
-                    <pre>[Estación 1 - Auxiliar] ──┐
-[Estación 2 - Contador] ──┼──(TCP/IP Red LAN + UNC)──▶ [SERVIDOR OFICINA]
-[Estación 3 - Auditor ] ──┘                             ├── DB Centralizada
-                                                        ├── \\SERVIDOR\Boveda_TributaFlow\
-                                                        │   └── Cola Anti-Colisión
-                                                        └── 1790012345001_EMPRESA_DEMOSTRACION_SA
-
-Panel Ajustes en App:
-✓ Bóveda Jerárquica Local (Personal Pro+)
-✓ Generador ATS XML/XSD (Contador Master+)
-✓ Auditor Fantasma EFOS + .tfbkp (Estudio Pro+)
-🔒 Red LAN 5 estaciones &amp; UNC (Enterprise Team $890+)
-🔒 10+ Estaciones (+$150/PC) + Multi-Regional HTTPS (Enterprise Corp $1,490+)</pre>
+                <div class="module-nav-footer">
+                    <a href="generador-ats.html" class="btn-glass">← Anterior: Generador ATS</a>
+                    <div class="flex-wrap-actions">
+                        <button type="button" class="btn-primary" data-checkout-plan="ENTERPRISE_TEAM">🏦 Enterprise Team 5 PCs ($890)</button>
+                        <button type="button" class="btn-primary" data-checkout-plan="ENTERPRISE_CORP">🏦 Enterprise Corp 10+ PCs ($1,490+)</button>
+                        <a href="../index.html#precios" class="btn-glass">Comparar los 5 Planes →</a>
+                    </div>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <div class="module-nav-footer">
-                <a href="generador-ats.html" class="btn-glass">← Anterior: Generador ATS</a>
-                <div class="flex-wrap-actions">
-                    <button type="button" class="btn-primary" data-checkout-plan="ENTERPRISE_TEAM">🏦 Enterprise Team 5 PCs ($890)</button>
-                    <button type="button" class="btn-primary" data-checkout-plan="ENTERPRISE_CORP">🏦 Enterprise Corp 10+ PCs ($1,490+)</button>
-                    <a href="../index.html#precios" class="btn-glass">Comparar los 5 Planes →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-        <div class="pre-footer-cta">
+    <!-- PRE-FOOTER CTA -->
+    <div class="pre-footer-cta">
         <div class="container">
             <div class="pre-footer-card">
                 <div>
@@ -112,14 +149,15 @@ Panel Ajustes en App:
         </div>
     </div>
 
+    <!-- FOOTER UNIFICADO 4 COLUMNAS -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid-4">
                 <div class="footer-col">
                     <h4>TributaFlow ERP <span data-app-version-tag>v3.0.0</span></h4>
-                    <p class="muted-note">Software contable ecuatoriano 100 % local para descarga masiva del SRI, auditoría tributaria y generación de ATS XML/XSD.</p>
+                    <p class="muted-note">Edición 2026 · Software contable y tributario ecuatoriano Local-First con cifrado AES-256-GCM para SRI, POS .p12, Kardex, NIIF y ATS.</p>
                     <div class="footer-trust-pill">🔒 Local-First AES-256-GCM · LOPDP Ecuador</div>
-                    <p class="muted-note">Desarrollado en Ecuador por <strong>QUORATEC</strong>.</p>
+                    <p class="muted-note">Marca comercial oficial: <strong>QUORATEC</strong>.</p>
                 </div>
 
                 <div class="footer-col footer-links-col">
@@ -127,34 +165,36 @@ Panel Ajustes en App:
                     <a href="../index.html">Inicio</a>
                     <a href="../index.html#modulos">9 Módulos del Sistema</a>
                     <a href="../planes.html">Planes y Precios (5)</a>
-                    <a href="../guia-uso.html">Guía de Uso e Implementación</a>
-                    <a href="../index.html#descargas">Descargas Oficiales</a>
+                    <a href="../descargas.html">Descargas Oficiales v3.0.0</a>
+                    <a href="../guia-uso.html">Guía de Uso y Tour 15 Vistas</a>
+                    <a href="../soporte.html">Soporte Técnico QUORATEC</a>
                 </div>
 
                 <div class="footer-col footer-links-col">
                     <h4>Descargas y Medios de Pago</h4>
-                    <a href="../index.html#descargas" data-download-os="windows">Windows 64-bit (.exe)</a>
+                    <a href="../index.html#descargas" data-download-os="windows">Windows x64 (.exe / .zip)</a>
                     <a href="../index.html#descargas" data-download-os="macos">macOS Universal (.dmg)</a>
-                    <a href="../index.html#descargas" data-download-os="linux">Linux Ubuntu/Debian (.deb)</a>
+                    <a href="../index.html#descargas" data-download-os="linux">Linux (.deb / .tar.gz)</a>
                     <div class="footer-pay-badges">
-                        <span class="footer-pay-pill">Deuna! Activo</span>
+                        <span class="footer-pay-pill">Deuna! Personal (Activo)</span>
+                        <span class="footer-pay-pill">Transferencia (Activo)</span>
+                        <span class="footer-pay-pill">Deuna! Negocios (Próx.)</span>
                         <span class="footer-pay-pill">PayPhone (Próximamente)</span>
-                        <span class="footer-pay-pill">Transferencia Ecuador</span>
                     </div>
                 </div>
 
                 <div class="footer-col footer-links-col">
-                    <h4>Marco Legal y Soporte Directo</h4>
-                    <a href="../politicas.html#licencia">Acuerdo de Licencia y Condiciones de Uso</a>
-                    <a href="../politicas.html#privacidad">Privacidad Soberana Local-First</a>
-                    <a href="../politicas.html#traslado">Traslado de PC y Garantía .tfbkp</a>
+                    <h4>Marco Legal y Soporte Oficial</h4>
+                    <a href="../politicas.html#licencia">Acuerdo de Licencia y Solo Lectura</a>
+                    <a href="../politicas.html#privacidad">Privacidad Local-First y LOPDP</a>
+                    <a href="../politicas.html#traslado">Deslinde Tributario y Reembolsos</a>
                     <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20ERP" target="_blank" rel="noopener noreferrer" data-support-link="whatsapp">💬 WhatsApp Oficial (+593 99 645 9771)</a>
                     <a href="mailto:soportetributaflow@quoratec.com?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20ERP" data-support-link="correo">✉️ soportetributaflow@quoratec.com</a>
                 </div>
             </div>
 
             <div class="footer-bottom-bar">
-                <span>© 2026 QUORATEC — TributaFlow ERP. Todos los derechos reservados.</span>
+                <span>© 2026 QUORATEC — TributaFlow ERP (Edición 2026). Todos los derechos reservados.</span>
                 <div class="footer-bottom-meta">
                     <span class="footer-version-badge" data-app-version-tag>v3.0.0</span>
                     <button type="button" class="footer-top-btn" data-scroll-top>↑ Subir</button>
@@ -163,11 +203,10 @@ Panel Ajustes en App:
         </div>
     </footer>
 
-    <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20ERP" target="_blank" rel="noopener noreferrer" class="whatsapp-float" id="btnFlotanteSoporte" data-support-link="whatsapp" aria-label="Contactar Soporte Oficial TributaFlow ERP por WhatsApp">
+    <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20ERP" target="_blank" rel="noopener noreferrer" class="whatsapp-float" id="btnFlotanteSoporte" data-support-link="whatsapp" aria-label="Contactar Soporte Oficial QUORATEC por WhatsApp">
         <span>💬 Soporte 0996459771</span>
     </a>
 
-    <script src="../assets/js/portal.js?v=3.0.0" integrity="sha384-ptji2vem3D+bHjuyYejTc6Zhzn2gsMLP1TncQA9K3zdJHg5oMrkZ7zKbb8Bh1EdW" crossorigin="anonymous" defer></script>
+    <script src="../assets/js/portal.js?v=3.0.0" integrity="sha384-RAjP5jMzKHC8FswNSwlZQqQasidmel3kSwKTZkJ8WVsHFRev4a/XBnSKTdI3P+mq" crossorigin="anonymous" defer></script>
 </body>
 </html>
-

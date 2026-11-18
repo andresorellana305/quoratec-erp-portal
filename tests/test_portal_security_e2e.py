@@ -48,7 +48,9 @@ def _log(msg: str) -> None:
 PAGINAS_PORTAL = [
     "index.html",
     "planes.html",
+    "descargas.html",
     "guia-uso.html",
+    "soporte.html",
     "politicas.html",
     "modulos/panel-general.html",
     "modulos/mis-contribuyentes.html",
@@ -80,27 +82,27 @@ PRECIOS_ESPERADOS = {
 EXPECTED_DOWNLOADS = {
     "windows": (
         "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe",
-        "c2ecdaa0092a2d236968898e130a3bc63ce5e7998f358985fdade1c383ed3808",
+        "350a7f2cb1ba50a8cea87563b7e773357b5f8e9fa9d0f359401e0e9dc4c9e232",
     ),
     "windows_zip": (
         "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip",
-        "9be4b60b3d0220d8d71b31941ced2a12722b9d1f9441458cfec719194089cc41",
+        "ca49bcd4eea13b496a618122aa742d5de5c898f176e7eda326ad2d8b33a0c051",
     ),
     "macos": (
         "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_macOS.dmg",
-        "084317c123ce603c82091ed01137ce05b9ca5eee5b5c37fd2cdc4c0f64091cf4",
+        "374e5ca4444b290662e417403ea0848bb77fe0215243fe52299743d7d8ad24df",
     ),
     "linux": (
         "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
-        "41626f54383f0755a16b6373e5ba6be29da09cc7d1c64ee61b8174b84956cc39",
+        "2c5e48ae14c8dfce3d3e5f975e236a93be663fd138ef6f81dcb9a4ec5c2d052a",
     ),
     "linux_tar": (
         "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
-        "21130e004c66fb0a59b7862055b84bf255ca7c7e15e8a761bc8df887c6e653cb",
+        "b4e5da23885fe7126dabe59a0120ef2fc688ad0a6124407a722bae4429c09b1b",
     ),
     "sha256sums": (
         "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
-        "c7c8ce6fb934be64708f173ae2099459f8903b7fe81aa4c1af94d5d79611783",
+        "a86675219f227ab4831dfa34e00253fc735e161eef1fd0dc88a40c35f25685ba",
     ),
 }
 
@@ -176,6 +178,9 @@ class _PortalDOMInspector(HTMLParser):
         self.inline_events: list[str] = []
         self.inline_styles: list[str] = []
         self.inline_scripts: int = 0
+        self.json_lds: list[str] = []
+        self._in_json_ld: bool = False
+        self._json_ld_buf: list[str] = []
         self.stylesheets: list[dict[str, str | None]] = []
         self.scripts: list[dict[str, str | None]] = []
         self.metas: list[dict[str, str | None]] = []
@@ -219,6 +224,9 @@ class _PortalDOMInspector(HTMLParser):
         if t == "script":
             if attr_map.get("src"):
                 self.scripts.append(attr_map)
+            elif (attr_map.get("type") or "").lower() == "application/ld+json":
+                self._in_json_ld = True
+                self._json_ld_buf = []
             else:
                 self.inline_scripts += 1
         elif t == "link" and (attr_map.get("rel") or "").lower() == "stylesheet":
@@ -227,6 +235,15 @@ class _PortalDOMInspector(HTMLParser):
             self.metas.append(attr_map)
         elif t == "img":
             self.imgs.append(attr_map)
+
+    def handle_data(self, data: str) -> None:
+        if self._in_json_ld:
+            self._json_ld_buf.append(data)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() == "script" and self._in_json_ld:
+            self._in_json_ld = False
+            self.json_lds.append("".join(self._json_ld_buf))
 
 
 def _assert(cond: bool, msg: str) -> None:
@@ -308,7 +325,6 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
         "ruc_2": re.compile(r"\b2\s+RUCs?\b", re.I),
         "lineas_15_50_200": re.compile(r"\b(?:15|50|200)\s+l[ií]neas\b", re.I),
         "legacy_crypto": re.compile(r"\bEd25519\b|\bRSA-2048\b", re.I),
-        "eula_word": re.compile(r"\bEULA\b", re.I),
         "unpinned_release": re.compile(r"releases/latest", re.I),
     }
 
@@ -361,7 +377,7 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
 
 
 def test_http_server_headers_and_sri(base_url: str) -> dict[str, int]:
-    print("[2/5] Validación HTTP directa sobre servidor local (13 páginas, activos, CSP, HSTS, XFO y SRI sha384)...", flush=True)
+    print("[2/5] Validación HTTP directa sobre servidor local (15 páginas, activos, CSP, HSTS, XFO y SRI sha384)...", flush=True)
 
     http_checks = 0
 
@@ -416,6 +432,12 @@ def test_http_server_headers_and_sri(base_url: str) -> dict[str, int]:
         ref_metas = [m.get("content") for m in dom.metas if (m.get("name") or "").lower() == "referrer"]
         _assert(ref_metas and ref_metas[0] == "strict-origin-when-cross-origin", f"Meta Referrer inconsistente en {rel}")
 
+        og_props = {m.get("property"): m.get("content") for m in dom.metas if m.get("property")}
+        _assert(bool(og_props.get("og:title")) and bool(og_props.get("og:url")), f"Faltan meta tags OpenGraph en {rel}")
+        _assert(len(dom.json_lds) == 1, f"Falta bloque JSON-LD SoftwareApplication en {rel}")
+        jsonld_parsed = json.loads(dom.json_lds[0])
+        _assert(jsonld_parsed.get("@type") == "SoftwareApplication" and jsonld_parsed.get("softwareVersion") == "3.0.0", f"JSON-LD inválido en {rel}")
+
         css_links = [s for s in dom.stylesheets if "portal.css" in (s.get("href") or "")]
         _assert(len(css_links) == 1, f"Falta stylesheet portal.css en {rel}")
         _assert("?v=3.0.0" in (css_links[0].get("href") or ""), f"Falta query ?v=3.0.0 en portal.css de {rel}")
@@ -430,7 +452,14 @@ def test_http_server_headers_and_sri(base_url: str) -> dict[str, int]:
         _assert("defer" in js_tags[0], f"Script portal.js sin defer en {rel}")
 
     _assert("x-content-type-options" in css_hdrs and "x-content-type-options" in js_hdrs, "Activos JS/CSS sin nosniff")
-    print(f"    -> OK: {http_checks} peticiones HTTP verificadas (13 HTML + 4 activos + 404, HSTS/XFO/CSP y SRI SHA-384 100 % exacto).", flush=True)
+
+    st_robots, _, robots_bytes = _http_get(f"{base_url}/robots.txt")
+    st_sitemap, _, sitemap_bytes = _http_get(f"{base_url}/sitemap.xml")
+    http_checks += 2
+    _assert(st_robots == 200 and b"sitemap.xml" in robots_bytes, "robots.txt inválido vía HTTP")
+    _assert(st_sitemap == 200 and sitemap_bytes.decode("utf-8").count("<loc>") == 15, "sitemap.xml inválido vía HTTP")
+
+    print(f"    -> OK: {http_checks} peticiones HTTP verificadas (15 HTML + 4 activos + robots/sitemap + 404, HSTS/XFO/CSP y SRI SHA-384 100 % exacto).", flush=True)
     return {"http_checks": http_checks}
 
 
@@ -481,6 +510,10 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         "margin-top: auto;",
         ".os-sha-box",
         ".os-verify-cmd",
+        '[data-theme="light"]',
+        ".sha-matrix-table",
+        ".views-tour-grid",
+        ".hybrid-tabs-bar",
     ]:
         _assert(css_snippet in css_txt, f"Falta regla CSS requerida ({css_snippet}) en assets/css/portal.css")
 
@@ -499,6 +532,16 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
     _, planes_dom = pages_html["planes.html"]
     for id_req in ("corpAddonMenos", "corpAddonMas", "corpAddonPcs", "corpAddonTotal", "btnCorpAddonCheckout"):
         _assert(id_req in planes_dom.ids, f"Falta control calculadora Corp #{id_req} en planes.html")
+    _assert("+1 PC Adicional" in pages_html["planes.html"][0] and "data-billing-view" in pages_html["planes.html"][0], "Falta badge +1 PC Adicional o selector Anual/Mensual en planes.html")
+
+    # descargas.html y soporte.html dedicadas
+    desc_html, desc_dom = pages_html["descargas.html"]
+    _assert("tabla-sha256" in desc_dom.ids and "smartscreen" in desc_dom.ids and "SmartScreen" in desc_html, "Falta tabla SHA-256 o guía SmartScreen en descargas.html")
+    for _, (expected_url, expected_sha) in EXPECTED_DOWNLOADS.items():
+        _assert(expected_url in desc_dom.hrefs and expected_sha in desc_html, f"Falta enlace/hash v3.0.0 en descargas.html: {expected_url}")
+
+    sop_html, sop_dom = pages_html["soporte.html"]
+    _assert("lookupOrderRef" in sop_dom.ids and "lookupOrderToken" in sop_dom.ids and "btnLookupGuestOrder" in sop_dom.ids, "Falta consulta order_token en soporte.html")
 
     # Simulador y bloque descargas verificadas v3.0.0 en index.html
     index_html, index_dom = pages_html["index.html"]
@@ -519,7 +562,7 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         _assert(os_k in index_dom.attrs_index["data-sha256-copy"], f"Falta [data-sha256-copy='{os_k}'] en index.html")
         _assert(expected_sha in index_html, f"Falta SHA-256 de {os_k} ({expected_sha}) en index.html")
 
-    # guia-uso.html: 5 pestañas operativas completas
+    # guia-uso.html: 5 pestañas operativas completas + Tour 15 vistas AES-256-GCM y .p12
     guia_html, guia_dom = pages_html["guia-uso.html"]
     for tab_id, expected_snippet in [
         ("1pc", "25 RUCs"),
@@ -531,15 +574,15 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         _assert(tab_id in guia_dom.guide_tabs, f"Falta pestaña guía '{tab_id}' en guia-uso.html")
         _assert(tab_id in guia_dom.guide_panels, f"Falta panel guía '{tab_id}' en guia-uso.html")
         _assert(expected_snippet in guia_html, f"Falta detalle '{expected_snippet}' en guia-uso.html")
+    _assert("tour-15-vistas" in guia_dom.ids and guia_dom.classes.count("view-tour-card") == 15, "Se esperaban 15 vistas en #tour-15-vistas de guia-uso.html")
 
-    # politicas.html: 6 cláusulas legales, LOPDP, Deslinde y cero siglas EULA
+    # politicas.html: 6 cláusulas legales, LOPDP, EULA, Deslinde y Solo Lectura
     pol_html, pol_dom = pages_html["politicas.html"]
     _assert(pol_dom.classes.count("legal-clause-card") == 6, "Se esperaban 6 cláusulas .legal-clause-card en politicas.html")
-    _assert("Acuerdo de Licencia de Usuario Final y Condiciones de Uso" in pol_html, "Falta título legal oficial en español en politicas.html")
-    _assert("LOPDP" in pol_html and "Deslinde Tributario" in pol_html and "Modo Solo Lectura" in pol_html, "Falta LOPDP, Deslinde Tributario o Solo Lectura en politicas.html")
-    _assert("EULA" not in pol_html.upper(), "Sigla prohibida EULA detectada en politicas.html")
+    _assert("Acuerdo de Licencia de Usuario Final (EULA) y Condiciones de Uso" in pol_html, "Falta título legal oficial EULA en politicas.html")
+    _assert("LOPDP" in pol_html and "EULA" in pol_html and "Deslinde Tributario" in pol_html and "Modo Solo Lectura" in pol_html, "Falta LOPDP, EULA, Deslinde Tributario o Solo Lectura en politicas.html")
 
-    print("    -> OK: 13 DOMs HTTP, 5 planes ($69-$1,490+$150/PC), Deuna!/PayPhone Próximamente, LOPDP y SHA-256 v3.0.0 verificados.", flush=True)
+    print("    -> OK: 15 DOMs HTTP, 5 planes ($69-$1,490+$150/PC), Tour 15 vistas, Deuna!/PayPhone Próximamente, LOPDP+EULA y SHA-256 v3.0.0 verificados.", flush=True)
     return {"dom_pages": len(pages_html), "plans_verified": len(PRECIOS_ESPERADOS)}
 
 
@@ -930,6 +973,24 @@ def test_edge_api_anti_tampering_and_security() -> dict[str, int]:
 
         st_wh_replay, _, _ = call_edge("POST", "/api/webhook/payphone", headers=wh_hdrs, body=wh_payload)
         _assert(st_wh_replay == 409, f"Anti-Replay webhook falló: HTTP {st_wh_replay}")
+
+        # 5. Compra Híbrida Invitado (order_token + email), Comprobante MIME/Size y Supabase Auth
+        st_go, _, b_go = call_edge("POST", "/api/orders/create", body={"checkout_mode": "guest", "plan_id": "ESTUDIO_PRO", "email": "e2e@quoratec.ec", "ruc_cedula": "1790012345001", "razon_social": "ESTUDIO E2E", "payment_channel": "DEUNA_PERSONAL"})
+        _assert(st_go == 201, f"Orden invitado E2E falló: {st_go} {b_go}")
+        go_data = json.loads(b_go)
+        _assert(go_data.get("status") == "pendiente_verificacion" and go_data.get("monto_autorizado_usd") == 379, f"Orden E2E inválida: {go_data}")
+
+        st_rec_ok, _, _ = call_edge("POST", "/api/orders/receipt", body={"order_ref": go_data["order_ref"], "order_token": go_data["order_token"], "voucher_ref": "DEUNA-E2E9", "comprobante_mime": "application/pdf", "comprobante_size_bytes": 51200})
+        _assert(st_rec_ok == 200, f"Receipt PDF E2E falló: {st_rec_ok}")
+
+        st_st_fail, _, _ = call_edge("POST", "/api/orders/status", body={"order_ref": go_data["order_ref"], "order_token": go_data["order_token"], "email": "attacker@evil.ec"})
+        _assert(st_st_fail == 401, f"Order status con email incorrecto debió fallar con 401: {st_st_fail}")
+
+        st_st_ok, _, b_st_ok = call_edge("POST", "/api/orders/status", body={"order_ref": go_data["order_ref"], "order_token": go_data["order_token"], "email": "e2e@quoratec.ec"})
+        _assert(st_st_ok == 200 and json.loads(b_st_ok).get("status") == "pendiente_verificacion", f"Order status E2E falló: {st_st_ok} {b_st_ok}")
+
+        st_auth, _, _ = call_edge("POST", "/api/auth/supabase", body={"action": "login", "email": "e2e@quoratec.ec", "password": "PasswordSegura123"})
+        _assert(st_auth == 503, f"Supabase Auth sin env debió devolver 503: {st_auth}")
 
     finally:
         if proc.stdin and not proc.stdin.closed:

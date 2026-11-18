@@ -290,3 +290,97 @@ export function validarCamposComunesLicense({ hwid, orderRef, ruc, email, licens
     if (licenseKey !== undefined && !LICENSE_KEY_REGEX.test(String(licenseKey))) return "INVALID_LICENSE_FORMAT";
     return null;
 }
+
+export async function calcularSha256Hex(mensaje) {
+    const enc = new TextEncoder();
+    const digest = await crypto.subtle.digest("SHA-256", enc.encode(String(mensaje)));
+    return Array.from(new Uint8Array(digest))
+        .map((b) => b.toString(16).padStart(2, "0"))
+        .join("");
+}
+
+export function generarTokenCriptografico(prefijo = "TFTK", byteLen = 24) {
+    const bytes = new Uint8Array(byteLen);
+    crypto.getRandomValues(bytes);
+    const hex = Array.from(bytes)
+        .map((b) => b.toString(16).padStart(2, "0"))
+        .join("")
+        .toUpperCase();
+    return `${prefijo}-${hex}`;
+}
+
+export function obtenerEstadoPasarelasEnv(env = {}) {
+    return {
+        DEUNA_PERSONAL: String(env?.DEUNA_PERSONAL_ENABLED ?? "true").toLowerCase() !== "false",
+        TRANSFERENCIA: String(env?.TRANSFERENCIA_ENABLED ?? "true").toLowerCase() !== "false",
+        DEUNA_NEGOCIOS: String(env?.FF_DEUNA_NEGOCIOS_ENABLED ?? "false").toLowerCase() === "true",
+        PAYPHONE_BUSINESS: String(env?.FF_PAYPHONE_BUSINESS_ENABLED ?? "false").toLowerCase() === "true",
+    };
+}
+
+export function obtenerConfigSupabaseEnv(env = {}) {
+    const rawUrl = String(env?.SUPABASE_URL || "").trim().replace(/\/+$/, "");
+    const anonKey = String(env?.SUPABASE_ANON_KEY || "").trim();
+    const serviceRoleKey = String(env?.SUPABASE_SERVICE_ROLE_KEY || "").trim();
+    if (!rawUrl || !anonKey) return { configured: false, url: null, anonKey: "", serviceRoleKey: "" };
+    try {
+        const parsed = new URL(rawUrl);
+        if (parsed.protocol !== "https:" || parsed.username || parsed.password) {
+            return { configured: false, url: null, anonKey: "", serviceRoleKey: "" };
+        }
+        return { configured: true, url: parsed.origin, anonKey, serviceRoleKey };
+    } catch {
+        return { configured: false, url: null, anonKey: "", serviceRoleKey: "" };
+    }
+}
+
+export function validarBearerTokenHeader(request) {
+    const auth = String(request.headers.get("authorization") || "").trim();
+    if (!auth.toLowerCase().startsWith("bearer ")) return null;
+    const token = auth.slice(7).trim();
+    if (!token || token.length < 20 || token.length > 4096 || /\s/.test(token)) return null;
+    return token;
+}
+
+export async function obtenerUsuarioSupabaseDesdeToken(supaCfg, accessToken) {
+    if (!supaCfg?.configured || !accessToken) return null;
+    try {
+        const resp = await fetch(`${supaCfg.url}/auth/v1/user`, {
+            method: "GET",
+            headers: {
+                apikey: supaCfg.anonKey,
+                Authorization: `Bearer ${accessToken}`,
+            },
+        });
+        if (!resp.ok) return null;
+        const user = await resp.json();
+        if (!user || typeof user.id !== "string") return null;
+        return { id: user.id, email: String(user.email || "").toLowerCase() };
+    } catch {
+        return null;
+    }
+}
+
+export async function supabaseRestRequest(supaCfg, path, { method = "GET", body, serviceRole = false, extraHeaders = {} } = {}) {
+    if (!supaCfg?.configured) return { ok: false, status: 503, data: { error: "SUPABASE_NOT_CONFIGURED" } };
+    const authKey = serviceRole && supaCfg.serviceRoleKey ? supaCfg.serviceRoleKey : supaCfg.anonKey;
+    const headers = {
+        apikey: supaCfg.anonKey,
+        Authorization: `Bearer ${authKey}`,
+        "Content-Type": "application/json",
+        ...extraHeaders,
+    };
+    const resp = await fetch(`${supaCfg.url}/rest/v1/${path}`, {
+        method,
+        headers,
+        body: body !== undefined ? JSON.stringify(body) : undefined,
+    });
+    const text = await resp.text();
+    let parsed = null;
+    try {
+        parsed = text ? JSON.parse(text) : null;
+    } catch {
+        parsed = { raw: text };
+    }
+    return { ok: resp.ok, status: resp.status, data: parsed };
+}

@@ -1,0 +1,63 @@
+        <section class="page-hero">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html">Inicio</a>
+                    <span>/</span>
+                    <span>Soporte y Consulta de Órdenes</span>
+                </div>
+                <span class="eyebrow">Atención Oficial QUORATEC · TributaFlow ERP <span data-app-version-tag>v3.0.0</span></span>
+                <h1>Soporte Técnico, Estado de Órdenes y Cuenta</h1>
+                <p class="lead-sub">Consulta el estado de tu compra en modo invitado con tu <code>order_token</code>, administra tus licencias y equipos vinculados (<code>+1 PC Adicional</code>) con Supabase Auth o contacta directamente con ingeniería QUORATEC.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="payment-channels-grid">
+                    <!-- CONSULTA DE ORDEN INVITADO + LOGIN -->
+                    <div class="pay-box pay-deuna">
+                        <h4>1. Seguimiento de Orden Híbrido (Invitado o Cuenta Supabase)</h4>
+                        <p class="muted-note mt-6">¿Compraste como invitado usando <strong>Deuna! Personal</strong> o <strong>Transferencia Bancaria</strong>? Ingresa tu referencia <code>TF-...</code>, tu token privado <code>order_token</code> y el <strong>correo de compra</strong> para verificar si tu comprobante sigue en revisión o ya fue validado:</p>
+                        <div class="hybrid-form-grid mt-12">
+                            <div class="field-group">
+                                <label for="lookupOrderRef">Referencia de Orden</label>
+                                <input type="text" id="lookupOrderRef" class="mono-input" placeholder="Ej: TF-ESTUDIO_PRO-AB12CD">
+                            </div>
+                            <div class="field-group">
+                                <label for="lookupOrderToken">Token Privado (order_token)</label>
+                                <input type="text" id="lookupOrderToken" class="mono-input" placeholder="TFTK-...">
+                            </div>
+                            <div class="field-group">
+                                <label for="lookupOrderEmail">Correo de Compra</label>
+                                <input type="email" id="lookupOrderEmail" class="text-input" placeholder="contador@estudio.ec">
+                            </div>
+                        </div>
+                        <div class="flex-wrap-actions mt-12">
+                            <button type="button" class="btn-glow" id="btnLookupGuestOrder">Consultar Estado de Orden</button>
+                            <button type="button" class="btn-glass" data-open-account-modal>👤 Iniciar Sesión / Recuperar Cuenta Supabase</button>
+                        </div>
+                        <div id="lookupOrderResult" class="mt-12 muted-note" aria-live="polite"></div>
+                    </div>
+
+                    <!-- CANALES OFICIALES DIRECTOS -->
+                    <div class="pay-box pay-card">
+                        <h4>2. Canales Oficiales Verificados QUORATEC</h4>
+                        <p class="muted-note mt-6">Horario de atención directa: <strong>Lunes a Viernes 08:30–18:00 (ECT)</strong>. Soporte para activación de llaves <code>.lic</code>, migración de equipos con respaldo cifrado <code>.tfbkp</code>, configuración Red LAN y dudas de SmartScreen.</p>
+                        <div class="bank-rows mt-12">
+                            <div class="bank-row">
+                                <span>WhatsApp Oficial: <strong>+593 99 645 9771 (0996459771)</strong></span>
+                                <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20ERP" target="_blank" rel="noopener noreferrer" class="btn-support-link" data-support-link="whatsapp">Abrir Chat</a>
+                            </div>
+                            <div class="bank-row">
+                                <span>Correo Técnico: <strong>soportetributaflow@quoratec.com</strong></span>
+                                <a href="mailto:soportetributaflow@quoratec.com?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20ERP" class="btn-support-link" data-support-link="correo">Enviar Correo</a>
+                            </div>
+                        </div>
+                        <div class="flex-wrap-actions mt-12">
+                            <a href="descargas.html#smartscreen" class="btn-glass">Ver Guía SmartScreen (.exe)</a>
+                            <a href="politicas.html" class="btn-glass">LOPDP Ecuador y EULA</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

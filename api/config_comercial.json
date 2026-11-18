@@ -20,21 +20,59 @@
     "ENTERPRISE_TEAM": null,
     "ENTERPRISE_CORP": null
   },
+  "checkout_hibrido": {
+    "guest_checkout_habilitado": true,
+    "account_auth_provider": "supabase_auth",
+    "permite_claim_invitado": true,
+    "estado_inicial_comprobante": "pendiente_verificacion",
+    "soporta_addon_pc": true,
+    "addon_pc_etiqueta": "+1 PC Adicional",
+    "addon_pc_usd": 150.0
+  },
   "canales_pago": {
+    "deuna_personal": {
+      "activo": true,
+      "etiqueta": "Deuna! Personal (Banco Pichincha)",
+      "estado": "Activo",
+      "requiere_comprobante": true,
+      "estado_orden_inicial": "pendiente_verificacion",
+      "nota": "Canal principal activo para los 5 planes anuales. Registra tu referencia/comprobante para revisión en estado pendiente_verificacion."
+    },
     "deuna": {
       "activo": true,
-      "etiqueta": "Deuna! (Banco Pichincha) — Canal Principal Activo",
+      "etiqueta": "Deuna! Personal (Banco Pichincha) — Canal Principal Activo",
       "nota": "Disponible para los 5 planes anuales. Envía tu comprobante con el código de pedido para emisión inmediata de tu licencia .lic."
     },
     "transferencia": {
       "activo": true,
-      "etiqueta": "Transferencia Bancaria Directa",
-      "nota": "Titular oficial QUORATEC. Solicita los datos bancarios actualizados por WhatsApp o correo oficial."
+      "etiqueta": "Transferencia Bancaria Directa (QUORATEC)",
+      "estado": "Activo",
+      "requiere_comprobante": true,
+      "estado_orden_inicial": "pendiente_verificacion",
+      "nota": "Titular oficial QUORATEC. Registra tu número de comprobante o solicítalo por WhatsApp / correo oficial."
+    },
+    "deuna_negocios": {
+      "activo": false,
+      "etiqueta": "Deuna! Negocios API",
+      "estado": "Próximamente",
+      "feature_flag": "FF_DEUNA_NEGOCIOS_ENABLED",
+      "env_vars": [
+        "DEUNA_BUSINESS_API_KEY",
+        "DEUNA_BUSINESS_CLIENT_ID",
+        "DEUNA_BUSINESS_SECRET",
+        "DEUNA_WEBHOOK_SECRET"
+      ]
     },
     "payphone": {
       "activo": false,
-      "etiqueta": "PayPhone (Tarjeta Visa / Mastercard)",
-      "estado": "Próximamente / En actualización"
+      "etiqueta": "PayPhone Business (Tarjeta Visa / Mastercard)",
+      "estado": "Próximamente / En actualización",
+      "feature_flag": "FF_PAYPHONE_BUSINESS_ENABLED",
+      "env_vars": [
+        "PAYPHONE_TOKEN",
+        "PAYPHONE_STORE_ID",
+        "PAYPHONE_WEBHOOK_SECRET"
+      ]
     }
   },
   "canal_soporte": {
@@ -48,7 +86,7 @@
     "cifrado_local": "AES-256-GCM",
     "modo": "Local-First",
     "nube_opcional": "Sincronización selectiva Oficina + Casa vía Supabase RLS (disponible desde Estudio Contable Pro)",
-    "cumplimiento_legal": "LOPDP Ecuador + Deslinde Tributario"
+    "cumplimiento_legal": "LOPDP Ecuador + EULA + Deslinde Tributario"
   },
   "planes": [
     {
@@ -128,48 +166,48 @@
       "nombre": "Windows x64 (Instalador .exe)",
       "archivo": "Setup_TributaFlow_ERP_v3.0.0.exe",
       "version": "3.0.0",
-      "tamano": "65.9 MB",
-      "sha256": "c2ecdaa0092a2d236968898e130a3bc63ce5e7998f358985fdade1c383ed3808",
+      "tamano": "66.2 MB",
+      "sha256": "350a7f2cb1ba50a8cea87563b7e773357b5f8e9fa9d0f359401e0e9dc4c9e232",
       "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe"
     },
     "windows_zip": {
       "nombre": "Windows x64 (Portable .zip)",
       "archivo": "TributaFlow_ERP_v3.0.0_Windows_x64.zip",
       "version": "3.0.0",
-      "tamano": "86 MB",
-      "sha256": "9be4b60b3d0220d8d71b31941ced2a12722b9d1f9441458cfec719194089cc41",
+      "tamano": "86.3 MB",
+      "sha256": "ca49bcd4eea13b496a618122aa742d5de5c898f176e7eda326ad2d8b33a0c051",
       "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip"
     },
     "macos": {
       "nombre": "macOS (Universal .dmg)",
       "archivo": "TributaFlow_ERP_v3.0.0_macOS.dmg",
       "version": "3.0.0",
-      "tamano": "93.2 MB",
-      "sha256": "084317c123ce603c82091ed01137ce05b9ca5eee5b5c37fd2cdc4c0f64091cf4",
+      "tamano": "93.6 MB",
+      "sha256": "374e5ca4444b290662e417403ea0848bb77fe0215243fe52299743d7d8ad24df",
       "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_macOS.dmg"
     },
     "linux": {
       "nombre": "Linux Debian / Ubuntu (.deb)",
       "archivo": "TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
       "version": "3.0.0",
-      "tamano": "95.1 MB",
-      "sha256": "41626f54383f0755a16b6373e5ba6be29da09cc7d1c64ee61b8174b84956cc39",
+      "tamano": "95.6 MB",
+      "sha256": "2c5e48ae14c8dfce3d3e5f975e236a93be663fd138ef6f81dcb9a4ec5c2d052a",
       "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_amd64.deb"
     },
     "linux_tar": {
       "nombre": "Linux Genérico (.tar.gz)",
       "archivo": "TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
       "version": "3.0.0",
-      "tamano": "123 MB",
-      "sha256": "21130e004c66fb0a59b7862055b84bf255ca7c7e15e8a761bc8df887c6e653cb",
+      "tamano": "123.3 MB",
+      "sha256": "b4e5da23885fe7126dabe59a0120ef2fc688ad0a6124407a722bae4429c09b1b",
       "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz"
     },
     "sha256sums": {
       "nombre": "Manifiesto Maestro de Verificación (SHA256SUMS.txt)",
       "archivo": "SHA256SUMS.txt",
       "version": "3.0.0",
-      "tamano": "660 B",
-      "sha256": "c7c8ce6fb934be64708f173ae2099459f8903b7fe81aa4c1af94d5d79611783",
+      "tamano": "111 B",
+      "sha256": "a86675219f227ab4831dfa34e00253fc735e161eef1fd0dc88a40c35f25685ba",
       "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt"
     }
   }

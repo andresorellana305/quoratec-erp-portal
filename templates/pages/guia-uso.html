@@ -1,0 +1,201 @@
+        <section class="page-hero">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html">Inicio</a>
+                    <span>/</span>
+                    <span>Guía de Uso e Implementación</span>
+                </div>
+                <span class="eyebrow">Manual Operativo Edición 2026 <span data-app-version-tag>v3.0.0</span></span>
+                <h1>Guía de Uso e Implementación por Plan</h1>
+                <p class="lead-sub">Selecciona tu escenario de trabajo en las pestañas inferiores para ver pasos claros de instalación SHA-256, cifrado AES-256-GCM Local-First, sincronización Oficina + Casa y activación .lic.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <!-- PESTAÑAS INTERACTIVAS DE LA GUÍA -->
+                <div class="guide-tabs-bar" role="tablist" aria-label="Escenarios de implementación TributaFlow ERP">
+                    <button type="button" class="guide-tab-btn is-active" role="tab" aria-selected="true" data-guide-tab="rapida">🚀 Instalación Rápida (SO)</button>
+                    <button type="button" class="guide-tab-btn" role="tab" aria-selected="false" data-guide-tab="1pc">💻 1 PC (Personal / Master)</button>
+                    <button type="button" class="guide-tab-btn" role="tab" aria-selected="false" data-guide-tab="2pcs">🏠🏢 Estudio Pro (Oficina + Casa)</button>
+                    <button type="button" class="guide-tab-btn" role="tab" aria-selected="false" data-guide-tab="lan">🌐 Red LAN / Team ERP</button>
+                    <button type="button" class="guide-tab-btn" role="tab" aria-selected="false" data-guide-tab="corp">🏛️ Corp Multi-Sucursal</button>
+                </div>
+
+                <!-- PANEL 1: INSTALACIÓN RÁPIDA -->
+                <article class="guide-panel is-active" id="tab-rapida" role="tabpanel" data-guide-panel="rapida">
+                    <h2>Instalación Rápida y Verificación SHA-256 en Windows, macOS o Linux (<span data-app-version-tag>v3.0.0</span>)</h2>
+                    <p class="muted-note mt-6">Todos los instaladores oficiales de <strong>QUORATEC</strong> incluyen la evaluación gratuita de <strong data-trial-days>7 días</strong> con capacidad de <strong>hasta 60 RUCs (modalidad Estudio Contable Pro)</strong> y <strong>sin tarjeta de crédito</strong>.</p>
+
+                    <div class="guide-steps-grid mt-24">
+                        <div class="guide-step-card">
+                            <span class="step-num">01</span>
+                            <h3>Windows 10 / 11 (Setup .exe o Portable .zip)</h3>
+                            <p>Ejecuta <code>Setup_TributaFlow_ERP_v3.0.0.exe</code> (66.2 MB) o descomprime <code>TributaFlow_ERP_v3.0.0_Windows_x64.zip</code> (86.3 MB) tras verificar el SHA-256 con <code>certutil -hashfile ... SHA256</code>. Ante SmartScreen, selecciona <strong>"Más información" ➔ "Ejecutar de todas formas"</strong>.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">02</span>
+                            <h3>macOS Universal (.dmg — 93.6 MB)</h3>
+                            <p>Comprueba el SHA-256 de <code>TributaFlow_ERP_v3.0.0_macOS.dmg</code> con <code>shasum -a 256</code> y arrastra <strong>TributaFlow ERP</strong> a Aplicaciones. Para el primer arranque, haz <strong>Control + clic</strong> y elige <strong>Abrir</strong>.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">03</span>
+                            <h3>Linux (.deb 95.6 MB / .tar.gz 123.3 MB)</h3>
+                            <p>Valida la integridad con <code>sha256sum</code> e instala en Ubuntu/Debian con <code>sudo apt install ./TributaFlow_ERP_v3.0.0_Linux_amd64.deb</code> o extrae <code>TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz</code>.</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-callout mt-24">
+                        <strong>Activación .lic y Modo Solo Lectura:</strong> Al abonar por <strong>Deuna!</strong> (PayPhone: <em>Próximamente / En actualización</em>), abre <em>Ajustes ➔ Activar Licencia</em>, envía tu código HWID y carga tu archivo <code>.lic</code>. Si vence la prueba de 7 días o el año, el software pasa a <strong>Modo Solo Lectura</strong> sin borrar tus datos locales.
+                    </div>
+                </article>
+
+                <!-- PANEL 2: 1 PC (PERSONAL Y CONTADOR MASTER) -->
+                <article class="guide-panel" id="tab-1pc" role="tabpanel" data-guide-panel="1pc">
+                    <h2>Operación Local-First en 1 PC (Personal Pro $69 y Contador Master $159)</h2>
+                    <p class="muted-note mt-6">Bóveda SQLite, claves SRI en Línea y firma electrónica <code>.p12</code> cifradas con <strong>AES-256-GCM</strong> exclusivamente en tu equipo: <strong>Personal Pro</strong> ($69/año) gestiona hasta <strong>3 RUCs</strong> y <strong>Contador Master</strong> ($159/año) hasta <strong>25 RUCs</strong> con Lote Multi-RUC, ATS Oficial y Form. 103/104.</p>
+
+                    <div class="guide-steps-grid mt-24">
+                        <div class="guide-step-card">
+                            <span class="step-num">01</span>
+                            <h3>Bóveda Local AES-256-GCM</h3>
+                            <p>Al iniciar TributaFlow ERP v3.0.0, define tu carpeta de trabajo local donde residirán tu base contable, claves SRI y certificados <code>.p12</code> cifrados bajo AES-256-GCM.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">02</span>
+                            <h3>Sincronización SRI con Calendario Embebido</h3>
+                            <p>En <strong>Mis Contribuyentes</strong> carga hasta 3 RUCs (Personal Pro) o 25 RUCs (Contador Master) y descarga XML/RIDE usando la interfaz MDI cero-destellos y calendario integrado.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">03</span>
+                            <h3>POS .p12, Kardex, ATS y Form. 103/104</h3>
+                            <p>Gestiona facturación electrónica POS <code>.p12</code>, Kardex, CxC/CxP y en Contador Master ($159/año) exporta el ATS XML/XSD oficial y resúmenes para Form. 103 y 104.</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-callout-warn mt-24">
+                        <strong>¿Trabajas en Oficina y Casa?</strong> Para habilitar sincronización selectiva Oficina + Casa en la nube (Supabase RLS), Contabilidad NIIF y Auditoría EFOS en hasta 2 PCs, escala a Estudio Contable Pro ($379/año).
+                    </div>
+                </article>
+
+                <!-- PANEL 3: ESTUDIO PRO OFICINA + CASA -->
+                <article class="guide-panel" id="tab-2pcs" role="tabpanel" data-guide-panel="2pcs">
+                    <h2>Trabajo Oficina + Casa y Contabilidad NIIF (Estudio Contable Pro — $379/año)</h2>
+                    <p class="muted-note mt-6">Hasta <strong>2 PCs (Oficina + Casa)</strong> y <strong>60 RUCs</strong> con <strong>sincronización selectiva en la nube opcional vía Supabase RLS</strong>, Contabilidad NIIF, Auditoría EFOS, POS <code>.p12</code>, Kardex, ATS, Form. 103/104 y respaldo <code>.tfbkp</code>.</p>
+
+                    <div class="guide-steps-grid mt-24">
+                        <div class="guide-step-card">
+                            <span class="step-num">01</span>
+                            <h3>Vincula Tus 2 PCs (Oficina + Casa)</h3>
+                            <p>Activa tus dos equipos independientes para operar hasta <strong>60 RUCs</strong> con almacenamiento local AES-256-GCM en cada estación.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">02</span>
+                            <h3>Sincronización Selectiva Opcional (Supabase RLS)</h3>
+                            <p>Si deseas continuar en casa el trabajo iniciado en oficina, activa en Ajustes la sincronización selectiva de RUCs y documentos protegida por Supabase RLS.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">03</span>
+                            <h3>Respaldos .tfbkp y Suite NIIF / EFOS</h3>
+                            <p>Ejecuta Contabilidad NIIF, Auditoría EFOS en vivo y genera respaldos cifrados <code>.tfbkp</code> (AES-256-GCM + HMAC) para migrar o resguardar tu cartera.</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-callout mt-24">
+                        <strong>Prueba gratuita completa por 7 días:</strong> Al instalar v3.0.0 recibes 7 días gratis en modalidad Estudio Contable Pro (hasta 60 RUCs, sin tarjeta de crédito).
+                    </div>
+                </article>
+
+                <!-- PANEL 4: ENTERPRISE TEAM ERP -->
+                <article class="guide-panel" id="tab-lan" role="tabpanel" data-guide-panel="lan">
+                    <h2>Módulos ERP Completos en Red LAN (Enterprise Team ERP — $890/año)</h2>
+                    <p class="muted-note mt-6">Para estudios y pymes en crecimiento: <strong>5 PCs</strong>, <strong>RUCs ilimitados</strong>, todos los módulos ERP (POS <code>.p12</code>, Kardex, CxC/CxP, NIIF, EFOS, ATS, Form. 103/104), <strong>Red LAN TCP/IP</strong> y nube selectiva Oficina + Casa.</p>
+
+                    <div class="guide-steps-grid mt-24">
+                        <div class="guide-step-card">
+                            <span class="step-num">01</span>
+                            <h3>Configura la Red LAN TCP/IP y Bóveda UNC</h3>
+                            <p>Centraliza tu repositorio compartido en red local (ej. <code>\\SERVIDOR\BovedaTributaFlow</code>) con cola anti-colisión para tus 5 estaciones contables.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">02</span>
+                            <h3>Opera 5 PCs sobre RUCs Ilimitados</h3>
+                            <p>Asigna permisos por rol a auxiliares y contadores con control completo sobre XML, RIDE, Kardex, CxC/CxP y estados financieros NIIF.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">03</span>
+                            <h3>Escalamiento a Multi-Sucursal</h3>
+                            <p>Si necesitas operar múltiples sucursales y bodegas en tiempo real con 10+ PCs, migra en cualquier momento a Enterprise Corp ERP.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PANEL 5: ENTERPRISE CORP ERP -->
+                <article class="guide-panel" id="tab-corp" role="tabpanel" data-guide-panel="corp">
+                    <h2>Multi-Sucursal y Multi-Bodega en Vivo (Enterprise Corp ERP — $1,490/año)</h2>
+                    <p class="muted-note mt-6">Arquitectura corporativa Edición 2026: <strong>10+ PCs (+$150/PC extra)</strong>, RUCs ilimitados, <strong>multi-sucursal y multi-bodega en vivo</strong>, POS <code>.p12</code>, Kardex, CxC/CxP, NIIF, EFOS y Form. 103/104.</p>
+
+                    <div class="guide-steps-grid mt-24">
+                        <div class="guide-step-card">
+                            <span class="step-num">01</span>
+                            <h3>Multi-Sucursal y Multi-Bodega en Vivo</h3>
+                            <p>Controla transferencias de stock, múltiples cajas POS con firma electrónica <code>.p12</code> y cartera consolidada entre sucursales y bodegas.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">02</span>
+                            <h3>Cifrado Local-First + Sincronización Segura</h3>
+                            <p>Conserva llaves fiscales cifradas localmente con AES-256-GCM mientras sincronizas sucursales bajo políticas de seguridad QUORATEC.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">03</span>
+                            <h3>Escalamiento Modular (+$150/PC extra)</h3>
+                            <p>Parte desde 10 PCs base ($1,490/año) e incorpora nuevas estaciones adicionales por <strong>+$150/PC extra</strong> activadas vía Deuna! o transferencia.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex-wrap-actions mt-24">
+                        <a href="planes.html#corp-addon" class="btn-glow">Calcular Estaciones Extra (+1 PC) ➔</a>
+                        <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20ERP" target="_blank" rel="noopener noreferrer" class="btn-support-link" data-support-link="whatsapp">💬 Coordinar Onboarding Corporativo</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- TOUR DE LAS 15 VISTAS OFICIALES DE TRIBUTAFLOW ERP v3.0.0 -->
+        <section class="section bg-subtle" id="tour-15-vistas">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Tour Completo de Arquitectura · Cifrado AES-256-GCM y Firma .p12</span>
+                    <h2>Las 15 Vistas Nativas de TributaFlow ERP v3.0.0</h2>
+                    <p>Explora el ecosistema completo de ventanas MDI cero-destellos diseñadas bajo arquitectura <strong>Local-First AES-256-GCM</strong> y facturación electrónica directa con certificado <code>.p12</code>.</p>
+                </div>
+
+                <div class="views-tour-grid">
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>01. Panel General Ejecutivo</strong><span class="view-tour-num">Vista 01</span></div><p class="muted-note">KPIs tributarios mensuales, estado de licencia y cupo de RUCs.</p><a href="modulos/panel-general.html" class="module-link">Explorar Vista ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>02. Mis Contribuyentes Multi-RUC</strong><span class="view-tour-num">Vista 02</span></div><p class="muted-note">Claves SRI cifradas con AES-256-GCM por HWID en disco local.</p><a href="modulos/mis-contribuyentes.html" class="module-link">Explorar Vista ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>03. Sincronizador Masivo SRI</strong><span class="view-tour-num">Vista 03</span></div><p class="muted-note">Descarga de XML y RIDE PDF en árbol jerárquico por año/mes.</p><a href="modulos/sincronizar-sri.html" class="module-link">Explorar Vista ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>04. Importador TXT / XML / ZIP</strong><span class="view-tour-num">Vista 04</span></div><p class="muted-note">Ingesta offline de claves de acceso y deduplicación automática.</p><a href="modulos/importar-comprobantes.html" class="module-link">Explorar Vista ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>05. Auditor Fantasma (EFOS)</strong><span class="view-tour-num">Vista 05</span></div><p class="muted-note">Cruce forense automático frente a catastro fantasma del SRI.</p><a href="modulos/auditor-fantasma.html" class="module-link">Explorar Vista ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>06. Búsqueda RUC / Cédula</strong><span class="view-tour-num">Vista 06</span></div><p class="muted-note">Validación directa de estado tributario y actividades económicas.</p><a href="modulos/busqueda-ruc.html" class="module-link">Explorar Vista ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>07. Consulta Masiva Lote</strong><span class="view-tour-num">Vista 07</span></div><p class="muted-note">Verificación por lotes con exportación limpia a Excel y CSV.</p><a href="modulos/consulta-masiva.html" class="module-link">Explorar Vista ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>08. Generador y Validador ATS</strong><span class="view-tour-num">Vista 08</span></div><p class="muted-note">Construcción de XML ATS y validación offline contra esquema XSD.</p><a href="modulos/generador-ats.html" class="module-link">Explorar Vista ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>09. Facturación POS Firma .p12</strong><span class="view-tour-num">Vista 09</span></div><p class="muted-note">Emisión y firma XAdES-BES local con certificado <code>.p12</code> AES-256-GCM.</p><a href="planes.html#planes" class="module-link">Ver Planes POS ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>10. Inventario &amp; Kardex</strong><span class="view-tour-num">Vista 10</span></div><p class="muted-note">Control de stock promedio ponderado, multi-bodega y costos.</p><a href="planes.html#planes" class="module-link">Incluido ERP ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>11. Cartera CxC / CxP</strong><span class="view-tour-num">Vista 11</span></div><p class="muted-note">Cobros, pagos, vencimientos y conciliación de retenciones.</p><a href="planes.html#planes" class="module-link">Ver Detalles ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>12. Contabilidad NIIF &amp; Balances</strong><span class="view-tour-num">Vista 12</span></div><p class="muted-note">Libro diario automático, balance general y estado de resultados NIIF.</p><a href="planes.html#planes" class="module-link">Desde Estudio Pro ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>13. Formularios 103 y 104</strong><span class="view-tour-num">Vista 13</span></div><p class="muted-note">Preliquidación de IVA mensual/semestral y retenciones en la fuente.</p><a href="planes.html#planes" class="module-link">Ver Cobertura ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>14. Nube Oficina + Casa RLS</strong><span class="view-tour-num">Vista 14</span></div><p class="muted-note">Sincronización selectiva opcional cifrada vía Supabase RLS.</p><a href="modulos/ajustes-seguridad.html" class="module-link">Ver Arquitectura ➔</a></article>
+                    <article class="view-tour-card"><div class="view-tour-head"><strong>15. Bóveda AES-256-GCM &amp; .tfbkp</strong><span class="view-tour-num">Vista 15</span></div><p class="muted-note">Respaldos portátiles HMAC, Red LAN TCP/IP y activación HWID.</p><a href="modulos/ajustes-seguridad.html" class="module-link">Explorar Seguridad ➔</a></article>
+                </div>
+            </div>
+        </section>

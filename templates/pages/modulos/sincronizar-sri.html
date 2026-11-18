@@ -1,0 +1,57 @@
+    <section class="module-hero">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Ruta de navegación">
+                    <a href="../index.html">Inicio</a>
+                    <span>/</span>
+                    <a href="../index.html#modulos">Módulos</a>
+                    <span>/</span>
+                    <span>3. Sincronizar SRI (Árbol Contable Jerárquico)</span>
+                </nav>
+                <span class="eyebrow">MÓDULO 03 • MOTOR PLAYWRIGHT + BÓVEDA CONTABLE JERÁRQUICA</span>
+                <h1>Sincronización SRI y Árbol Contable Jerárquico</h1>
+                <p class="lead-sub">Automatiza la extracción de comprobantes electrónicos emitidos y recibidos desde el SRI en Línea, genera sus RIDE PDF y archiva todo en carpetas ordenadas por contribuyente, año, mes, dirección, tipo y formato.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="architecture-split">
+                    <div class="tree-box">
+                        <span class="eyebrow">ÁRBOL JERÁRQUICO REAL EN DISCO</span>
+                        <pre>Boveda_TributaFlow/
+    └── &lt;RUC&gt;_&lt;EMPRESA&gt;/ (Ej: 1790012345001_EMPRESA_DEMOSTRACION_SA)
+        ├── &lt;AÑO&gt;/ (2026)
+        │   └── &lt;MM_MES&gt;/ (10_OCTUBRE)
+        │       ├── Emitidos/
+        │       │   └── &lt;TIPO&gt;/ (Facturas | Retenciones | Notas_Credito)
+        │       │       ├── XML/
+        │       │       └── RIDE/
+        │       └── Recibidos/
+        │           └── &lt;TIPO&gt;/
+        │               ├── XML/
+        │               └── RIDE/
+        └── Logs_Sincronizacion/
+            └── historial_2026_10.log</pre>
+                    </div>
+
+                    <div class="feature-list-panel">
+                        <h3>Capacidades Clave de Sincronización</h3>
+                        <ul>
+                            <li>✔ <strong>Deduplicación por Clave de Acceso (49 dígitos):</strong> Nunca descarga ni duplica dos veces el mismo XML o RIDE dentro de la bóveda o SQLite.</li>
+                            <li>✔ <strong>Sincronización en Lote Multi-RUC:</strong> Desde Contador Master (25 RUCs), Estudio Pro (60 RUCs en 1 o 2 PCs) hasta Enterprise (RUCs Ilimitados), procesa colas nocturnas o por período.</li>
+                            <li>✔ <strong>Trazabilidad en <code>Logs_Sincronizacion/</code>:</strong> Registro detallado de comprobantes nuevos, omitidos por duplicado y reintentos ante caídas del portal SRI.</li>
+                            <li>✔ <strong>Cola Anti-Colisión Red LAN:</strong> En Enterprise Team y Corp impide que dos PCs descarguen simultáneamente el mismo RUC y período.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-nav-footer">
+                    <a href="mis-contribuyentes.html" class="btn-glass">← Anterior: Mis Contribuyentes</a>
+                    <div class="flex-wrap-actions">
+                        <button type="button" class="btn-glass" data-download-os="auto">⬇ Descargar v3.0.0</button>
+                        <button type="button" class="btn-primary" data-checkout-plan="ESTUDIO_PRO">💳 Adquirir Estudio Pro ($379)</button>
+                        <a href="importar-comprobantes.html" class="btn-glass">Siguiente: Importar Comprobantes →</a>
+                    </div>
+                </div>
+            </div>
+        </section>

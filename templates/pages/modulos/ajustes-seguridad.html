@@ -1,0 +1,56 @@
+    <section class="module-hero">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Ruta de navegación">
+                    <a href="../index.html">Inicio</a>
+                    <span>/</span>
+                    <a href="../index.html#modulos">Módulos</a>
+                    <span>/</span>
+                    <span>9. Ajustes, Red LAN TCP/IP y Blindaje</span>
+                </nav>
+                <span class="eyebrow">MÓDULO 09 • PERMISOS EN VIVO, RED LAN TCP/IP Y BACKUPS .TFBKP</span>
+                <h1>Ajustes, Arquitectura Red LAN TCP/IP y Blindaje</h1>
+                <p class="lead-sub">Visualiza en tiempo real qué funciones están activas (✔) o bloqueadas (🔒) según tu plan, configura tu estudio contable en Red LAN TCP/IP centralizada para 5 a 10+ estaciones concurrentes sobre bóveda compartida UNC y genera respaldos cifrados portátiles.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="architecture-split">
+                    <div class="feature-list-panel">
+                        <h3>Matriz de Capacidades y Gobernanza en Ajustes</h3>
+                        <ul>
+                            <li>✔ <strong>Modo Local Cifrado (Personal, Contador Master y Estudio Pro):</strong> Base SQLite cifrada por HWID con <code>PBKDF2 + AES-256-GCM + HMAC</code> sin requerir servidor.</li>
+                            <li>✔ <strong>Red LAN TCP/IP Centralizada (Enterprise Team 5 estaciones / Corp 10+ estaciones):</strong> Operación concurrente multi-estación en oficina sin Conector Multi-Regional HTTPS en Team.</li>
+                            <li>✔ <strong>Bóveda Compartida UNC (<code>\\SERVIDOR\Boveda_TributaFlow\...</code>):</strong> Repositorio único en red para Enterprise Team/Corp con <strong>cola anti-colisión</strong>; Conector Multi-Regional HTTPS / Gateway seguro incluido en Enterprise Corporativo ($1,490+ base, +$150/PC extra).</li>
+                            <li>✔ <strong>Respaldo Portátil Cifrado <code>.tfbkp</code> (Desde Estudio Pro $299+):</strong> Exporta o restaura bóvedas cifradas con <code>AES-256-GCM + HMAC</code>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tree-box">
+                        <span class="eyebrow">TOPOLOGÍA RED LAN TCP/IP ENTERPRISE</span>
+                        <pre>[Estación 1 - Auxiliar] ──┐
+    [Estación 2 - Contador] ──┼──(TCP/IP Red LAN + UNC)──▶ [SERVIDOR OFICINA]
+    [Estación 3 - Auditor ] ──┘                             ├── DB Centralizada
+                                                            ├── \\SERVIDOR\Boveda_TributaFlow\
+                                                            │   └── Cola Anti-Colisión
+                                                            └── 1790012345001_EMPRESA_DEMOSTRACION_SA
+
+    Panel Ajustes en App:
+    ✓ Bóveda Jerárquica Local (Personal Pro+)
+    ✓ Generador ATS XML/XSD (Contador Master+)
+    ✓ Auditor Fantasma EFOS + .tfbkp (Estudio Pro+)
+    🔒 Red LAN 5 estaciones &amp; UNC (Enterprise Team $890+)
+    🔒 10+ Estaciones (+$150/PC) + Multi-Regional HTTPS (Enterprise Corp $1,490+)</pre>
+                    </div>
+                </div>
+
+                <div class="module-nav-footer">
+                    <a href="generador-ats.html" class="btn-glass">← Anterior: Generador ATS</a>
+                    <div class="flex-wrap-actions">
+                        <button type="button" class="btn-primary" data-checkout-plan="ENTERPRISE_TEAM">🏦 Enterprise Team 5 PCs ($890)</button>
+                        <button type="button" class="btn-primary" data-checkout-plan="ENTERPRISE_CORP">🏦 Enterprise Corp 10+ PCs ($1,490+)</button>
+                        <a href="../index.html#precios" class="btn-glass">Comparar los 5 Planes →</a>
+                    </div>
+                </div>
+            </div>
+        </section>

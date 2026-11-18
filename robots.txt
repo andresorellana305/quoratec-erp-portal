@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /api/orders/
+Disallow: /api/auth/
+Disallow: /api/license/
+Disallow: /api/webhook/
+
+Sitemap: https://tributaflow.quoratec.com/sitemap.xml

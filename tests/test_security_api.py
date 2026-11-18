@@ -33,27 +33,27 @@ PAYPHONE_OFICIALES = {
 SHA256_OFICIALES = {
     "windows": (
         "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe",
-        "c2ecdaa0092a2d236968898e130a3bc63ce5e7998f358985fdade1c383ed3808",
+        "350a7f2cb1ba50a8cea87563b7e773357b5f8e9fa9d0f359401e0e9dc4c9e232",
     ),
     "windows_zip": (
         "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip",
-        "9be4b60b3d0220d8d71b31941ced2a12722b9d1f9441458cfec719194089cc41",
+        "ca49bcd4eea13b496a618122aa742d5de5c898f176e7eda326ad2d8b33a0c051",
     ),
     "macos": (
         "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_macOS.dmg",
-        "084317c123ce603c82091ed01137ce05b9ca5eee5b5c37fd2cdc4c0f64091cf4",
+        "374e5ca4444b290662e417403ea0848bb77fe0215243fe52299743d7d8ad24df",
     ),
     "linux": (
         "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
-        "41626f54383f0755a16b6373e5ba6be29da09cc7d1c64ee61b8174b84956cc39",
+        "2c5e48ae14c8dfce3d3e5f975e236a93be663fd138ef6f81dcb9a4ec5c2d052a",
     ),
     "linux_tar": (
         "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
-        "21130e004c66fb0a59b7862055b84bf255ca7c7e15e8a761bc8df887c6e653cb",
+        "b4e5da23885fe7126dabe59a0120ef2fc688ad0a6124407a722bae4429c09b1b",
     ),
     "sha256sums": (
         "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
-        "c7c8ce6fb934be64708f173ae2099459f8903b7fe81aa4c1af94d5d79611783",
+        "a86675219f227ab4831dfa34e00253fc735e161eef1fd0dc88a40c35f25685ba",
     ),
 }
 
@@ -128,7 +128,7 @@ class _EdgeClient:
 
 def test_1_static_commercial_and_supply_chain() -> None:
     print("[1/4] Verificación comercial v3.0.0 (Edición 2026), SRI SHA-384, SHA-256 binarios y cero secretos...")
-    _assert(len(HTML_FILES) == 13, f"Se esperaban 13 páginas HTML, encontradas: {len(HTML_FILES)}")
+    _assert(len(HTML_FILES) == 15, f"Se esperaban 15 páginas HTML, encontradas: {len(HTML_FILES)}")
 
     # 1. Config JSON comercial + version.json + SHA-256
     cfg = json.loads((PORTAL_DIR / "api" / "config_comercial.json").read_text(encoding="utf-8"))
@@ -158,7 +158,7 @@ def test_1_static_commercial_and_supply_chain() -> None:
         re.compile(r"\b14\s*d[ií]as\b|\b14d\b|\b15\s+d[ií]as\b", re.I),
         re.compile(r"\b2\s+RUCs?\b", re.I),
         re.compile(r"\b15\s+l[ií]neas\b|\b50\s+l[ií]neas\b|\b200\s+l[ií]neas\b", re.I),
-        re.compile(r"\bEULA\b|\bEd25519\b|\bRSA-2048\b", re.I),
+        re.compile(r"\bEd25519\b|\bRSA-2048\b", re.I),
         re.compile(r"no-referrer|releases/latest", re.I),
         re.compile("Fausto" + r"\s+" + ".*?" + "Orellana", re.I),
         re.compile(r"2\.[45]\.0|TributaFlow Pro", re.I),
@@ -191,6 +191,16 @@ def test_1_static_commercial_and_supply_chain() -> None:
             txt = path.read_text(encoding="utf-8")
             _assert(not secret_rx.search(txt), f"Posible secreto embebido en {path}")
 
+    # Frontend OWASP checks: cero service_role ni sinks innerHTML/eval en cliente; SEO sitemap/robots
+    frontend_files = [*(PORTAL_DIR / rel for rel in HTML_FILES), PORTAL_DIR / "assets" / "js" / "portal.js", PORTAL_DIR / "api" / "config_comercial.json"]
+    for ff in frontend_files:
+        ftxt = ff.read_text(encoding="utf-8")
+        _assert("service_role" not in ftxt.lower(), f"Posible exposición de service_role en frontend: {ff}")
+        _assert("innerhtml" not in ftxt.lower(), f"Uso inseguro de innerHTML en frontend: {ff}")
+    _assert((PORTAL_DIR / "robots.txt").is_file() and "sitemap.xml" in (PORTAL_DIR / "robots.txt").read_text(encoding="utf-8"), "Falta robots.txt válido")
+    sitemap_txt = (PORTAL_DIR / "sitemap.xml").read_text(encoding="utf-8")
+    _assert(sitemap_txt.count("<loc>") == 15, f"sitemap.xml debe listar 15 URLs, encontradas: {sitemap_txt.count('<loc>')}")
+
     # 4. Cabeceras _headers
     headers_txt = (PORTAL_DIR / "_headers").read_text(encoding="utf-8")
     for req_h in [
@@ -201,7 +211,14 @@ def test_1_static_commercial_and_supply_chain() -> None:
         "frame-ancestors 'none'",
     ]:
         _assert(req_h in headers_txt, f"Falta cabecera en _headers: {req_h}")
-    print("    -> OK: 13 HTML con SRI SHA-384, reglas v3.0.0, SHA-256 reales y cero secretos.")
+
+    # 5. Arquitectura modular de plantillas + saltos de línea LF estrictos
+    build_script = PORTAL_DIR / "scripts" / "build_portal.py"
+    _assert(build_script.is_file(), "Falta scripts/build_portal.py")
+    build_check = subprocess.run([sys.executable, str(build_script), "--check"], capture_output=True, text=True, check=False)
+    _assert(build_check.returncode == 0, f"Desfase en plantillas modulares o CRLF: {build_check.stderr or build_check.stdout}")
+
+    print("    -> OK: 15 HTML con SRI SHA-384, plantillas modulares LF, reglas v3.0.0, SHA-256 reales y cero secretos.")
 
 
 def test_2_syntax_all_scripts() -> None:
@@ -211,17 +228,25 @@ def test_2_syntax_all_scripts() -> None:
         PORTAL_DIR / "functions" / "_shared" / "security.js",
         PORTAL_DIR / "functions" / "_middleware.js",
         PORTAL_DIR / "functions" / "api" / "webhook" / "payphone.js",
+        PORTAL_DIR / "functions" / "api" / "webhook" / "deuna-business.js",
         PORTAL_DIR / "functions" / "api" / "license" / "activate.js",
         PORTAL_DIR / "functions" / "api" / "license" / "verify.js",
+        PORTAL_DIR / "functions" / "api" / "orders" / "_store.js",
+        PORTAL_DIR / "functions" / "api" / "orders" / "create.js",
+        PORTAL_DIR / "functions" / "api" / "orders" / "receipt.js",
+        PORTAL_DIR / "functions" / "api" / "orders" / "status.js",
+        PORTAL_DIR / "functions" / "api" / "orders" / "claim.js",
+        PORTAL_DIR / "functions" / "api" / "auth" / "supabase.js",
         PORTAL_DIR / "tests" / "edge_harness.mjs",
     ]
     for jf in js_files:
         proc = subprocess.run(["node", "--check", str(jf)], capture_output=True, text=True, check=False)
         _assert(proc.returncode == 0, f"Syntax error en {jf}: {proc.stderr}")
 
-    for pf in (PORTAL_DIR / "tests").glob("*.py"):
+    py_scripts = [*(PORTAL_DIR / "tests").glob("*.py"), PORTAL_DIR / "scripts" / "build_portal.py"]
+    for pf in py_scripts:
         py_compile.compile(str(pf), doraise=True)
-    print(f"    -> OK: {len(js_files)} archivos JS/MJS y scripts Python compilados sin errores.")
+    print(f"    -> OK: {len(js_files)} archivos JS/MJS y {len(py_scripts)} scripts Python compilados sin errores.")
 
 
 def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret: str, license_secret: str) -> None:
@@ -362,7 +387,77 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
         responses.append((st_w, txt_w))
     _assert(all(st_w == 401 for st_w, _ in responses), f"Se esperaba HTTP 401 uniforme, recibido: {responses}")
     _assert(len({txt_w for _, txt_w in responses}) == 1, f"Enumeración detectada entre respuestas inválidas: {responses}")
-    print("    -> OK: HMAC, Anti-Tampering, XSS/SQLi/NoSQLi/SSRF/PathTraversal y Anti-Enumeración aprobados.")
+
+    # E) Checkout Híbrido (/api/orders/*), Feature Flags Próximamente y Supabase Auth
+    hdr_ip_e = {"X-Forwarded-For": "203.0.113.105"}
+    st_soon_gw, _, txt_soon_gw = client.post(
+        "/api/orders/create",
+        json.dumps({"checkout_mode": "guest", "plan_id": "ESTUDIO_PRO", "email": "inv@estudio.ec", "ruc_cedula": "1790012345001", "razon_social": "ESTUDIO PRUEBA", "payment_channel": "DEUNA_NEGOCIOS"}),
+        headers=hdr_ip_e,
+    )
+    _assert(st_soon_gw == 400 and "GATEWAY_FEATURE_DISABLED_SOON" in txt_soon_gw, f"Pasarela Próximamente debió rechazarse: {st_soon_gw} {txt_soon_gw}")
+
+    st_ord_tamper, _, _ = client.post(
+        "/api/orders/create",
+        json.dumps({"checkout_mode": "guest", "plan_id": "ESTUDIO_PRO", "email": "inv@estudio.ec", "ruc_cedula": "1790012345001", "razon_social": "ESTUDIO PRUEBA", "payment_channel": "DEUNA_PERSONAL", "price": 1}),
+        headers=hdr_ip_e,
+    )
+    _assert(st_ord_tamper == 403, f"Price tampering en orden invitado no rechazado con 403: {st_ord_tamper}")
+
+    st_ord_ok, _, txt_ord_ok = client.post(
+        "/api/orders/create",
+        json.dumps({"checkout_mode": "guest", "plan_id": "ENTERPRISE_CORP", "extra_seats": 2, "email": "inv@estudio.ec", "ruc_cedula": "1790012345001", "razon_social": "CORP PRUEBA SA", "payment_channel": "DEUNA_PERSONAL"}),
+        headers=hdr_ip_e,
+    )
+    _assert(st_ord_ok == 201, f"Creación orden invitado falló: {st_ord_ok} {txt_ord_ok}")
+    ord_json = json.loads(txt_ord_ok)
+    _assert(ord_json.get("status") == "pendiente_verificacion" and ord_json.get("monto_autorizado_usd") == 1790, f"Orden inválida: {ord_json}")
+    _assert(bool(ord_json.get("order_token")), "Falta order_token criptográfico en modo invitado")
+
+    st_rec_bad, _, _ = client.post(
+        "/api/orders/receipt",
+        json.dumps({"order_ref": ord_json["order_ref"], "order_token": "TFTK-TOKEN-INCORRECTO-000000", "voucher_ref": "DEUNA-9988"}),
+        headers=hdr_ip_e,
+    )
+    _assert(st_rec_bad == 401, f"Subida de comprobante con token inválido debió dar 401: {st_rec_bad}")
+
+    st_rec_mime, _, _ = client.post(
+        "/api/orders/receipt",
+        json.dumps({"order_ref": ord_json["order_ref"], "order_token": ord_json["order_token"], "voucher_ref": "DEUNA-9988", "comprobante_mime": "image/svg+xml"}),
+        headers=hdr_ip_e,
+    )
+    _assert(st_rec_mime == 400, f"Archivo comprobante SVG peligroso debió rechazarse con 400: {st_rec_mime}")
+
+    st_rec_size, _, _ = client.post(
+        "/api/orders/receipt",
+        json.dumps({"order_ref": ord_json["order_ref"], "order_token": ord_json["order_token"], "voucher_ref": "DEUNA-9988", "comprobante_size_bytes": 6 * 1024 * 1024}),
+        headers=hdr_ip_e,
+    )
+    _assert(st_rec_size == 400, f"Archivo comprobante > 5 MB debió rechazarse con 400: {st_rec_size}")
+
+    st_rec_ok, _, txt_rec_ok = client.post(
+        "/api/orders/receipt",
+        json.dumps({"order_ref": ord_json["order_ref"], "order_token": ord_json["order_token"], "voucher_ref": "DEUNA-9988", "banco_origen": "Banco Pichincha", "comprobante_mime": "image/png", "comprobante_size_bytes": 102400}),
+        headers=hdr_ip_e,
+    )
+    _assert(st_rec_ok == 200 and json.loads(txt_rec_ok).get("status") == "pendiente_verificacion", f"Receipt falló: {st_rec_ok} {txt_rec_ok}")
+
+    st_st_bad, _, _ = client.post("/api/orders/status", json.dumps({"order_ref": ord_json["order_ref"], "order_token": "TFTK-INVALIDO-1234567890", "email": "inv@estudio.ec"}), headers=hdr_ip_e)
+    _assert(st_st_bad == 401, f"Consulta estado con token inválido debió dar 401: {st_st_bad}")
+
+    st_st_wrong_mail, _, _ = client.post("/api/orders/status", json.dumps({"order_ref": ord_json["order_ref"], "order_token": ord_json["order_token"], "email": "otro@estudio.ec"}), headers=hdr_ip_e)
+    _assert(st_st_wrong_mail == 401, f"Consulta invitado con correo distinto debió dar 401: {st_st_wrong_mail}")
+
+    st_st_ok, _, txt_st_ok = client.post("/api/orders/status", json.dumps({"order_ref": ord_json["order_ref"], "order_token": ord_json["order_token"], "email": "inv@estudio.ec"}), headers=hdr_ip_e)
+    _assert(st_st_ok == 200 and json.loads(txt_st_ok).get("voucher_ref") == "DEUNA-9988", f"Status orden invitado falló: {st_st_ok} {txt_st_ok}")
+
+    st_dn_wh, _, _ = client.post("/api/webhook/deuna-business", json.dumps({"order_ref": ord_json["order_ref"]}), headers=hdr_ip_e)
+    _assert(st_dn_wh == 503, f"Webhook Deuna! Negocios debió devolver 503 Próximamente cuando FF=false: {st_dn_wh}")
+
+    st_auth_cfg, _, _ = client.post("/api/auth/supabase", json.dumps({"action": "login", "email": "a@b.ec", "password": "Password1234"}), headers=hdr_ip_e)
+    _assert(st_auth_cfg == 503, f"Supabase Auth sin env vars debió devolver 503 seguro: {st_auth_cfg}")
+
+    print("    -> OK: HMAC, Anti-Tampering, XSS/SQLi/NoSQLi/SSRF/PathTraversal, Checkout Híbrido y Anti-Enumeración aprobados.")
 
 
 def test_4_rate_limiting(client: _EdgeClient) -> None:

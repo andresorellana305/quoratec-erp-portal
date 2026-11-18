@@ -1,0 +1,242 @@
+[
+  {
+    "output": "descargas.html",
+    "template": "pages/descargas.html",
+    "title": "Descargas Oficiales v3.0.0 — Edición 2026 | TributaFlow ERP — QUORATEC",
+    "description": "Descarga oficial de TributaFlow ERP v3.0.0 para Windows, macOS y Linux con detección de SO, hashes SHA-256 verificables y guía Windows SmartScreen.",
+    "active_nav": "descargas",
+    "nav_cta": "link",
+    "pre_footer": {
+      "title": "¿Necesitas activar tu licencia anual tras probar <span data-trial-days>7 días</span>?",
+      "description": "Paga sin comisión mediante Deuna! Personal o Transferencia en modalidad Invitado o con tu Cuenta Supabase.",
+      "actions": [
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glow\">Ver 5 Planes y Adquirir ➔</a>",
+        "<a href=\"{{ROOT}}soporte.html\" class=\"btn-glass\">Consultar Orden o Soporte</a>"
+      ]
+    }
+  },
+  {
+    "output": "guia-uso.html",
+    "template": "pages/guia-uso.html",
+    "title": "Guía de Uso e Implementación v3.0.0 — Edición 2026 | TributaFlow ERP — QUORATEC",
+    "description": "Guía práctica de instalación, verificación SHA-256 y puesta en marcha de TributaFlow ERP Edición 2026 (v3.0.0) por QUORATEC: Windows, macOS, Linux, Estudio Contable Pro (Oficina + Casa), Red LAN y Corporativo.",
+    "active_nav": "guia",
+    "nav_cta": "link",
+    "pre_footer": {
+      "title": "¿Prefieres instalar primero y probar durante <span data-trial-days>7 días</span> (hasta 60 RUCs)?",
+      "description": "Descarga la Edición 2026 (<span data-app-version-tag>v3.0.0</span>) sin tarjeta o escríbenos a <code>soportetributaflow@quoratec.com</code> / <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Ver 5 Planes y Precios ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "index.html",
+    "template": "pages/index.html",
+    "title": "TributaFlow ERP v3.0.0 — Edición 2026 | Suite Contable y Tributaria SRI Ecuador · QUORATEC",
+    "description": "TributaFlow ERP Edición 2026 (v3.0.0) por QUORATEC: software contable Local-First cifrado AES-256-GCM para Ecuador. POS .p12, Kardex, CxC/CxP, NIIF, Auditoría EFOS, ATS, Form. 103 y 104. Prueba gratis 7 días hasta 60 RUCs.",
+    "active_nav": "",
+    "nav_cta": "link",
+    "pre_footer": {
+      "title": "¿Listo para estrenar TributaFlow ERP Edición 2026?",
+      "description": "Prueba gratis por <span data-trial-days>7 días</span> (hasta 60 RUCs, sin tarjeta) o escríbenos a <code>soportetributaflow@quoratec.com</code> / WhatsApp <code>0996459771</code>.",
+      "actions": [
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glow\">Ver Planes y Adquirir ➔</a>",
+        "<a href=\"{{ROOT}}guia-uso.html\" class=\"btn-glass\">Guía de Uso e Implementación</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/ajustes-seguridad.html",
+    "template": "pages/modulos/ajustes-seguridad.html",
+    "title": "Ajustes, Red LAN TCP/IP y Blindaje | TributaFlow ERP v3.0.0",
+    "description": "Matriz de permisos ✓/🔒, Red LAN TCP/IP centralizada (5 a 10+ estaciones), bóveda compartida UNC con bloqueo atómico anti-colisión y backups .tfbkp.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/auditor-fantasma.html",
+    "template": "pages/modulos/auditor-fantasma.html",
+    "title": "Auditor Fantasma SRI en Tiempo Real | TributaFlow ERP v3.0.0",
+    "description": "Cruce preventivo automático contra el catastro de empresas fantasmas e inexistentes del SRI antes de declarar impuestos. Disponible desde Estudio Pro.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/busqueda-ruc.html",
+    "template": "pages/modulos/busqueda-ruc.html",
+    "title": "Búsqueda RUC / Cédula | TributaFlow ERP v3.0.0",
+    "description": "Consulta instantánea de estado tributario, actividad económica, tipo de contribuyente y validación de RUC o identificación Ecuador.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/consulta-masiva.html",
+    "template": "pages/modulos/consulta-masiva.html",
+    "title": "Consulta Masiva y Exportación Excel | TributaFlow ERP v3.0.0",
+    "description": "Verificación en lote de comprobantes electrónicos, estados de autorización SRI y exportación consolidada a Excel y CSV contable.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/generador-ats.html",
+    "template": "pages/modulos/generador-ats.html",
+    "title": "Generador y Validador Oficial ATS XSD | TributaFlow ERP v3.0.0",
+    "description": "Construye el Anexo Transaccional Simplificado ATS_Declaraciones/ATS_RUC_MM_AÑO.xml, valida contra esquema XSD oficial del SRI offline y genera resumen Excel.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/importar-comprobantes.html",
+    "template": "pages/modulos/importar-comprobantes.html",
+    "title": "Importar Comprobantes (.txt / XML) | TributaFlow ERP v3.0.0",
+    "description": "Carga masiva de archivos .txt de claves de acceso del SRI y carpetas locales XML con reconstrucción automática de RIDE PDF en árbol contable jerárquico.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/mis-contribuyentes.html",
+    "template": "pages/modulos/mis-contribuyentes.html",
+    "title": "Mis Contribuyentes (Multi-RUC) | TributaFlow ERP v3.0.0",
+    "description": "Gestión multi-empresa aislada con SQLite cifrada por HWID (PBKDF2 + AES-256-GCM + HMAC), sellado ético SRI y respaldo cifrado .tfbkp.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/panel-general.html",
+    "template": "pages/modulos/panel-general.html",
+    "title": "Panel General | TributaFlow ERP v3.0.0",
+    "description": "Módulo Panel General de TributaFlow ERP: tablero ejecutivo con KPIs fiscales, estado de licencia, cupo ético de RUCs y accesos rápidos.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "modulos/sincronizar-sri.html",
+    "template": "pages/modulos/sincronizar-sri.html",
+    "title": "Sincronizar SRI (Árbol Contable Jerárquico) | TributaFlow ERP v3.0.0",
+    "description": "Descarga masiva de XML y RIDE PDF del SRI organizada en árbol contable jerárquico con Logs de Sincronización y deduplicación por clave de acceso.",
+    "active_nav": "modulos",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "planes.html",
+    "template": "pages/planes.html",
+    "title": "Planes y Precios v3.0.0 — Edición 2026 | TributaFlow ERP — QUORATEC",
+    "description": "Compara los 5 planes anuales de TributaFlow ERP Edición 2026 (v3.0.0) por QUORATEC: prueba gratis 7 días hasta 60 RUCs, arquitectura Local-First AES-256-GCM, Deuna! activo y Modo Solo Lectura seguro al expirar.",
+    "active_nav": "planes",
+    "nav_cta": "checkout",
+    "pre_footer": {
+      "title": "¿Dudas sobre qué cupo o arquitectura conviene a tu firma?",
+      "description": "Revisa los flujos paso a paso en la Guía de Uso o escríbenos a <code>soportetributaflow@quoratec.com</code> / WhatsApp (<code>0996459771</code>).",
+      "actions": [
+        "<a href=\"{{ROOT}}guia-uso.html\" class=\"btn-glow\">Ver Guía de Uso e Implementación ➔</a>",
+        "<a href=\"{{ROOT}}politicas.html\" class=\"btn-glass\">Revisar Acuerdo y LOPDP</a>"
+      ]
+    }
+  },
+  {
+    "output": "politicas.html",
+    "template": "pages/politicas.html",
+    "title": "Acuerdo de Licencia (EULA), LOPDP y Políticas v3.0.0 | TributaFlow ERP — QUORATEC",
+    "description": "Acuerdo de Licencia de Usuario Final (EULA) y Condiciones de Uso de TributaFlow ERP Edición 2026 (v3.0.0) por QUORATEC: prueba gratis 7 días, Modo Solo Lectura, privacidad Local-First AES-256-GCM, LOPDP Ecuador, deslinde tributario y reembolsos.",
+    "active_nav": "politicas",
+    "nav_cta": "link",
+    "pre_footer": {
+      "title": "¿Listo para trabajar con arquitectura Local-First AES-256-GCM?",
+      "description": "Instala tu prueba gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, sin tarjeta) o escríbenos a <code>soportetributaflow@quoratec.com</code> / <code>0996459771</code>.",
+      "actions": [
+        "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar Versión <span data-app-version-tag>v3.0.0</span></button>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar Planes ➔</a>"
+      ]
+    }
+  },
+  {
+    "output": "soporte.html",
+    "template": "pages/soporte.html",
+    "title": "Soporte Oficial, Estado de Órdenes y Cuenta | TributaFlow ERP — QUORATEC",
+    "description": "Consulta el estado de órdenes invitado con tu order_token, accede a tu cuenta Supabase (órdenes, licencias y equipos +1 PC Adicional) y contacta soporte QUORATEC.",
+    "active_nav": "soporte",
+    "nav_cta": "link",
+    "pre_footer": {
+      "title": "¿Listo para escalar tu estudio con TributaFlow ERP Edición 2026?",
+      "description": "Activa tu suscripción en modalidad Invitado o con Cuenta Supabase mediante Deuna! Personal o Transferencia.",
+      "actions": [
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glow\">Ver 5 Planes y Adquirir ➔</a>",
+        "<a href=\"{{ROOT}}descargas.html\" class=\"btn-glass\">Ir a Descargas Oficiales</a>"
+      ]
+    }
+  }
+]

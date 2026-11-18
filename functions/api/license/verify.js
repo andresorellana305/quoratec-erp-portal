@@ -83,7 +83,7 @@ export async function onRequestPost(context) {
             {
                 ok: true,
                 valid: true,
-                version: "2.5.0",
+                version: "3.0.0",
                 plan_id: planId,
                 estaciones_autorizadas: Number(estAut),
             },
