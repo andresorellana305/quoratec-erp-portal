@@ -1,0 +1,17 @@
+# Consola administrativa local y laboratorio QA privados (NUNCA subir a GitHub)
+admin-local/
+
+# Llaves criptográficas, certificados y secretos locales
+*.key
+*.pem
+.env
+.env.*
+!.env.example
+
+# Artefactos locales de Python / sistema / respaldos
+__pycache__/
+*.py[cod]
+*.log
+*.lic
+.DS_Store
+Thumbs.db

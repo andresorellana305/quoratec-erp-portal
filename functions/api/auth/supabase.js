@@ -95,7 +95,7 @@ export async function onRequestPost(context) {
             return jsonSegura(
                 {
                     ok: resp.status < 500,
-                    message: "Si el correo está registrado en TributaFlow ERP, recibirás un enlace oficial de recuperación.",
+                    message: "Si el correo está registrado en QuoraTec ERP, recibirás un enlace oficial de recuperación.",
                 },
                 200
             );

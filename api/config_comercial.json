@@ -1,24 +1,39 @@
 {
   "version": "3.0.0",
   "edicion": "Edición 2026",
-  "producto": "TributaFlow ERP — Edición 2026",
-  "empresa": "QUORATEC",
+  "producto": "QuoraTec ERP — Edición 2026",
+  "empresa": "QuoraTec",
   "actualizado": "2026",
-  "trial_dias": 7,
-  "trial_rucs": 60,
-  "trial_modalidad": "ESTUDIO_PRO",
-  "precio_seat_extra_usd": 150.0,
-  "iva_nota": "Precios netos en dólares USD por suscripción anual. Renovación anual.",
-  "politica_expiracion": "Al finalizar el periodo de prueba de 7 días o vencer la licencia anual, la aplicación transiciona de forma segura al Modo Solo Lectura sin eliminar bases de datos ni información local hasta renovar mediante archivo .lic.",
-  "politica_reembolsos": "No aplican devoluciones ni reembolsos una vez emitido e instalado el archivo de licencia .lic, al disponerse previamente de una prueba gratuita y funcional de 7 días para validar el software en el equipo.",
+  "trial_dias": 15,
+  "trial_rucs": 40,
+  "trial_modalidad": "ESTUDIO_CONTABLE",
+  "todas_funcionalidades_desbloqueadas": true,
+  "fundadores": {
+    "etiqueta": "Fundadores QuoraTec (25 % DTO vitalicio primeros 30 clientes + 15 días gratis)",
+    "descuento_pct": 25,
+    "cupo_clientes": 30,
+    "trial_dias": 15
+  },
+  "addons": {
+    "pc_extra_usd": 49.0,
+    "rucs_extra_pack_cantidad": 5,
+    "rucs_extra_pack_usd": 59.0,
+    "cloud_extra_pack_gb": 50,
+    "cloud_extra_pack_usd": 59.0,
+    "emprendedor_nube_10gb_usd": 29.0
+  },
+  "precio_seat_extra_usd": 49.0,
+  "iva_nota": "Precios netos en dólares USD por suscripción anual (365 días). Todas las funcionalidades incluidas en los 5 planes.",
+  "politica_expiracion": "Al finalizar los 15 días de prueba gratuita o vencer la licencia anual, QuoraTec ERP transiciona de forma segura al Modo Solo Lectura sin eliminar bases de datos ni respaldos .nxbackup locales hasta renovar mediante archivo .lic.",
+  "politica_reembolsos": "No aplican devoluciones ni reembolsos una vez emitido e instalado el archivo de licencia .lic, al disponerse previamente de 15 días gratis con todas las funcionalidades desbloqueadas para validar el software en el equipo.",
   "payphone_habilitado": false,
   "payphone_estado": "Próximamente / En actualización",
   "payphone_links": {
-    "PERSONAL_PRO": null,
-    "CONTADOR_MASTER": null,
-    "ESTUDIO_PRO": null,
-    "ENTERPRISE_TEAM": null,
-    "ENTERPRISE_CORP": null
+    "EMPRENDEDOR": null,
+    "COMERCIAL_PRO": null,
+    "CONTADOR": null,
+    "ESTUDIO_CONTABLE": null,
+    "ENTERPRISE": null
   },
   "checkout_hibrido": {
     "guest_checkout_habilitado": true,
@@ -26,8 +41,8 @@
     "permite_claim_invitado": true,
     "estado_inicial_comprobante": "pendiente_verificacion",
     "soporta_addon_pc": true,
-    "addon_pc_etiqueta": "+1 PC Adicional",
-    "addon_pc_usd": 150.0
+    "addon_pc_etiqueta": "+1 PC Extra",
+    "addon_pc_usd": 49.0
   },
   "canales_pago": {
     "deuna_personal": {
@@ -45,11 +60,11 @@
     },
     "transferencia": {
       "activo": true,
-      "etiqueta": "Transferencia Bancaria Directa (QUORATEC)",
+      "etiqueta": "Transferencia Bancaria Directa (QuoraTec)",
       "estado": "Activo",
       "requiere_comprobante": true,
       "estado_orden_inicial": "pendiente_verificacion",
-      "nota": "Titular oficial QUORATEC. Registra tu número de comprobante o solicítalo por WhatsApp / correo oficial."
+      "nota": "Titular oficial QuoraTec. Registra tu número de comprobante o solicítalo por WhatsApp / correo oficial."
     },
     "deuna_negocios": {
       "activo": false,
@@ -79,83 +94,95 @@
     "whatsapp_numero": "593996459771",
     "whatsapp_display": "0996459771",
     "whatsapp_url": "https://wa.me/593996459771",
-    "correo": "soportetributaflow@quoratec.com",
+    "correo": "soporte@quoratec.com",
     "horario": "Lunes a Viernes 08:30–18:00 (ECT)"
   },
   "arquitectura_seguridad": {
     "cifrado_local": "AES-256-GCM",
-    "modo": "Local-First",
-    "nube_opcional": "Sincronización selectiva Oficina + Casa vía Supabase RLS (disponible desde Estudio Contable Pro)",
+    "modo": "Local-First + Nube Híbrida",
+    "respaldo_extension": ".nxbackup",
+    "nube_opcional": "Desde Nube opcional (+$29/año - 10 GB) en Emprendedor hasta 150 GB en Enterprise",
     "cumplimiento_legal": "LOPDP Ecuador + EULA + Deslinde Tributario"
   },
   "planes": [
     {
-      "id": "PERSONAL_PRO",
-      "nombre": "Personal Pro",
-      "subtitulo": "Profesionales Independientes",
+      "id": "EMPRENDEDOR",
+      "nombre": "Emprendedor",
+      "subtitulo": "1 RUC/Cédula | 1 PC | Modo Local",
       "precio_usd": 69,
       "periodo": "año",
       "equipos": "1 PC",
       "estaciones": 1,
-      "rucs": 3,
-      "nube_oficina_casa": false,
+      "rucs": 1,
+      "nube_gb": 0,
+      "nube_opcional_usd": 29,
+      "nube_opcional_gb": 10,
+      "modalidad": "Modo Local (Nube opcional +$29/año - 10 GB)",
+      "funcionalidades_completas": true,
       "pago_deuna": true,
       "pago_payphone": false,
       "url_payphone": null
     },
     {
-      "id": "CONTADOR_MASTER",
-      "nombre": "Contador Master",
-      "subtitulo": "Contadores con Cartera Propia",
-      "precio_usd": 159,
+      "id": "COMERCIAL_PRO",
+      "nombre": "Comercial Pro",
+      "subtitulo": "1 RUC | 1 PC | Local + Nube Híbrida (10 GB)",
+      "precio_usd": 149,
       "periodo": "año",
       "equipos": "1 PC",
       "estaciones": 1,
-      "rucs": 25,
-      "nube_oficina_casa": false,
+      "rucs": 1,
+      "nube_gb": 10,
+      "modalidad": "Local + Nube Híbrida (10 GB)",
+      "funcionalidades_completas": true,
       "pago_deuna": true,
       "pago_payphone": false,
       "url_payphone": null
     },
     {
-      "id": "ESTUDIO_PRO",
-      "nombre": "Estudio Contable Pro",
-      "subtitulo": "Estudios y Dúo Oficina + Casa",
-      "precio_usd": 379,
+      "id": "CONTADOR",
+      "nombre": "Contador",
+      "subtitulo": "Hasta 15 RUCs | 1 PC | Local + Nube Híbrida (20 GB)",
+      "precio_usd": 239,
       "periodo": "año",
-      "equipos": "Hasta 2 PCs (Oficina + Casa)",
-      "estaciones": 2,
-      "rucs": 60,
-      "nube_oficina_casa": true,
+      "equipos": "1 PC",
+      "estaciones": 1,
+      "rucs": 15,
+      "nube_gb": 20,
+      "modalidad": "Local + Nube Híbrida (20 GB)",
+      "funcionalidades_completas": true,
       "pago_deuna": true,
       "pago_payphone": false,
       "url_payphone": null
     },
     {
-      "id": "ENTERPRISE_TEAM",
-      "nombre": "Enterprise Team ERP",
-      "subtitulo": "Pymes y Firmas en Red",
-      "precio_usd": 890,
+      "id": "ESTUDIO_CONTABLE",
+      "nombre": "Estudio Contable",
+      "subtitulo": "Hasta 40 RUCs | 3 PCs | Nube Total + Híbrido + Oficina (50 GB)",
+      "precio_usd": 449,
       "periodo": "año",
-      "equipos": "5 PCs en Red LAN + Nube",
-      "estaciones": 5,
-      "rucs": "Ilimitados",
-      "nube_oficina_casa": true,
+      "equipos": "3 PCs",
+      "estaciones": 3,
+      "rucs": 40,
+      "nube_gb": 50,
+      "modalidad": "Nube Total + Híbrido + Oficina (50 GB)",
+      "funcionalidades_completas": true,
       "pago_deuna": true,
       "pago_payphone": false,
       "url_payphone": null
     },
     {
-      "id": "ENTERPRISE_CORP",
-      "nombre": "Enterprise Corp ERP",
-      "subtitulo": "Corporativos Multi-Sucursal",
-      "precio_usd": 1490,
+      "id": "ENTERPRISE",
+      "nombre": "Enterprise",
+      "subtitulo": "Hasta 100 RUCs | 10 PCs | Nube Total Dedicada (150 GB)",
+      "precio_usd": 849,
       "periodo": "año",
-      "equipos": "10+ PCs (base 10 PCs, +$150/PC adicional)",
-      "estaciones_base": 10,
-      "precio_seat_extra_usd": 150,
-      "rucs": "Ilimitados",
-      "nube_oficina_casa": true,
+      "equipos": "10 PCs",
+      "estaciones": 10,
+      "rucs": 100,
+      "nube_gb": 150,
+      "modalidad": "Nube Total Dedicada (150 GB)",
+      "funcionalidades_completas": true,
       "pago_deuna": true,
       "pago_payphone": false,
       "url_payphone": null
@@ -164,43 +191,43 @@
   "descargas": {
     "windows": {
       "nombre": "Windows x64 (Instalador .exe)",
-      "archivo": "Setup_TributaFlow_ERP_v3.0.0.exe",
+      "archivo": "Setup_QuoraTec_ERP_v3.0.0.exe",
       "version": "3.0.0",
       "tamano": "66.2 MB",
       "sha256": "350a7f2cb1ba50a8cea87563b7e773357b5f8e9fa9d0f359401e0e9dc4c9e232",
-      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe"
+      "url": "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/Setup_QuoraTec_ERP_v3.0.0.exe"
     },
     "windows_zip": {
       "nombre": "Windows x64 (Portable .zip)",
-      "archivo": "TributaFlow_ERP_v3.0.0_Windows_x64.zip",
+      "archivo": "QuoraTec_ERP_v3.0.0_Windows_x64.zip",
       "version": "3.0.0",
       "tamano": "86.3 MB",
       "sha256": "ca49bcd4eea13b496a618122aa742d5de5c898f176e7eda326ad2d8b33a0c051",
-      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip"
+      "url": "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Windows_x64.zip"
     },
     "macos": {
       "nombre": "macOS (Universal .dmg)",
-      "archivo": "TributaFlow_ERP_v3.0.0_macOS.dmg",
+      "archivo": "QuoraTec_ERP_v3.0.0_macOS.dmg",
       "version": "3.0.0",
       "tamano": "93.6 MB",
       "sha256": "374e5ca4444b290662e417403ea0848bb77fe0215243fe52299743d7d8ad24df",
-      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_macOS.dmg"
+      "url": "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_macOS.dmg"
     },
     "linux": {
       "nombre": "Linux Debian / Ubuntu (.deb)",
-      "archivo": "TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
+      "archivo": "QuoraTec_ERP_v3.0.0_Linux_amd64.deb",
       "version": "3.0.0",
       "tamano": "95.6 MB",
       "sha256": "2c5e48ae14c8dfce3d3e5f975e236a93be663fd138ef6f81dcb9a4ec5c2d052a",
-      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_amd64.deb"
+      "url": "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Linux_amd64.deb"
     },
     "linux_tar": {
       "nombre": "Linux Genérico (.tar.gz)",
-      "archivo": "TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
+      "archivo": "QuoraTec_ERP_v3.0.0_Linux_x64.tar.gz",
       "version": "3.0.0",
       "tamano": "123.3 MB",
       "sha256": "b4e5da23885fe7126dabe59a0120ef2fc688ad0a6124407a722bae4429c09b1b",
-      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz"
+      "url": "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Linux_x64.tar.gz"
     },
     "sha256sums": {
       "nombre": "Manifiesto Maestro de Verificación (SHA256SUMS.txt)",
@@ -208,7 +235,7 @@
       "version": "3.0.0",
       "tamano": "111 B",
       "sha256": "a86675219f227ab4831dfa34e00253fc735e161eef1fd0dc88a40c35f25685ba",
-      "url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt"
+      "url": "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt"
     }
   }
 }

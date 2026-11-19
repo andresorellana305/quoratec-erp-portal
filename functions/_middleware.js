@@ -1,5 +1,5 @@
 /**
- * Middleware Edge de Seguridad y Rate Limiting para TributaFlow Pro v2.5.0.
+ * Middleware Edge de Seguridad y Rate Limiting para QuoraTec ERP v3.0.0.
  */
 
 import { SECURITY_HEADERS, jsonSegura } from "./_shared/security.js";

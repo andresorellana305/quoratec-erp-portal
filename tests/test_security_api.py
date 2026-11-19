@@ -23,36 +23,36 @@ import urllib.request
 PORTAL_DIR = Path(__file__).resolve().parent.parent
 
 PAYPHONE_OFICIALES = {
-    "PERSONAL_PRO": None,
-    "CONTADOR_MASTER": None,
-    "ESTUDIO_PRO": None,
-    "ENTERPRISE_TEAM": None,
-    "ENTERPRISE_CORP": None,
+    "EMPRENDEDOR": None,
+    "COMERCIAL_PRO": None,
+    "CONTADOR": None,
+    "ESTUDIO_CONTABLE": None,
+    "ENTERPRISE": None,
 }
 
 SHA256_OFICIALES = {
     "windows": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe",
+        "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/Setup_QuoraTec_ERP_v3.0.0.exe",
         "350a7f2cb1ba50a8cea87563b7e773357b5f8e9fa9d0f359401e0e9dc4c9e232",
     ),
     "windows_zip": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip",
+        "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Windows_x64.zip",
         "ca49bcd4eea13b496a618122aa742d5de5c898f176e7eda326ad2d8b33a0c051",
     ),
     "macos": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_macOS.dmg",
+        "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_macOS.dmg",
         "374e5ca4444b290662e417403ea0848bb77fe0215243fe52299743d7d8ad24df",
     ),
     "linux": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
+        "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Linux_amd64.deb",
         "2c5e48ae14c8dfce3d3e5f975e236a93be663fd138ef6f81dcb9a4ec5c2d052a",
     ),
     "linux_tar": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
+        "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Linux_x64.tar.gz",
         "b4e5da23885fe7126dabe59a0120ef2fc688ad0a6124407a722bae4429c09b1b",
     ),
     "sha256sums": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
+        "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
         "a86675219f227ab4831dfa34e00253fc735e161eef1fd0dc88a40c35f25685ba",
     ),
 }
@@ -127,18 +127,18 @@ class _EdgeClient:
 
 
 def test_1_static_commercial_and_supply_chain() -> None:
-    print("[1/4] Verificación comercial v3.0.0 (Edición 2026), SRI SHA-384, SHA-256 binarios y cero secretos...")
-    _assert(len(HTML_FILES) == 21, f"Se esperaban 21 páginas HTML, encontradas: {len(HTML_FILES)}")
+    print("[1/4] Verificación comercial v3.0.0 (Edición 2026), SRI SHA-384, SHA-256 binarios, RLS y cero secretos...")
+    _assert(len(HTML_FILES) == 22, f"Se esperaban 22 páginas HTML, encontradas: {len(HTML_FILES)}")
 
     # 1. Config JSON comercial + version.json + SHA-256
     cfg = json.loads((PORTAL_DIR / "api" / "config_comercial.json").read_text(encoding="utf-8"))
     _assert(cfg.get("version") == "3.0.0", f"version inválida: {cfg.get('version')}")
-    _assert(cfg.get("trial_dias") == 7, f"trial_dias esperado 7, recibido: {cfg.get('trial_dias')}")
-    _assert(cfg.get("trial_rucs") == 60, f"trial_rucs esperado 60, recibido: {cfg.get('trial_rucs')}")
-    _assert(cfg.get("trial_modalidad") == "ESTUDIO_PRO", "trial_modalidad esperada ESTUDIO_PRO")
+    _assert(cfg.get("trial_dias") == 15, f"trial_dias esperado 15, recibido: {cfg.get('trial_dias')}")
+    _assert(cfg.get("trial_rucs") == 40, f"trial_rucs esperado 40, recibido: {cfg.get('trial_rucs')}")
+    _assert(cfg.get("trial_modalidad") == "ESTUDIO_CONTABLE", "trial_modalidad esperada ESTUDIO_CONTABLE")
     _assert(cfg.get("payphone_habilitado") is False, "PayPhone debe estar pausado en v3.0.0")
     _assert(cfg.get("payphone_links") == PAYPHONE_OFICIALES, "PayPhone JSON debe permanecer pausado (None)")
-    _assert(cfg.get("canal_soporte", {}).get("correo") == "soportetributaflow@quoratec.com", "Email alterado")
+    _assert(cfg.get("canal_soporte", {}).get("correo") == "soporte@quoratec.com", "Email alterado")
     _assert(cfg.get("canal_soporte", {}).get("whatsapp_numero") == "593996459771", "WhatsApp alterado")
 
     ver_json = json.loads((PORTAL_DIR / "version.json").read_text(encoding="utf-8"))
@@ -150,18 +150,18 @@ def test_1_static_commercial_and_supply_chain() -> None:
         _assert(node.get("url") == expected_url, f"URL descarga inválida para {os_key}: {node.get('url')}")
         _assert(node.get("sha256") == expected_sha, f"SHA-256 inválido para {os_key}: {node.get('sha256')}")
 
-    # 2. SRI SHA-384 + reglas CSP/Referrer en los 13 HTML + index.html releases/SHA-256
+    # 2. SRI SHA-384 + reglas CSP/Referrer en los 21 HTML + cero menciones residuales de marca anterior
     css_sri = "sha384-" + base64.b64encode(hashlib.sha384((PORTAL_DIR / "assets" / "css" / "portal.css").read_bytes()).digest()).decode()
     js_sri = "sha384-" + base64.b64encode(hashlib.sha384((PORTAL_DIR / "assets" / "js" / "portal.js").read_bytes()).digest()).decode()
 
     legacy_ban = [
-        re.compile(r"\b14\s*d[ií]as\b|\b14d\b|\b15\s+d[ií]as\b", re.I),
+        re.compile(r"\b14\s*d[ií]as\b|\b14d\b", re.I),
         re.compile(r"\b2\s+RUCs?\b", re.I),
         re.compile(r"\b15\s+l[ií]neas\b|\b50\s+l[ií]neas\b|\b200\s+l[ií]neas\b", re.I),
         re.compile(r"\bEd25519\b|\bRSA-2048\b", re.I),
         re.compile(r"no-referrer|releases/latest", re.I),
         re.compile("Fausto" + r"\s+" + ".*?" + "Orellana", re.I),
-        re.compile(r"2\.[45]\.0|TributaFlow Pro", re.I),
+        re.compile(r"2\.[45]\.0|TributaFlow|tfbkp", re.I),
         re.compile(r"\b9\s+m[oó]dulos\b", re.I),
     ]
 
@@ -171,8 +171,9 @@ def test_1_static_commercial_and_supply_chain() -> None:
         _assert(css_sri in html, f"Falta SRI sha384 exacto de portal.css en {rel}")
         _assert(js_sri in html, f"Falta SRI sha384 exacto de portal.js en {rel}")
         _assert("'unsafe-inline'" not in html, f"unsafe-inline prohibido en {rel}")
-        _assert("soportetributaflow@quoratec.com" in html, f"Correo soporte faltante en {rel}")
+        _assert("soporte@quoratec.com" in html, f"Correo soporte faltante en {rel}")
         _assert("593996459771" in html and "0996459771" in html, f"WhatsApp soporte faltante en {rel}")
+        _assert("QuoraTec ERP" in html, f"Marca oficial QuoraTec ERP faltante en {rel}")
         for pat in legacy_ban:
             hits = pat.findall(html)
             _assert(not hits, f"Texto legado prohibido en {rel}: {hits[:3]}")
@@ -197,10 +198,26 @@ def test_1_static_commercial_and_supply_chain() -> None:
     for ff in frontend_files:
         ftxt = ff.read_text(encoding="utf-8")
         _assert("service_role" not in ftxt.lower(), f"Posible exposición de service_role en frontend: {ff}")
+        _assert("master_ed25519" not in ftxt.lower() and "demo_ed25519" not in ftxt.lower(), f"Exposición de nombre de llave privada en frontend: {ff}")
         _assert("innerhtml" not in ftxt.lower(), f"Uso inseguro de innerHTML en frontend: {ff}")
     _assert((PORTAL_DIR / "robots.txt").is_file() and "sitemap.xml" in (PORTAL_DIR / "robots.txt").read_text(encoding="utf-8"), "Falta robots.txt válido")
     sitemap_txt = (PORTAL_DIR / "sitemap.xml").read_text(encoding="utf-8")
-    _assert(sitemap_txt.count("<loc>") == 21, f"sitemap.xml debe listar 21 URLs, encontradas: {sitemap_txt.count('<loc>')}")
+    _assert(sitemap_txt.count("<loc>") == 22, f"sitemap.xml debe listar 22 URLs, encontradas: {sitemap_txt.count('<loc>')}")
+
+    schema_txt = (PORTAL_DIR / "supabase" / "schema.sql").read_text(encoding="utf-8")
+    for req_sql in (
+        "create table if not exists public.staff_roles",
+        "create table if not exists public.licenses",
+        "create table if not exists public.registered_seats",
+        "create table if not exists public.company_vaults",
+        "create table if not exists public.support_tickets",
+        "create table if not exists public.centralis_orders_queue",
+        "create table if not exists public.audit_logs",
+        "enable row level security",
+        "is_aal2_session",
+        "prevent_audit_logs_mutation",
+    ):
+        _assert(req_sql in schema_txt, f"Falta definición obligatoria en supabase/schema.sql: {req_sql}")
 
     # 4. Cabeceras _headers
     headers_txt = (PORTAL_DIR / "_headers").read_text(encoding="utf-8")
@@ -219,7 +236,7 @@ def test_1_static_commercial_and_supply_chain() -> None:
     build_check = subprocess.run([sys.executable, str(build_script), "--check"], capture_output=True, text=True, check=False)
     _assert(build_check.returncode == 0, f"Desfase en plantillas modulares o CRLF: {build_check.stderr or build_check.stdout}")
 
-    print("    -> OK: 21 HTML con SRI SHA-384, plantillas modulares LF, reglas v3.0.0, SHA-256 reales y cero secretos.")
+    print("    -> OK: 22 HTML con SRI SHA-384, plantillas modulares LF, reglas v3.0.0, SHA-256 reales, RLS y cero secretos.")
 
 
 def test_2_syntax_all_scripts() -> None:
@@ -238,6 +255,15 @@ def test_2_syntax_all_scripts() -> None:
         PORTAL_DIR / "functions" / "api" / "orders" / "status.js",
         PORTAL_DIR / "functions" / "api" / "orders" / "claim.js",
         PORTAL_DIR / "functions" / "api" / "auth" / "supabase.js",
+        PORTAL_DIR / "functions" / "api" / "team" / "_staff_guard.js",
+        PORTAL_DIR / "functions" / "api" / "team" / "auth.js",
+        PORTAL_DIR / "functions" / "api" / "team" / "dashboard.js",
+        PORTAL_DIR / "functions" / "api" / "team" / "issue-license.js",
+        PORTAL_DIR / "functions" / "api" / "team" / "license-lookup.js",
+        PORTAL_DIR / "functions" / "api" / "team" / "tickets.js",
+        PORTAL_DIR / "functions" / "api" / "team" / "diagnostic-url.js",
+        PORTAL_DIR / "functions" / "_lib" / "license_signer.js",
+        PORTAL_DIR / "functions" / "_lib" / "license_issuer.js",
         PORTAL_DIR / "tests" / "edge_harness.mjs",
     ]
     for jf in js_files:
@@ -271,9 +297,9 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
     # B) PayPhone webhook — ataques de autenticación, replay y precio manipulado
     valid_webhook = json.dumps({
         "transaction_id": "PP-TX-900001",
-        "client_transaction_id": "TF-ESTUDIO_PRO-AB12",
-        "plan_id": "ESTUDIO_PRO",
-        "amount_cents": 37900,
+        "client_transaction_id": "QT-ESTUDIO_CONTABLE-AB12",
+        "plan_id": "ESTUDIO_CONTABLE",
+        "amount_cents": 44900,
         "currency": "USD",
         "status_code": 3,
         "hwid": "A1B2-C3D4-E5F6",
@@ -289,11 +315,11 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
     st, _, _ = client.post("/api/webhook/payphone", valid_webhook, {"X-Timestamp": str(old_ts), "X-Signature-256": old_sig})
     _assert(st == 401, f"Webhook expirado debió devolver 401, devolvió {st}")
 
-    # Precio adulterado (pagar $1 por Estudio Pro) aunque tenga firma -> 403
+    # Precio adulterado (pagar $1 por Estudio Contable) aunque tenga firma -> 403
     tampered_price = json.dumps({
         "transaction_id": "PP-TX-900002",
-        "client_transaction_id": "TF-ESTUDIO_PRO-AB12",
-        "plan_id": "ESTUDIO_PRO",
+        "client_transaction_id": "QT-ESTUDIO_CONTABLE-AB12",
+        "plan_id": "ESTUDIO_CONTABLE",
         "amount_cents": 100,
         "currency": "USD",
         "status_code": 3,
@@ -306,9 +332,9 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
     # Inyección de campos de privilegio (price/discount/trial_days) -> 403
     priv_esc = json.dumps({
         "transaction_id": "PP-TX-900003",
-        "client_transaction_id": "TF-ESTUDIO_PRO-AB12",
-        "plan_id": "ESTUDIO_PRO",
-        "amount_cents": 37900,
+        "client_transaction_id": "QT-ESTUDIO_CONTABLE-AB12",
+        "plan_id": "ESTUDIO_CONTABLE",
+        "amount_cents": 44900,
         "currency": "USD",
         "status_code": 3,
         "hwid": "A1B2-C3D4-E5F6",
@@ -319,7 +345,7 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
     _assert(st == 403, f"Campo manipulado price=0.01 debió devolver 403, devolvió {st}")
 
     # Prototype Pollution JSON crudo -> 403
-    proto_raw = '{"__proto__":{"isAdmin":true},"plan_id":"PERSONAL_PRO"}'
+    proto_raw = '{"__proto__":{"isAdmin":true},"plan_id":"EMPRENDEDOR"}'
     ts, sig = _sign_body(payphone_secret, proto_raw)
     st, _, _ = client.post("/api/webhook/payphone", proto_raw, {"X-Timestamp": str(ts), "X-Signature-256": sig})
     _assert(st == 403, f"Prototype Pollution debió devolver 403, devolvió {st}")
@@ -327,7 +353,7 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
     # Webhook legítimo firmado -> 200 y luego replay del mismo TX -> 409
     ts, sig = _sign_body(payphone_secret, valid_webhook)
     st, hdrs, txt = client.post("/api/webhook/payphone", valid_webhook, {"X-Timestamp": str(ts), "X-Signature-256": sig})
-    _assert(st == 200 and '"monto_verificado_usd":379' in txt, f"Webhook válido falló: {st} {txt}")
+    _assert(st == 200 and '"monto_verificado_usd":449' in txt, f"Webhook válido falló: {st} {txt}")
     _assert("no-store" in hdrs.get("cache-control", ""), "Cache-Control no-store ausente en respuesta API")
 
     st_replay, _, _ = client.post("/api/webhook/payphone", valid_webhook, {"X-Timestamp": str(ts), "X-Signature-256": sig})
@@ -335,11 +361,11 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
 
     # C) Fuzzing de inyecciones en /api/license/activate (XSS, SQLi, NoSQLi, SSRF, Path Traversal)
     fuzz_payloads = [
-        ("XSS", {"plan_id": "PERSONAL_PRO", "order_ref": "TF-XSS1", "hwid": "<script>alert(1)</script>", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
-        ("SQLi", {"plan_id": "PERSONAL_PRO", "order_ref": "TF-SQL1", "hwid": "A1B2' OR '1'='1", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
-        ("NoSQLi", {"plan_id": "PERSONAL_PRO", "order_ref": "TF-NOSQL", "hwid": "ABCD-1234", "ruc": "1790012345001", "email": "a$gt@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
-        ("SSRF", {"plan_id": "PERSONAL_PRO", "order_ref": "TF-SSRF1", "hwid": "http://169.254.169.254/latest", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
-        ("PathTraversal", {"plan_id": "PERSONAL_PRO", "order_ref": "TF-PT1", "hwid": "../../etc/passwd", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
+        ("XSS", {"plan_id": "EMPRENDEDOR", "order_ref": "QT-XSS1", "hwid": "<script>alert(1)</script>", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
+        ("SQLi", {"plan_id": "EMPRENDEDOR", "order_ref": "QT-SQL1", "hwid": "A1B2' OR '1'='1", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
+        ("NoSQLi", {"plan_id": "EMPRENDEDOR", "order_ref": "QT-NOSQL", "hwid": "ABCD-1234", "ruc": "1790012345001", "email": "a$gt@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
+        ("SSRF", {"plan_id": "EMPRENDEDOR", "order_ref": "QT-SSRF1", "hwid": "http://169.254.169.254/latest", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
+        ("PathTraversal", {"plan_id": "EMPRENDEDOR", "order_ref": "QT-PT1", "hwid": "../../etc/passwd", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
     ]
     for attack_name, payload in fuzz_payloads:
         raw = json.dumps(payload)
@@ -347,10 +373,10 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
         st, _, _ = client.post("/api/license/activate", raw, {"X-Timestamp": str(ts), "X-Signature-256": sig})
         _assert(st == 403, f"Ataque {attack_name} no fue bloqueado con HTTP 403: recibido {st}")
 
-    # Activación Enterprise Corp válida con +2 PC extra -> monto servidor $1,790 (1490 + 300)
+    # Activación Enterprise válida con +2 PC extra -> monto servidor $947 (849 + 98) y 12 PCs
     corp_req = json.dumps({
-        "plan_id": "ENTERPRISE_CORP",
-        "order_ref": "TF-CORP-9988",
+        "plan_id": "ENTERPRISE",
+        "order_ref": "QT-CORP-9988",
         "hwid": "CORP-HOST-01",
         "ruc": "1790012345001",
         "email": "ti@empresa.com.ec",
@@ -360,9 +386,9 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
     })
     ts, sig = _sign_body(license_secret, corp_req)
     st, _, txt = client.post("/api/license/activate", corp_req, {"X-Timestamp": str(ts), "X-Signature-256": sig})
-    _assert(st == 200, f"Activación Enterprise Corp válida falló: {st} {txt}")
+    _assert(st == 200, f"Activación Enterprise válida falló: {st} {txt}")
     corp_json = json.loads(txt)
-    _assert(corp_json["monto_autorizado_usd"] == 1790, f"Monto esperado 1790, recibido {corp_json['monto_autorizado_usd']}")
+    _assert(corp_json["monto_autorizado_usd"] == 947, f"Monto esperado 947, recibido {corp_json['monto_autorizado_usd']}")
     _assert(corp_json["estaciones_autorizadas"] == 12, f"Estaciones esperadas 12, recibidas {corp_json['estaciones_autorizadas']}")
 
     # D) Anti-enumeración en /api/license/verify
@@ -370,17 +396,17 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
         "license_key": corp_json["license_key"],
         "hwid": "CORP-HOST-01",
         "ruc": "1790012345001",
-        "plan_id": "ENTERPRISE_CORP",
+        "plan_id": "ENTERPRISE",
         "estaciones_autorizadas": 12,
     })
     st, _, txt = client.post("/api/license/verify", good_verify)
     _assert(st == 200 and '"valid":true' in txt, f"Verificación de llave válida falló: {st} {txt}")
 
     wrong_cases = [
-        {"license_key": "TFLIC-00000000-00000000000000000000000000000000", "hwid": "CORP-HOST-01", "ruc": "1790012345001", "plan_id": "ENTERPRISE_CORP", "estaciones_autorizadas": 12},
-        {"license_key": corp_json["license_key"], "hwid": "OTRO-EQUIPO-99", "ruc": "1790012345001", "plan_id": "ENTERPRISE_CORP", "estaciones_autorizadas": 12},
-        {"license_key": corp_json["license_key"], "hwid": "CORP-HOST-01", "ruc": "0999999999001", "plan_id": "ENTERPRISE_CORP", "estaciones_autorizadas": 12},
-        {"license_key": corp_json["license_key"], "hwid": "CORP-HOST-01", "ruc": "1790012345001", "plan_id": "PERSONAL_PRO", "estaciones_autorizadas": 1},
+        {"license_key": "QTLIC-00000000-00000000000000000000000000000000", "hwid": "CORP-HOST-01", "ruc": "1790012345001", "plan_id": "ENTERPRISE", "estaciones_autorizadas": 12},
+        {"license_key": corp_json["license_key"], "hwid": "OTRO-EQUIPO-99", "ruc": "1790012345001", "plan_id": "ENTERPRISE", "estaciones_autorizadas": 12},
+        {"license_key": corp_json["license_key"], "hwid": "CORP-HOST-01", "ruc": "0999999999001", "plan_id": "ENTERPRISE", "estaciones_autorizadas": 12},
+        {"license_key": corp_json["license_key"], "hwid": "CORP-HOST-01", "ruc": "1790012345001", "plan_id": "EMPRENDEDOR", "estaciones_autorizadas": 1},
     ]
     responses = []
     for case in wrong_cases:
@@ -393,31 +419,31 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
     hdr_ip_e = {"X-Forwarded-For": "203.0.113.105"}
     st_soon_gw, _, txt_soon_gw = client.post(
         "/api/orders/create",
-        json.dumps({"checkout_mode": "guest", "plan_id": "ESTUDIO_PRO", "email": "inv@estudio.ec", "ruc_cedula": "1790012345001", "razon_social": "ESTUDIO PRUEBA", "payment_channel": "DEUNA_NEGOCIOS"}),
+        json.dumps({"checkout_mode": "guest", "plan_id": "ESTUDIO_CONTABLE", "email": "inv@estudio.ec", "ruc_cedula": "1790012345001", "razon_social": "ESTUDIO PRUEBA", "payment_channel": "DEUNA_NEGOCIOS"}),
         headers=hdr_ip_e,
     )
     _assert(st_soon_gw == 400 and "GATEWAY_FEATURE_DISABLED_SOON" in txt_soon_gw, f"Pasarela Próximamente debió rechazarse: {st_soon_gw} {txt_soon_gw}")
 
     st_ord_tamper, _, _ = client.post(
         "/api/orders/create",
-        json.dumps({"checkout_mode": "guest", "plan_id": "ESTUDIO_PRO", "email": "inv@estudio.ec", "ruc_cedula": "1790012345001", "razon_social": "ESTUDIO PRUEBA", "payment_channel": "DEUNA_PERSONAL", "price": 1}),
+        json.dumps({"checkout_mode": "guest", "plan_id": "ESTUDIO_CONTABLE", "email": "inv@estudio.ec", "ruc_cedula": "1790012345001", "razon_social": "ESTUDIO PRUEBA", "payment_channel": "DEUNA_PERSONAL", "price": 1}),
         headers=hdr_ip_e,
     )
     _assert(st_ord_tamper == 403, f"Price tampering en orden invitado no rechazado con 403: {st_ord_tamper}")
 
     st_ord_ok, _, txt_ord_ok = client.post(
         "/api/orders/create",
-        json.dumps({"checkout_mode": "guest", "plan_id": "ENTERPRISE_CORP", "extra_seats": 2, "email": "inv@estudio.ec", "ruc_cedula": "1790012345001", "razon_social": "CORP PRUEBA SA", "payment_channel": "DEUNA_PERSONAL"}),
+        json.dumps({"checkout_mode": "guest", "plan_id": "ENTERPRISE", "extra_seats": 2, "extra_rucs_packs": 1, "extra_cloud_packs": 1, "email": "inv@estudio.ec", "ruc_cedula": "1790012345001", "razon_social": "CORP PRUEBA SA", "payment_channel": "DEUNA_PERSONAL"}),
         headers=hdr_ip_e,
     )
     _assert(st_ord_ok == 201, f"Creación orden invitado falló: {st_ord_ok} {txt_ord_ok}")
     ord_json = json.loads(txt_ord_ok)
-    _assert(ord_json.get("status") == "pendiente_verificacion" and ord_json.get("monto_autorizado_usd") == 1790, f"Orden inválida: {ord_json}")
+    _assert(ord_json.get("status") == "pendiente_verificacion" and ord_json.get("monto_autorizado_usd") == 1065, f"Orden inválida: {ord_json}")
     _assert(bool(ord_json.get("order_token")), "Falta order_token criptográfico en modo invitado")
 
     st_rec_bad, _, _ = client.post(
         "/api/orders/receipt",
-        json.dumps({"order_ref": ord_json["order_ref"], "order_token": "TFTK-TOKEN-INCORRECTO-000000", "voucher_ref": "DEUNA-9988"}),
+        json.dumps({"order_ref": ord_json["order_ref"], "order_token": "QTTK-TOKEN-INCORRECTO-000000", "voucher_ref": "DEUNA-9988"}),
         headers=hdr_ip_e,
     )
     _assert(st_rec_bad == 401, f"Subida de comprobante con token inválido debió dar 401: {st_rec_bad}")
@@ -443,7 +469,7 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
     )
     _assert(st_rec_ok == 200 and json.loads(txt_rec_ok).get("status") == "pendiente_verificacion", f"Receipt falló: {st_rec_ok} {txt_rec_ok}")
 
-    st_st_bad, _, _ = client.post("/api/orders/status", json.dumps({"order_ref": ord_json["order_ref"], "order_token": "TFTK-INVALIDO-1234567890", "email": "inv@estudio.ec"}), headers=hdr_ip_e)
+    st_st_bad, _, _ = client.post("/api/orders/status", json.dumps({"order_ref": ord_json["order_ref"], "order_token": "QTTK-INVALIDO-1234567890", "email": "inv@estudio.ec"}), headers=hdr_ip_e)
     _assert(st_st_bad == 401, f"Consulta estado con token inválido debió dar 401: {st_st_bad}")
 
     st_st_wrong_mail, _, _ = client.post("/api/orders/status", json.dumps({"order_ref": ord_json["order_ref"], "order_token": ord_json["order_token"], "email": "otro@estudio.ec"}), headers=hdr_ip_e)
@@ -458,6 +484,179 @@ def test_3_edge_security_and_anti_tampering(client: _EdgeClient, payphone_secret
     st_auth_cfg, _, _ = client.post("/api/auth/supabase", json.dumps({"action": "login", "email": "a@b.ec", "password": "Password1234"}), headers=hdr_ip_e)
     _assert(st_auth_cfg == 503, f"Supabase Auth sin env vars debió devolver 503 seguro: {st_auth_cfg}")
 
+    # F) Fail-closed en endpoints del Panel Remoto de Equipo (/api/team/*) sin credenciales
+    for ep_method, ep_path, ep_body in (
+        ("GET", "/api/team/dashboard", ""),
+        ("POST", "/api/team/issue-license", json.dumps({"mode": "demo", "holder_name": "TEST", "holder_ruc": "1790012345001", "hwid_inicial": "PC-TEST-1"})),
+        ("POST", "/api/team/license-lookup", json.dumps({"holder_ruc": "1790012345001"})),
+        ("POST", "/api/team/tickets", json.dumps({"ticket_id": "11111111-1111-4111-8111-111111111111", "status": "in_progress"})),
+        ("POST", "/api/team/diagnostic-url", json.dumps({"ticket_id": "11111111-1111-4111-8111-111111111111"})),
+    ):
+        st_tm, _, _ = client.request(ep_method, ep_path, raw_body=ep_body, headers=hdr_ip_e, content_type="application/json" if ep_method == "POST" else None)
+        _assert(st_tm in (401, 403, 503), f"Endpoint /api/team sin auth debió fallar cerrado: {ep_path} -> {st_tm}")
+
+    st_tm_tamper, _, _ = client.post(
+        "/api/team/issue-license",
+        json.dumps({"mode": "demo", "holder_name": "TEST", "holder_ruc": "1790012345001", "hwid_inicial": "PC-TEST-1", "ttl_days": 999}),
+        headers=hdr_ip_e,
+    )
+    _assert(st_tm_tamper == 403, f"Tampering ttl_days en /api/team/issue-license debió devolver 403, devolvió {st_tm_tamper}")
+
+    # G) Verificación conductual RBAC + 2FA aal2 + Cuota 3/día + MASTER vs DEMO + URL 60s
+    node_team_script = """
+import { generateKeyPairSync, verify } from "node:crypto";
+import * as issueFn from "./functions/api/team/issue-license.js";
+import * as dashFn from "./functions/api/team/dashboard.js";
+import * as diagFn from "./functions/api/team/diagnostic-url.js";
+
+const masterKp = generateKeyPairSync("ed25519", {
+    publicKeyEncoding: { type: "spki", format: "pem" },
+    privateKeyEncoding: { type: "pkcs8", format: "pem" },
+});
+const demoKp = generateKeyPairSync("ed25519", {
+    publicKeyEncoding: { type: "spki", format: "pem" },
+    privateKeyEncoding: { type: "pkcs8", format: "pem" },
+});
+
+function makeJwt(sub, aal, hasTotp = true) {
+    const hdr = Buffer.from(JSON.stringify({ alg: "HS256", typ: "JWT" })).toString("base64url");
+    const pay = Buffer.from(JSON.stringify({ sub, aal, amr: hasTotp ? [{ method: "password" }, { method: "totp" }] : [{ method: "password" }] })).toString("base64url");
+    return `${hdr}.${pay}.sig`;
+}
+
+const env = {
+    SUPABASE_URL: "https://example.supabase.co",
+    SUPABASE_ANON_KEY: "anon-key-placeholder-public-safe",
+    SUPABASE_SERVICE_ROLE_KEY: "srv-key-placeholder-test",
+    MASTER_ED25519_PRIVATE_KEY: masterKp.privateKey,
+    DEMO_ED25519_PRIVATE_KEY: demoKp.privateKey,
+};
+
+let demoCount = 0;
+let lastDiagSignPayload = null;
+const TICKET_UUID = "11111111-1111-4111-8111-111111111111";
+
+globalThis.fetch = async (url, init = {}) => {
+    const u = String(url);
+    const hdrAuth = String(init?.headers?.Authorization || "");
+    if (u.endsWith("/auth/v1/user")) {
+        const tok = hdrAuth.replace(/^Bearer\\s+/i, "");
+        const pay = JSON.parse(Buffer.from(tok.split(".")[1], "base64url").toString("utf8"));
+        return new Response(JSON.stringify({ id: pay.sub, email: `${pay.sub}@quoratec.com` }), { status: 200 });
+    }
+    if (u.includes("/rest/v1/staff_roles?")) {
+        if (u.includes("founder-uuid")) {
+            return new Response(JSON.stringify([{ user_id: "founder-uuid", full_name: "Andrés O.", city: "Quito", role: "founder", is_active: true }]), { status: 200 });
+        }
+        return new Response(JSON.stringify([{ user_id: "agent-uuid", full_name: "Soporte Quito", city: "Quito", role: "support_agent", is_active: true }]), { status: 200 });
+    }
+    if (u.includes("/rest/v1/licenses?issued_by=")) {
+        const rows = Array.from({ length: demoCount }, (_, i) => ({ id: `d-${i}` }));
+        return new Response(JSON.stringify(rows), { status: 200 });
+    }
+    if (u.includes("/rest/v1/support_tickets?id=")) {
+        return new Response(JSON.stringify([{ id: TICKET_UUID, empresa_ruc: "1790012345001", diagnostic_zip_path: "1790012345001/diag-01.zip" }]), { status: 200 });
+    }
+    if (u.includes("/storage/v1/object/sign/diagnostics/")) {
+        lastDiagSignPayload = JSON.parse(String(init.body || "{}"));
+        return new Response(JSON.stringify({ signedURL: "/object/sign/diagnostics/1790012345001/diag-01.zip?token=signed60s" }), { status: 200 });
+    }
+    if (u.includes("/storage/v1/object/licenses/")) {
+        return new Response(JSON.stringify({ Key: "ok" }), { status: 200 });
+    }
+    if (u.endsWith("/rest/v1/licenses") && init.method === "POST") {
+        return new Response(init.body, { status: 201 });
+    }
+    if (u.includes("/rest/v1/")) {
+        return new Response(JSON.stringify([]), { status: 200 });
+    }
+    throw new Error("Unexpected fetch in team test: " + u);
+};
+
+// 1) Sesión aal1 (sin 2FA TOTP) debe fallar con 403
+const rAal1 = await dashFn.onRequestGet({ request: new Request("http://local/api/team/dashboard", { headers: { Authorization: `Bearer ${makeJwt("founder-uuid", "aal1", false)}` } }), env });
+if (rAal1.status !== 403) throw new Error("Expected 403 for aal1, got " + rAal1.status);
+
+// 2) support_agent intentando licencia anual debe fallar con 403
+const tokAgent = makeJwt("agent-uuid", "aal2", true);
+const rAgentAnnual = await issueFn.onRequestPost({
+    request: new Request("http://local/api/team/issue-license", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${tokAgent}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ mode: "annual", plan_name: "CONTADOR", holder_name: "EMPRESA SA", holder_ruc: "1790012345001", hwid_inicial: "PC-HOST-1" }),
+    }),
+    env,
+});
+if (rAgentAnnual.status !== 403) throw new Error("Expected 403 for agent annual, got " + rAgentAnnual.status);
+
+// 3) support_agent emitiendo Demo 15 días con DEMO_ED25519_PRIVATE_KEY
+const rDemoOk = await issueFn.onRequestPost({
+    request: new Request("http://local/api/team/issue-license", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${tokAgent}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ mode: "demo", holder_name: "FARMACIA DEMO", holder_ruc: "1790012345001", hwid_inicial: "PC-DEMO-1" }),
+    }),
+    env,
+});
+const demoJson = await rDemoOk.json();
+if (rDemoOk.status !== 201 || !demoJson.ok) throw new Error("Demo issue failed: " + JSON.stringify(demoJson));
+const demoEnv = demoJson.lic_envelope;
+const demoVerified = verify(null, Buffer.from(demoEnv.payload, "ascii"), demoKp.publicKey, Buffer.from(demoEnv.signature, "base64url"));
+if (!demoVerified) throw new Error("Demo signature did not verify with DEMO public key");
+const demoClaims = JSON.parse(Buffer.from(demoEnv.payload, "base64url").toString("utf8"));
+if (demoClaims.environment !== "demo" || demoClaims.max_rucs !== 1 || demoClaims.max_seats !== 1) throw new Error("Demo claims mismatch");
+
+// 4) support_agent con 3 demos emitidas hoy debe ser bloqueado con 429
+demoCount = 3;
+const rQuota = await issueFn.onRequestPost({
+    request: new Request("http://local/api/team/issue-license", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${tokAgent}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ mode: "demo", holder_name: "CUARTA DEMO", holder_ruc: "1790012345001", hwid_inicial: "PC-DEMO-4" }),
+    }),
+    env,
+});
+if (rQuota.status !== 429) throw new Error("Expected 429 on 4th demo, got " + rQuota.status);
+
+// 5) founder emitiendo anual usa MASTER_ED25519_PRIVATE_KEY
+const tokFounder = makeJwt("founder-uuid", "aal2", true);
+const rMasterOk = await issueFn.onRequestPost({
+    request: new Request("http://local/api/team/issue-license", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${tokFounder}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ mode: "annual", plan_name: "ESTUDIO_CONTABLE", holder_name: "ESTUDIO FUNDADOR", holder_ruc: "1790012345001", is_founder: true, max_rucs: 40, max_seats: 3, cloud_gb: 50, storage_modes: "local,hybrid" }),
+    }),
+    env,
+});
+const masterJson = await rMasterOk.json();
+if (rMasterOk.status !== 201 || !masterJson.ok) throw new Error("Founder annual issue failed");
+const masterVerified = verify(null, Buffer.from(masterJson.lic_envelope.payload, "ascii"), masterKp.publicKey, Buffer.from(masterJson.lic_envelope.signature, "base64url"));
+if (!masterVerified) throw new Error("Annual signature did not verify with MASTER public key");
+
+// 6) URL firmada temporal 60s para diagnostico .zip
+const rDiag = await diagFn.onRequestPost({
+    request: new Request("http://local/api/team/diagnostic-url", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${tokAgent}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ ticket_id: TICKET_UUID }),
+    }),
+    env,
+});
+const diagJson = await rDiag.json();
+if (rDiag.status !== 200 || diagJson.expires_in !== 60 || lastDiagSignPayload?.expiresIn !== 60) {
+    throw new Error("Diagnostic URL 60s check failed: " + JSON.stringify(diagJson));
+}
+process.stdout.write("TEAM_RBAC_CRYPTO_OK\\n");
+"""
+    team_proc = subprocess.run(
+        ["node", "--input-type=module", "-e", node_team_script],
+        cwd=str(PORTAL_DIR),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    _assert(team_proc.returncode == 0 and "TEAM_RBAC_CRYPTO_OK" in team_proc.stdout, f"Falló prueba conductual /api/team: {team_proc.stderr or team_proc.stdout}")
+
     print("    -> OK: HMAC, Anti-Tampering, XSS/SQLi/NoSQLi/SSRF/PathTraversal, Checkout Híbrido y Anti-Enumeración aprobados.")
 
 
@@ -465,7 +664,7 @@ def test_4_rate_limiting(client: _EdgeClient) -> None:
     print("[4/4] Prueba de Rate Limiting (HTTP 429) ante ráfaga automatizada...")
     got_429 = False
     retry_after = None
-    probe_body = json.dumps({"license_key": "TFLIC-00000000-00000000000000000000000000000000", "hwid": "RATE-TEST-1", "ruc": "1790012345001"})
+    probe_body = json.dumps({"license_key": "QTLIC-00000000-00000000000000000000000000000000", "hwid": "RATE-TEST-1", "ruc": "1790012345001"})
     for idx in range(30):
         st, hdrs, _ = client.post(
             "/api/license/verify",

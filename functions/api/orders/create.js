@@ -1,5 +1,5 @@
 /**
- * Creación de Orden Híbrida (Invitado + Cuenta Supabase) — TributaFlow ERP v3.0.0.
+ * Creación de Orden Híbrida (Invitado + Cuenta Supabase) — QuoraTec ERP v3.0.0.
  * Calcula montos autoritativos en servidor, bloquea pasarelas con feature flag desactivado
  * ("Próximamente") y emite order_token criptográfico para consulta sin contraseña.
  */
@@ -24,6 +24,9 @@ const CAMPOS_PERMITIDOS = [
     "checkout_mode",
     "plan_id",
     "extra_seats",
+    "extra_rucs_packs",
+    "extra_cloud_packs",
+    "cloud_opcional_emprendedor",
     "email",
     "ruc_cedula",
     "razon_social",
@@ -67,6 +70,9 @@ export async function onRequestPost(context) {
         checkout_mode: checkoutMode = "guest",
         plan_id: planId,
         extra_seats: extraSeats = 0,
+        extra_rucs_packs: extraRucsPacks = 0,
+        extra_cloud_packs: extraCloudPacks = 0,
+        cloud_opcional_emprendedor: cloudOptEmp = false,
         email,
         ruc_cedula: rucCedula,
         razon_social: razonSocial,
@@ -107,9 +113,22 @@ export async function onRequestPost(context) {
         return jsonSegura({ ok: false, error: errCampos || "MISSING_REQUIRED_FIELDS" }, 400);
     }
 
-    const cotizacion = calcularCotizacionAutoritativa(planId, extraSeats);
+    const cotizacion = calcularCotizacionAutoritativa(planId, extraSeats, extraRucsPacks, extraCloudPacks, cloudOptEmp);
     if (!cotizacion.ok) {
         return jsonSegura({ ok: false, error: cotizacion.error }, 400);
+    }
+
+    const PLANES_HWID_OBLIGATORIO = new Set(["EMPRENDEDOR", "COMERCIAL_PRO", "CONTADOR"]);
+    const hwidClean = hwidInicial ? String(hwidInicial).trim().toUpperCase() : "";
+    if (PLANES_HWID_OBLIGATORIO.has(cotizacion.plan.id) && !hwidClean) {
+        return jsonSegura(
+            {
+                ok: false,
+                error: "HWID_REQUIRED_FOR_PLAN",
+                message: `El plan ${cotizacion.plan.id} requiere el HWID del Equipo inicial (QuoraTec ERP -> Configuración -> 4. Plan y Licencia).`,
+            },
+            400
+        );
     }
 
     const supaCfg = obtenerConfigSupabaseEnv(env);
@@ -125,9 +144,9 @@ export async function onRequestPost(context) {
         }
     }
 
-    const suffix = generarTokenCriptografico("TF", 6).replace("TF-", "").slice(0, 10);
-    const orderRef = `TF-${cotizacion.plan.id}-${suffix}`;
-    const orderToken = generarTokenCriptografico("TFTK", 24);
+    const suffix = generarTokenCriptografico("QT", 6).replace("QT-", "").slice(0, 10);
+    const orderRef = `QT-${cotizacion.plan.id}-${suffix}`;
+    const orderToken = generarTokenCriptografico("QTTK", 24);
     const orderTokenHash = await calcularSha256Hex(orderToken);
     const nowIso = new Date().toISOString();
 
@@ -150,7 +169,7 @@ export async function onRequestPost(context) {
         comprobante_nombre: null,
         comprobante_mime: null,
         comprobante_sha256: null,
-        hwid_inicial: hwidInicial ? String(hwidInicial).trim() : null,
+        hwid_inicial: hwidClean || null,
         created_at: nowIso,
         updated_at: nowIso,
     };

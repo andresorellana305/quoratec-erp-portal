@@ -1,5 +1,5 @@
 /**
- * Webhook Scaffold Deuna! Negocios API — TributaFlow ERP v3.0.0.
+ * Webhook Scaffold Deuna! Negocios API — QuoraTec ERP v3.0.0.
  * Protegido por Feature Flag FF_DEUNA_NEGOCIOS_ENABLED=false ("Próximamente")
  * y verificación HMAC-SHA256 + anti-tampering cuando se active en producción.
  */

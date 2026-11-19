@@ -1,0 +1,272 @@
+        <section class="page-hero">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html">Inicio</a>
+                    <span>/</span>
+                    <span>Panel Remoto de Equipo (2FA Obligatorio)</span>
+                </div>
+                <span class="eyebrow">Consola Operativa Interna · QuoraTec ERP <span data-app-version-tag>v3.0.0</span></span>
+                <h1>Panel Remoto de Equipo QuoraTec</h1>
+                <p class="lead-sub">Acceso restringido a personal activo en <code>staff_roles</code> mediante Supabase Auth y verificación obligatoria 2FA TOTP (<code>aal2</code>). Emisión criptográfica asimétrica v2 ejecutada exclusivamente en servidor Edge.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <!-- PUERTA DE AUTENTICACIÓN + 2FA TOTP (OBLIGATORIA ANTES DE MOSTRAR CUALQUIER DATO) -->
+                <div id="teamAuthGate" class="team-gate-shell">
+                    <div class="pay-box team-auth-card">
+                        <div class="team-auth-header">
+                            <span class="badge-chip">Paso 1 · Credenciales Supabase Auth</span>
+                            <h4>Acceso Seguro del Equipo QuoraTec</h4>
+                            <p class="muted-note mt-6">Solo cuentas autorizadas en <code>staff_roles</code> con segundo factor <strong>TOTP (aal2)</strong> pueden consultar tickets, emitir licencias o descargar diagnósticos.</p>
+                        </div>
+
+                        <form id="teamLoginForm" class="team-form-stack mt-12">
+                            <div class="field-group">
+                                <label for="teamEmail">Correo Corporativo / Equipo</label>
+                                <input type="email" id="teamEmail" class="text-input" autocomplete="username" placeholder="agente@quoratec.com" required>
+                            </div>
+                            <div class="field-group">
+                                <label for="teamPassword">Contraseña de Acceso</label>
+                                <input type="password" id="teamPassword" class="text-input" autocomplete="current-password" placeholder="••••••••••••" required>
+                            </div>
+                            <button type="submit" class="btn-glow team-btn-full" id="teamLoginSubmit">Continuar a Verificación 2FA TOTP ➔</button>
+                        </form>
+
+                        <!-- PASO 2: DESAFÍO / ENROLAMIENTO TOTP OBLIGATORIO -->
+                        <div id="teamMfaGate" class="team-mfa-box mt-16" hidden>
+                            <span class="badge-chip">Paso 2 · 2FA TOTP Obligatorio (aal2)</span>
+                            <p id="teamMfaWelcome" class="muted-note mt-6">Completa la verificación de 6 dígitos en tu app autenticadora.</p>
+
+                            <div id="teamMfaEnrollBox" class="team-qr-enroll mt-12" hidden>
+                                <p class="muted-note">Primera vez sin 2FA configurado: escanea este código QR con Google Authenticator / Authy o ingresa el secreto manual:</p>
+                                <div class="team-qr-frame mt-8">
+                                    <img id="teamMfaQrImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Código QR de enrolamiento 2FA TOTP" width="180" height="180">
+                                </div>
+                                <div class="team-secret-line mt-8">
+                                    <span>Secreto TOTP manual:</span>
+                                    <code id="teamMfaSecretText" class="mono-code">—</code>
+                                </div>
+                            </div>
+
+                            <form id="teamTotpForm" class="team-form-stack mt-12">
+                                <div class="field-group">
+                                    <label for="teamTotpCode">Código TOTP de 6 dígitos</label>
+                                    <input type="text" id="teamTotpCode" class="mono-input team-totp-input" inputmode="numeric" pattern="\d{6}" maxlength="6" autocomplete="one-time-code" placeholder="123456" required>
+                                </div>
+                                <div class="flex-wrap-actions">
+                                    <button type="submit" class="btn-glow team-btn-full" id="teamVerifyTotpBtn">Verificar 2FA y Entrar al Panel</button>
+                                    <button type="button" class="btn-glass" id="teamResetAuthBtn">Cambiar Cuenta</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div id="teamAuthStatus" class="mt-12 muted-note" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <!-- ESPACIO OPERATIVO POST-AAL2 (SOLO VISIBLE CON SESIÓN VERIFICADA + ROLE ACTIVO) -->
+                <div id="teamWorkspace" class="team-workspace" hidden>
+                    <div class="team-topbar">
+                        <div class="team-topbar-meta">
+                            <span class="badge-chip" id="teamRoleBadge">Sesión 2FA aal2</span>
+                            <h3 id="teamStaffName">—</h3>
+                            <p class="muted-note" id="teamStaffCityRole">Ciudad y rol activo verificados</p>
+                        </div>
+                        <div class="flex-wrap-actions team-topbar-actions">
+                            <button type="button" class="btn-glass" id="teamRefreshBtn">↻ Actualizar Datos</button>
+                            <button type="button" class="btn-glass" id="teamLogoutBtn">Cerrar Sesión</button>
+                        </div>
+                    </div>
+
+                    <div id="teamGlobalToast" class="team-toast mt-12" aria-live="polite" hidden></div>
+
+                    <!-- ==================== VISTA FOUNDER (MÓVIL + PC) ==================== -->
+                    <div id="teamFounderSection" class="team-role-section mt-16" hidden>
+                        <div class="team-kpi-grid" id="founderKpiGrid">
+                            <div class="pay-box team-kpi-card">
+                                <span class="team-kpi-label">Licencias Producción Activas</span>
+                                <strong class="team-kpi-val" id="kpiActiveLicenses">0</strong>
+                            </div>
+                            <div class="pay-box team-kpi-card">
+                                <span class="team-kpi-label">Fundadores QuoraTec</span>
+                                <strong class="team-kpi-val" id="kpiFounderLicenses">0</strong>
+                            </div>
+                            <div class="pay-box team-kpi-card">
+                                <span class="team-kpi-label">Demos Activas (15d)</span>
+                                <strong class="team-kpi-val" id="kpiDemoLicenses">0</strong>
+                            </div>
+                            <div class="pay-box team-kpi-card">
+                                <span class="team-kpi-label">Tickets Escalados / PCs</span>
+                                <strong class="team-kpi-val" id="kpiEscalatedAndSeats">0 / 0</strong>
+                            </div>
+                        </div>
+
+                        <div class="team-two-col mt-16">
+                            <!-- EMISOR DE LICENCIAS ANUALES (SOLO FOUNDER - MASTER KEY BACKEND) -->
+                            <div class="pay-box team-panel-card">
+                                <h4>Emisor de Licencias Anuales (Producción / QA)</h4>
+                                <p class="muted-note mt-6">Genera archivos <code>.lic</code> anuales de 365 días firmados en backend con la llave maestra de producción (nunca expuesta al navegador).</p>
+                                <form id="teamAnnualForm" class="team-form-stack mt-12">
+                                    <div class="hybrid-form-grid">
+                                        <div class="field-group">
+                                            <label for="annualPlanSelect">Plan Oficial</label>
+                                            <select id="annualPlanSelect" class="select-input">
+                                                <option value="EMPRENDEDOR">Emprendedor ($69 · 1 RUC · 1 PC)</option>
+                                                <option value="COMERCIAL_PRO">Comercial Pro ($149 · 1 RUC · 1 PC)</option>
+                                                <option value="CONTADOR" selected>Contador ($239 · 15 RUCs · 1 PC)</option>
+                                                <option value="ESTUDIO_CONTABLE">Estudio Contable ($449 · 40 RUCs · 3 PCs)</option>
+                                                <option value="ENTERPRISE">Enterprise ($849 · 100 RUCs · 10 PCs)</option>
+                                            </select>
+                                        </div>
+                                        <div class="field-group">
+                                            <label for="annualEnvSelect">Entorno</label>
+                                            <select id="annualEnvSelect" class="select-input">
+                                                <option value="production">production (Producción)</option>
+                                                <option value="qa_test">qa_test (Pruebas QA)</option>
+                                            </select>
+                                        </div>
+                                        <div class="field-group">
+                                            <label for="annualHolderName">Titular / Razón Social</label>
+                                            <input type="text" id="annualHolderName" class="text-input" placeholder="ESTUDIO CONTABLE QUITO S.A." required>
+                                        </div>
+                                        <div class="field-group">
+                                            <label for="annualHolderRuc">RUC / Cédula (10 o 13 dígitos)</label>
+                                            <input type="text" id="annualHolderRuc" class="mono-input" inputmode="numeric" pattern="\d{10}(\d{3})?" placeholder="1790012345001" required>
+                                        </div>
+                                        <div class="field-group">
+                                            <label for="annualHwid">HWID Equipo (Obligatorio 1 PC)</label>
+                                            <input type="text" id="annualHwid" class="mono-input" placeholder="PC-MATRIZ-001">
+                                        </div>
+                                        <div class="field-group">
+                                            <label for="annualStorageModes">Modos Almacenamiento</label>
+                                            <select id="annualStorageModes" class="select-input">
+                                                <option value="local">local (Solo Local)</option>
+                                                <option value="local,hybrid" selected>local,hybrid (Nube Híbrida)</option>
+                                                <option value="local,hybrid,cloud_dedicated">local,hybrid,cloud_dedicated (Dedicada)</option>
+                                            </select>
+                                        </div>
+                                        <div class="field-group">
+                                            <label for="annualMaxRucs">Máx. RUCs</label>
+                                            <input type="number" id="annualMaxRucs" class="mono-input" min="1" max="1000" value="15" required>
+                                        </div>
+                                        <div class="field-group">
+                                            <label for="annualMaxSeats">Máx. PCs</label>
+                                            <input type="number" id="annualMaxSeats" class="mono-input" min="1" max="500" value="1" required>
+                                        </div>
+                                        <div class="field-group">
+                                            <label for="annualCloudGb">Nube (GB)</label>
+                                            <input type="number" id="annualCloudGb" class="mono-input" min="0" max="5000" value="20" required>
+                                        </div>
+                                    </div>
+                                    <label class="team-checkbox-row" for="annualIsFounder">
+                                        <input type="checkbox" id="annualIsFounder">
+                                        <span>Marcar como licencia <strong>Fundadores QuoraTec (25 % DTO vitalicio)</strong></span>
+                                    </label>
+                                    <button type="submit" class="btn-glow team-btn-full" id="btnIssueAnnualLicense">Emitir y Descargar Licencia Anual (.lic)</button>
+                                </form>
+                                <div id="annualIssueResult" class="mt-12 muted-note" aria-live="polite"></div>
+                            </div>
+
+                            <!-- PANEL EJECUTIVO DE LICENCIAS RECIENTES -->
+                            <div class="pay-box team-panel-card">
+                                <h4>Dashboard Ejecutivo de Licencias</h4>
+                                <p class="muted-note mt-6">Últimas licencias emitidas en el ecosistema compartido Portal / QuoraTec ERP / Centralis Engine.</p>
+                                <div class="team-table-scroll mt-12">
+                                    <table class="sha-matrix-table team-data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Licencia</th>
+                                                <th>RUC / Titular</th>
+                                                <th>Plan / Cupos</th>
+                                                <th>Entorno / Vence</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="founderLicensesBody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BITÁCORA INMUTABLE AUDIT_LOGS -->
+                        <div class="pay-box team-panel-card mt-16">
+                            <h4>Bitácora Inmutable de Auditoría Crítica (<code>audit_logs</code>)</h4>
+                            <p class="muted-note mt-6">Registro append-only protegido contra modificaciones/eliminaciones en PostgreSQL.</p>
+                            <div class="team-table-scroll mt-12">
+                                <table class="sha-matrix-table team-data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha (UTC)</th>
+                                            <th>Actor / Ciudad</th>
+                                            <th>Acción</th>
+                                            <th>Objetivo</th>
+                                            <th>IP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="founderAuditLogsBody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ==================== VISTA SUPPORT AGENT (QUITO / SANTO DOMINGO) ==================== -->
+                    <div id="teamAgentSection" class="team-role-section mt-16" hidden>
+                        <div class="team-two-col">
+                            <!-- EMISOR DE DEMOS 15 DÍAS (TOPE 3/DÍA POR AGENTE) -->
+                            <div class="pay-box team-panel-card">
+                                <div class="team-panel-head-row">
+                                    <h4>Emisor de Demos Oficiales (15 Días)</h4>
+                                    <span class="badge-chip" id="agentDemoQuotaBadge">Cupo hoy: 0 / 3</span>
+                                </div>
+                                <p class="muted-note mt-6">Emite evaluaciones firmadas en backend con reglas inmutables: <strong>15 días · Máx. 1 RUC · Máx. 1 PC · Tope 3 demos/día</strong>.</p>
+                                <form id="teamDemoForm" class="team-form-stack mt-12">
+                                    <div class="field-group">
+                                        <label for="demoHolderName">Nombre del Prospecto / Empresa</label>
+                                        <input type="text" id="demoHolderName" class="text-input" placeholder="FARMACIA SAN GABRIEL" required>
+                                    </div>
+                                    <div class="field-group">
+                                        <label for="demoHolderRuc">RUC / Cédula (10 o 13 dígitos)</label>
+                                        <input type="text" id="demoHolderRuc" class="mono-input" inputmode="numeric" pattern="\d{10}(\d{3})?" placeholder="1712345678001" required>
+                                    </div>
+                                    <div class="field-group">
+                                        <label for="demoHwid">HWID del Equipo Cliente (1 PC)</label>
+                                        <input type="text" id="demoHwid" class="mono-input" placeholder="PC-CLIENTE-001" required>
+                                    </div>
+                                    <button type="submit" class="btn-glow team-btn-full" id="btnIssueDemoLicense">Generar Demo 15 Días (.lic)</button>
+                                </form>
+                                <div id="demoIssueResult" class="mt-12 muted-note" aria-live="polite"></div>
+                            </div>
+
+                            <!-- ENLACES COPIAR PARA WHATSAPP (8 VIDEO-GUÍAS) -->
+                            <div class="pay-box team-panel-card">
+                                <h4>Enlaces "Copiar para WhatsApp" — 8 Video-Guías (2 min)</h4>
+                                <p class="muted-note mt-6">Envía en 1 toque el tutorial exacto que el cliente necesita durante soporte en Quito o Santo Domingo.</p>
+                                <div id="teamWhatsappGuidesList" class="team-guides-stack mt-12"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ==================== HERRAMIENTAS COMPARTIDAS (FOUNDER + SUPPORT_AGENT) ==================== -->
+                    <div class="team-two-col mt-16">
+                        <!-- CONSULTA DE LICENCIA POR RUC (SOLO LECTURA) -->
+                        <div class="pay-box team-panel-card">
+                            <h4>Consulta Rápida de Licencia por RUC (Solo Lectura)</h4>
+                            <p class="muted-note mt-6">Verifica estado, vigencia, plan, cupos RUCs/PCs y estaciones registradas sin permisos de modificación.</p>
+                            <form id="teamLookupForm" class="team-inline-form mt-12">
+                                <input type="text" id="teamLookupRucInput" class="mono-input" inputmode="numeric" pattern="\d{10}(\d{3})?" placeholder="1790012345001" aria-label="RUC o Cédula a consultar" required>
+                                <button type="submit" class="btn-glow" id="btnTeamLookupRuc">Consultar</button>
+                            </form>
+                            <div id="teamLookupResult" class="mt-12" aria-live="polite"></div>
+                        </div>
+
+                        <!-- BANDEJA DE TICKETS Y DIAGNÓSTICOS .ZIP (URL FIRMADA 60 SEGUNDOS) -->
+                        <div class="pay-box team-panel-card">
+                            <h4>Bandeja de Tickets y Diagnóstico <code>.zip</code> (URL 60 s)</h4>
+                            <p class="muted-note mt-6">Descarga paquetes de diagnóstico del bucket privado <code>diagnostics</code> mediante URL temporal válida exactamente <strong>60 segundos</strong>.</p>
+                            <div id="teamTicketsContainer" class="team-tickets-stack mt-12"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

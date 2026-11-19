@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Compilador modular estático para TributaFlow ERP (tributaflow.quoratec.com).
+"""Compilador modular estático para QuoraTec ERP (erp.quoratec.com).
 
 Centraliza <head>, <header>, pre-footer CTA, <footer> y scripts desde templates/base.html,
 resuelve rutas relativas por profundidad de directorio, calcula hashes SRI SHA-384 sobre
-bytes LF (\n) y genera las 13 páginas HTML estáticas con saltos de línea LF estrictos.
+bytes LF (\n) y genera las 21 páginas HTML estáticas con saltos de línea LF estrictos.
 
 Uso:
-    python scripts/build_portal.py          # Renderiza y escribe los 13 HTML en LF
+    python scripts/build_portal.py          # Renderiza y escribe los HTML en LF
     python scripts/build_portal.py --check  # Verifica sin escribir (0 drift, 0 CRLF, SRI exacto)
 """
 
@@ -55,7 +55,7 @@ def _compute_root_prefix(output_rel: str) -> str:
 
 def _render_nav_cta(mode: str, root_prefix: str) -> str:
     if mode == "checkout":
-        return '<button type="button" class="nav-cta" data-checkout-plan="ESTUDIO_PRO">Adquirir Licencia</button>'
+        return '<button type="button" class="nav-cta" data-checkout-plan="ESTUDIO_CONTABLE">Adquirir Licencia</button>'
     if mode == "link":
         return f'<a href="{root_prefix}planes.html" class="nav-cta">Ver Planes y Pagar</a>'
     raise ValueError(f"Modo nav_cta no soportado: {mode!r}")
@@ -64,17 +64,17 @@ def _render_nav_cta(mode: str, root_prefix: str) -> str:
 def render_all_pages(cfg: dict[str, Any], base_html: str, pages: list[dict[str, Any]]) -> dict[Path, str]:
     version = str(cfg.get("version") or "").strip()
     edition = str(cfg.get("edicion") or "Edición 2026").strip()
-    company = str(cfg.get("empresa") or "QUORATEC").strip()
+    company = str(cfg.get("empresa") or "QuoraTec").strip()
     soporte = cfg.get("canal_soporte", {})
     wa_base = str(soporte.get("whatsapp_url") or "https://wa.me/593996459771").strip()
     wa_display = str(soporte.get("whatsapp_display") or "0996459771").strip()
-    support_email = str(soporte.get("correo") or "soportetributaflow@quoratec.com").strip()
+    support_email = str(soporte.get("correo") or "soporte@quoratec.com").strip()
 
     if not version:
         raise ValueError("api/config_comercial.json no define 'version'")
 
-    whatsapp_url = f"{wa_base}?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20ERP"
-    mailto_url = f"mailto:{support_email}?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20ERP"
+    whatsapp_url = f"{wa_base}?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20QuoraTec%20ERP"
+    mailto_url = f"mailto:{support_email}?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20QuoraTec%20ERP"
 
     css_sri, css_hash = _sri_sha384_lf(CSS_ASSET)
     js_sri, js_hash = _sri_sha384_lf(JS_ASSET)
@@ -91,26 +91,26 @@ def render_all_pages(cfg: dict[str, Any], base_html: str, pages: list[dict[str, 
         pre_footer = entry.get("pre_footer", {})
         actions_lines = [f"                    {line}" for line in pre_footer.get("actions", [])]
         canonical_url = (
-            "https://tributaflow.quoratec.com/"
+            "https://erp.quoratec.com/"
             if output_rel == "index.html"
-            else f"https://tributaflow.quoratec.com/{output_rel}"
+            else f"https://erp.quoratec.com/{output_rel}"
         )
         jsonld_obj = {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            "name": f"TributaFlow ERP {edition}",
+            "name": f"QuoraTec ERP {edition}",
             "softwareVersion": version,
             "operatingSystem": "Windows 10, Windows 11, macOS, Linux",
             "applicationCategory": "BusinessApplication",
             "url": canonical_url,
-            "downloadUrl": "https://tributaflow.quoratec.com/descargas.html",
+            "downloadUrl": "https://erp.quoratec.com/descargas.html",
             "description": entry["description"],
             "publisher": {"@type": "Organization", "name": company, "email": support_email},
             "offers": {
                 "@type": "AggregateOffer",
                 "priceCurrency": "USD",
                 "lowPrice": "69.00",
-                "highPrice": "1490.00",
+                "highPrice": "849.00",
                 "offerCount": 5,
             },
         }
@@ -166,7 +166,7 @@ def render_all_pages(cfg: dict[str, Any], base_html: str, pages: list[dict[str, 
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Compila o valida las 13 páginas HTML del portal TributaFlow ERP.")
+    parser = argparse.ArgumentParser(description="Compila o valida las 22 páginas HTML del portal QuoraTec ERP.")
     parser.add_argument("--check", action="store_true", help="Verifica sin modificar disco (LF + SRI + cero drift).")
     args = parser.parse_args()
 

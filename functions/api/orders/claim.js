@@ -1,6 +1,6 @@
 /**
  * Conversión 1-clic de Orden de Invitado -> Cuenta Supabase vinculada (post-compra).
- * TributaFlow ERP v3.0.0 (QUORATEC).
+ * QuoraTec ERP v3.0.0 (QUORATEC).
  */
 
 import {

@@ -1,5 +1,5 @@
 /**
- * Webhook Endurecido de PayPhone — TributaFlow ERP v3.0.0 (Edición 2026).
+ * Webhook Endurecido de PayPhone — QuoraTec ERP v3.0.0 (Edición 2026).
  * Verifica firma HMAC-SHA256, anti-replay, esquema estricto y monto autoritativo del servidor.
  */
 

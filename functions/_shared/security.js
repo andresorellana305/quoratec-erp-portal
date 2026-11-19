@@ -18,58 +18,66 @@ export const SECURITY_HEADERS = Object.freeze({
 });
 
 /**
- * Catálogo comercial oficial inmutable v3.0.0 — Edición 2026 en el servidor.
- * Regla inquebrantable: canales oficiales QUORATEC intocables.
+ * Catálogo comercial oficial inmutable v3.0.0 — Edición 2026 en el servidor (QuoraTec ERP).
+ * Regla inquebrantable: canales oficiales QuoraTec intocables.
  */
 export const CATALOGO_OFICIAL_V240 = Object.freeze({
     version: "3.0.0",
     edicion: "Edición 2026",
-    trialDias: 7,
-    trialRucs: 60,
-    trialModalidad: "ESTUDIO_PRO",
-    precioSeatExtraUsd: 150,
+    trialDias: 15,
+    trialRucs: 40,
+    trialModalidad: "ESTUDIO_CONTABLE",
+    precioSeatExtraUsd: 49,
+    precioRucsPackUsd: 59,
+    precioCloudPackUsd: 59,
+    precioEmprendedorNubeUsd: 29,
     payphoneActivo: false,
     payphoneEstado: "Próximamente / En actualización",
-    correoSoporte: "soportetributaflow@quoratec.com",
+    correoSoporte: "soporte@quoratec.com",
     whatsappOficial: "https://wa.me/593996459771",
     planes: Object.freeze({
-        PERSONAL_PRO: Object.freeze({
-            id: "PERSONAL_PRO",
+        EMPRENDEDOR: Object.freeze({
+            id: "EMPRENDEDOR",
             precioUsd: 69,
-            rucsMax: 3,
+            rucsMax: 1,
             estacionesBase: 1,
-            permiteExtraSeats: false,
-            payphoneUrl: "https://ppls.me/5S1Y89pBi1vYHBTEgEzRA",
+            nubeGbBase: 0,
+            permiteExtraSeats: true,
+            payphoneUrl: "https://ppls.me/quoratec-emprendedor",
         }),
-        CONTADOR_MASTER: Object.freeze({
-            id: "CONTADOR_MASTER",
-            precioUsd: 159,
-            rucsMax: 25,
+        COMERCIAL_PRO: Object.freeze({
+            id: "COMERCIAL_PRO",
+            precioUsd: 149,
+            rucsMax: 1,
             estacionesBase: 1,
-            permiteExtraSeats: false,
-            payphoneUrl: "https://ppls.me/dxope7VBAjK5LR1mO4UitA",
+            nubeGbBase: 10,
+            permiteExtraSeats: true,
+            payphoneUrl: "https://ppls.me/quoratec-comercial-pro",
         }),
-        ESTUDIO_PRO: Object.freeze({
-            id: "ESTUDIO_PRO",
-            precioUsd: 379,
-            rucsMax: 60,
-            estacionesBase: 2,
-            permiteExtraSeats: false,
-            payphoneUrl: "https://ppls.me/60Bdw7lcRhMfvjqwA5cFdg",
+        CONTADOR: Object.freeze({
+            id: "CONTADOR",
+            precioUsd: 239,
+            rucsMax: 15,
+            estacionesBase: 1,
+            nubeGbBase: 20,
+            permiteExtraSeats: true,
+            payphoneUrl: "https://ppls.me/quoratec-contador",
         }),
-        ENTERPRISE_TEAM: Object.freeze({
-            id: "ENTERPRISE_TEAM",
-            precioUsd: 890,
-            rucsMax: -1,
-            estacionesBase: 5,
-            permiteExtraSeats: false,
-            payphoneUrl: null,
+        ESTUDIO_CONTABLE: Object.freeze({
+            id: "ESTUDIO_CONTABLE",
+            precioUsd: 449,
+            rucsMax: 40,
+            estacionesBase: 3,
+            nubeGbBase: 50,
+            permiteExtraSeats: true,
+            payphoneUrl: "https://ppls.me/quoratec-estudio-contable",
         }),
-        ENTERPRISE_CORP: Object.freeze({
-            id: "ENTERPRISE_CORP",
-            precioUsd: 1490,
-            rucsMax: -1,
+        ENTERPRISE: Object.freeze({
+            id: "ENTERPRISE",
+            precioUsd: 849,
+            rucsMax: 100,
             estacionesBase: 10,
+            nubeGbBase: 150,
             permiteExtraSeats: true,
             payphoneUrl: null,
         }),
@@ -89,9 +97,9 @@ const REGEX_ATAQUES = [
 ];
 
 const HWID_REGEX = /^[A-Z0-9-]{6,36}$/;
-const PLAN_ID_REGEX = /^(PERSONAL_PRO|CONTADOR_MASTER|ESTUDIO_PRO|ENTERPRISE_TEAM|ENTERPRISE_CORP)$/;
-const ORDER_REF_REGEX = /^TF-[A-Z0-9_-]{3,48}$/;
-const LICENSE_KEY_REGEX = /^TFLIC-[A-Z0-9]{4,64}-[A-F0-9]{16,64}$/;
+const PLAN_ID_REGEX = /^(EMPRENDEDOR|COMERCIAL_PRO|CONTADOR|ESTUDIO_CONTABLE|ENTERPRISE)$/;
+const ORDER_REF_REGEX = /^(?:QT|TF)-[A-Z0-9_-]{3,48}$/;
+const LICENSE_KEY_REGEX = /^(?:QTLIC|TFLIC)-[A-Z0-9]{4,64}-[A-F0-9]{16,64}$/;
 const RUC_CEDULA_REGEX = /^\d{10}(\d{3})?$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
 const HEX_64_REGEX = /^[a-f0-9]{64}$/i;
@@ -199,7 +207,13 @@ export function validarEsquemaPermitido(obj, camposPermitidos, camposProhibidosT
     return { ok: true };
 }
 
-export function calcularCotizacionAutoritativa(planId, extraSeatsRaw = 0) {
+export function calcularCotizacionAutoritativa(
+    planId,
+    extraSeatsRaw = 0,
+    extraRucsRaw = 0,
+    extraCloudRaw = 0,
+    cloudOpcionalEmpRaw = false
+) {
     if (!PLAN_ID_REGEX.test(String(planId || ""))) {
         return { ok: false, error: "INVALID_PLAN_ID" };
     }
@@ -209,21 +223,39 @@ export function calcularCotizacionAutoritativa(planId, extraSeatsRaw = 0) {
     }
 
     const extraNum = Number(extraSeatsRaw ?? 0);
-    if (!Number.isInteger(extraNum) || extraNum < 0 || extraNum > 50) {
+    const extraRucsNum = Number(extraRucsRaw ?? 0);
+    const extraCloudNum = Number(extraCloudRaw ?? 0);
+    if (
+        !Number.isInteger(extraNum) || extraNum < 0 || extraNum > 50 ||
+        !Number.isInteger(extraRucsNum) || extraRucsNum < 0 || extraRucsNum > 50 ||
+        !Number.isInteger(extraCloudNum) || extraCloudNum < 0 || extraCloudNum > 50
+    ) {
         return { ok: false, error: "INVALID_EXTRA_SEATS" };
     }
     if (!plan.permiteExtraSeats && extraNum > 0) {
         return { ok: false, error: "EXTRA_SEATS_NOT_ALLOWED_FOR_PLAN" };
     }
 
-    const montoAutoritativoUsd = plan.precioUsd + extraNum * CATALOGO_OFICIAL_V240.precioSeatExtraUsd;
+    const optNubeEmp = plan.id === "EMPRENDEDOR" && Boolean(cloudOpcionalEmpRaw);
+    const montoAutoritativoUsd =
+        plan.precioUsd +
+        extraNum * CATALOGO_OFICIAL_V240.precioSeatExtraUsd +
+        extraRucsNum * CATALOGO_OFICIAL_V240.precioRucsPackUsd +
+        extraCloudNum * CATALOGO_OFICIAL_V240.precioCloudPackUsd +
+        (optNubeEmp ? CATALOGO_OFICIAL_V240.precioEmprendedorNubeUsd : 0);
     const estacionesAutorizadas = plan.estacionesBase + extraNum;
+    const rucsAutorizados = plan.rucsMax + extraRucsNum * 5;
+    const nubeGbAutorizada = plan.nubeGbBase + (optNubeEmp ? 10 : 0) + extraCloudNum * 50;
 
     return {
         ok: true,
         plan,
         extraSeats: extraNum,
+        extraRucsPacks: extraRucsNum,
+        extraCloudPacks: extraCloudNum,
         estacionesAutorizadas,
+        rucsAutorizados,
+        nubeGbAutorizada,
         montoAutoritativoUsd,
         vigenciaDias: 365,
     };

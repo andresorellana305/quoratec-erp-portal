@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Suite Rápida de Auditoría HTTP, DOM, Integridad Comercial y Ciberseguridad (AppSec / Red Team)
-Portal Oficial TributaFlow ERP v3.0.0 — Edición 2026 (tributaflow.quoratec.com)
+Portal Oficial QuoraTec ERP v3.0.0 — Edición 2026 (erp.quoratec.com)
 Ejecuta validación directa sin navegador ni dependencias externas (< 5s).
 """
 
@@ -51,6 +51,7 @@ PAGINAS_PORTAL = [
     "descargas.html",
     "guia-uso.html",
     "soporte.html",
+    "equipo.html",
     "politicas.html",
     "modulos/panel-general.html",
     "modulos/mis-contribuyentes.html",
@@ -70,44 +71,44 @@ PAGINAS_PORTAL = [
 ]
 
 PAYPHONE_OFICIALES = {
-    "PERSONAL_PRO": None,
-    "CONTADOR_MASTER": None,
-    "ESTUDIO_PRO": None,
-    "ENTERPRISE_TEAM": None,
-    "ENTERPRISE_CORP": None,
+    "EMPRENDEDOR": None,
+    "COMERCIAL_PRO": None,
+    "CONTADOR": None,
+    "ESTUDIO_CONTABLE": None,
+    "ENTERPRISE": None,
 }
 
 PRECIOS_ESPERADOS = {
-    "PERSONAL_PRO": "$69",
-    "CONTADOR_MASTER": "$159",
-    "ESTUDIO_PRO": "$379",
-    "ENTERPRISE_TEAM": "$890",
-    "ENTERPRISE_CORP": "$1,490",
+    "EMPRENDEDOR": "$69",
+    "COMERCIAL_PRO": "$149",
+    "CONTADOR": "$239",
+    "ESTUDIO_CONTABLE": "$449",
+    "ENTERPRISE": "$849",
 }
 
 EXPECTED_DOWNLOADS = {
     "windows": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe",
+        "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/Setup_QuoraTec_ERP_v3.0.0.exe",
         "350a7f2cb1ba50a8cea87563b7e773357b5f8e9fa9d0f359401e0e9dc4c9e232",
     ),
     "windows_zip": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip",
+        "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Windows_x64.zip",
         "ca49bcd4eea13b496a618122aa742d5de5c898f176e7eda326ad2d8b33a0c051",
     ),
     "macos": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_macOS.dmg",
+        "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_macOS.dmg",
         "374e5ca4444b290662e417403ea0848bb77fe0215243fe52299743d7d8ad24df",
     ),
     "linux": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
+        "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Linux_amd64.deb",
         "2c5e48ae14c8dfce3d3e5f975e236a93be663fd138ef6f81dcb9a4ec5c2d052a",
     ),
     "linux_tar": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
+        "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Linux_x64.tar.gz",
         "b4e5da23885fe7126dabe59a0120ef2fc688ad0a6124407a722bae4429c09b1b",
     ),
     "sha256sums": (
-        "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
+        "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
         "a86675219f227ab4831dfa34e00253fc735e161eef1fd0dc88a40c35f25685ba",
     ),
 }
@@ -294,14 +295,15 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
     _assert(cfg_path.is_file(), "Falta api/config_comercial.json")
     cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
     _assert(cfg.get("version") == "3.0.0", f"Versión JSON inesperada: {cfg.get('version')}")
-    _assert(cfg.get("trial_dias") == 7, f"trial_dias esperado 7, recibido: {cfg.get('trial_dias')}")
-    _assert(cfg.get("trial_rucs") == 60, f"trial_rucs esperado 60, recibido: {cfg.get('trial_rucs')}")
-    _assert(cfg.get("precio_seat_extra_usd") == 150.0, "precio_seat_extra_usd esperado 150.0")
+    _assert(cfg.get("trial_dias") == 15, f"trial_dias esperado 15, recibido: {cfg.get('trial_dias')}")
+    _assert(cfg.get("trial_rucs") == 40, f"trial_rucs esperado 40, recibido: {cfg.get('trial_rucs')}")
+    _assert(cfg.get("precio_seat_extra_usd") == 49.0, "precio_seat_extra_usd esperado 49.0")
     _assert(cfg.get("payphone_habilitado") is False, "PayPhone debe figurar pausado (payphone_habilitado=False)")
     _assert(cfg.get("payphone_links") == PAYPHONE_OFICIALES, f"PayPhone JSON alterado: {cfg.get('payphone_links')}")
     soporte = cfg.get("canal_soporte", {})
     _assert(soporte.get("whatsapp_numero") == "593996459771", "WhatsApp JSON alterado")
-    _assert(soporte.get("correo") == "soportetributaflow@quoratec.com", "Correo JSON alterado")
+    _assert(soporte.get("correo") == "soporte@quoratec.com", "Correo JSON alterado")
+    _assert((PORTAL_DIR / "CNAME").read_text(encoding="utf-8").strip() == "erp.quoratec.com", "CNAME debe ser erp.quoratec.com")
 
     for os_k, (exp_u, exp_sha) in EXPECTED_DOWNLOADS.items():
         node = cfg.get("descargas", {}).get(os_k, {})
@@ -326,8 +328,8 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
         "version_2_3_0": re.compile(r"2\.3\.0|v230", re.I),
         "version_2_4_0_or_2_5_0": re.compile(r"2\.[45]\.0", re.I),
         "legacy_github_owner": re.compile("Fausto" + r"\s*" + ".*" + "Orellana", re.I),
-        "legacy_brand_pro": re.compile(r"TributaFlow Pro", re.I),
-        "trial_14_or_15_dias": re.compile(r"(?:14|15)\s+d[ií]as|\b14d\b", re.I),
+        "legacy_brand": re.compile(r"TributaFlow|tfbkp", re.I),
+        "trial_14_dias": re.compile(r"\b14\s+d[ií]as|\b14d\b", re.I),
         "ruc_2": re.compile(r"\b2\s+RUCs?\b", re.I),
         "lineas_15_50_200": re.compile(r"\b(?:15|50|200)\s+l[ií]neas\b", re.I),
         "legacy_crypto": re.compile(r"\bEd25519\b|\bRSA-2048\b", re.I),
@@ -360,7 +362,8 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
         for src in parser.srcs:
             if not src.startswith(("http://", "https://", "data:")):
                 src_clean = src.partition("?")[0]
-                if not (base_dir / src_clean).resolve().is_file():
+                target_src = (PORTAL_DIR / src_clean.lstrip("/")) if src_clean.startswith("/") else (base_dir / src_clean)
+                if not target_src.resolve().is_file():
                     broken_links.append(f"{rel} src={src}")
         for href in parser.hrefs:
             if href.startswith(("http://", "https://", "mailto:", "tel:")):
@@ -369,7 +372,12 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
                 continue
             path_part, _, frag = href.partition("#")
             path_clean = path_part.partition("?")[0]
-            target_rel = rel if not path_clean else os.path.normpath(str((base_dir.relative_to(PORTAL_DIR) / path_clean))).replace("\\", "/")
+            if not path_clean:
+                target_rel = rel
+            elif path_clean.startswith("/"):
+                target_rel = path_clean.lstrip("/")
+            else:
+                target_rel = os.path.normpath(str((base_dir.relative_to(PORTAL_DIR) / path_clean))).replace("\\", "/")
             target_file = PORTAL_DIR / target_rel
             if not target_file.is_file():
                 broken_links.append(f"{rel} href={href}")
@@ -383,7 +391,7 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
 
 
 def test_http_server_headers_and_sri(base_url: str) -> dict[str, int]:
-    print("[2/5] Validación HTTP directa sobre servidor local (21 páginas, activos, CSP, HSTS, XFO y SRI sha384)...", flush=True)
+    print("[2/5] Validación HTTP directa sobre servidor local (22 páginas, activos, CSP, HSTS, XFO y SRI sha384)...", flush=True)
 
     http_checks = 0
 
@@ -463,9 +471,9 @@ def test_http_server_headers_and_sri(base_url: str) -> dict[str, int]:
     st_sitemap, _, sitemap_bytes = _http_get(f"{base_url}/sitemap.xml")
     http_checks += 2
     _assert(st_robots == 200 and b"sitemap.xml" in robots_bytes, "robots.txt inválido vía HTTP")
-    _assert(st_sitemap == 200 and sitemap_bytes.decode("utf-8").count("<loc>") == 21, "sitemap.xml inválido vía HTTP")
+    _assert(st_sitemap == 200 and sitemap_bytes.decode("utf-8").count("<loc>") == 22, "sitemap.xml inválido vía HTTP")
 
-    print(f"    -> OK: {http_checks} peticiones HTTP verificadas (21 HTML + 4 activos + robots/sitemap + 404, HSTS/XFO/CSP y SRI SHA-384 100 % exacto).", flush=True)
+    print(f"    -> OK: {http_checks} peticiones HTTP verificadas (22 HTML + 4 activos + robots/sitemap + 404, HSTS/XFO/CSP y SRI SHA-384 100 % exacto).", flush=True)
     return {"http_checks": http_checks}
 
 
@@ -490,7 +498,10 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         _assert(bool(dom.attrs_index["data-scroll-top"]), f"Falta botón ↑ Subir en {rel}")
         _assert(bool(dom.attrs_index["data-app-version-tag"]), f"Falta data-app-version-tag en {rel}")
         _assert("0996459771" in html and "593996459771" in html, f"Canal WhatsApp oficial alterado o ausente en {rel}")
-        _assert("soportetributaflow@quoratec.com" in html, f"Correo soporte oficial alterado o ausente en {rel}")
+        _assert("soporte@quoratec.com" in html, f"Correo soporte oficial alterado o ausente en {rel}")
+        _assert('href="/assets/img/icon-quoratec-erp.svg"' in html, f"Falta favicon SVG icon-quoratec-erp.svg en {rel}")
+        _assert("/assets/img/logo-quoratec-erp-light.svg" in html and "logo-theme-light" in dom.classes, f"Falta logo-theme-light en {rel}")
+        _assert("/assets/img/logo-quoratec-erp-dark.svg" in html and "logo-theme-dark" in dom.classes, f"Falta logo-theme-dark en {rel}")
         # Reglas exactas de target en enlaces estáticos HTML: descargas/mailto sin target="_blank"; wa.me con target="_blank" rel="noopener noreferrer"
         _assert(not re.search(r'<a\b[^>]*href=["\'](?:mailto:|[^"\']*releases/download/)[^>]*target=["\']_blank["\']', html, re.I), f"Enlace descarga o mailto con target=_blank prohibido en {rel}")
         for wa_tag in re.findall(r'<a\b[^>]*href=["\']https://wa\.me/[^>]*>', html, re.I):
@@ -523,55 +534,84 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         "background: #0b1220;",
         ".ribbon-tabs-bar",
         ".before-after-grid",
+        ".logo-theme-light",
+        ".logo-theme-dark",
+        ".founders-banner",
+        ".addons-calc-box",
+        ".video-tutorials-grid",
+        ".team-gate-shell",
+        ".team-two-col",
+        ".team-kpi-grid",
     ]:
         _assert(css_snippet in css_txt, f"Falta regla CSS requerida ({css_snippet}) en assets/css/portal.css")
 
-    # Validar index.html y planes.html contra especificaciones comerciales exactas v3.0.0
+    # Validar index.html y planes.html contra especificaciones comerciales congeladas QuoraTec ERP
     for comerciales_rel in ("index.html", "planes.html"):
         html, dom = pages_html[comerciales_rel]
-        _log(f"Reglas comerciales 5 planes + prueba 7d/60 RUCs -> {comerciales_rel}")
-        _assert("7 días" in html and "60 RUCs" in html, f"Falta prueba oficial 7 días / 60 RUCs en {comerciales_rel}")
+        _log(f"Reglas comerciales 5 planes + Fundadores 25% + 15 días gratis -> {comerciales_rel}")
+        _assert("15 días" in html and "100 %" in html, f"Falta prueba 15 días gratis o 100 % desbloqueado en {comerciales_rel}")
+        _assert("Fundadores QuoraTec" in html and "25 % DTO vitalicio" in html, f"Falta banner Fundadores QuoraTec en {comerciales_rel}")
         _assert("Modo Solo Lectura" in html, f"Falta aviso Modo Solo Lectura en {comerciales_rel}")
         _assert("Próximamente / En actualización" in html, f"Falta aviso PayPhone Próximamente en {comerciales_rel}")
         for plan_id, price in PRECIOS_ESPERADOS.items():
             _assert(plan_id in dom.checkout_plans, f"Falta botón data-checkout-plan='{plan_id}' en {comerciales_rel}")
             _assert(price in html, f"Falta precio {price} en {comerciales_rel}")
-        _assert("$150" in html, f"Falta tarifa add-on +$150/PC extra en {comerciales_rel}")
+        _assert("$49" in html and "$59" in html and "$29" in html, f"Faltan tarifas add-on ($49/$59/$29) en {comerciales_rel}")
 
-    _, planes_dom = pages_html["planes.html"]
-    for id_req in ("corpAddonMenos", "corpAddonMas", "corpAddonPcs", "corpAddonTotal", "btnCorpAddonCheckout"):
-        _assert(id_req in planes_dom.ids, f"Falta control calculadora Corp #{id_req} en planes.html")
-    _assert("+1 PC Adicional" in pages_html["planes.html"][0] and "data-billing-view" in pages_html["planes.html"][0], "Falta badge +1 PC Adicional o selector Anual/Mensual en planes.html")
+    planes_html, planes_dom = pages_html["planes.html"]
+    for id_req in ("calcPlanSelect", "addonPcInput", "addonRucInput", "addonCloudInput", "calcTotalNormal", "calcTotalFundadores", "btnCalcAddonsCheckout"):
+        _assert(id_req in planes_dom.ids, f"Falta control calculadora Add-ons #{id_req} en planes.html")
+    _assert("Centralis Engine" in planes_html and "data-billing-view" in planes_html, "Falta mención Centralis Engine o selector Anual/Mensual en planes.html")
 
-    # descargas.html y soporte.html dedicadas
+    # descargas.html (conectado a version.json) y soporte.html dedicadas
     desc_html, desc_dom = pages_html["descargas.html"]
-    _assert("tabla-sha256" in desc_dom.ids and "smartscreen" in desc_dom.ids and "SmartScreen" in desc_html, "Falta tabla SHA-256 o guía SmartScreen en descargas.html")
+    _assert("tabla-sha256" in desc_dom.ids and "smartscreen" in desc_dom.ids and "version.json" in desc_html and "SmartScreen" in desc_html, "Falta tabla SHA-256, conexión version.json o guía SmartScreen en descargas.html")
     for _, (expected_url, expected_sha) in EXPECTED_DOWNLOADS.items():
         _assert(expected_url in desc_dom.hrefs and expected_sha in desc_html, f"Falta enlace/hash v3.0.0 en descargas.html: {expected_url}")
 
     sop_html, sop_dom = pages_html["soporte.html"]
     _assert("lookupOrderRef" in sop_dom.ids and "lookupOrderToken" in sop_dom.ids and "btnLookupGuestOrder" in sop_dom.ids, "Falta consulta order_token en soporte.html")
 
+    # equipo.html: Panel Remoto de Equipo 2FA TOTP (aal2) + Vistas Founder & Support Agent
+    eq_html, eq_dom = pages_html["equipo.html"]
+    for eq_id in (
+        "teamAuthGate",
+        "teamLoginForm",
+        "teamMfaGate",
+        "teamTotpForm",
+        "teamWorkspace",
+        "teamFounderSection",
+        "teamAgentSection",
+        "teamAnnualForm",
+        "teamDemoForm",
+        "teamLookupForm",
+        "teamTicketsContainer",
+        "teamWhatsappGuidesList",
+    ):
+        _assert(eq_id in eq_dom.ids, f"Falta control #{eq_id} en equipo.html")
+    _assert("aal2" in eq_html and "staff_roles" in eq_html and "audit_logs" in eq_html and "60 s" in eq_html, "Faltan controles de seguridad o copy esperado en equipo.html")
+    _assert("SERVICE_ROLE" not in eq_html and "PRIVATE_KEY" not in eq_html, "Posible mención sensible en equipo.html")
+
     # Simulador y bloque descargas verificadas v3.0.0 en index.html
     index_html, index_dom = pages_html["index.html"]
     for sim_id in ("simRucsRange", "simDocsRange", "simPcsRange", "simPcsVal", "simPlanNombre", "simBtnAdquirirPlan"):
         _assert(sim_id in index_dom.ids, f"Falta elemento simulador #{sim_id} en index.html")
     for preset_txt in (
-        "Personal (3 RUCs · 1 PC)",
-        "Contador (18 RUCs · 1 PC)",
-        "Estudio Pro (45 RUCs · 2 PCs)",
-        "Enterprise Team (120 RUCs · 5 PCs)",
-        "Corporativo (300+ RUCs · 10+ PCs)",
+        "Emprendedor (1 RUC · 1 PC)",
+        "Comercial Pro (1 RUC · 1 PC Nube)",
+        "Contador (15 RUCs · 1 PC)",
+        "Estudio Contable (40 RUCs · 3 PCs)",
+        "Enterprise (100 RUCs · 10 PCs)",
     ):
         _assert(preset_txt in index_html, f"Falta escenario rápido '{preset_txt}' en index.html")
     _assert("btnDescargaDetectada" in index_dom.ids, "Falta botón descarga #btnDescargaDetectada en index.html")
     _assert("assets/img/hero-uso-erp.webp" in index_html, "Falta escena visual hero-uso-erp.webp en index.html")
     for badge_txt in (
-        "✓ Firma XAdES-BES .p12 Activa",
-        "✓ 0 Proveedores Fantasma EFOS",
-        "✓ ATS ATMMAAAA.xml Listo",
-        "✓ SQLite Local + Red LAN",
-        "Antes vs. Con TributaFlow ERP",
+        "✓ POS F2/F4/F8/F12 + .p12",
+        "✓ Farmacias FIFO &amp; Auditor Fantasma",
+        "✓ RIMPE, AGP, NIIF &amp; IESS/RDEP",
+        "✓ IA Local + Centralis Engine",
+        "Antes vs. Con QuoraTec ERP",
         "IVA 0% · 5% · 8% · 15%",
     ):
         _assert(badge_txt in index_html, f"Falta bloque/insignia de portada '{badge_txt}' en index.html")
@@ -582,22 +622,23 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         _assert(os_k in index_dom.attrs_index["data-sha256-copy"], f"Falta [data-sha256-copy='{os_k}'] en index.html")
         _assert(expected_sha in index_html, f"Falta SHA-256 de {os_k} ({expected_sha}) en index.html")
 
-    # guia-uso.html: 5 pestañas operativas completas + Tour 15 vistas AES-256-GCM y .p12
+    # guia-uso.html: 8 video-tutoriales (2 min) + 5 pestañas + Buscador + Tour 15 vistas
     guia_html, guia_dom = pages_html["guia-uso.html"]
     for tab_id, expected_snippet in [
-        ("1pc", "25 RUCs"),
-        ("2pcs", "60 RUCs"),
-        ("lan", "Red LAN TCP/IP"),
-        ("corp", "+$150/PC extra"),
+        ("emprendedor", "Modo Local"),
+        ("comercial", "Nube Híbrida"),
+        ("estudio", "40 RUCs"),
+        ("enterprise", "150 GB"),
         ("rapida", "SmartScreen"),
     ]:
         _assert(tab_id in guia_dom.guide_tabs, f"Falta pestaña guía '{tab_id}' en guia-uso.html")
         _assert(tab_id in guia_dom.guide_panels, f"Falta panel guía '{tab_id}' en guia-uso.html")
         _assert(expected_snippet in guia_html, f"Falta detalle '{expected_snippet}' en guia-uso.html")
+    _assert("video-tutoriales" in guia_dom.ids and guia_dom.classes.count("video-tutorial-card") == 8, "Se esperaban 8 video-tutoriales en #video-tutoriales de guia-uso.html")
     _assert("tour-15-vistas" in guia_dom.ids and guia_dom.classes.count("view-tour-card") == 15, "Se esperaban 15 vistas en #tour-15-vistas de guia-uso.html")
     _assert("guiaBuscadorInput" in guia_dom.ids and guia_dom.classes.count("guide-func-card") == 15, "Falta buscador instantáneo o 15 tarjetas de rutas en guia-uso.html")
     _assert("recorridos-operativos" in guia_dom.ids and "atajos-teclado" in guia_dom.ids, "Faltan recorridos paso a paso o tabla de atajos en guia-uso.html")
-    for kbd in ("F1", "F3", "F5", "F7", "F8", "F9", "F10", "F11", "F12"):
+    for kbd in ("F1", "F2", "F3", "F4", "F5", "F7", "F8", "F9", "F10", "F11", "F12"):
         _assert(f">{kbd}<" in guia_html, f"Falta tecla rápida {kbd} en guia-uso.html")
 
     # politicas.html: 6 cláusulas legales, LOPDP, EULA, Deslinde y Solo Lectura
@@ -621,12 +662,12 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         ("modulos/auditor-fantasma.html", "72h"),
         ("modulos/generador-ats.html", "ATMMAAAA.xml"),
         ("modulos/busqueda-ruc.html", "Excel / PDF"),
-        ("modulos/ajustes-seguridad.html", "7. Respaldos .tfbkp"),
+        ("modulos/ajustes-seguridad.html", "7. Respaldos .nxbackup"),
     ]
     for mod_rel, marker in module_specs:
         _assert(marker in pages_html[mod_rel][0], f"Falta especificación '{marker}' en {mod_rel}")
 
-    print("    -> OK: 21 DOMs HTTP, 14 Módulos/pestañas, 5 planes ($69-$1,490+$150/PC), Tour 15 vistas, Deuna!/PayPhone Próximamente, LOPDP+EULA y SHA-256 v3.0.0 verificados.", flush=True)
+    print("    -> OK: 22 DOMs HTTP, logos adaptables, panel equipo 2FA, 5 planes ($69-$849), 8 tutoriales, 14 módulos, Deuna!/PayPhone Próximamente, LOPDP y SHA-256 verificados.", flush=True)
     return {"dom_pages": len(pages_html), "plans_verified": len(PRECIOS_ESPERADOS)}
 
 
@@ -698,10 +739,10 @@ const sandbox = {
   },
   location: {
     protocol: 'https:',
-    hostname: 'tributaflow.quoratec.com',
+    hostname: 'erp.quoratec.com',
     pathname: '/index.html',
     search: '',
-    href: 'https://tributaflow.quoratec.com/index.html',
+    href: 'https://erp.quoratec.com/index.html',
   },
   document: {
     addEventListener() {},
@@ -730,20 +771,20 @@ assert.equal(Object.isFrozen(sec.CONFIG_COMERCIAL), true);
 assert.equal(Object.isFrozen(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS), true);
 assert.equal(Object.isFrozen(sec.PLANES_V240), true);
 assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_ACTIVO, false);
-assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.PERSONAL_PRO, null);
-assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.CONTADOR_MASTER, null);
-assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.ESTUDIO_PRO, null);
-assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.ENTERPRISE_TEAM, null);
-assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.ENTERPRISE_CORP, null);
+assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.EMPRENDEDOR, null);
+assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.COMERCIAL_PRO, null);
+assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.CONTADOR, null);
+assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.ESTUDIO_CONTABLE, null);
+assert.equal(sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.ENTERPRISE, null);
 assert.equal(sec.CONFIG_COMERCIAL.WHATSAPP_NUMERO, '593996459771');
-assert.equal(sec.CONFIG_COMERCIAL.CORREO_SOPORTE, 'soportetributaflow@quoratec.com');
+assert.equal(sec.CONFIG_COMERCIAL.CORREO_SOPORTE, 'soporte@quoratec.com');
 
 // 2. Prototype Pollution defense (mismo contexto VM de portal.js)
 vm.runInContext(`
   Object.prototype.payphone = 'https://evil.example/hack';
   Object.prototype.EVIL_PLAN = { id: 'EVIL_PLAN', precioUsd: 1 };
   try {
-    if (__TF_SECURITY__.resolverPlan('EVIL_PLAN') !== 'ESTUDIO_PRO') throw new Error('Prototype pollution bypass en resolverPlan');
+    if (__TF_SECURITY__.resolverPlan('EVIL_PLAN') !== 'CONTADOR') throw new Error('Prototype pollution bypass en resolverPlan');
     if (__TF_SECURITY__.esUrlPayphoneSegura('https://ppls.me.evil.com/5S1Y89pBi1vYHBTEgEzRA')) throw new Error('PayPhone spoofed host');
   } finally {
     delete Object.prototype.payphone;
@@ -751,7 +792,7 @@ vm.runInContext(`
   }
 `, sandbox);
 
-// 3. Matriz allowlist URLs (15 maliciosas vs 8 legítimas)
+// 3. Matriz allowlist URLs (16 maliciosas vs 6 legítimas)
 const badUrls = [
   ['javascript:alert(1)', 'auto'],
   ['JaVaScRiPt:alert(1)', 'payphone'],
@@ -765,10 +806,10 @@ const badUrls = [
   ['https://wa.me.evil.com/593996459771?text=x', 'whatsapp'],
   ['https://wa.me/593999999999?text=phishing', 'whatsapp_share'],
   ['mailto:attacker@evil.com', 'correo'],
-  ['https://github.com/attacker/tributaflow-portal/releases/download/v3.0.0/x.exe', 'descarga'],
-  ['https://github.com/andresorellana305/tributaflow-portal/releases/latest/download/Setup_TributaFlow_ERP_v3.0.0.exe', 'descarga'],
-  ['https://github.com/andresorellana305/TributaFlow_Pro/releases/download/v2.5.0/TributaFlow_Pro_v2.5.0_Windows_x64_Setup.exe', 'descarga'],
-  ['https://tributaflow.quoratec.com.evil.com/#descargas', 'portal'],
+  ['https://github.com/attacker/quoratec-erp/releases/download/v3.0.0/x.exe', 'descarga'],
+  ['https://github.com/andresorellana305/quoratec-erp/releases/latest/download/Setup_QuoraTec_ERP_v3.0.0.exe', 'descarga'],
+  ['https://github.com/andresorellana305/QuoraTec_Legacy/releases/download/v2.5.0/Setup.exe', 'descarga'],
+  ['https://erp.quoratec.com.evil.com/#descargas', 'portal'],
 ];
 for (const [u, kind] of badUrls) {
   assert.equal(sec.validarDestinoSeguro(u, kind), false, 'URL maliciosa permitida: ' + u);
@@ -776,11 +817,11 @@ for (const [u, kind] of badUrls) {
 
 const goodUrls = [
   ['https://wa.me/593996459771?text=hola', 'whatsapp'],
-  ['mailto:soportetributaflow@quoratec.com?subject=Test', 'correo'],
-  ['https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe', 'descarga'],
-  ['https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip', 'descarga'],
-  ['https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt', 'descarga'],
-  ['https://tributaflow.quoratec.com/#descargas', 'portal'],
+  ['mailto:soporte@quoratec.com?subject=Test', 'correo'],
+  ['https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/Setup_QuoraTec_ERP_v3.0.0.exe', 'descarga'],
+  ['https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Windows_x64.zip', 'descarga'],
+  ['https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt', 'descarga'],
+  ['https://erp.quoratec.com/#descargas', 'portal'],
 ];
 for (const [u, kind] of goodUrls) {
   assert.equal(sec.validarDestinoSeguro(u, kind), true, 'URL legítima bloqueada: ' + u);
@@ -789,12 +830,12 @@ for (const [u, kind] of goodUrls) {
 // 3b. Verificación de comportamiento de apertura de enlaces (target / rel) según tipo
 const aDl = new sandbox.HTMLAnchorElement();
 aDl.target = '_blank';
-assert.equal(sec.asignarEnlaceSeguro(aDl, 'https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe', 'download_release'), true);
+assert.equal(sec.asignarEnlaceSeguro(aDl, 'https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/Setup_QuoraTec_ERP_v3.0.0.exe', 'download_release'), true);
 assert.equal(aDl.target, '');
 
 const aMail = new sandbox.HTMLAnchorElement();
 aMail.target = '_blank';
-assert.equal(sec.asignarEnlaceSeguro(aMail, 'mailto:soportetributaflow@quoratec.com?subject=Pago&body=Plan%20Pro', 'correo'), true);
+assert.equal(sec.asignarEnlaceSeguro(aMail, 'mailto:soporte@quoratec.com?subject=Pago&body=Plan%20Pro', 'correo'), true);
 assert.equal(aMail.target, '');
 assert.ok(aMail.getAttribute('href').includes('subject=Pago&body=Plan%20Pro'));
 
@@ -804,41 +845,35 @@ assert.equal(aWp.target, '_blank');
 assert.equal(aWp.rel, 'noopener noreferrer');
 assert.ok(aWp.getAttribute('href').includes('?text=Hola%20Soporte'));
 
-// 4. Sanitización XSS HWID
-const cleaned = sec.sanitizarIdentificador('<script>alert(1)</script>"\' TF-AB12CD-99');
-assert.ok(!/[<>'"]/.test(cleaned) && cleaned.includes('TF-AB12CD-99'), 'Sanitización HWID débil: ' + cleaned);
+// 4. Sanitización XSS HWID y precios oficiales congelados + add-ons
+const cleaned = sec.sanitizarIdentificador('<script>alert(1)</script>"\' QT-AB12CD-99');
+assert.ok(!/[<>'"]/.test(cleaned) && cleaned.includes('QT-AB12CD-99'), 'Sanitización HWID débil: ' + cleaned);
 
-assert.equal(sec.PLANES_V240.PERSONAL_PRO.precioUsd, 69);
-assert.equal(sec.PLANES_V240.CONTADOR_MASTER.precioUsd, 159);
-assert.equal(sec.PLANES_V240.ESTUDIO_PRO.precioUsd, 379);
-assert.equal(sec.PLANES_V240.ENTERPRISE_TEAM.precioUsd, 890);
-assert.equal(sec.PLANES_V240.ENTERPRISE_CORP.precioUsd, 1490);
-assert.equal(sec.CONFIG_COMERCIAL.PRECIO_SEAT_EXTRA_USD, 150);
+assert.equal(sec.PLANES_V240.EMPRENDEDOR.precioUsd, 69);
+assert.equal(sec.PLANES_V240.COMERCIAL_PRO.precioUsd, 149);
+assert.equal(sec.PLANES_V240.CONTADOR.precioUsd, 239);
+assert.equal(sec.PLANES_V240.ESTUDIO_CONTABLE.precioUsd, 449);
+assert.equal(sec.PLANES_V240.ENTERPRISE.precioUsd, 849);
+assert.equal(sec.CONFIG_COMERCIAL.PRECIO_SEAT_EXTRA_USD, 49);
+assert.equal(sec.CONFIG_COMERCIAL.PRECIO_RUCS_PACK_USD, 59);
+assert.equal(sec.CONFIG_COMERCIAL.PRECIO_CLOUD_PACK_USD, 59);
+assert.equal(sec.CONFIG_COMERCIAL.PRECIO_EMPRENDEDOR_NUBE_USD, 29);
 
-// 4b. Simulador 3 ejes (RUCs + comprobantes + PCs) para los 5 planes sin texto duplicado
-assert.equal(sec.calcularEstimacionSimulador(3, 90, 1).planId, 'PERSONAL_PRO');
-assert.equal(sec.calcularEstimacionSimulador(18, 450, 1).planId, 'CONTADOR_MASTER');
+// 4b. Simulador 3 ejes (RUCs + comprobantes + PCs) para los 5 planes
+assert.equal(sec.calcularEstimacionSimulador(1, 40, 1).planId, 'EMPRENDEDOR');
+assert.equal(sec.calcularEstimacionSimulador(1, 180, 1).planId, 'COMERCIAL_PRO');
+assert.equal(sec.calcularEstimacionSimulador(12, 350, 1).planId, 'CONTADOR');
+assert.equal(sec.calcularEstimacionSimulador(35, 900, 3).planId, 'ESTUDIO_CONTABLE');
 
-const sim45 = sec.calcularEstimacionSimulador(45, 1000, 2);
-assert.equal(sim45.planId, 'ESTUDIO_PRO');
-assert.ok(sim45.horasAhorradasMes >= 20 && sim45.horasAhorradasMes <= 60, 'Horas mensuales irreales Estudio Pro: ' + sim45.horasAhorradasMes);
-assert.equal(sim45.detalle.split('Hasta 60 RUCs').length - 1, 1, 'Texto duplicado en Estudio Pro: ' + sim45.detalle);
-assert.equal(sec.calcularEstimacionSimulador(10, 200, 2).planId, 'ESTUDIO_PRO');
+const simEmp = sec.calcularEstimacionSimulador(90, 1800, 10);
+assert.equal(simEmp.planId, 'ENTERPRISE');
+assert.equal(simEmp.extraSeats, 0);
+assert.equal(simEmp.precioEstimadoUsd, 849);
 
-const simTeamByPcs = sec.calcularEstimacionSimulador(15, 300, 5);
-assert.equal(simTeamByPcs.planId, 'ENTERPRISE_TEAM');
-assert.equal(sec.calcularEstimacionSimulador(120, 1500, 5).planId, 'ENTERPRISE_TEAM');
-
-const simCorp = sec.calcularEstimacionSimulador(300, 2000, 10);
-assert.equal(simCorp.planId, 'ENTERPRISE_CORP');
-assert.equal(simCorp.extraSeats, 0);
-assert.equal(simCorp.precioEstimadoUsd, 1490);
-assert.ok(simCorp.horasAhorradasMes >= 100 && simCorp.horasAhorradasMes <= 180, 'Horas irreales Enterprise Corp: ' + simCorp.horasAhorradasMes);
-
-const simCorp12 = sec.calcularEstimacionSimulador(20, 300, 12);
-assert.equal(simCorp12.planId, 'ENTERPRISE_CORP');
-assert.equal(simCorp12.extraSeats, 2);
-assert.equal(simCorp12.precioEstimadoUsd, 1790);
+const simEmpExtra = sec.calcularEstimacionSimulador(100, 1800, 12);
+assert.equal(simEmpExtra.planId, 'ENTERPRISE');
+assert.equal(simEmpExtra.extraSeats, 2);
+assert.equal(simEmpExtra.precioEstimadoUsd, 947);
 
 // 5. Detección inteligente por SO (Windows táctil permitido; Android/iOS/iPadOS bloqueados)
 const osProfiles = [
@@ -936,22 +971,22 @@ def test_edge_api_anti_tampering_and_security() -> dict[str, int]:
         _assert(st_ct == 415, f"Content-Type text/plain no rechazado con 415: {st_ct}")
 
         # 2. Anti-tampering de precios / privilegios / prototype pollution en /api/license/activate
-        tamper_price_raw = json.dumps({"plan_id": "ESTUDIO_PRO", "order_ref": "TF-TAMPER-1", "hwid": "A1B2-C3D4-E5F6", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1", "precio": 1}, separators=(",", ":"))
+        tamper_price_raw = json.dumps({"plan_id": "CONTADOR", "order_ref": "QT-TAMPER-1", "hwid": "A1B2-C3D4-E5F6", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1", "precio": 1}, separators=(",", ":"))
         st_price, _, _ = call_edge("POST", "/api/license/activate", headers={"content-type": "application/json", **sign_body(license_secret, tamper_price_raw)}, body=tamper_price_raw)
         _assert(st_price == 403, f"Price tampering aceptado: HTTP {st_price}")
 
-        tamper_priv_raw = json.dumps({"plan_id": "PERSONAL_PRO", "order_ref": "TF-PRIV-1", "hwid": "A1B2-C3D4-E5F6", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1", "rucs_max": 9999}, separators=(",", ":"))
+        tamper_priv_raw = json.dumps({"plan_id": "EMPRENDEDOR", "order_ref": "QT-PRIV-1", "hwid": "A1B2-C3D4-E5F6", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1", "rucs_max": 9999}, separators=(",", ":"))
         st_priv, _, _ = call_edge("POST", "/api/license/activate", headers={"content-type": "application/json", **sign_body(license_secret, tamper_priv_raw)}, body=tamper_priv_raw)
         _assert(st_priv == 403, f"Privilege escalation rucs_max aceptado: HTTP {st_priv}")
 
-        proto_raw = '{"__proto__":{"admin":true},"plan_id":"PERSONAL_PRO"}'
+        proto_raw = '{"__proto__":{"admin":true},"plan_id":"EMPRENDEDOR"}'
         st_pp_json, _, _ = call_edge("POST", "/api/license/activate", headers={"content-type": "application/json", **sign_body(license_secret, proto_raw)}, body=proto_raw)
         _assert(st_pp_json == 403, f"Prototype pollution JSON no rechazado con 403: HTTP {st_pp_json}")
 
-        # Cálculo autoritativo Enterprise Corporativo + 2 PCs extra = $1,790.00 y 12 PCs
+        # Cálculo autoritativo Enterprise + 2 PCs extra = $947.00 (849 + 98) y 12 PCs
         corp_raw = json.dumps({
-            "plan_id": "ENTERPRISE_CORP",
-            "order_ref": "TF-CORP-2401",
+            "plan_id": "ENTERPRISE",
+            "order_ref": "QT-CORP-2401",
             "hwid": "CORP-HOST-01",
             "ruc": "1790012345001",
             "email": "ti@empresa.com.ec",
@@ -962,34 +997,34 @@ def test_edge_api_anti_tampering_and_security() -> dict[str, int]:
         st_ok, api_hdrs, body_ok = call_edge("POST", "/api/license/activate", headers={"content-type": "application/json", **sign_body(license_secret, corp_raw)}, body=corp_raw)
         _assert(st_ok == 200 and "no-store" in api_hdrs.get("cache-control", ""), f"Activación legítima falló: {st_ok} {body_ok}")
         act_data = json.loads(body_ok)
-        _assert(act_data.get("monto_autorizado_usd") == 1790 and act_data.get("estaciones_autorizadas") == 12, f"Cálculo servidor erróneo: {act_data}")
+        _assert(act_data.get("monto_autorizado_usd") == 947 and act_data.get("estaciones_autorizadas") == 12, f"Cálculo servidor erróneo: {act_data}")
         lic_key = act_data["license_key"]
 
         # Fuzzing XSS / SQLi / NoSQLi / SSRF en /api/license/activate
         for attack_name, payload in [
-            ("XSS", {"plan_id": "PERSONAL_PRO", "order_ref": "TF-XSS1", "hwid": "<script>alert(1)</script>", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
-            ("SQLi", {"plan_id": "PERSONAL_PRO", "order_ref": "TF-SQL1", "hwid": "A1B2' OR '1'='1", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
-            ("NoSQLi", {"plan_id": "PERSONAL_PRO", "order_ref": "TF-NOSQL1", "hwid": "ABCD-1234", "ruc": "1790012345001", "email": "a$gt@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
-            ("SSRF", {"plan_id": "PERSONAL_PRO", "order_ref": "TF-SSRF1", "hwid": "http://169.254.169.254/latest", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
+            ("XSS", {"plan_id": "EMPRENDEDOR", "order_ref": "QT-XSS1", "hwid": "<script>alert(1)</script>", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
+            ("SQLi", {"plan_id": "EMPRENDEDOR", "order_ref": "QT-SQL1", "hwid": "A1B2' OR '1'='1", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
+            ("NoSQLi", {"plan_id": "EMPRENDEDOR", "order_ref": "QT-NOSQL1", "hwid": "ABCD-1234", "ruc": "1790012345001", "email": "a$gt@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
+            ("SSRF", {"plan_id": "EMPRENDEDOR", "order_ref": "QT-SSRF1", "hwid": "http://169.254.169.254/latest", "ruc": "1790012345001", "email": "a@b.ec", "payment_channel": "DEUNA", "voucher_ref": "VOUCH1"}),
         ]:
             evil_raw = json.dumps(payload, separators=(",", ":"))
             st_evil, _, _ = call_edge("POST", "/api/license/activate", headers={"content-type": "application/json", **sign_body(license_secret, evil_raw)}, body=evil_raw)
             _assert(st_evil in (400, 403), f"Ataque {attack_name} no bloqueado: HTTP {st_evil}")
 
         # 3. Verificación licencia + Anti-Enumeración uniforme
-        good_verify = {"license_key": lic_key, "hwid": "CORP-HOST-01", "ruc": "1790012345001", "plan_id": "ENTERPRISE_CORP", "estaciones_autorizadas": 12}
+        good_verify = {"license_key": lic_key, "hwid": "CORP-HOST-01", "ruc": "1790012345001", "plan_id": "ENTERPRISE", "estaciones_autorizadas": 12}
         st_v_ok, _, body_v_ok = call_edge("POST", "/api/license/verify", body=good_verify)
         _assert(st_v_ok == 200 and json.loads(body_v_ok).get("valid") is True, f"Verify legítimo falló: {st_v_ok} {body_v_ok}")
 
-        st_v1, _, b_v1 = call_edge("POST", "/api/license/verify", body={"license_key": lic_key, "hwid": "OTRO-EQUIPO-00", "ruc": "1790012345001", "plan_id": "ENTERPRISE_CORP", "estaciones_autorizadas": 12})
-        st_v2, _, b_v2 = call_edge("POST", "/api/license/verify", body={"license_key": "TFLIC-00000000-00000000000000000000000000000000", "hwid": "OTRO-EQUIPO-00", "ruc": "1790012345001", "plan_id": "ENTERPRISE_CORP", "estaciones_autorizadas": 12})
+        st_v1, _, b_v1 = call_edge("POST", "/api/license/verify", body={"license_key": lic_key, "hwid": "OTRO-EQUIPO-00", "ruc": "1790012345001", "plan_id": "ENTERPRISE", "estaciones_autorizadas": 12})
+        st_v2, _, b_v2 = call_edge("POST", "/api/license/verify", body={"license_key": "QTLIC-00000000-00000000000000000000000000000000", "hwid": "OTRO-EQUIPO-00", "ruc": "1790012345001", "plan_id": "ENTERPRISE", "estaciones_autorizadas": 12})
         _assert(st_v1 == 401 and st_v2 == 401 and b_v1 == b_v2, "Respuesta de verificación no es uniforme (riesgo de enumeración)")
 
         # 4. Webhook PayPhone: firma HMAC-SHA256 + anti-tampering amount_cents + Anti-Replay
         wh_payload = json.dumps({
             "transaction_id": "PP-TX-240901",
-            "client_transaction_id": "TF-PERSONAL_PRO-2401",
-            "plan_id": "PERSONAL_PRO",
+            "client_transaction_id": "QT-EMPRENDEDOR-2401",
+            "plan_id": "EMPRENDEDOR",
             "amount_cents": 6900,
             "currency": "USD",
             "status_code": 3,
@@ -1001,8 +1036,8 @@ def test_edge_api_anti_tampering_and_security() -> dict[str, int]:
 
         wh_tamper = json.dumps({
             "transaction_id": "PP-TX-240902",
-            "client_transaction_id": "TF-PERSONAL_PRO-2402",
-            "plan_id": "PERSONAL_PRO",
+            "client_transaction_id": "QT-EMPRENDEDOR-2402",
+            "plan_id": "EMPRENDEDOR",
             "amount_cents": 100,
             "currency": "USD",
             "status_code": 3,
@@ -1018,11 +1053,14 @@ def test_edge_api_anti_tampering_and_security() -> dict[str, int]:
         st_wh_replay, _, _ = call_edge("POST", "/api/webhook/payphone", headers=wh_hdrs, body=wh_payload)
         _assert(st_wh_replay == 409, f"Anti-Replay webhook falló: HTTP {st_wh_replay}")
 
-        # 5. Compra Híbrida Invitado (order_token + email), Comprobante MIME/Size y Supabase Auth
-        st_go, _, b_go = call_edge("POST", "/api/orders/create", body={"checkout_mode": "guest", "plan_id": "ESTUDIO_PRO", "email": "e2e@quoratec.ec", "ruc_cedula": "1790012345001", "razon_social": "ESTUDIO E2E", "payment_channel": "DEUNA_PERSONAL"})
+        # 5. Compra Híbrida Invitado (order_token + email), Add-ons, Comprobante MIME/Size y Supabase Auth
+        st_go_nohwid, _, _ = call_edge("POST", "/api/orders/create", body={"checkout_mode": "guest", "plan_id": "CONTADOR", "email": "e2e@quoratec.ec", "ruc_cedula": "1790012345001", "razon_social": "ESTUDIO E2E", "payment_channel": "DEUNA_PERSONAL"})
+        _assert(st_go_nohwid == 400, f"CONTADOR sin hwid_inicial debió fallar con 400: {st_go_nohwid}")
+
+        st_go, _, b_go = call_edge("POST", "/api/orders/create", body={"checkout_mode": "guest", "plan_id": "ESTUDIO_CONTABLE", "extra_seats": 1, "extra_rucs_packs": 1, "email": "e2e@quoratec.ec", "ruc_cedula": "1790012345001", "razon_social": "ESTUDIO E2E", "payment_channel": "DEUNA_PERSONAL", "hwid_inicial": "HWID-E2E-1234"})
         _assert(st_go == 201, f"Orden invitado E2E falló: {st_go} {b_go}")
         go_data = json.loads(b_go)
-        _assert(go_data.get("status") == "pendiente_verificacion" and go_data.get("monto_autorizado_usd") == 379, f"Orden E2E inválida: {go_data}")
+        _assert(go_data.get("status") == "pendiente_verificacion" and go_data.get("monto_autorizado_usd") == 557, f"Orden E2E inválida (esperado $449 + $49 + $59 = $557): {go_data}")
 
         st_rec_ok, _, _ = call_edge("POST", "/api/orders/receipt", body={"order_ref": go_data["order_ref"], "order_token": go_data["order_token"], "voucher_ref": "DEUNA-E2E9", "comprobante_mime": "application/pdf", "comprobante_size_bytes": 51200})
         _assert(st_rec_ok == 200, f"Receipt PDF E2E falló: {st_rec_ok}")
@@ -1036,6 +1074,15 @@ def test_edge_api_anti_tampering_and_security() -> dict[str, int]:
         st_auth, _, _ = call_edge("POST", "/api/auth/supabase", body={"action": "login", "email": "e2e@quoratec.ec", "password": "PasswordSegura123"})
         _assert(st_auth == 503, f"Supabase Auth sin env debió devolver 503: {st_auth}")
 
+        # 6. Panel Remoto de Equipo (/api/team/*): fail-closed sin credenciales y rechazo de manipulación de TTL/rol
+        st_dash, _, _ = call_edge("GET", "/api/team/dashboard")
+        _assert(st_dash in (401, 503), f"Team dashboard sin sesión debió devolver 401/503: {st_dash}")
+        st_issue_tamp, _, _ = call_edge("POST", "/api/team/issue-license", body={"mode": "demo", "holder_name": "TEST", "holder_ruc": "1790012345001", "hwid_inicial": "PC-TEST-1", "private_key": "fake"})
+        _assert(st_issue_tamp == 403, f"Campo prohibido private_key en /api/team/issue-license debió dar 403: {st_issue_tamp}")
+        st_diag_tamp, _, _ = call_edge("POST", "/api/team/diagnostic-url", body={"ticket_id": "11111111-1111-4111-8111-111111111111", "expires_in": 999999})
+        _assert(st_diag_tamp == 403, f"Tampering expires_in en /api/team/diagnostic-url debió dar 403: {st_diag_tamp}")
+        vectors_checked += 3
+
     finally:
         if proc.stdin and not proc.stdin.closed:
             proc.stdin.close()
@@ -1046,7 +1093,7 @@ def test_edge_api_anti_tampering_and_security() -> dict[str, int]:
             proc.kill()
 
     _log(f"Vectores Edge verificados -> {vectors_checked}")
-    print(f"    -> OK: {vectors_checked} transacciones/vectores Edge aprobados (HMAC, Anti-Tampering $1,790, Anti-Enumeración y SQLi/XSS).", flush=True)
+    print(f"    -> OK: {vectors_checked} transacciones/vectores Edge aprobados (HMAC, Anti-Tampering $947, Anti-Enumeración y SQLi/XSS).", flush=True)
     return {"edge_vectors": vectors_checked}
 
 
@@ -1054,7 +1101,7 @@ def main() -> int:
     server, port = iniciar_servidor_local(PORTAL_DIR)
     base_url = f"http://127.0.0.1:{port}"
     t0 = time.time()
-    print(f"=== AUDITORÍA PORTAL TRIBUTAFLOW ERP v3.0.0 ({base_url}) ===", flush=True)
+    print(f"=== AUDITORÍA PORTAL QUORATEC ERP v3.0.0 ({base_url}) ===", flush=True)
 
     reporte_fases: list[tuple[str, str, str]] = []
     exit_code = 1
@@ -1091,7 +1138,7 @@ def main() -> int:
 
         elapsed = time.time() - t0
         estado_global = "PASS" if exit_code == 0 else "FAIL"
-        print("\n=== REPORTE PASS/FAIL PORTAL TRIBUTAFLOW ERP v3.0.0 ===", flush=True)
+        print("\n=== REPORTE PASS/FAIL PORTAL QUORATEC ERP v3.0.0 ===", flush=True)
         for nombre, estado, detalle in reporte_fases:
             print(f"  [{estado}] {nombre}: {detalle}", flush=True)
         print(f"RESULTADO GLOBAL: {estado_global} en {elapsed:.2f}s", flush=True)

@@ -19,6 +19,12 @@ import * as orderReceiptFn from "../functions/api/orders/receipt.js";
 import * as orderStatusFn from "../functions/api/orders/status.js";
 import * as orderClaimFn from "../functions/api/orders/claim.js";
 import * as authSupabaseFn from "../functions/api/auth/supabase.js";
+import * as teamAuthFn from "../functions/api/team/auth.js";
+import * as teamDashboardFn from "../functions/api/team/dashboard.js";
+import * as teamIssueFn from "../functions/api/team/issue-license.js";
+import * as teamLookupFn from "../functions/api/team/license-lookup.js";
+import * as teamTicketsFn from "../functions/api/team/tickets.js";
+import * as teamDiagUrlFn from "../functions/api/team/diagnostic-url.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, "..");
@@ -69,6 +75,12 @@ async function despacharFuncion(request, pathname) {
         "/api/orders/status": orderStatusFn,
         "/api/orders/claim": orderClaimFn,
         "/api/auth/supabase": authSupabaseFn,
+        "/api/team/auth": teamAuthFn,
+        "/api/team/dashboard": teamDashboardFn,
+        "/api/team/issue-license": teamIssueFn,
+        "/api/team/license-lookup": teamLookupFn,
+        "/api/team/tickets": teamTicketsFn,
+        "/api/team/diagnostic-url": teamDiagUrlFn,
     };
 
     const handlerMod = Object.prototype.hasOwnProperty.call(ROUTES, pathname) ? ROUTES[pathname] : null;
@@ -83,7 +95,7 @@ async function despacharFuncion(request, pathname) {
 }
 
 async function ejecutarPipeline(method, pathname, headersObj, rawBodyBuf) {
-    const fullUrl = `http://tributaflow.local${pathname || "/"}`;
+    const fullUrl = `http://quoratec.local${pathname || "/"}`;
     const urlObj = new URL(fullUrl);
     const headers = new Headers();
     Object.entries(headersObj || {}).forEach(([k, v]) => {

@@ -1,46 +1,46 @@
 {
   "version": "3.0.0",
   "tag_name": "v3.0.0",
-  "name": "TributaFlow ERP v3.0.0 — Edición 2026",
-  "published_at": "2026-01-01T00:00:00Z",
-  "html_url": "https://github.com/andresorellana305/tributaflow-portal/releases/tag/v3.0.0",
-  "body": "Lanzamiento oficial TributaFlow ERP v3.0.0 — Edición 2026 (QUORATEC). Arquitectura Local-First con cifrado AES-256-GCM, interfaz MDI cero-destellos con calendario embebido, sincronización selectiva Oficina+Casa desde Estudio Contable Pro, POS .p12, Inventario & Kardex, CxC/CxP, Contabilidad NIIF, Auditoría EFOS, ATS, Form. 103/104.",
+  "name": "QuoraTec ERP v3.0.0 — Edición 2026",
+  "published_at": "2026-11-19T00:00:00Z",
+  "html_url": "https://github.com/andresorellana305/quoratec-erp/releases/tag/v3.0.0",
+  "body": "Lanzamiento oficial QuoraTec ERP v3.0.0 — Edición 2026 (QuoraTec). Todas las funcionalidades 100 % desbloqueadas en los 5 planes: POS F2/F4/F8/F12, Farmacias FIFO/Caducidad, Descarga Masiva SRI Cédula/RUC, Auditor Fantasma, Termómetro RIMPE, Clasificador AGP, Contabilidad NIIF, Nómina IESS/RDEP, Copiloto IA Local, Centralis Engine (WhatsApp/Telegram) y respaldos cifrados .nxbackup.",
   "assets": [
     {
-      "name": "Setup_TributaFlow_ERP_v3.0.0.exe",
+      "name": "Setup_QuoraTec_ERP_v3.0.0.exe",
       "size": 69377064,
       "digest": "sha256:350a7f2cb1ba50a8cea87563b7e773357b5f8e9fa9d0f359401e0e9dc4c9e232",
-      "browser_download_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe"
+      "browser_download_url": "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/Setup_QuoraTec_ERP_v3.0.0.exe"
     },
     {
-      "name": "TributaFlow_ERP_v3.0.0_Windows_x64.zip",
+      "name": "QuoraTec_ERP_v3.0.0_Windows_x64.zip",
       "size": 90515417,
       "digest": "sha256:ca49bcd4eea13b496a618122aa742d5de5c898f176e7eda326ad2d8b33a0c051",
-      "browser_download_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip"
+      "browser_download_url": "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Windows_x64.zip"
     },
     {
-      "name": "TributaFlow_ERP_v3.0.0_macOS.dmg",
+      "name": "QuoraTec_ERP_v3.0.0_macOS.dmg",
       "size": 98148558,
       "digest": "sha256:374e5ca4444b290662e417403ea0848bb77fe0215243fe52299743d7d8ad24df",
-      "browser_download_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_macOS.dmg"
+      "browser_download_url": "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_macOS.dmg"
     },
     {
-      "name": "TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
+      "name": "QuoraTec_ERP_v3.0.0_Linux_amd64.deb",
       "size": 100192156,
       "digest": "sha256:2c5e48ae14c8dfce3d3e5f975e236a93be663fd138ef6f81dcb9a4ec5c2d052a",
-      "browser_download_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_amd64.deb"
+      "browser_download_url": "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Linux_amd64.deb"
     },
     {
-      "name": "TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
+      "name": "QuoraTec_ERP_v3.0.0_Linux_x64.tar.gz",
       "size": 129276761,
       "digest": "sha256:b4e5da23885fe7126dabe59a0120ef2fc688ad0a6124407a722bae4429c09b1b",
-      "browser_download_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz"
+      "browser_download_url": "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Linux_x64.tar.gz"
     },
     {
       "name": "SHA256SUMS.txt",
       "size": 111,
       "digest": "sha256:a86675219f227ab4831dfa34e00253fc735e161eef1fd0dc88a40c35f25685ba",
-      "browser_download_url": "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt"
+      "browser_download_url": "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt"
     }
   ]
 }

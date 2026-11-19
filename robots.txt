@@ -4,5 +4,7 @@ Disallow: /api/orders/
 Disallow: /api/auth/
 Disallow: /api/license/
 Disallow: /api/webhook/
+Disallow: /api/team/
+Disallow: /equipo.html
 
-Sitemap: https://tributaflow.quoratec.com/sitemap.xml
+Sitemap: https://erp.quoratec.com/sitemap.xml

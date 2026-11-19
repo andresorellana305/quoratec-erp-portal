@@ -1,5 +1,5 @@
 /**
- * Endpoint Anti-Enumeración de Verificación de Licencia — TributaFlow Pro v2.5.0.
+ * Endpoint Anti-Enumeración de Verificación de Licencia — QuoraTec ERP v3.0.0.
  * Comparación constant-time y respuesta uniforme para no filtrar existencia de RUCs/licencias/correos.
  */
 
@@ -46,8 +46,8 @@ export async function onRequestPost(context) {
             license_key: licenseKey,
             hwid,
             ruc,
-            plan_id: planId = "ESTUDIO_PRO",
-            estaciones_autorizadas: estAut = 2,
+            plan_id: planId = "CONTADOR",
+            estaciones_autorizadas: estAut = 1,
         } = body.data;
 
         const errCampos = validarCamposComunesLicense({ hwid, ruc, licenseKey });

@@ -1,6 +1,6 @@
 /**
  * Registro de Comprobante / Referencia Deuna! o Transferencia -> estado pendiente_verificacion.
- * TributaFlow ERP v3.0.0 (QUORATEC).
+ * QuoraTec ERP v3.0.0 (QUORATEC).
  */
 
 import {

@@ -1,6 +1,6 @@
 /**
  * Consulta Segura Anti-Enumeración de Estado de Orden por order_token (Invitado) o Sesión Supabase.
- * TributaFlow ERP v3.0.0 (QUORATEC).
+ * QuoraTec ERP v3.0.0 (QUORATEC).
  */
 
 import {

@@ -1,5 +1,5 @@
 /**
- * Endpoint Endurecido de Emisión/Registro de Activación — TributaFlow Pro v2.5.0.
+ * Endpoint Endurecido de Emisión/Registro de Activación — QuoraTec ERP v3.0.0.
  * Rechaza manipulación de precio/descuento/días y exige firma HMAC-SHA256 del servidor emisor.
  */
 
@@ -116,7 +116,7 @@ export async function onRequestPost(context) {
             vigencia_dias: cotizacion.vigenciaDias,
             issued_at: new Date(issuedAtMs).toISOString(),
             expires_at: new Date(expiresAtMs).toISOString(),
-            license_key: `TFLIC-${keyTokenPrefix}-${mac.slice(0, 32).toUpperCase()}`,
+            license_key: `QTLIC-${keyTokenPrefix}-${mac.slice(0, 32).toUpperCase()}`,
         },
         200
     );

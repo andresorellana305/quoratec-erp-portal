@@ -2,13 +2,13 @@
   {
     "output": "descargas.html",
     "template": "pages/descargas.html",
-    "title": "Descargas Oficiales v3.0.0 — Edición 2026 | TributaFlow ERP — QUORATEC",
-    "description": "Descarga oficial de TributaFlow ERP v3.0.0 para Windows, macOS y Linux con detección de SO, hashes SHA-256 verificables y guía Windows SmartScreen.",
+    "title": "Descargas Oficiales v3.0.0 — Edición 2026 | QuoraTec ERP — QuoraTec",
+    "description": "Descarga oficial de QuoraTec ERP v3.0.0 conectado a version.json para Windows, macOS y Linux con detección de SO, hashes SHA-256 verificables y guía Windows SmartScreen.",
     "active_nav": "descargas",
     "nav_cta": "link",
     "pre_footer": {
-      "title": "¿Necesitas activar tu licencia anual tras probar <span data-trial-days>7 días</span>?",
-      "description": "Paga sin comisión mediante Deuna! Personal o Transferencia en modalidad Invitado o con tu Cuenta Supabase.",
+      "title": "¿Necesitas activar tu licencia anual tras probar <span data-trial-days>15 días</span> gratis?",
+      "description": "Aprovecha Fundadores QuoraTec (25 % DTO vitalicio primeros 30 clientes) mediante Deuna! Personal o Transferencia en modalidad Invitado o con tu Cuenta Supabase.",
       "actions": [
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glow\">Ver 5 Planes y Adquirir ➔</a>",
         "<a href=\"{{ROOT}}soporte.html\" class=\"btn-glass\">Consultar Orden o Soporte</a>"
@@ -16,15 +16,31 @@
     }
   },
   {
+    "output": "equipo.html",
+    "template": "pages/equipo.html",
+    "title": "Panel Remoto de Equipo (2FA TOTP Obligatorio) | QuoraTec ERP — QuoraTec",
+    "description": "Consola operativa segura para el equipo QuoraTec con autenticación Supabase y 2FA TOTP (aal2) obligatorio: emisión de licencias, demos 15 días, tickets y diagnósticos.",
+    "active_nav": "soporte",
+    "nav_cta": "link",
+    "pre_footer": {
+      "title": "Operación Segura QuoraTec · Cero Llaves en Frontend",
+      "description": "Toda emisión criptográfica y acceso a diagnósticos privados queda auditado en <code>audit_logs</code> bajo 2FA TOTP obligatorio.",
+      "actions": [
+        "<a href=\"{{ROOT}}soporte.html\" class=\"btn-glass\">Ir a Soporte Público</a>",
+        "<a href=\"{{ROOT}}planes.html\" class=\"btn-glow\">Ver Catálogo de Planes ➔</a>"
+      ]
+    }
+  },
+  {
     "output": "guia-uso.html",
     "template": "pages/guia-uso.html",
-    "title": "Guía de Uso e Implementación v3.0.0 — Edición 2026 | TributaFlow ERP — QUORATEC",
-    "description": "Guía práctica de instalación, verificación SHA-256 y puesta en marcha de TributaFlow ERP Edición 2026 (v3.0.0) por QUORATEC: Windows, macOS, Linux, Estudio Contable Pro (Oficina + Casa), Red LAN y Corporativo.",
+    "title": "Guía de Uso, 8 Video-Tutoriales y Manual Operativo v3.0.0 | QuoraTec ERP — QuoraTec",
+    "description": "Manual operativo y 8 video-tutoriales de 2 minutos de QuoraTec ERP Edición 2026 (v3.0.0) por QuoraTec: POS F2/F4/F8/F12, Farmacias FIFO, Auditor Fantasma, Termómetro RIMPE, AGP, NIIF, IESS/RDEP, IA Local y Centralis Engine.",
     "active_nav": "guia",
     "nav_cta": "link",
     "pre_footer": {
-      "title": "¿Prefieres instalar primero y probar durante <span data-trial-days>7 días</span> (hasta 60 RUCs)?",
-      "description": "Descarga la Edición 2026 (<span data-app-version-tag>v3.0.0</span>) sin tarjeta o escríbenos a <code>soportetributaflow@quoratec.com</code> / <code>0996459771</code>.",
+      "title": "¿Prefieres instalar primero y probar durante <span data-trial-days>15 días</span> con todo desbloqueado?",
+      "description": "Descarga QuoraTec ERP (<span data-app-version-tag>v3.0.0</span>) sin tarjeta o escríbenos a <code>soporte@quoratec.com</code> / <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Ver 5 Planes y Precios ➔</a>"
@@ -34,29 +50,29 @@
   {
     "output": "index.html",
     "template": "pages/index.html",
-    "title": "TributaFlow ERP v3.0.0 — Edición 2026 | Suite Contable y Tributaria SRI Ecuador · QUORATEC",
-    "description": "TributaFlow ERP Edición 2026 (v3.0.0) por QUORATEC: software contable Local-First cifrado AES-256-GCM para Ecuador. POS .p12, Kardex, CxC/CxP, NIIF, Auditoría EFOS, ATS, Form. 103 y 104. Prueba gratis 7 días hasta 60 RUCs.",
+    "title": "QuoraTec ERP v3.0.0 — Edición 2026 | Suite Contable, POS, IA Local y SRI Ecuador · QuoraTec",
+    "description": "QuoraTec ERP Edición 2026 (v3.0.0) por QuoraTec: todas las funcionalidades 100 % desbloqueadas en los 5 planes. POS F2/F4/F8/F12, Farmacias FIFO, Auditor Fantasma, Termómetro RIMPE, AGP, NIIF, IESS/RDEP, Copiloto IA Local y Centralis Engine. 15 días gratis.",
     "active_nav": "",
     "nav_cta": "link",
     "pre_footer": {
-      "title": "¿Listo para estrenar TributaFlow ERP Edición 2026?",
-      "description": "Prueba gratis por <span data-trial-days>7 días</span> (hasta 60 RUCs, sin tarjeta) o escríbenos a <code>soportetributaflow@quoratec.com</code> / WhatsApp <code>0996459771</code>.",
+      "title": "¿Listo para estrenar QuoraTec ERP Edición 2026?",
+      "description": "Prueba gratis por <span data-trial-days>15 días</span> (todas las funcionalidades desbloqueadas, sin tarjeta) o aprovecha Fundadores QuoraTec (25 % DTO vitalicio).",
       "actions": [
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glow\">Ver Planes y Adquirir ➔</a>",
-        "<a href=\"{{ROOT}}guia-uso.html\" class=\"btn-glass\">Guía de Uso e Implementación</a>"
+        "<a href=\"{{ROOT}}guia-uso.html\" class=\"btn-glass\">Guía de Uso y 8 Video-Tutoriales</a>"
       ]
     }
   },
   {
     "output": "modulos/ajustes-seguridad.html",
     "template": "pages/modulos/ajustes-seguridad.html",
-    "title": "Ajustes, Red LAN TCP/IP y Blindaje | TributaFlow ERP v3.0.0",
-    "description": "Matriz de permisos ✓/🔒, Red LAN TCP/IP centralizada (5 a 10+ estaciones), bóveda compartida UNC con bloqueo atómico anti-colisión y backups .tfbkp.",
+    "title": "Ajustes, Red LAN TCP/IP y Respaldos .nxbackup | QuoraTec ERP v3.0.0",
+    "description": "Matriz de permisos ✓/🔒, Red LAN TCP/IP centralizada, nube híbrida/dedicada, Copiloto IA Local, Centralis Engine y backups .nxbackup cifrados.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -66,13 +82,13 @@
   {
     "output": "modulos/auditor-fantasma.html",
     "template": "pages/modulos/auditor-fantasma.html",
-    "title": "Auditoría Integral y Riesgo Fiscal SRI (72h) | TributaFlow ERP v3.0.0",
-    "description": "Auditoría integral SRI con 3 pestañas: Empresas Fantasma (EFOS), SRI vs Contabilidad NIIF y Duplicados/Secuenciales.",
+    "title": "Auditor Fantasma, Termómetro RIMPE y Riesgo SRI (72h) | QuoraTec ERP v3.0.0",
+    "description": "Auditoría integral SRI con Auditor Fantasma (EFOS), Termómetro RIMPE, SRI vs Contabilidad NIIF y Duplicados/Secuenciales.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -82,13 +98,13 @@
   {
     "output": "modulos/bandeja-documentos.html",
     "template": "pages/modulos/bandeja-documentos.html",
-    "title": "Bandeja Documentos ERP (4 Pasos) | TributaFlow ERP v3.0.0",
-    "description": "Flujo guiado en 4 pasos y 4 pestañas: homologación XML, retención 49 dígitos, Kardex, asiento NIIF y ATS.",
+    "title": "Bandeja Documentos ERP (4 Pasos) | QuoraTec ERP v3.0.0",
+    "description": "Flujo guiado en 4 pasos y 4 pestañas: homologación XML, retención 49 dígitos, Kardex FIFO, asiento NIIF, Clasificador AGP y ATS.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -98,13 +114,13 @@
   {
     "output": "modulos/busqueda-ruc.html",
     "template": "pages/modulos/busqueda-ruc.html",
-    "title": "Búsqueda RUC/Cédula y Consulta Masiva | TributaFlow ERP v3.0.0",
-    "description": "Consulta individual al catastro SRI y validación masiva en lote con exportación Excel y PDF.",
+    "title": "Búsqueda RUC/Cédula y Descarga Masiva SRI | QuoraTec ERP v3.0.0",
+    "description": "Consulta individual al catastro SRI y validación/descarga masiva SRI por Cédula o RUC con exportación Excel y PDF.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -114,13 +130,13 @@
   {
     "output": "modulos/cartera-tesoreria.html",
     "template": "pages/modulos/cartera-tesoreria.html",
-    "title": "Cartera (CxC / CxP) y Tesorería | TributaFlow ERP v3.0.0",
-    "description": "Gestión de Cuentas por Cobrar, Cuentas por Pagar y Tesorería y Bancos con conciliación contable NIIF.",
+    "title": "Cartera (CxC / CxP) y Tesorería | QuoraTec ERP v3.0.0",
+    "description": "Gestión de Cuentas por Cobrar, Cuentas por Pagar y Tesorería y Bancos con conciliación contable NIIF y alertas Centralis Engine.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -130,13 +146,13 @@
   {
     "output": "modulos/comercial-ribbon.html",
     "template": "pages/modulos/comercial-ribbon.html",
-    "title": "Suite Comercial Ribbon (Comercial & POS) | TributaFlow ERP v3.0.0",
-    "description": "Facturas Clientes, Anulación, Secuencias Fact./N.C., Vendedores, Pedidos, Proformas, Guías de Remisión y Arqueo de Caja.",
+    "title": "Suite Comercial Ribbon (Comercial & POS) | QuoraTec ERP v3.0.0",
+    "description": "Facturas Clientes, Anulación, Secuencias Fact./N.C., Vendedores, Pedidos, Proformas, Guías de Remisión y Arqueo de Caja con Centralis Engine.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -146,13 +162,13 @@
   {
     "output": "modulos/consulta-masiva.html",
     "template": "pages/modulos/consulta-masiva.html",
-    "title": "Consulta Masiva y Exportación Excel | TributaFlow ERP v3.0.0",
-    "description": "Verificación en lote de comprobantes electrónicos, estados de autorización SRI y exportación consolidada a Excel y CSV contable.",
+    "title": "Descarga Masiva SRI Cédula/RUC y Exportación Excel | QuoraTec ERP v3.0.0",
+    "description": "Verificación en lote de comprobantes electrónicos, descarga masiva SRI por Cédula o RUC y exportación consolidada a Excel y CSV contable.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -162,13 +178,13 @@
   {
     "output": "modulos/generador-ats.html",
     "template": "pages/modulos/generador-ats.html",
-    "title": "Generador y Validador Oficial ATS XSD | TributaFlow ERP v3.0.0",
-    "description": "Construye el Anexo Transaccional Simplificado ATS_Declaraciones/ATS_RUC_MM_AÑO.xml, valida contra esquema XSD oficial del SRI offline y genera resumen Excel.",
+    "title": "Clasificador AGP, Generador ATS XSD y Form. 103/104 | QuoraTec ERP v3.0.0",
+    "description": "Construye el Anexo Transaccional Simplificado oficial, clasifica Gastos Personales (AGP), monitorea Termómetro RIMPE y calcula Form. 103/104.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -178,13 +194,13 @@
   {
     "output": "modulos/importar-comprobantes.html",
     "template": "pages/modulos/importar-comprobantes.html",
-    "title": "Importar Comprobantes (.txt / XML) | TributaFlow ERP v3.0.0",
-    "description": "Carga masiva de archivos .txt de claves de acceso del SRI y carpetas locales XML con reconstrucción automática de RIDE PDF en árbol contable jerárquico.",
+    "title": "Importar Comprobantes (.txt / XML) | QuoraTec ERP v3.0.0",
+    "description": "Carga masiva de archivos .txt de claves de acceso del SRI y carpetas locales XML con reconstrucción automática de RIDE PDF.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -194,13 +210,13 @@
   {
     "output": "modulos/mis-contribuyentes.html",
     "template": "pages/modulos/mis-contribuyentes.html",
-    "title": "Mis Contribuyentes (Multi-RUC) | TributaFlow ERP v3.0.0",
-    "description": "Gestión multi-empresa aislada con SQLite cifrada por HWID (PBKDF2 + AES-256-GCM + HMAC), clave SRI local y respaldo .tfbkp.",
+    "title": "Mis Contribuyentes (Multi-RUC) | QuoraTec ERP v3.0.0",
+    "description": "Gestión multi-empresa aislada con SQLite cifrada por HWID (PBKDF2 + AES-256-GCM + HMAC), clave SRI local y respaldo .nxbackup.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -210,13 +226,13 @@
   {
     "output": "modulos/contabilidad-niif.html",
     "template": "pages/modulos/contabilidad-niif.html",
-    "title": "Contabilidad NIIF Ecuador (7 Pestañas) | TributaFlow ERP v3.0.0",
-    "description": "Libro Diario, Libro Mayor, Balance de Comprobación, Estados Financieros NIIF, Plan de Cuentas, Activos Fijos y Nómina Ecuador IESS.",
+    "title": "Contabilidad NIIF y Nómina IESS / RDEP | QuoraTec ERP v3.0.0",
+    "description": "Libro Diario, Libro Mayor, Balance de Comprobación, Estados Financieros NIIF, Plan de Cuentas, Activos Fijos, Nómina IESS y RDEP.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -226,13 +242,13 @@
   {
     "output": "modulos/facturador-pos.html",
     "template": "pages/modulos/facturador-pos.html",
-    "title": "Facturador Electrónico SRI (.p12) y POS | TributaFlow ERP v3.0.0",
-    "description": "Emisión 01 Factura, 04 N.C., 06 Guía y 07 Retención con firma XAdES-BES .p12, IVA 0/5/8/15%, Ticket 80mm / A4 y cola SOAP SRI.",
+    "title": "Facturador POS (.p12) con Atajos F2/F4/F8/F12 | QuoraTec ERP v3.0.0",
+    "description": "Emisión 01 Factura, 04 N.C., 06 Guía y 07 Retención con atajos POS F2/F4/F8/F12, firma .p12, IVA 0/5/8/15%, Ticket 80mm / A4 y cola SOAP SRI.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -242,13 +258,13 @@
   {
     "output": "modulos/inventario-kardex.html",
     "template": "pages/modulos/inventario-kardex.html",
-    "title": "Inventario & Kardex Promedio Ponderado | TributaFlow ERP v3.0.0",
-    "description": "Multi-bodega 001 Matriz Principal, grupos/subgrupos, compras/devoluciones, stock mínimo, Catálogo y Existencias y Movimientos Kardex.",
+    "title": "Inventario, Farmacias FIFO / Caducidad y Kardex | QuoraTec ERP v3.0.0",
+    "description": "Control FIFO por lote y fechas de caducidad para farmacias y retail, Multi-bodega 001 Matriz Principal, compras, stock mínimo y Kardex.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -258,13 +274,13 @@
   {
     "output": "modulos/panel-general.html",
     "template": "pages/modulos/panel-general.html",
-    "title": "Panel General | TributaFlow ERP v3.0.0",
-    "description": "Módulo Panel General de TributaFlow ERP: tablero ejecutivo con KPIs fiscales, estado de licencia, cupo ético de RUCs y accesos rápidos.",
+    "title": "Panel General, Copiloto IA Local y Centralis Engine | QuoraTec ERP v3.0.0",
+    "description": "Módulo Panel General de QuoraTec ERP: KPIs fiscales, Termómetro RIMPE, Copiloto IA Local e integración WhatsApp/Telegram con Centralis Engine.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -274,13 +290,13 @@
   {
     "output": "modulos/sincronizar-sri.html",
     "template": "pages/modulos/sincronizar-sri.html",
-    "title": "Sincronizar SRI (Árbol Contable Jerárquico) | TributaFlow ERP v3.0.0",
-    "description": "Descarga masiva de XML y RIDE PDF del SRI organizada en árbol contable jerárquico con Logs de Sincronización y deduplicación por clave de acceso.",
+    "title": "Sincronizar SRI y Descarga Masiva Cédula/RUC | QuoraTec ERP v3.0.0",
+    "description": "Descarga masiva de XML y RIDE PDF del SRI por RUC o Cédula organizada en árbol jerárquico con guardado cada 20 documentos y deduplicación.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
       "title": "¿Listo para implementar este módulo en tu estudio o empresa?",
-      "description": "Descarga tu evaluación gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.",
+      "description": "Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> con todas las funcionalidades 100 % desbloqueadas o escríbenos por WhatsApp al <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar para Mi PC</button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar 5 Planes ➔</a>"
@@ -290,15 +306,15 @@
   {
     "output": "planes.html",
     "template": "pages/planes.html",
-    "title": "Planes y Precios v3.0.0 — Edición 2026 | TributaFlow ERP — QUORATEC",
-    "description": "Compara los 5 planes anuales de TributaFlow ERP Edición 2026 (v3.0.0) por QUORATEC: prueba gratis 7 días hasta 60 RUCs, arquitectura Local-First AES-256-GCM, Deuna! activo y Modo Solo Lectura seguro al expirar.",
+    "title": "Planes Oficiales y Fundadores QuoraTec v3.0.0 — Edición 2026 | QuoraTec ERP",
+    "description": "Compara los 5 planes anuales congelados de QuoraTec ERP Edición 2026 con todas las funcionalidades 100 % desbloqueadas, calculadora de add-ons (+1 PC $49, +5 RUCs $59, +50 GB $59) y 25 % DTO vitalicio Fundadores QuoraTec.",
     "active_nav": "planes",
     "nav_cta": "checkout",
     "pre_footer": {
-      "title": "¿Dudas sobre qué cupo o arquitectura conviene a tu firma?",
-      "description": "Revisa los flujos paso a paso en la Guía de Uso o escríbenos a <code>soportetributaflow@quoratec.com</code> / WhatsApp (<code>0996459771</code>).",
+      "title": "¿Dudas sobre cupos de RUCs, PCs o Nube Híbrida para tu firma?",
+      "description": "Revisa los 8 video-tutoriales en la Guía de Uso o escríbenos a <code>soporte@quoratec.com</code> / WhatsApp (<code>0996459771</code>).",
       "actions": [
-        "<a href=\"{{ROOT}}guia-uso.html\" class=\"btn-glow\">Ver Guía de Uso e Implementación ➔</a>",
+        "<a href=\"{{ROOT}}guia-uso.html\" class=\"btn-glow\">Ver Guía de Uso y Tutoriales ➔</a>",
         "<a href=\"{{ROOT}}politicas.html\" class=\"btn-glass\">Revisar Acuerdo y LOPDP</a>"
       ]
     }
@@ -306,13 +322,13 @@
   {
     "output": "politicas.html",
     "template": "pages/politicas.html",
-    "title": "Acuerdo de Licencia (EULA), LOPDP y Políticas v3.0.0 | TributaFlow ERP — QUORATEC",
-    "description": "Acuerdo de Licencia de Usuario Final (EULA) y Condiciones de Uso de TributaFlow ERP Edición 2026 (v3.0.0) por QUORATEC: prueba gratis 7 días, Modo Solo Lectura, privacidad Local-First AES-256-GCM, LOPDP Ecuador, deslinde tributario y reembolsos.",
+    "title": "Acuerdo de Licencia (EULA), LOPDP y Políticas v3.0.0 | QuoraTec ERP — QuoraTec",
+    "description": "Acuerdo de Licencia de Usuario Final (EULA) y Condiciones de Uso de QuoraTec ERP Edición 2026 (v3.0.0) por QuoraTec: prueba gratis 15 días, Modo Solo Lectura, privacidad Local-First AES-256-GCM, LOPDP Ecuador y respaldos .nxbackup.",
     "active_nav": "politicas",
     "nav_cta": "link",
     "pre_footer": {
       "title": "¿Listo para trabajar con arquitectura Local-First AES-256-GCM?",
-      "description": "Instala tu prueba gratuita de <span data-trial-days>7 días</span> (hasta 60 RUCs, sin tarjeta) o escríbenos a <code>soportetributaflow@quoratec.com</code> / <code>0996459771</code>.",
+      "description": "Instala tu prueba gratuita de <span data-trial-days>15 días</span> con todas las funciones desbloqueadas o escríbenos a <code>soporte@quoratec.com</code> / <code>0996459771</code>.",
       "actions": [
         "<button type=\"button\" class=\"btn-glow\" data-download-os=\"auto\">⬇ Descargar Versión <span data-app-version-tag>v3.0.0</span></button>",
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glass\">Comparar Planes ➔</a>"
@@ -322,12 +338,12 @@
   {
     "output": "soporte.html",
     "template": "pages/soporte.html",
-    "title": "Soporte Oficial, Estado de Órdenes y Cuenta | TributaFlow ERP — QUORATEC",
-    "description": "Consulta el estado de órdenes invitado con tu order_token, accede a tu cuenta Supabase (órdenes, licencias y equipos +1 PC Adicional) y contacta soporte QUORATEC.",
+    "title": "Soporte Oficial, Estado de Órdenes y Cuenta | QuoraTec ERP — QuoraTec",
+    "description": "Consulta el estado de órdenes invitado con tu order_token, accede a tu cuenta Supabase y contacta soporte QuoraTec.",
     "active_nav": "soporte",
     "nav_cta": "link",
     "pre_footer": {
-      "title": "¿Listo para escalar tu estudio con TributaFlow ERP Edición 2026?",
+      "title": "¿Listo para escalar tu estudio con QuoraTec ERP Edición 2026?",
       "description": "Activa tu suscripción en modalidad Invitado o con Cuenta Supabase mediante Deuna! Personal o Transferencia.",
       "actions": [
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glow\">Ver 5 Planes y Adquirir ➔</a>",

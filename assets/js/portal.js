@@ -1,7 +1,7 @@
 /**
- * TributaFlow ERP v3.0.0 (Edición 2026) — Motor Comercial, Detección Multiplataforma y Blindaje Web
- * Dominio oficial: https://tributaflow.quoratec.com
- * Desarrollado por QUORATEC (Ecuador).
+ * QuoraTec ERP v3.0.0 (Edición 2026) — Motor Comercial, Add-ons, version.json y Blindaje Web
+ * Dominio oficial: https://erp.quoratec.com
+ * Desarrollado por QuoraTec (Ecuador).
  */
 (function () {
     "use strict";
@@ -29,46 +29,51 @@
         return Object.freeze(objeto);
     }
 
-    const URL_PORTAL_DESCARGAS = "https://tributaflow.quoratec.com/#descargas";
+    const URL_PORTAL_DESCARGAS = "https://erp.quoratec.com/#descargas";
 
     const CONFIG_COMERCIAL = congelarProfundo({
         VERSION: "3.0.0",
         EDICION: "Edición 2026",
-        FABRICANTE: "QUORATEC",
-        TRIAL_DIAS: 7,
-        TRIAL_RUCS: 60,
-        TRIAL_MODALIDAD: "Estudio Contable Pro",
-        DOMINIO_OFICIAL: "https://tributaflow.quoratec.com",
+        FABRICANTE: "QuoraTec",
+        TRIAL_DIAS: 15,
+        TRIAL_RUCS: 40,
+        TRIAL_MODALIDAD: "Estudio Contable",
+        DOMINIO_OFICIAL: "https://erp.quoratec.com",
         URL_DESCARGAS_PORTAL: URL_PORTAL_DESCARGAS,
         API_CONFIG_PATH: "api/config_comercial.json",
+        VERSION_JSON_PATH: "version.json",
         PAYPHONE_ACTIVO: false,
         PAYPHONE_ESTADO: "Próximamente / En actualización",
         PAYPHONE_LINKS: {
-            PERSONAL_PRO: null,
-            CONTADOR_MASTER: null,
-            ESTUDIO_PRO: null,
-            ENTERPRISE_TEAM: null,
-            ENTERPRISE_CORP: null,
+            EMPRENDEDOR: null,
+            COMERCIAL_PRO: null,
+            CONTADOR: null,
+            ESTUDIO_CONTABLE: null,
+            ENTERPRISE: null,
         },
         QR_DEUNA_SRC: "assets/qr-deuna.png",
         QR_DEUNA_SUBPAGE_SRC: "../assets/qr-deuna.png",
-        TITULAR_RECAUDO: "QUORATEC — Recaudo Oficial TributaFlow ERP",
+        TITULAR_RECAUDO: "QuoraTec — Recaudo Oficial QuoraTec ERP",
         TITULAR_NOTA_BANCO:
-            "Canal principal activo: Deuna! y transferencia directa a nombre del recaudo oficial QUORATEC (TributaFlow ERP). Consulta la cuenta vigente por WhatsApp oficial (0996459771).",
+            "Canal principal activo: Deuna! y transferencia directa a nombre del recaudo oficial QuoraTec (QuoraTec ERP). Consulta la cuenta vigente por WhatsApp oficial (0996459771).",
         BANCO_RECAUDO: "Banco Pichincha / Deuna!",
-        TIPO_CUENTA_RECAUDO: "Recaudo Oficial QUORATEC (Deuna! Directo)",
+        TIPO_CUENTA_RECAUDO: "Recaudo Oficial QuoraTec (Deuna! Directo)",
         NUMERO_CUENTA_RECAUDO: "Solicitar número vigente por WhatsApp Oficial (0996459771)",
         WHATSAPP_NUMERO: "593996459771",
         WHATSAPP_LOCAL: "0996459771",
         WHATSAPP_URL_PREFIX: "https://wa.me/593996459771",
-        CORREO_SOPORTE: "soportetributaflow@quoratec.com",
-        MAILTO_URL_PREFIX: "mailto:soportetributaflow@quoratec.com",
-        ASUNTO_SOPORTE: "Consulta Soporte Técnico — TributaFlow ERP v3.0.0",
+        CORREO_SOPORTE: "soporte@quoratec.com",
+        MAILTO_URL_PREFIX: "mailto:soporte@quoratec.com",
+        ASUNTO_SOPORTE: "Consulta Soporte Técnico — QuoraTec ERP v3.0.0",
         DOMINIOS_PAYPHONE: ["ppls.me", "payphone.app"],
-        GITHUB_RELEASES_PREFIX: "/andresorellana305/tributaflow-portal/releases/download/v3.0.0/",
+        GITHUB_RELEASES_PREFIX: "/andresorellana305/quoratec-erp/releases/download/v3.0.0/",
         PAYPHONE_BADGES: "Visa · Mastercard · Diners · Discover · Alia",
         PAYPHONE_GARANTIA: "⏳ PayPhone en mantenimiento: Próximamente / En actualización. Usa Deuna! para activación inmediata.",
-        PRECIO_SEAT_EXTRA_USD: 150,
+        PRECIO_SEAT_EXTRA_USD: 49,
+        PRECIO_RUCS_PACK_USD: 59,
+        PRECIO_CLOUD_PACK_USD: 59,
+        PRECIO_EMPRENDEDOR_NUBE_USD: 29,
+        DESCUENTO_FUNDADORES_PCT: 25,
         SIMULADOR_AHORRO: {
             HORAS_MANUAL_POR_RUC: 0.45,
             HORAS_MANUAL_POR_COMPROBANTE: 0.022,
@@ -80,78 +85,83 @@
     });
 
     const PLANES_V240 = congelarProfundo({
-        PERSONAL_PRO: {
-            id: "PERSONAL_PRO",
-            nombre: "Personal Pro",
-            nombreComercial: "TF Personal Pro",
-            precioRegularUsd: 89,
+        EMPRENDEDOR: {
+            id: "EMPRENDEDOR",
+            nombre: "Emprendedor",
+            nombreComercial: "QuoraTec ERP Emprendedor",
+            precioRegularUsd: 69,
             precioUsd: 69,
-            rucsMax: 3,
-            rucsLabel: "Hasta 3 RUCs",
-            masivaLabel: "Local SQLite AES-256-GCM • SRI/RIDE/XML • POS .p12",
+            rucsMax: 1,
+            rucsLabel: "1 RUC/Cédula",
+            masivaLabel: "Todas las funcionalidades 100 % desbloqueadas · Modo Local (Nube opc. +$29/10 GB)",
             estacionesBase: 1,
             estacionesLabel: "1 PC",
-            modoLabel: "Local-First SQLite AES-256-GCM • Solo Deuna!",
+            nubeGbBase: 0,
+            modoLabel: "Modo Local (Nube opcional +$29/año - 10 GB)",
             esEnterprise: false,
-            permiteExtraSeats: false,
+            permiteExtraSeats: true,
         },
-        CONTADOR_MASTER: {
-            id: "CONTADOR_MASTER",
-            nombre: "Contador Master",
-            nombreComercial: "TF Contador Master",
-            precioRegularUsd: 199,
-            precioUsd: 159,
-            rucsMax: 25,
-            rucsLabel: "Hasta 25 RUCs",
-            masivaLabel: "Lote Multi-RUC + ATS Oficial + Form. 103/104",
+        COMERCIAL_PRO: {
+            id: "COMERCIAL_PRO",
+            nombre: "Comercial Pro",
+            nombreComercial: "QuoraTec ERP Comercial Pro",
+            precioRegularUsd: 149,
+            precioUsd: 149,
+            rucsMax: 1,
+            rucsLabel: "1 RUC",
+            masivaLabel: "Todas las funciones 100 % desbloqueadas · POS F2/F4/F8/F12 · Farmacias FIFO · 10 GB",
             estacionesBase: 1,
             estacionesLabel: "1 PC",
-            modoLabel: "Local-First AES-256-GCM (Sin Nube Oficina+Casa)",
+            nubeGbBase: 10,
+            modoLabel: "Local + Nube Híbrida (10 GB)",
             esEnterprise: false,
-            permiteExtraSeats: false,
+            permiteExtraSeats: true,
         },
-        ESTUDIO_PRO: {
-            id: "ESTUDIO_PRO",
-            nombre: "Estudio Contable Pro",
-            nombreComercial: "TF Estudio Pro",
+        CONTADOR: {
+            id: "CONTADOR",
+            nombre: "Contador",
+            nombreComercial: "QuoraTec ERP Contador",
+            precioRegularUsd: 239,
+            precioUsd: 239,
+            rucsMax: 15,
+            rucsLabel: "Hasta 15 RUCs",
+            masivaLabel: "Todas las funciones desbloqueadas · 15 RUCs · SRI Cédula/RUC · AGP · NIIF · 20 GB",
+            estacionesBase: 1,
+            estacionesLabel: "1 PC",
+            nubeGbBase: 20,
+            modoLabel: "Local + Nube Híbrida (20 GB)",
+            esEnterprise: false,
+            permiteExtraSeats: true,
+        },
+        ESTUDIO_CONTABLE: {
+            id: "ESTUDIO_CONTABLE",
+            nombre: "Estudio Contable",
+            nombreComercial: "QuoraTec ERP Estudio Contable",
             precioRegularUsd: 449,
-            precioUsd: 379,
-            rucsMax: 60,
-            rucsLabel: "Hasta 60 RUCs",
-            masivaLabel: "Nube Opcional Oficina+Casa + Contabilidad NIIF + EFOS",
-            estacionesBase: 2,
-            estacionesLabel: "Hasta 2 PCs (Oficina + Casa)",
-            modoLabel: "Local AES-256-GCM + Nube Selectiva Supabase RLS",
-            esEnterprise: false,
-            permiteExtraSeats: false,
-        },
-        ENTERPRISE_TEAM: {
-            id: "ENTERPRISE_TEAM",
-            nombre: "Enterprise Team ERP",
-            nombreComercial: "TF Enterprise Team ERP",
-            precioRegularUsd: 1190,
-            precioUsd: 890,
-            rucsMax: -1,
-            rucsLabel: "RUCs Ilimitados",
-            masivaLabel: "Módulos ERP Completos: POS, Kardex, CxC/CxP, NIIF, ATS",
-            estacionesBase: 5,
-            estacionesLabel: "5 PCs",
-            modoLabel: "Red LAN + Nube Selectiva Oficina+Casa (5 PCs)",
+            precioUsd: 449,
+            rucsMax: 40,
+            rucsLabel: "Hasta 40 RUCs",
+            masivaLabel: "Todas las funciones desbloqueadas · 40 RUCs · 3 PCs · Nube Total + Híbrido + Oficina (50 GB)",
+            estacionesBase: 3,
+            estacionesLabel: "3 PCs",
+            nubeGbBase: 50,
+            modoLabel: "Nube Total + Híbrido + Oficina (50 GB)",
             esEnterprise: true,
-            permiteExtraSeats: false,
+            permiteExtraSeats: true,
         },
-        ENTERPRISE_CORP: {
-            id: "ENTERPRISE_CORP",
-            nombre: "Enterprise Corp ERP",
-            nombreComercial: "TF Enterprise Corp ERP",
-            precioRegularUsd: 1890,
-            precioUsd: 1490,
-            rucsMax: -1,
-            rucsLabel: "RUCs Ilimitados",
-            masivaLabel: "Multi-sucursal y multi-bodega en vivo (+$150/PC extra)",
+        ENTERPRISE: {
+            id: "ENTERPRISE",
+            nombre: "Enterprise",
+            nombreComercial: "QuoraTec ERP Enterprise",
+            precioRegularUsd: 849,
+            precioUsd: 849,
+            rucsMax: 100,
+            rucsLabel: "Hasta 100 RUCs",
+            masivaLabel: "Todas las funciones desbloqueadas · 100 RUCs · 10 PCs · Nube Total Dedicada (150 GB)",
             estacionesBase: 10,
-            estacionesLabel: "10+ PCs escalables (+$150/PC extra)",
-            modoLabel: "Multi-Sucursal y Multi-Bodega en Vivo + Red LAN/Nube",
+            estacionesLabel: "10 PCs",
+            nubeGbBase: 150,
+            modoLabel: "Nube Total Dedicada (150 GB)",
             esEnterprise: true,
             permiteExtraSeats: true,
         },
@@ -164,15 +174,15 @@
             modalId: "modalDescargaWindows",
             titulo: "Descargar para Windows 10 / 11 x64 (Instalador .exe — 66.2 MB)",
             badge: "INSTALADOR OFICIAL WINDOWS .EXE",
-            archivo: "Setup_TributaFlow_ERP_v3.0.0.exe",
+            archivo: "Setup_QuoraTec_ERP_v3.0.0.exe",
             tamano: "66.2 MB • Instalador Windows x64",
-            url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/Setup_TributaFlow_ERP_v3.0.0.exe",
+            url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/Setup_QuoraTec_ERP_v3.0.0.exe",
             sha256: "350a7f2cb1ba50a8cea87563b7e773357b5f8e9fa9d0f359401e0e9dc4c9e232",
-            sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
-            comandoSha256: 'certutil -hashfile "Setup_TributaFlow_ERP_v3.0.0.exe" SHA256',
+            sha256Url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
+            comandoSha256: 'certutil -hashfile "Setup_QuoraTec_ERP_v3.0.0.exe" SHA256',
             alternativaId: "windows_zip",
             pasos: [
-                "1. Descarga Setup_TributaFlow_ERP_v3.0.0.exe (66.2 MB) o la versión Portable .zip (86.3 MB).",
+                "1. Descarga Setup_QuoraTec_ERP_v3.0.0.exe (66.2 MB) o la versión Portable .zip (86.3 MB).",
                 "2. Verifica el SHA-256 oficial (350a7f2c...c4c9e232) con certutil antes de ejecutar.",
                 "3. Ante Windows SmartScreen (ejecutable nuevo): haz clic en 'Más información' ➔ 'Ejecutar de todas formas'.",
             ],
@@ -183,16 +193,16 @@
             modalId: "modalDescargaWindowsZip",
             titulo: "Descargar para Windows 10 / 11 x64 (Portable .zip — 86.3 MB)",
             badge: "PORTABLE WINDOWS .ZIP",
-            archivo: "TributaFlow_ERP_v3.0.0_Windows_x64.zip",
+            archivo: "QuoraTec_ERP_v3.0.0_Windows_x64.zip",
             tamano: "86.3 MB • Portable sin instalación",
-            url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Windows_x64.zip",
+            url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Windows_x64.zip",
             sha256: "ca49bcd4eea13b496a618122aa742d5de5c898f176e7eda326ad2d8b33a0c051",
-            sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
-            comandoSha256: 'certutil -hashfile "TributaFlow_ERP_v3.0.0_Windows_x64.zip" SHA256',
+            sha256Url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
+            comandoSha256: 'certutil -hashfile "QuoraTec_ERP_v3.0.0_Windows_x64.zip" SHA256',
             pasos: [
-                "1. Descarga y descomprime TributaFlow_ERP_v3.0.0_Windows_x64.zip (86.3 MB) en una carpeta local.",
-                "2. Verifica el SHA-256 (ca49bcd4...33a0c051) antes de ejecutar TributaFlow_ERP.exe.",
-                "3. Tus datos, claves SRI y firma .p12 quedan cifrados localmente con AES-256-GCM.",
+                "1. Descarga y descomprime QuoraTec_ERP_v3.0.0_Windows_x64.zip (86.3 MB) en una carpeta local.",
+                "2. Verifica el SHA-256 (ca49bcd4...33a0c051) antes de ejecutar QuoraTec_ERP.exe.",
+                "3. Tus datos, claves SRI y firma .p12 quedan cifrados localmente con AES-256-GCM y respaldos .nxbackup.",
             ],
         },
         macos: {
@@ -201,16 +211,16 @@
             modalId: "modalDescargaMacos",
             titulo: "Descargar para macOS Universal (Apple Silicon / Intel — 93.6 MB)",
             badge: "IMAGEN OFICIAL MACOS .DMG",
-            archivo: "TributaFlow_ERP_v3.0.0_macOS.dmg",
+            archivo: "QuoraTec_ERP_v3.0.0_macOS.dmg",
             tamano: "93.6 MB • Imagen de disco macOS",
-            url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_macOS.dmg",
+            url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_macOS.dmg",
             sha256: "374e5ca4444b290662e417403ea0848bb77fe0215243fe52299743d7d8ad24df",
-            sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
-            comandoSha256: "shasum -a 256 TributaFlow_ERP_v3.0.0_macOS.dmg",
+            sha256Url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
+            comandoSha256: "shasum -a 256 QuoraTec_ERP_v3.0.0_macOS.dmg",
             pasos: [
-                "1. Abre TributaFlow_ERP_v3.0.0_macOS.dmg (93.6 MB) tras validar su SHA-256 (374e5ca4...d8ad24df) y arrastra a Aplicaciones.",
-                "2. La primera vez, haz Control + clic sobre TributaFlow ERP y selecciona Abrir.",
-                "3. Disfruta 7 días de evaluación gratuita con hasta 60 RUCs antes de activar tu suscripción anual.",
+                "1. Abre QuoraTec_ERP_v3.0.0_macOS.dmg (93.6 MB) tras validar su SHA-256 (374e5ca4...d8ad24df) y arrastra a Aplicaciones.",
+                "2. La primera vez, haz Control + clic sobre QuoraTec ERP y selecciona Abrir.",
+                "3. Disfruta 15 días gratis con todas las funcionalidades 100 % desbloqueadas antes de activar tu licencia anual.",
             ],
         },
         linux: {
@@ -219,15 +229,15 @@
             modalId: "modalDescargaLinux",
             titulo: "Descargar para Linux Debian / Ubuntu (.deb — 95.6 MB)",
             badge: "PAQUETE OFICIAL LINUX .DEB",
-            archivo: "TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
+            archivo: "QuoraTec_ERP_v3.0.0_Linux_amd64.deb",
             tamano: "95.6 MB • Paquete Debian/Ubuntu amd64",
-            url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
+            url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Linux_amd64.deb",
             sha256: "2c5e48ae14c8dfce3d3e5f975e236a93be663fd138ef6f81dcb9a4ec5c2d052a",
-            sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
-            comandoSha256: "sha256sum TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
+            sha256Url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
+            comandoSha256: "sha256sum QuoraTec_ERP_v3.0.0_Linux_amd64.deb",
             alternativaId: "linux_tar",
             pasos: [
-                "1. Verifica el SHA-256 (2c5e48ae...5c2d052a) e instala con: sudo apt install ./TributaFlow_ERP_v3.0.0_Linux_amd64.deb",
+                "1. Verifica el SHA-256 (2c5e48ae...5c2d052a) e instala con: sudo apt install ./QuoraTec_ERP_v3.0.0_Linux_amd64.deb",
                 "2. Para otras distros (Fedora/Arch), usa el paquete genérico .tar.gz (123.3 MB).",
                 "3. Opera con bóveda Local-First SQLite AES-256-GCM y transición segura a Solo Lectura al expirar.",
             ],
@@ -238,16 +248,16 @@
             modalId: "modalDescargaLinuxTar",
             titulo: "Descargar para Linux Genérico x64 (.tar.gz — 123.3 MB)",
             badge: "ARCHIVO LINUX .TAR.GZ",
-            archivo: "TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
+            archivo: "QuoraTec_ERP_v3.0.0_Linux_x64.tar.gz",
             tamano: "123.3 MB • Distros Linux x64",
-            url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
+            url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Linux_x64.tar.gz",
             sha256: "b4e5da23885fe7126dabe59a0120ef2fc688ad0a6124407a722bae4429c09b1b",
-            sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
-            comandoSha256: "sha256sum TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
+            sha256Url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
+            comandoSha256: "sha256sum QuoraTec_ERP_v3.0.0_Linux_x64.tar.gz",
             pasos: [
-                "1. Valida el SHA-256 (b4e5da23...29c09b1b) y extrae con: tar -xzf TributaFlow_ERP_v3.0.0_Linux_x64.tar.gz",
-                "2. Ejecuta TributaFlow_ERP desde la carpeta extraída sin requerir privilegios root.",
-                "3. Accede a 7 días gratis con hasta 60 RUCs o activa tu archivo de licencia .lic.",
+                "1. Valida el SHA-256 (b4e5da23...29c09b1b) y extrae con: tar -xzf QuoraTec_ERP_v3.0.0_Linux_x64.tar.gz",
+                "2. Ejecuta QuoraTec_ERP desde la carpeta extraída sin requerir privilegios root.",
+                "3. Accede a 15 días gratis con todo desbloqueado o activa tu archivo de licencia .lic.",
             ],
         },
         sha256sums: {
@@ -258,14 +268,14 @@
             badge: "VERIFICACIÓN SHA-256",
             archivo: "SHA256SUMS.txt",
             tamano: "Manifiesto Maestro v3.0.0 (111 B)",
-            url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
+            url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
             sha256: "a86675219f227ab4831dfa34e00253fc735e161eef1fd0dc88a40c35f25685ba",
-            sha256Url: "https://github.com/andresorellana305/tributaflow-portal/releases/download/v3.0.0/SHA256SUMS.txt",
+            sha256Url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
             comandoSha256: "sha256sum -c SHA256SUMS.txt",
             pasos: [
                 "1. Descarga SHA256SUMS.txt junto a tu instalador oficial v3.0.0.",
-                "2. Verifica que el digest hexadecimal del paquete descargado sea idéntico al publicado.",
-                "3. Canal oficial exclusivo QUORATEC: andresorellana305/tributaflow-portal.",
+                "2. Verifica que el digest hexadecimal del paquete descargado sea idéntico al publicado en version.json.",
+                "3. Canal oficial exclusivo QuoraTec: andresorellana305/quoratec-erp.",
             ],
         },
     });
@@ -275,42 +285,42 @@
             titulo: "Acuerdo de Licencia de Usuario Final y Condiciones de Uso — v3.0.0 (Edición 2026)",
             secciones: [
                 {
-                    sub: "1. Suscripción Anual (365 Días) y Política de Expiración Segura",
-                    txt: "QUORATEC otorga una licencia anual de 365 días para TributaFlow ERP — Edición 2026 vinculada al identificador HWID: Personal Pro ($69/año, 1 PC, 3 RUCs), Contador Master ($159/año, 1 PC, 25 RUCs), Estudio Contable Pro ($379/año, 2 PCs Oficina+Casa, 60 RUCs), Enterprise Team ERP ($890/año, 5 PCs, RUCs ilimitados) y Enterprise Corp ERP ($1,490/año, 10+ PCs, RUCs ilimitados). Tras la prueba gratuita de 7 días o al vencer el año sin renovar, el sistema pasa a Modo Solo Lectura sin borrar datos locales.",
+                    sub: "1. Suscripción Anual (365 Días) — Todas las Funcionalidades Desbloqueadas",
+                    txt: "QuoraTec otorga licencia anual de 365 días para QuoraTec ERP — Edición 2026 con todas las funciones 100 % desbloqueadas en los 5 planes: Emprendedor ($69/año, 1 RUC/Cédula, 1 PC, Modo Local), Comercial Pro ($149/año, 1 RUC, 1 PC, Nube Híbrida 10 GB), Contador ($239/año, hasta 15 RUCs, 1 PC, Nube Híbrida 20 GB), Estudio Contable ($449/año, hasta 40 RUCs, 3 PCs, Nube Total + Híbrido + Oficina 50 GB) y Enterprise ($849/año, hasta 100 RUCs, 10 PCs, Nube Dedicada 150 GB). Tras los 15 días gratis o al vencer sin renovar, pasa a Modo Solo Lectura sin borrar datos.",
                 },
                 {
                     sub: "2. Deslinde Tributario y Responsabilidad Profesional",
-                    txt: "TributaFlow ERP actúa como herramienta de asistencia, automatización contable y prevalidación documental ante el SRI. La revisión, declaración y cumplimiento tributario final corresponden al contribuyente o su contador; QUORATEC no asume multas, intereses ni contingencias por indisponibilidad o cambios externos de los servidores del SRI.",
+                    txt: "QuoraTec ERP actúa como herramienta de asistencia, automatización comercial/contable y prevalidación documental ante el SRI e IESS. La revisión, declaración y cumplimiento tributario final corresponden al contribuyente o su contador; QuoraTec no asume multas, intereses ni contingencias por indisponibilidad o cambios externos de los servidores del SRI o IESS.",
                 },
                 {
                     sub: "3. Política de Pagos (Deuna!) y Reembolsos",
-                    txt: "El canal de pago principal activo es Deuna! (y transferencia bancaria directa); PayPhone se encuentra temporalmente en actualización (Próximamente). Al disponerse de una prueba gratuita funcional de 7 días antes de comprar, no proceden devoluciones ni reembolsos una vez emitido el archivo .lic.",
+                    txt: "El canal de pago principal activo es Deuna! (y transferencia bancaria directa); PayPhone se encuentra temporalmente en actualización (Próximamente). Al disponerse de 15 días gratis con todas las funcionalidades desbloqueadas antes de comprar, no proceden devoluciones ni reembolsos una vez emitido el archivo .lic.",
                 },
             ],
         },
         privacidad: {
-            titulo: "Privacidad Local-First (AES-256-GCM) y Cumplimiento LOPDP Ecuador",
+            titulo: "Privacidad Local-First (AES-256-GCM), IA Local y Cumplimiento LOPDP Ecuador",
             secciones: [
                 {
                     sub: "1. Cifrado AES-256-GCM y Cero Almacenamiento Central de Credenciales",
-                    txt: "Bajo arquitectura Local-First, la base contable SQLite, tus claves del SRI en Línea y certificados de firma electrónica .p12 se cifran exclusivamente en tu equipo con AES-256-GCM. QUORATEC no recopila, almacena ni tiene acceso a tus credenciales tributarias.",
+                    txt: "Bajo arquitectura Local-First, la base contable SQLite, tus claves del SRI en Línea, certificados de firma electrónica .p12 y el Copiloto IA Local operan cifrados con AES-256-GCM. QuoraTec no recopila, vende ni expone tus credenciales tributarias.",
                 },
                 {
-                    sub: "2. Cumplimiento LOPDP Ecuador y Nube Selectiva Oficina + Casa",
-                    txt: "El tratamiento de datos personales de licenciamiento cumple estrictamente la Ley Orgánica de Protección de Datos Personales (LOPDP) del Ecuador. La sincronización selectiva Oficina + Casa vía Supabase RLS es opcional desde Estudio Contable Pro y bajo control directo del titular.",
+                    sub: "2. Cumplimiento LOPDP Ecuador y Nube Híbrida / Dedicada",
+                    txt: "El tratamiento de datos personales de licenciamiento cumple estrictamente la Ley Orgánica de Protección de Datos Personales (LOPDP) del Ecuador. La sincronización en Nube Híbrida/Dedicada opera bajo políticas aisladas Supabase RLS bajo control directo del titular.",
                 },
             ],
         },
         licenciamiento: {
-            titulo: "Reembolsos, Traslado de Licencia y Soporte Oficial QUORATEC",
+            titulo: "Reembolsos, Traslado .nxbackup y Soporte Oficial QuoraTec",
             secciones: [
                 {
                     sub: "1. Actualizaciones Normativas SRI 2026 y Soporte Técnico",
-                    txt: "Incluye actualizaciones normativas SRI (POS .p12, ATS, Form. 103/104, NIIF, EFOS) durante los 365 días de vigencia, más soporte oficial por WhatsApp (+593 99 645 9771) y correo (soportetributaflow@quoratec.com).",
+                    txt: "Incluye actualizaciones normativas SRI/IESS (POS F2/F4/F8/F12, FIFO farmacias, Auditor Fantasma, Termómetro RIMPE, Clasificador AGP, NIIF, RDEP, Centralis Engine) durante los 365 días de vigencia, más soporte oficial por WhatsApp (+593 99 645 9771) y correo (soporte@quoratec.com).",
                 },
                 {
                     sub: "2. Renovación, Modo Solo Lectura y Traslado sin Borrado de Datos",
-                    txt: "Si tu licencia o prueba de 7 días expira, conservas acceso en Modo Solo Lectura sin pérdida de datos hasta cargar una nueva llave .lic. Ofrecemos soporte para traslado por cambio o daño de PC mediante respaldo .tfbkp.",
+                    txt: "Si tu licencia o prueba de 15 días expira, conservas acceso en Modo Solo Lectura sin pérdida de datos hasta cargar una nueva llave .lic. Ofrecemos soporte para traslado por cambio o daño de PC mediante respaldo cifrado .nxbackup.",
                 },
             ],
         },
@@ -330,13 +340,16 @@
 
     const PLAN_ALIASES = crearMapaVacio();
     Object.assign(PLAN_ALIASES, {
-        PERSONAL: "PERSONAL_PRO",
-        CONTADOR: "CONTADOR_MASTER",
-        CONTADOR15: "CONTADOR_MASTER",
-        ESTUDIO: "ESTUDIO_PRO",
-        EMPRESARIAL: "ESTUDIO_PRO",
-        ENTERPRISE: "ENTERPRISE_CORP",
-        ENTERPRISE_SERVER: "ENTERPRISE_CORP",
+        PERSONAL: "EMPRENDEDOR",
+        PERSONAL_PRO: "EMPRENDEDOR",
+        CONTADOR_MASTER: "CONTADOR",
+        CONTADOR15: "CONTADOR",
+        ESTUDIO: "ESTUDIO_CONTABLE",
+        ESTUDIO_PRO: "ESTUDIO_CONTABLE",
+        EMPRESARIAL: "ESTUDIO_CONTABLE",
+        ENTERPRISE_TEAM: "ENTERPRISE",
+        ENTERPRISE_CORP: "ENTERPRISE",
+        ENTERPRISE_SERVER: "ENTERPRISE",
     });
 
     const SO_LOOKUP = crearMapaVacio();
@@ -345,10 +358,13 @@
     });
 
     let runtimeVersion = CONFIG_COMERCIAL.VERSION;
-    let runtimeCorpExtraSeats = 1;
+    let runtimeCorpExtraSeats = 0;
     let estadoModalPago = {
-        planId: "ESTUDIO_PRO",
+        planId: "CONTADOR",
         extraSeats: 0,
+        extraRucsPacks: 0,
+        extraCloudPacks: 0,
+        emprendedorCloud: false,
         hwidORef: "",
     };
 
@@ -453,7 +469,7 @@
     function esUrlPortalOficialSegura(url) {
         const parsed = parsearHttpsEstricta(url);
         if (!parsed) return false;
-        return parsed.hostname.toLowerCase() === "tributaflow.quoratec.com";
+        return parsed.hostname.toLowerCase() === "erp.quoratec.com";
     }
 
     function validarDestinoSeguro(url, tipo = "auto") {
@@ -679,24 +695,37 @@
             const aliasTarget = PLAN_ALIASES[norm];
             if (PLAN_LOOKUP[aliasTarget]) return aliasTarget;
         }
-        return "ESTUDIO_PRO";
+        return "CONTADOR";
     }
 
     function calcularResumenCheckout() {
         const plan =
             (esClaveSegura(estadoModalPago.planId) && PLAN_LOOKUP[estadoModalPago.planId]) ||
-            PLAN_LOOKUP.ESTUDIO_PRO;
-        const extras = plan.permiteExtraSeats
-            ? Math.max(0, Math.min(50, Number(estadoModalPago.extraSeats || 0)))
-            : 0;
-        const totalUsd = plan.precioUsd + extras * CONFIG_COMERCIAL.PRECIO_SEAT_EXTRA_USD;
+            PLAN_LOOKUP.CONTADOR;
+        const extras = Math.max(0, Math.min(50, Number(estadoModalPago.extraSeats || 0)));
+        const extraRucs = Math.max(0, Math.min(50, Number(estadoModalPago.extraRucsPacks || 0)));
+        const extraCloud = Math.max(0, Math.min(50, Number(estadoModalPago.extraCloudPacks || 0)));
+        const optNube = plan.id === "EMPRENDEDOR" && Boolean(estadoModalPago.emprendedorCloud);
+        const totalUsd =
+            plan.precioUsd +
+            extras * CONFIG_COMERCIAL.PRECIO_SEAT_EXTRA_USD +
+            extraRucs * CONFIG_COMERCIAL.PRECIO_RUCS_PACK_USD +
+            extraCloud * CONFIG_COMERCIAL.PRECIO_CLOUD_PACK_USD +
+            (optNube ? CONFIG_COMERCIAL.PRECIO_EMPRENDEDOR_NUBE_USD : 0);
         const estacionesTotales = plan.estacionesBase + extras;
+        const rucsTotales = plan.rucsMax + extraRucs * 5;
+        const cloudGbTotales = plan.nubeGbBase + (optNube ? 10 : 0) + extraCloud * 50;
         const hwidCorto = extraerCodigoCorto(estadoModalPago.hwidORef);
-        const referencia = `TF-${plan.id}-${hwidCorto}`;
+        const referencia = `QT-${plan.id}-${hwidCorto}`;
 
         return {
             plan,
             extras,
+            extraRucs,
+            extraCloud,
+            optNube,
+            rucsTotales,
+            cloudGbTotales,
             totalUsd,
             montoTexto: formatearUsd(totalUsd),
             estacionesTotales,
@@ -748,7 +777,7 @@
     }
 
     function construirUrlWhatsappShareDesktop() {
-        const mensaje = `Descargar TributaFlow ERP v${runtimeVersion} (Edición 2026) en mi computadora (Windows, macOS o Linux): ${CONFIG_COMERCIAL.URL_DESCARGAS_PORTAL}`;
+        const mensaje = `Descargar QuoraTec ERP v${runtimeVersion} (Edición 2026) en mi computadora (Windows, macOS o Linux): ${CONFIG_COMERCIAL.URL_DESCARGAS_PORTAL}`;
         return `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
     }
 
@@ -761,30 +790,35 @@
     }
 
     function construirPlantillaComprobante(resumen, metodoPago) {
-        const { plan, extras, montoTexto, estacionesTotales, referencia, hwidORef } = resumen;
+        const { plan, extras, extraRucs, extraCloud, optNube, rucsTotales, cloudGbTotales, montoTexto, estacionesTotales, referencia, hwidORef } = resumen;
         const hwidTexto =
-            hwidORef && hwidORef !== "SIN_ESPECIFICAR" ? hwidORef : "[Pegar código TF-XXXXXX-...]";
+            hwidORef && hwidORef !== "SIN_ESPECIFICAR" ? hwidORef : "[Pegar código QT-XXXXXX-...]";
         const detalleEstaciones =
             extras > 0
-                ? `${estacionesTotales} PCs (${plan.estacionesBase} base + ${extras} adicionales)`
+                ? `${estacionesTotales} PCs (${plan.estacionesBase} base + ${extras} extra)`
                 : estacionesTotales === 1
                   ? "1 PC"
                   : `${estacionesTotales} PCs`;
-        const asunto = `[TRIBUTAFLOW ERP] Activación Licencia Anual ${referencia} (${metodoPago})`;
+        const detalleAddons = [
+            optNube ? "Nube Emprendedor 10 GB (+$29)" : "",
+            extraRucs > 0 ? `+${extraRucs * 5} RUCs Extra` : "",
+            extraCloud > 0 ? `+${extraCloud * 50} GB Nube Extra` : "",
+        ].filter(Boolean).join(" · ") || "Sin add-ons adicionales";
+        const asunto = `[QUORATEC ERP] Activación Licencia Anual ${referencia} (${metodoPago})`;
         const campoComprobante = "• N.º de Comprobante / Autorización bancaria Deuna! (OBLIGATORIO): [Escribir número de transacción]";
         const lineaHwidsAdicionales =
             Number(estacionesTotales) >= 2
                 ? "\n• Código HWID PC(s) Adicional(es): [Pegar códigos HWID adicionales]"
                 : "";
         const cuerpo =
-            `[TRIBUTAFLOW ERP v${runtimeVersion}] Hola equipo de QUORATEC, envío mi comprobante de pago real para activar mi licencia anual:\n\n` +
+            `[QUORATEC ERP v${runtimeVersion}] Hola equipo de QuoraTec, envío mi comprobante de pago real para activar mi licencia anual:\n\n` +
             `• Plan seleccionado: ${plan.nombreComercial}\n` +
+            `• Capacidad: ${rucsTotales} RUC(s) • ${detalleEstaciones} • ${cloudGbTotales} GB Nube (${detalleAddons})\n` +
             `• Monto USD anual: ${montoTexto} USD / año\n` +
-            `• Estaciones autorizadas: ${detalleEstaciones}\n` +
             `• Método de pago: ${metodoPago}\n` +
             `• Referencia de orden: ${referencia}\n` +
             `${campoComprobante}\n` +
-            `• Código HWID de tu PC (TributaFlow ERP -> Activar Licencia): ${hwidTexto}` +
+            `• Código HWID de tu PC (QuoraTec ERP -> Configuración -> 4. Plan y Licencia): ${hwidTexto}` +
             `${lineaHwidsAdicionales}\n\n` +
             `Datos para emisión de licencia (.lic):\n` +
             `• RUC o Cédula: [Escribir RUC/Cédula]\n` +
@@ -800,7 +834,7 @@
         const detalleRef = referencia ? `\n• Referencia de consulta: ${sanitizarIdentificador(referencia)}` : "";
         const cuerpo =
             `${asunto}\n\n` +
-            `Hola equipo de QUORATEC (TributaFlow ERP), tengo una consulta técnica o comercial (sin envío de comprobante):` +
+            `Hola equipo de QuoraTec (QuoraTec ERP), tengo una consulta técnica o comercial (sin envío de comprobante):` +
             `${detallePlan}${detalleRef}\n` +
             `• Detalle de mi consulta: [Escribir consulta técnica o comercial]`;
         return { asunto, cuerpo };
@@ -826,9 +860,9 @@
 
     function asegurarBotonFlotanteSoporte() {
         if (document.getElementById("btnFlotanteSoporte")) return;
-        const btn = crearEl("a", "whatsapp-float", "💬 Soporte QUORATEC");
+        const btn = crearEl("a", "whatsapp-float", "💬 Soporte QuoraTec");
         btn.id = "btnFlotanteSoporte";
-        const { cuerpo } = construirPlantillaSoporte(`TributaFlow ERP v${runtimeVersion}`, "");
+        const { cuerpo } = construirPlantillaSoporte(`QuoraTec ERP v${runtimeVersion}`, "");
         asignarEnlaceSeguro(btn, construirUrlWhatsapp(cuerpo), "whatsapp");
         document.body.appendChild(btn);
     }
@@ -966,7 +1000,7 @@
         const notaEdicion = crearEl(
             "div",
             "enterprise-lan-notice",
-            "Incluye 7 días de evaluación gratuita con hasta 60 RUCs (modalidad Estudio Contable Pro, sin tarjeta). Al expirar, transiciona de forma segura a Modo Solo Lectura sin borrar datos locales hasta activar tu archivo .lic."
+            "Incluye 15 días gratis con todas las funcionalidades 100 % desbloqueadas (sin tarjeta). Al expirar, transiciona de forma segura a Modo Solo Lectura sin borrar datos ni respaldos .nxbackup locales."
         );
 
         const btnDownload = crearEl("a", "btn-glow", `⬇ Descargar ${soMeta.archivo}`);
@@ -1052,6 +1086,43 @@
         }
     }
 
+    async function descargarArchivoLicencia(payload, bearerToken) {
+        if (typeof window.fetch !== "function") {
+            mostrarToastCopia("⚠️ Descarga no disponible en este navegador.");
+            return;
+        }
+        const headers = { "Content-Type": "application/json" };
+        if (bearerToken) headers.Authorization = `Bearer ${bearerToken}`;
+        try {
+            const resp = await fetch(`${obtenerPrefijoRuta()}api/licenses/download`, {
+                method: "POST",
+                headers,
+                credentials: "same-origin",
+                body: JSON.stringify(payload || {}),
+            });
+            if (!resp.ok) {
+                const errData = await resp.json().catch(() => ({}));
+                mostrarToastCopia(`⚠️ No se pudo descargar la licencia: ${errData.error || `HTTP ${resp.status}`}`);
+                return;
+            }
+            const blob = await resp.blob();
+            const disp = String(resp.headers.get("Content-Disposition") || "");
+            const match = /filename="?([A-Za-z0-9._-]+)"?/i.exec(disp);
+            const filename = match ? match[1] : "QuoraTec_ERP_Licencia.lic";
+            const blobUrl = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = blobUrl;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
+            mostrarToastCopia(`✅ Licencia descargada: ${filename}`);
+        } catch {
+            mostrarToastCopia("⚠️ Error de red al descargar el archivo .lic.");
+        }
+    }
+
     function asegurarModalPago() {
         if (document.getElementById("modalPago")) return;
 
@@ -1063,7 +1134,7 @@
         const box = crearEl("div", "modal-box");
         const top = crearEl("div", "modal-top");
         const titleWrap = crearEl("div");
-        const badge = crearEl("span", "modal-badge", `ACTIVACIÓN OFICIAL QUORATEC — TRIBUTAFLOW ERP v${runtimeVersion}`);
+        const badge = crearEl("span", "modal-badge", `ACTIVACIÓN OFICIAL QUORATEC — QUORATEC ERP v${runtimeVersion}`);
         badge.id = "pagoModalBadge";
         const h3 = crearEl("h3", "", "Adquirir Plan Anual");
         h3.id = "pagoModalTitulo";
@@ -1081,15 +1152,15 @@
 
         const summary = crearEl("div", "checkout-summary");
         const sumLeft = crearEl("div");
-        const lblResumenPlan = crearEl("strong", "", "TF Estudio Pro • Hasta 60 RUCs • Hasta 2 PCs (Oficina + Casa)");
+        const lblResumenPlan = crearEl("strong", "", "QuoraTec ERP Contador • Hasta 15 RUCs • 1 PC • 20 GB Nube");
         lblResumenPlan.id = "pagoResumenMeta";
-        const lblDescVig = crearEl("small", "", "Suscripción anual (365 días) + Actualizaciones SRI 2026 incluidas");
+        const lblDescVig = crearEl("small", "", "Suscripción anual (365 días) · Todas las funcionalidades 100 % desbloqueadas");
         lblDescVig.style.display = "block";
         lblDescVig.style.color = "#cbd5e1";
         sumLeft.appendChild(lblResumenPlan);
         sumLeft.appendChild(lblDescVig);
 
-        const amountEl = crearEl("div", "checkout-amount", "$379.00");
+        const amountEl = crearEl("div", "checkout-amount", "$239.00");
         amountEl.id = "pagoMontoTotal";
         summary.appendChild(sumLeft);
         summary.appendChild(amountEl);
@@ -1109,9 +1180,8 @@
         });
         selPlan.addEventListener("change", () => {
             estadoModalPago.planId = resolverPlan(selPlan.value);
-            const planSel = PLAN_LOOKUP[estadoModalPago.planId];
-            if (!planSel || !planSel.permiteExtraSeats) {
-                estadoModalPago.extraSeats = 0;
+            if (estadoModalPago.planId !== "EMPRENDEDOR") {
+                estadoModalPago.emprendedorCloud = false;
             }
             actualizarVistaModalPago();
         });
@@ -1119,12 +1189,13 @@
         gPlan.appendChild(selPlan);
 
         const gHwid = crearEl("div", "field-group");
-        const lHwid = crearEl("label", "", "HWID del Equipo (o RUC/Empresa si aún no instalas):");
+        const lHwid = crearEl("label", "", "HWID del Equipo * (Obligatorio):");
+        lHwid.id = "pagoHwidLabel";
         lHwid.htmlFor = "pagoHwidInput";
         const inHwid = crearEl("input", "mono-input");
         inHwid.type = "text";
         inHwid.id = "pagoHwidInput";
-        inHwid.placeholder = `Ej: A1B2-C3D4-E5F6 o RUC ${CONFIG_COMERCIAL.DEMO_RUC_PRINCIPAL}`;
+        inHwid.placeholder = "Ej: A1B2-C3D4-E5F6";
         inHwid.maxLength = 32;
         inHwid.addEventListener("input", (e) => {
             const target = e.target;
@@ -1134,8 +1205,15 @@
             estadoModalPago.hwidORef = limpio;
             actualizarVistaModalPago();
         });
+        const hwidHelp = crearEl(
+            "small",
+            "muted-note",
+            "Obligatorio para planes de 1 PC. Cópialo desde: QuoraTec ERP -> Configuración -> 4. Plan y Licencia."
+        );
+        hwidHelp.id = "pagoHwidHelp";
         gHwid.appendChild(lHwid);
         gHwid.appendChild(inHwid);
+        gHwid.appendChild(hwidHelp);
 
         controlsGrid.appendChild(gPlan);
         controlsGrid.appendChild(gHwid);
@@ -1145,7 +1223,7 @@
         const extraLabel = crearEl(
             "span",
             "",
-            "Estaciones adicionales +1 PC sin límite (+$150.00/año c/u sobre 10 base):"
+            "+1 PC Extra ($49/año c/u · compatible con +5 RUCs $59 y +50 GB $59 en Planes):"
         );
         const stepper = crearEl("div", "seats-stepper");
         const btnMenos = crearEl("button", "", "−");
@@ -1163,7 +1241,7 @@
         const btnMas = crearEl("button", "", "+");
         btnMas.type = "button";
         btnMas.setAttribute("aria-label", "Sumar estación adicional");
-        const lblEstTotales = crearEl("strong", "", "10 PCs totales");
+        const lblEstTotales = crearEl("strong", "", "1 PC total");
         lblEstTotales.id = "pagoEstacionesTotales";
 
         btnMenos.addEventListener("click", () => {
@@ -1190,7 +1268,7 @@
         const refBanner = crearEl("div", "ref-banner");
         const refLeft = crearEl("div");
         refLeft.appendChild(crearEl("span", "", "Referencia Única de Pago: "));
-        const refCodeEl = crearEl("span", "ref-code", "TF-ESTUDIO_PRO-WEB01");
+        const refCodeEl = crearEl("span", "ref-code", "QT-CONTADOR-WEB01");
         refCodeEl.id = "pagoReferenciaTexto";
         refLeft.appendChild(refCodeEl);
         const btnCopyRef = crearEl("button", "btn-copy-mini", "📋 Copiar Referencia");
@@ -1364,6 +1442,13 @@
                 return;
             }
             const res = calcularResumenCheckout();
+            const planesHwidObligatorio = ["EMPRENDEDOR", "COMERCIAL_PRO", "CONTADOR"];
+            if (planesHwidObligatorio.includes(res.plan.id) && (!res.hwidORef || res.hwidORef === "SIN_ESPECIFICAR")) {
+                mostrarToastCopia("⚠️ Ingresa el HWID del Equipo (QuoraTec ERP -> Configuración -> 4. Plan y Licencia).");
+                const inHwidEl = document.getElementById("pagoHwidInput");
+                if (inHwidEl instanceof HTMLInputElement) inHwidEl.focus();
+                return;
+            }
             btnCrearOrden.disabled = true;
             const resp = await postJsonSeguroApi(
                 "api/orders/create",
@@ -1371,6 +1456,9 @@
                     checkout_mode: estadoHibrido.mode === "account" && estadoHibrido.accessToken ? "account" : "guest",
                     plan_id: res.plan.id,
                     extra_seats: res.extras,
+                    extra_rucs_packs: res.extraRucs,
+                    extra_cloud_packs: res.extraCloud,
+                    cloud_opcional_emprendedor: res.optNube,
                     email: emailVal,
                     ruc_cedula: rucVal,
                     razon_social: razonVal,
@@ -1382,7 +1470,7 @@
             btnCrearOrden.disabled = false;
 
             const orderRef = resp.data?.order_ref || res.referencia;
-            const orderToken = resp.data?.order_token || `TFTK-${extraerCodigoCorto(rucVal)}${Date.now().toString(36).toUpperCase()}`;
+            const orderToken = resp.data?.order_token || `QTTK-${extraerCodigoCorto(rucVal)}${Date.now().toString(36).toUpperCase()}`;
             estadoHibrido.lastOrder = {
                 order_ref: orderRef,
                 order_token: orderToken,
@@ -1497,7 +1585,7 @@
         const qrImg = document.createElement("img");
         qrImg.id = "pagoQrDeunaImg";
         qrImg.src = obtenerSrcQrDeuna();
-        qrImg.alt = "Código QR Oficial Deuna QUORATEC — TributaFlow ERP";
+        qrImg.alt = "Código QR Oficial Deuna QuoraTec — QuoraTec ERP";
         qrWrap.appendChild(qrImg);
 
         const stepsList = crearEl("ul", "deuna-steps");
@@ -1510,8 +1598,8 @@
             ["Titular:", CONFIG_COMERCIAL.TITULAR_RECAUDO, "pagoBankTitular", "Titular"],
             ["Banco:", CONFIG_COMERCIAL.BANCO_RECAUDO, "pagoBankBanco", "Banco"],
             ["Cuenta:", CONFIG_COMERCIAL.NUMERO_CUENTA_RECAUDO, "pagoBankCuenta", "Datos Cuenta"],
-            ["Monto USD:", "$299.00", "pagoBankMonto", "Monto USD"],
-            ["Referencia:", "TF-ESTUDIO_PRO-WEB01", "pagoBankRef", "Referencia"],
+            ["Monto USD:", "$239.00", "pagoBankMonto", "Monto USD"],
+            ["Referencia:", "QT-CONTADOR-WEB01", "pagoBankRef", "Referencia"],
         ];
         rowsMeta.forEach(([labelTxt, initVal, idVal, copyLabel]) => {
             const row = crearEl("div", "bank-row");
@@ -1579,7 +1667,7 @@
             crearEl(
                 "p",
                 "",
-                "Estamos renovando nuestros enlaces de pago con tarjeta en PayPhone para TributaFlow ERP Edición 2026."
+                "Estamos renovando nuestros enlaces de pago con tarjeta en PayPhone para QuoraTec ERP Edición 2026."
             )
         );
         const badgesWrap = crearEl("div", "pay-badges");
@@ -1607,7 +1695,7 @@
         const payphoneSupportLinks = crearEl("div", "support-inline-links");
         const btnSoportePayphoneWp = crearEl("a", "btn-support-link", "💬 Contactar Soporte Oficial");
         btnSoportePayphoneWp.id = "btnSoportePayphoneWp";
-        const btnSoportePayphoneCorreo = crearEl("a", "btn-support-link", "✉️ soportetributaflow@quoratec.com");
+        const btnSoportePayphoneCorreo = crearEl("a", "btn-support-link", "✉️ soporte@quoratec.com");
         btnSoportePayphoneCorreo.id = "btnSoportePayphoneCorreo";
         vincularCopiaCorreo(btnSoportePayphoneCorreo, () => {
             const r = calcularResumenCheckout();
@@ -1629,7 +1717,7 @@
         const lanSupportLinks = crearEl("div", "support-inline-links");
         const btnSoporteEnterpriseWp = crearEl("a", "btn-support-link", "💬 Contactar Soporte Oficial");
         btnSoporteEnterpriseWp.id = "btnSoporteEnterpriseWp";
-        const btnSoporteEnterpriseCorreo = crearEl("a", "btn-support-link", "✉️ soportetributaflow@quoratec.com");
+        const btnSoporteEnterpriseCorreo = crearEl("a", "btn-support-link", "✉️ soporte@quoratec.com");
         btnSoporteEnterpriseCorreo.id = "btnSoporteEnterpriseCorreo";
         vincularCopiaCorreo(btnSoporteEnterpriseCorreo, () => {
             const r = calcularResumenCheckout();
@@ -1650,10 +1738,10 @@
 
         const rulesBox = crearEl("div", "rules-box");
         [
-            "✓ 7 días de prueba gratis con hasta 60 RUCs (Estudio Contable Pro, sin tarjeta).",
-            "✓ Modo Solo Lectura al expirar: tus datos locales nunca se eliminan ni secuestran.",
-            "✓ Actualizaciones SRI Edición 2026 (POS .p12, NIIF, EFOS, ATS, Form. 103/104).",
-            "✓ Emisión .lic tras validar pago Deuna! (no reembolsable tras emitirse la llave).",
+            "✓ 15 días gratis con todas las funcionalidades 100 % desbloqueadas (sin tarjeta).",
+            "✓ Fundadores QuoraTec: 25 % DTO vitalicio para los primeros 30 clientes.",
+            "✓ Modo Solo Lectura al expirar: tus datos y respaldos .nxbackup nunca se eliminan.",
+            "✓ Emisión .lic tras validar pago Deuna! / Transferencia (no reembolsable tras emitirse la llave).",
         ].forEach((regla) => rulesBox.appendChild(crearEl("div", "", regla)));
 
         content.appendChild(summary);
@@ -1679,7 +1767,7 @@
 
     function actualizarVistaModalPago() {
         const res = calcularResumenCheckout();
-        const { plan, extras, montoTexto, estacionesTotales, referencia } = res;
+        const { plan, extras, extraRucs, extraCloud, optNube, rucsTotales, cloudGbTotales, montoTexto, estacionesTotales, referencia } = res;
 
         const elTitulo = document.getElementById("pagoModalTitulo");
         const elBadge = document.getElementById("pagoModalBadge");
@@ -1692,19 +1780,41 @@
                 : `CHECKOUT OFICIAL DEUNA! / TRANSFERENCIA QUORATEC v${runtimeVersion}`;
         }
         if (elMeta) {
-            elMeta.textContent = `${plan.nombreComercial} • ${plan.rucsLabel} • ${estacionesTotales} PC(s)`;
+            const addonsTxt = [
+                optNube ? "+Nube 10 GB" : "",
+                extraRucs > 0 ? `+${extraRucs * 5} RUCs` : "",
+                extraCloud > 0 ? `+${extraCloud * 50} GB` : "",
+            ].filter(Boolean).join(" ");
+            elMeta.textContent = `${plan.nombreComercial} • ${rucsTotales} RUC(s) • ${estacionesTotales} PC(s) • ${cloudGbTotales} GB${addonsTxt ? ` (${addonsTxt})` : ""}`;
         }
         if (elMonto) elMonto.textContent = `${montoTexto} USD`;
 
         const sel = document.getElementById("pagoPlanSelect");
         if (sel instanceof HTMLSelectElement) sel.value = plan.id;
 
+        const hwidRequiere = ["EMPRENDEDOR", "COMERCIAL_PRO", "CONTADOR"].includes(plan.id);
+        const hwidLblEl = document.getElementById("pagoHwidLabel");
+        const hwidInEl = document.getElementById("pagoHwidInput");
+        const hwidHelpEl = document.getElementById("pagoHwidHelp");
+        if (hwidLblEl) {
+            hwidLblEl.textContent = hwidRequiere ? "HWID del Equipo * (Obligatorio):" : "HWID del Equipo (Opcional):";
+        }
+        if (hwidInEl instanceof HTMLInputElement) {
+            hwidInEl.required = hwidRequiere;
+            hwidInEl.placeholder = hwidRequiere ? "Ej: A1B2-C3D4-E5F6" : "Opcional — Ej: A1B2-C3D4-E5F6";
+        }
+        if (hwidHelpEl) {
+            hwidHelpEl.textContent = hwidRequiere
+                ? "Obligatorio para planes de 1 PC. Cópialo desde: QuoraTec ERP -> Configuración -> 4. Plan y Licencia."
+                : "Opcional: podrás vincular tus equipos con la misma licencia .lic.";
+        }
+
         const extraBar = document.getElementById("pagoExtraSeatsBar");
         const extraIn = document.getElementById("pagoExtraSeatsInput");
         const estTot = document.getElementById("pagoEstacionesTotales");
-        if (extraBar instanceof HTMLElement) extraBar.style.display = plan.permiteExtraSeats ? "flex" : "none";
+        if (extraBar instanceof HTMLElement) extraBar.style.display = "flex";
         if (extraIn instanceof HTMLInputElement) extraIn.value = String(extras);
-        if (estTot instanceof HTMLElement) estTot.textContent = `${estacionesTotales} PCs totales`;
+        if (estTot instanceof HTMLElement) estTot.textContent = `${estacionesTotales} PC(s) totales`;
 
         const elRef = document.getElementById("pagoReferenciaTexto");
         const elBankMonto = document.getElementById("pagoBankMonto");
@@ -1770,15 +1880,14 @@
         }
     }
 
-    function abrirModalPago(planIdRaw, extraSeatsOverride) {
+    function abrirModalPago(planIdRaw, extraSeatsOverride, addonOpts) {
         asegurarModalPago();
         estadoModalPago.planId = resolverPlan(planIdRaw);
-        const plan = PLAN_LOOKUP[estadoModalPago.planId];
-        if (!plan || !plan.permiteExtraSeats) {
-            estadoModalPago.extraSeats = 0;
-        } else if (typeof extraSeatsOverride === "number") {
-            estadoModalPago.extraSeats = Math.max(0, Math.min(50, extraSeatsOverride));
-        }
+        const opts = addonOpts && typeof addonOpts === "object" ? addonOpts : {};
+        estadoModalPago.extraSeats = typeof extraSeatsOverride === "number" ? Math.max(0, Math.min(50, extraSeatsOverride)) : 0;
+        estadoModalPago.extraRucsPacks = Number.isFinite(Number(opts.extraRucsPacks)) ? Math.max(0, Math.min(50, Number(opts.extraRucsPacks))) : 0;
+        estadoModalPago.extraCloudPacks = Number.isFinite(Number(opts.extraCloudPacks)) ? Math.max(0, Math.min(50, Number(opts.extraCloudPacks))) : 0;
+        estadoModalPago.emprendedorCloud = estadoModalPago.planId === "EMPRENDEDOR" && Boolean(opts.emprendedorCloud);
         actualizarVistaModalPago();
         const modal = document.getElementById("modalPago");
         if (modal instanceof HTMLElement) modal.style.display = "flex";
@@ -1793,7 +1902,7 @@
 
         const box = crearEl("div", "modal-box modal-narrow");
         const top = crearEl("div", "modal-top");
-        const h3 = crearEl("h3", "", "Marco Legal — TributaFlow ERP (QUORATEC)");
+        const h3 = crearEl("h3", "", "Marco Legal — QuoraTec ERP (QuoraTec)");
         h3.id = "modalLegalTitulo";
         const btnClose = crearEl("button", "btn-close", "×");
         btnClose.type = "button";
@@ -1863,9 +1972,9 @@
         const btnPrincipalDl = document.getElementById("btnDescargaDetectada");
         if (btnPrincipalDl instanceof HTMLElement) {
             if (soInfo.esMovil || !soInfo.soportado) {
-                btnPrincipalDl.textContent = `⬇ Probar Gratis ${CONFIG_COMERCIAL.TRIAL_DIAS} Días (Enterprise Team ERP · Solo PC)`;
+                btnPrincipalDl.textContent = `⬇ Probar Gratis ${CONFIG_COMERCIAL.TRIAL_DIAS} Días (100 % Desbloqueado · Solo PC)`;
             } else {
-                btnPrincipalDl.textContent = `⬇ Probar Gratis ${CONFIG_COMERCIAL.TRIAL_DIAS} Días (Enterprise Team ERP · ${soInfo.etiqueta})`;
+                btnPrincipalDl.textContent = `⬇ Probar Gratis ${CONFIG_COMERCIAL.TRIAL_DIAS} Días (${soInfo.etiqueta} · 100 % Desbloqueado)`;
             }
         }
         const btnPaginaDl = document.getElementById("btnDescargaPaginaPrincipal");
@@ -1933,42 +2042,43 @@
         const cfg = hasCfgAsThird ? pcsOrCfg : cfgOverride && typeof cfgOverride === "object" ? cfgOverride : runtimeSimCfg;
 
         const rucs = Math.max(1, Math.min(300, Math.round(Number(rucsRaw || 12))));
-        const docs = Math.max(20, Math.min(2000, Math.round(Number(docsRaw || 250))));
-        const pcs = Math.max(1, Math.min(15, Math.round(Number(pcsRaw || 1))));
+        const docs = Math.max(20, Math.min(2000, Math.round(Number(docsRaw || 350))));
+        const pcs = Math.max(1, Math.min(20, Math.round(Number(pcsRaw || 1))));
 
-        // Modelo proporcional realista: gestión fija por RUC + procesamiento XML/RIDE/ATS sobre cartera total
         const horasManuales = rucs * cfg.HORAS_MANUAL_POR_RUC + docs * cfg.HORAS_MANUAL_POR_COMPROBANTE;
         const horasAhorradasMes = Math.max(1, Math.round(horasManuales * cfg.FACTOR_AUTOMATIZACION));
         const horasAhorradasAnio = horasAhorradasMes * 12;
 
-        let planId = "PERSONAL_PRO";
-        let detalle = "Hasta 3 RUCs · 1 PC — Sincronización SRI/RIDE/XML y bóveda local cifrada AES-256.";
-        if (pcs >= 10) {
-            planId = "ENTERPRISE_CORP";
-            detalle =
-                "RUCs ilimitados · 10+ PCs escalables (+$150/PC extra) — Multi-sucursal y multi-bodega en vivo, Red LAN y Nube Oficina+Casa.";
-        } else if (rucs > 60 || pcs >= 3) {
-            planId = "ENTERPRISE_TEAM";
-            detalle =
-                "RUCs ilimitados · 5 PCs — Módulos ERP completos (POS .p12, Kardex, CxC/CxP, NIIF, EFOS, ATS, Form. 103/104).";
-        } else if (rucs > 25 || pcs === 2) {
-            planId = "ESTUDIO_PRO";
-            detalle =
-                "Hasta 60 RUCs · Hasta 2 PCs (Oficina + Casa) — Sincronización opcional en la nube vía Supabase RLS, Contabilidad NIIF y EFOS.";
-        } else if (rucs > 3) {
-            planId = "CONTADOR_MASTER";
-            detalle = "Hasta 25 RUCs · 1 PC — Lote Multi-RUC y Generador/Validador oficial ATS, Form. 103 y 104.";
+        let planId = "EMPRENDEDOR";
+        let detalle = "1 RUC/Cédula | 1 PC | Modo Local (Nube opc. +$29/año - 10 GB) con todas las herramientas incluidas.";
+        if (rucs > 40 || pcs > 3) {
+            planId = "ENTERPRISE";
+            detalle = "Hasta 100 RUCs | 10 PCs | Nube Total Dedicada (150 GB) + add-ons (+1 PC $49, +5 RUCs $59, +50 GB $59).";
+        } else if (rucs > 15 || pcs >= 2) {
+            planId = "ESTUDIO_CONTABLE";
+            detalle = "Hasta 40 RUCs | 3 PCs | Nube Total + Híbrido + Oficina (50 GB) con todas las herramientas desbloqueadas.";
+        } else if (rucs > 1) {
+            planId = "CONTADOR";
+            detalle = "Hasta 15 RUCs | 1 PC | Local + Nube Híbrida (20 GB) con Descarga Masiva SRI, AGP, NIIF, IA Local y Centralis.";
+        } else if (docs >= 120) {
+            planId = "COMERCIAL_PRO";
+            detalle = "1 RUC | 1 PC | Local + Nube Híbrida (10 GB) ideal para comercios POS y Farmacias FIFO.";
         }
 
-        const extraSeats = planId === "ENTERPRISE_CORP" ? Math.max(0, pcs - 10) : 0;
         const planMeta = PLAN_LOOKUP[planId];
-        const precioEstimadoUsd = planMeta.precioUsd + extraSeats * CONFIG_COMERCIAL.PRECIO_SEAT_EXTRA_USD;
+        const extraSeats = Math.max(0, pcs - planMeta.estacionesBase);
+        const extraRucsPacks = rucs > planMeta.rucsMax ? Math.ceil((rucs - planMeta.rucsMax) / 5) : 0;
+        const precioEstimadoUsd =
+            planMeta.precioUsd +
+            extraSeats * CONFIG_COMERCIAL.PRECIO_SEAT_EXTRA_USD +
+            extraRucsPacks * CONFIG_COMERCIAL.PRECIO_RUCS_PACK_USD;
 
         return {
             rucs,
             docs,
             pcs,
             extraSeats,
+            extraRucsPacks,
             precioEstimadoUsd,
             horasAhorradasMes,
             horasAhorradasAnio,
@@ -1977,11 +2087,75 @@
         };
     }
 
+    function aplicarManifiestoVersionJson(data) {
+        if (!data || typeof data !== "object" || Array.isArray(data)) return;
+        if (typeof data.version === "string" && SEMVER_REGEX.test(data.version.trim())) {
+            aplicarVersionEnDOM(data.version.trim());
+        }
+        const notesEl = document.querySelector("[data-release-notes]");
+        if (notesEl && typeof data.body === "string" && data.body.trim()) {
+            notesEl.textContent = data.body.trim().slice(0, 260);
+        }
+        const repoEl = document.querySelector("[data-release-repo]");
+        if (repoEl && typeof data.html_url === "string") {
+            const matchRepo = /^https:\/\/github\.com\/([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+)\//i.exec(data.html_url.trim());
+            if (matchRepo) repoEl.textContent = matchRepo[1];
+        }
+        if (!Array.isArray(data.assets)) return;
+
+        function clasificarAssetPorNombre(name) {
+            const lower = String(name || "").toLowerCase();
+            if (lower.endsWith(".exe")) return "windows";
+            if (lower.endsWith(".zip")) return "windows_zip";
+            if (lower.endsWith(".dmg")) return "macos";
+            if (lower.endsWith(".deb")) return "linux";
+            if (lower.endsWith(".tar.gz")) return "linux_tar";
+            if (lower === "sha256sums.txt") return "sha256sums";
+            return null;
+        }
+
+        data.assets.forEach((asset) => {
+            if (!asset || typeof asset !== "object") return;
+            const osKey = clasificarAssetPorNombre(asset.name);
+            if (!osKey || !esClaveSegura(osKey)) return;
+            const url = String(asset.browser_download_url || "").trim();
+            if (!esUrlDescargaOficialSegura(url)) return;
+
+            const digestRaw = String(asset.digest || "").trim();
+            const shaHex = digestRaw.toLowerCase().startsWith("sha256:") ? digestRaw.slice(7).toLowerCase() : "";
+            const mbSize = Number.isFinite(Number(asset.size)) && Number(asset.size) > 0
+                ? Number(asset.size) < 1024 * 1024
+                    ? `${Math.round(Number(asset.size))} B`
+                    : `${(Number(asset.size) / (1024 * 1024)).toFixed(1)} MB`
+                : "";
+
+            document.querySelectorAll(`[data-asset-name="${osKey}"]`).forEach((el) => {
+                el.textContent = String(asset.name || "");
+            });
+            if (mbSize) {
+                document.querySelectorAll(`[data-asset-size="${osKey}"]`).forEach((el) => {
+                    el.textContent = el.classList.contains("os-size") && osKey === "windows" ? `${mbSize} · .exe` : mbSize;
+                });
+            }
+            if (/^[a-f0-9]{64}$/.test(shaHex)) {
+                document.querySelectorAll(`[data-sha256-value="${osKey}"]`).forEach((el) => {
+                    el.textContent = shaHex;
+                });
+            }
+            document.querySelectorAll(`a[data-download-os="${osKey}"]`).forEach((el) => {
+                if (el instanceof HTMLAnchorElement) {
+                    el.setAttribute("href", url);
+                    el.setAttribute("download", String(asset.name || ""));
+                }
+            });
+        });
+    }
+
     function sincronizarConfiguracionPortal() {
         if (window.location.protocol !== "http:" && window.location.protocol !== "https:") return;
         if (typeof window.fetch !== "function") return;
-        const urlApi = `${obtenerPrefijoRuta()}${CONFIG_COMERCIAL.API_CONFIG_PATH}`;
-        fetch(urlApi, { cache: "no-store", credentials: "same-origin" })
+        const prefix = obtenerPrefijoRuta();
+        fetch(`${prefix}${CONFIG_COMERCIAL.API_CONFIG_PATH}`, { cache: "no-store", credentials: "same-origin" })
             .then((resp) => (resp.ok ? resp.json() : null))
             .then((data) => {
                 if (!data || typeof data !== "object" || Array.isArray(data)) return;
@@ -2017,6 +2191,15 @@
             .catch(() => {
                 // Respaldo embebido congelado en CONFIG_COMERCIAL si está offline
             });
+
+        fetch(`${prefix}${CONFIG_COMERCIAL.VERSION_JSON_PATH}`, { cache: "no-store", credentials: "same-origin" })
+            .then((resp) => (resp.ok ? resp.json() : null))
+            .then((verData) => {
+                aplicarManifiestoVersionJson(verData);
+            })
+            .catch(() => {
+                // Mantiene descargas estáticas verificadas si está offline
+            });
     }
 
     function inicializarSimuladorAhorro() {
@@ -2049,10 +2232,13 @@
             if (horasMesEl) horasMesEl.textContent = `${sim.horasAhorradasMes} h/mes`;
             if (horasAnioEl) horasAnioEl.textContent = `${sim.horasAhorradasAnio} h/año`;
             if (planNombreEl) {
-                const sufijoExtra =
-                    sim.extraSeats > 0
-                        ? ` (${10 + sim.extraSeats} PCs = ${formatearUsd(sim.precioEstimadoUsd)} USD/año)`
-                        : ` — ${formatearUsd(planMeta.precioUsd)} USD/año`;
+                const extrasDesc = [
+                    sim.extraSeats > 0 ? `+${sim.extraSeats} PC` : "",
+                    sim.extraRucsPacks > 0 ? `+${sim.extraRucsPacks * 5} RUCs` : "",
+                ].filter(Boolean).join(" ");
+                const sufijoExtra = extrasDesc
+                    ? ` (${extrasDesc} = ${formatearUsd(sim.precioEstimadoUsd)} USD/año)`
+                    : ` — ${formatearUsd(planMeta.precioUsd)} USD/año`;
                 planNombreEl.textContent = `${planMeta.nombre}${sufijoExtra}`;
             }
             if (planDetalleEl) {
@@ -2097,51 +2283,115 @@
     }
 
     function inicializarCalculadoraAddonCorp() {
-        const inputAddon = document.getElementById("corpAddonInput");
-        const btnMenos = document.getElementById("corpAddonMenos");
-        const btnMas = document.getElementById("corpAddonMas");
-        const lblTotal = document.getElementById("corpAddonTotal");
-        const lblPcs = document.getElementById("corpAddonPcs");
-        const btnWp = document.getElementById("btnCorpAddonWhatsapp");
-        const btnCheckout = document.getElementById("btnCorpAddonCheckout");
-        if (!(inputAddon instanceof HTMLInputElement)) return;
+        const selPlan = document.getElementById("calcPlanSelect");
+        const rowEmpNube = document.getElementById("calcEmprendedorNubeRow");
+        const chkEmpNube = document.getElementById("calcEmprendedorNubeCheck");
+        const inPc = document.getElementById("addonPcInput");
+        const inRuc = document.getElementById("addonRucInput");
+        const inCloud = document.getElementById("addonCloudInput");
+        const btnPcMenos = document.getElementById("addonPcMenos");
+        const btnPcMas = document.getElementById("addonPcMas");
+        const btnRucMenos = document.getElementById("addonRucMenos");
+        const btnRucMas = document.getElementById("addonRucMas");
+        const btnCloudMenos = document.getElementById("addonCloudMenos");
+        const btnCloudMas = document.getElementById("addonCloudMas");
+        const outPcs = document.getElementById("calcTotalPcs");
+        const outRucs = document.getElementById("calcTotalRucs");
+        const outGb = document.getElementById("calcTotalGb");
+        const outNormal = document.getElementById("calcTotalNormal");
+        const outFund = document.getElementById("calcTotalFundadores");
+        const btnCheckout = document.getElementById("btnCalcAddonsCheckout");
+        const btnWp = document.getElementById("btnCalcAddonsWhatsapp");
+        if (!(selPlan instanceof HTMLSelectElement)) return;
 
-        function actualizarAddon() {
-            const cant = Math.max(1, Math.min(50, Number(inputAddon.value || 1)));
-            runtimeCorpExtraSeats = cant;
-            inputAddon.value = String(cant);
-            const totalUsd = 1490 + cant * CONFIG_COMERCIAL.PRECIO_SEAT_EXTRA_USD;
-            const totalPcs = 10 + cant;
-            if (lblTotal) lblTotal.textContent = `${formatearUsd(totalUsd)} USD/año`;
-            if (lblPcs) lblPcs.textContent = `${totalPcs} PCs (${10} base + ${cant} adicional${cant > 1 ? "es" : ""})`;
+        function clampInt(val) {
+            const n = parseInt(String(val || "0"), 10);
+            return Number.isNaN(n) ? 0 : Math.max(0, Math.min(50, n));
+        }
+
+        function actualizarAddons() {
+            const planId = resolverPlan(selPlan.value);
+            const planMeta = PLAN_LOOKUP[planId] || PLAN_LOOKUP.CONTADOR;
+            const isEmp = planId === "EMPRENDEDOR";
+
+            if (rowEmpNube instanceof HTMLElement) {
+                rowEmpNube.style.display = isEmp ? "flex" : "none";
+            }
+            const optNube = isEmp && chkEmpNube instanceof HTMLInputElement && chkEmpNube.checked;
+
+            const extraPcs = inPc instanceof HTMLInputElement ? clampInt(inPc.value) : 0;
+            const extraRucPacks = inRuc instanceof HTMLInputElement ? clampInt(inRuc.value) : 0;
+            const extraCloudPacks = inCloud instanceof HTMLInputElement ? clampInt(inCloud.value) : 0;
+
+            if (inPc instanceof HTMLInputElement) inPc.value = String(extraPcs);
+            if (inRuc instanceof HTMLInputElement) inRuc.value = String(extraRucPacks);
+            if (inCloud instanceof HTMLInputElement) inCloud.value = String(extraCloudPacks);
+
+            runtimeCorpExtraSeats = extraPcs;
+
+            const totalPcs = planMeta.estacionesBase + extraPcs;
+            const totalRucs = planMeta.rucsMax + extraRucPacks * 5;
+            const totalGb = planMeta.nubeGbBase + (optNube ? 10 : 0) + extraCloudPacks * 50;
+            const totalUsd =
+                planMeta.precioUsd +
+                (optNube ? CONFIG_COMERCIAL.PRECIO_EMPRENDEDOR_NUBE_USD : 0) +
+                extraPcs * CONFIG_COMERCIAL.PRECIO_SEAT_EXTRA_USD +
+                extraRucPacks * CONFIG_COMERCIAL.PRECIO_RUCS_PACK_USD +
+                extraCloudPacks * CONFIG_COMERCIAL.PRECIO_CLOUD_PACK_USD;
+            const totalFundUsd = totalUsd * (1 - CONFIG_COMERCIAL.DESCUENTO_FUNDADORES_PCT / 100);
+
+            if (outPcs) outPcs.textContent = `${totalPcs} PC${totalPcs === 1 ? "" : "s"}`;
+            if (outRucs) outRucs.textContent = `${totalRucs} RUC${totalRucs === 1 ? "" : "s"}`;
+            if (outGb) outGb.textContent = `${totalGb} GB Nube`;
+            if (outNormal) outNormal.textContent = `${formatearUsd(totalUsd)}/año`;
+            if (outFund) outFund.textContent = `${formatearUsd(totalFundUsd)}/año`;
+
             if (btnWp instanceof HTMLAnchorElement) {
                 const texto =
-                    `[TRIBUTAFLOW ENTERPRISE CORP v${runtimeVersion}] Solicito cotización/activación de +${cant} estación(es) adicional(es) (+1 PC = $150/año c/u). Total estimado: ${totalPcs} PCs (${formatearUsd(totalUsd)} USD/año).`;
+                    `[QUORATEC ERP v${runtimeVersion}] Solicito ${planMeta.nombre} (${totalPcs} PCs, ${totalRucs} RUCs, ${totalGb} GB Nube). Tarifa normal ${formatearUsd(totalUsd)}/año · Fundadores (-25 % DTO): ${formatearUsd(totalFundUsd)}/año.`;
                 asignarEnlaceSeguro(btnWp, construirUrlWhatsapp(texto), "whatsapp");
             }
+            return { planId, extraPcs, extraRucPacks, extraCloudPacks, optNube };
         }
 
-        if (btnMenos) {
-            btnMenos.addEventListener("click", () => {
-                inputAddon.value = String(Math.max(1, Number(inputAddon.value || 1) - 1));
-                actualizarAddon();
-            });
+        function bindStepper(btnMinus, btnPlus, inp) {
+            if (!(inp instanceof HTMLInputElement)) return;
+            if (btnMinus) {
+                btnMinus.addEventListener("click", () => {
+                    inp.value = String(Math.max(0, clampInt(inp.value) - 1));
+                    actualizarAddons();
+                });
+            }
+            if (btnPlus) {
+                btnPlus.addEventListener("click", () => {
+                    inp.value = String(Math.min(50, clampInt(inp.value) + 1));
+                    actualizarAddons();
+                });
+            }
+            inp.addEventListener("input", actualizarAddons);
         }
-        if (btnMas) {
-            btnMas.addEventListener("click", () => {
-                inputAddon.value = String(Math.min(50, Number(inputAddon.value || 1) + 1));
-                actualizarAddon();
-            });
+
+        selPlan.addEventListener("change", actualizarAddons);
+        if (chkEmpNube instanceof HTMLInputElement) {
+            chkEmpNube.addEventListener("change", actualizarAddons);
         }
-        inputAddon.addEventListener("input", actualizarAddon);
+        bindStepper(btnPcMenos, btnPcMas, inPc);
+        bindStepper(btnRucMenos, btnRucMas, inRuc);
+        bindStepper(btnCloudMenos, btnCloudMas, inCloud);
+
         if (btnCheckout) {
             btnCheckout.addEventListener("click", (e) => {
                 e.preventDefault();
-                abrirModalPago("ENTERPRISE_CORP", runtimeCorpExtraSeats);
+                const st = actualizarAddons();
+                abrirModalPago(st.planId, st.extraPcs, {
+                    extraRucsPacks: st.extraRucPacks,
+                    extraCloudPacks: st.extraCloudPacks,
+                    emprendedorCloud: st.optNube,
+                });
             });
         }
 
-        actualizarAddon();
+        actualizarAddons();
     }
 
     function inicializarPestanasGuiaUso() {
@@ -2149,7 +2399,7 @@
         const panels = Array.from(document.querySelectorAll("[data-guide-panel]"));
         if (!tabs.length || !panels.length) return;
 
-        const TABS_PERMITIDAS = new Set(["rapida", "1pc", "2pcs", "lan", "corp"]);
+        const TABS_PERMITIDAS = new Set(["rapida", "emprendedor", "comercial", "estudio", "enterprise"]);
 
         function activarTab(tabId) {
             const idLimpio = TABS_PERMITIDAS.has(tabId) ? tabId : "rapida";
@@ -2200,10 +2450,10 @@
                 crearEl(
                     "p",
                     "",
-                    "Por tu seguridad, TributaFlow ERP solo se ejecuta en su pestaña directa oficial."
+                    "Por tu seguridad, QuoraTec ERP solo se ejecuta en su pestaña directa oficial."
                 )
             );
-            const openBtn = crearEl("a", "btn-glow", "Abrir portal oficial de TributaFlow ERP");
+            const openBtn = crearEl("a", "btn-glow", "Abrir portal oficial de QuoraTec ERP");
             asignarEnlaceSeguro(openBtn, CONFIG_COMERCIAL.DOMINIO_OFICIAL, "portal");
             wrap.appendChild(openBtn);
             body.appendChild(wrap);
@@ -2438,14 +2688,38 @@
             bLookup.type = "button";
             const guestOut = crearEl("div", "muted-note", "");
             bLookup.addEventListener("click", async () => {
+                const orderRefVal = iRef.value.trim();
+                const orderTokVal = iTok.value.trim();
+                const emailVal = sanitizarCorreoInput(iEmail.value);
                 const resp = await postJsonSeguroApi("api/orders/status", {
-                    order_ref: iRef.value.trim(),
-                    order_token: iTok.value.trim(),
-                    email: sanitizarCorreoInput(iEmail.value),
+                    order_ref: orderRefVal,
+                    order_token: orderTokVal,
+                    email: emailVal,
                 });
-                guestOut.textContent = resp.ok
-                    ? `Orden ${resp.data.order_ref} • Estado: ${resp.data.status} • Monto: ${formatearUsd(resp.data.monto_autorizado_usd)} • Estaciones: ${resp.data.estaciones_autorizadas} PC(s)`
-                    : `ℹ️ ${resp.data?.message || "No se encontró una orden activa con esa referencia, token y correo."}`;
+                guestOut.textContent = "";
+                if (resp.ok) {
+                    guestOut.appendChild(
+                        crearEl(
+                            "div",
+                            "",
+                            `Orden ${resp.data.order_ref} • Estado: ${resp.data.status} • Monto: ${formatearUsd(resp.data.monto_autorizado_usd)} • Estaciones: ${resp.data.estaciones_autorizadas} PC(s)`
+                        )
+                    );
+                    if (resp.data.status === "verificado") {
+                        const btnDl = crearEl("button", "btn-glow mt-8", "⬇️ Descargar Licencia (.lic)");
+                        btnDl.type = "button";
+                        btnDl.addEventListener("click", () => {
+                            descargarArchivoLicencia({
+                                order_ref: resp.data.order_ref || orderRefVal,
+                                order_token: orderTokVal,
+                                email: emailVal,
+                            });
+                        });
+                        guestOut.appendChild(btnDl);
+                    }
+                } else {
+                    guestOut.textContent = `ℹ️ ${resp.data?.message || "No se encontró una orden activa con esa referencia, token y correo."}`;
+                }
             });
             pGuest.appendChild(gGrid);
             pGuest.appendChild(bLookup);
@@ -2488,7 +2762,27 @@
                     if (stLbl) stLbl.textContent = `Sesión activa: ${estadoHibrido.userEmail}`;
                     const dash = await postJsonSeguroApi("api/auth/supabase", { action: "dashboard" }, estadoHibrido.accessToken);
                     if (dash.ok) {
-                        accOut.textContent = `Sesión ${estadoHibrido.userEmail}: ${dash.data.orders.length} orden(es), ${dash.data.licenses.length} licencia(s) activas (+1 PC Adicional incluido en detalle).`;
+                        accOut.textContent = "";
+                        accOut.appendChild(
+                            crearEl(
+                                "div",
+                                "",
+                                `Sesión ${estadoHibrido.userEmail}: ${dash.data.orders.length} orden(es), ${dash.data.licenses.length} licencia(s) activas.`
+                            )
+                        );
+                        (dash.data.orders || []).forEach((ord) => {
+                            if (ord && ord.status === "verificado" && ord.order_ref) {
+                                const rowOrd = crearEl("div", "flex-wrap-actions mt-8");
+                                rowOrd.appendChild(crearEl("span", "", `${ord.order_ref} (${ord.plan_id || ""})`));
+                                const btnDlAcc = crearEl("button", "btn-glow", "⬇️ Descargar Licencia (.lic)");
+                                btnDlAcc.type = "button";
+                                btnDlAcc.addEventListener("click", () => {
+                                    descargarArchivoLicencia({ order_ref: ord.order_ref }, estadoHibrido.accessToken);
+                                });
+                                rowOrd.appendChild(btnDlAcc);
+                                accOut.appendChild(rowOrd);
+                            }
+                        });
                     } else {
                         accOut.textContent = `Sesión iniciada correctamente como ${estadoHibrido.userEmail}.`;
                     }
@@ -2660,8 +2954,8 @@
             });
             if (countEl) {
                 countEl.textContent = visibles === 0
-                    ? "0 coincidencias. Prueba: tfbkp, firma .p12, retencion, fantasma, ats, kardex, bodega, nomina, anular, cxc o lan."
-                    : `Mostrando ${visibles} de ${cards.length} rutas oficiales de TributaFlow ERP v${runtimeVersion}`;
+                    ? "0 coincidencias. Prueba: nxbackup, firma .p12, fifo, rimpe, agp, fantasma, centralis, copiloto, ats, rdep o cxc."
+                    : `Mostrando ${visibles} de ${cards.length} rutas oficiales de QuoraTec ERP v${runtimeVersion}`;
             }
         }
 
@@ -2690,16 +2984,190 @@
         const out = document.getElementById("lookupOrderResult");
         if (btn && inRef instanceof HTMLInputElement && inTok instanceof HTMLInputElement && out) {
             btn.addEventListener("click", async () => {
+                const orderRefVal = inRef.value.trim();
+                const orderTokVal = inTok.value.trim();
+                const emailVal = inEmail instanceof HTMLInputElement ? sanitizarCorreoInput(inEmail.value) : "";
                 const resp = await postJsonSeguroApi("api/orders/status", {
-                    order_ref: inRef.value.trim(),
-                    order_token: inTok.value.trim(),
-                    email: inEmail instanceof HTMLInputElement ? sanitizarCorreoInput(inEmail.value) : "",
+                    order_ref: orderRefVal,
+                    order_token: orderTokVal,
+                    email: emailVal,
                 });
-                out.textContent = resp.ok
-                    ? `✅ Orden ${resp.data.order_ref} • Estado: ${resp.data.status} • Plan: ${resp.data.plan_id} (${resp.data.estaciones_autorizadas} PC) • Monto: ${formatearUsd(resp.data.monto_autorizado_usd)}`
-                    : `ℹ️ ${resp.data?.message || "No fue posible consultar la orden en este entorno."}`;
+                out.textContent = "";
+                if (resp.ok) {
+                    out.appendChild(
+                        crearEl(
+                            "div",
+                            "",
+                            `✅ Orden ${resp.data.order_ref} • Estado: ${resp.data.status} • Plan: ${resp.data.plan_id} (${resp.data.estaciones_autorizadas} PC) • Monto: ${formatearUsd(resp.data.monto_autorizado_usd)}`
+                        )
+                    );
+                    if (resp.data.status === "verificado") {
+                        const btnDlSup = crearEl("button", "btn-glow mt-8", "⬇️ Descargar Licencia (.lic)");
+                        btnDlSup.type = "button";
+                        btnDlSup.addEventListener("click", () => {
+                            descargarArchivoLicencia({
+                                order_ref: resp.data.order_ref || orderRefVal,
+                                order_token: orderTokVal,
+                                email: emailVal,
+                            });
+                        });
+                        out.appendChild(btnDlSup);
+                    }
+                } else {
+                    out.textContent = `ℹ️ ${resp.data?.message || "No fue posible consultar la orden en este entorno."}`;
+                }
             });
         }
+    }
+
+    function asegurarModalAdmin() {
+        let overlay = document.getElementById("modalAdminPortal");
+        if (overlay) {
+            overlay.style.display = "flex";
+            return;
+        }
+
+        // Clave maestra mantenida exclusivamente en memoria de cierre (nunca en localStorage ni hardcodeada)
+        let adminSecretMem = "";
+
+        overlay = crearEl("div", "modal-overlay");
+        overlay.id = "modalAdminPortal";
+        overlay.style.display = "flex";
+        overlay.setAttribute("role", "dialog");
+        overlay.setAttribute("aria-modal", "true");
+
+        const box = crearEl("div", "modal-box");
+        const top = crearEl("div", "modal-top");
+        top.appendChild(crearEl("h3", "", "Administración — Aprobación de Órdenes"));
+        const closeBtn = crearEl("button", "modal-close", "✕");
+        closeBtn.type = "button";
+        closeBtn.addEventListener("click", () => {
+            adminSecretMem = "";
+            overlay.style.display = "none";
+        });
+        top.appendChild(closeBtn);
+        box.appendChild(top);
+
+        const body = crearEl("div", "modal-body");
+        const authRow = crearEl("div", "hybrid-form-grid");
+        const inpSecret = crearEl("input", "text-input");
+        inpSecret.type = "password";
+        inpSecret.id = "adminApproveSecretInput";
+        inpSecret.placeholder = "Clave maestra ADMIN_APPROVE_SECRET";
+        inpSecret.autocomplete = "off";
+        const btnCargar = crearEl("button", "btn-glow", "🔓 Cargar Órdenes Pendientes");
+        btnCargar.type = "button";
+        authRow.appendChild(inpSecret);
+        authRow.appendChild(btnCargar);
+
+        const adminStatus = crearEl("div", "muted-note mt-8", "Ingresa la clave maestra para consultar órdenes en pendiente_verificacion.");
+        const listWrap = crearEl("div", "mt-8");
+
+        async function cargarPendientes() {
+            adminSecretMem = inpSecret.value;
+            if (!adminSecretMem) {
+                adminStatus.textContent = "⚠️ Ingresa la clave maestra.";
+                return;
+            }
+            btnCargar.disabled = true;
+            adminStatus.textContent = "Consultando órdenes pendientes...";
+            listWrap.textContent = "";
+            try {
+                const resp = await fetch(`${obtenerPrefijoRuta()}api/admin/pending-orders`, {
+                    method: "GET",
+                    headers: { "X-Admin-Secret": adminSecretMem },
+                    credentials: "same-origin",
+                });
+                const data = await resp.json().catch(() => ({}));
+                if (!resp.ok || !data.ok) {
+                    adminStatus.textContent = resp.status === 401 || resp.status === 403
+                        ? "⛔ Clave maestra inválida o no autorizada."
+                        : `⚠️ Error al consultar: ${data.error || `HTTP ${resp.status}`}`;
+                    return;
+                }
+                const orders = Array.isArray(data.orders) ? data.orders : [];
+                adminStatus.textContent = `Órdenes pendientes encontradas: ${orders.length}`;
+                if (orders.length === 0) {
+                    listWrap.appendChild(crearEl("p", "muted-note", "No hay órdenes en estado pendiente_verificacion."));
+                    return;
+                }
+                orders.forEach((ord) => {
+                    const card = crearEl("div", "receipt-upload-box");
+                    card.appendChild(
+                        crearEl(
+                            "strong",
+                            "",
+                            `${ord.razon_social || "Cliente"} (${ord.ruc_cedula || ""}) — ${ord.plan_id}`
+                        )
+                    );
+                    card.appendChild(
+                        crearEl(
+                            "div",
+                            "muted-note",
+                            `Ref: ${ord.order_ref} • Monto: ${formatearUsd(ord.monto_autorizado_usd)} • Correo: ${ord.email || ""}`
+                        )
+                    );
+                    const rowBtns = crearEl("div", "flex-wrap-actions mt-8");
+                    if (ord.voucher_signed_url && /^https:\/\//i.test(ord.voucher_signed_url)) {
+                        const linkVoucher = crearEl("a", "btn-glass", "🖼️ Ver comprobante");
+                        linkVoucher.href = ord.voucher_signed_url;
+                        linkVoucher.target = "_blank";
+                        linkVoucher.rel = "noopener noreferrer";
+                        rowBtns.appendChild(linkVoucher);
+                    }
+                    const btnAprobar = crearEl("button", "btn-glow", "✅ Aprobar y Enviar .lic");
+                    btnAprobar.type = "button";
+                    const rowMsg = crearEl("small", "muted-note", "");
+                    btnAprobar.addEventListener("click", async () => {
+                        btnAprobar.disabled = true;
+                        rowMsg.textContent = "Emitiendo y enviando .lic...";
+                        try {
+                            const appResp = await fetch(`${obtenerPrefijoRuta()}api/orders/approve`, {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "X-Admin-Secret": adminSecretMem,
+                                },
+                                credentials: "same-origin",
+                                body: JSON.stringify({ order_id: ord.id }),
+                            });
+                            const appData = await appResp.json().catch(() => ({}));
+                            if (appResp.ok && appData.ok) {
+                                rowMsg.textContent = `✅ Emitida (${appData.license_key}) • Correo: ${appData.email_sent ? "enviado" : "pendiente"}`;
+                            } else {
+                                btnAprobar.disabled = false;
+                                rowMsg.textContent = `⚠️ Error: ${appData.error || `HTTP ${appResp.status}`}`;
+                            }
+                        } catch {
+                            btnAprobar.disabled = false;
+                            rowMsg.textContent = "⚠️ Error de red al aprobar.";
+                        }
+                    });
+                    rowBtns.appendChild(btnAprobar);
+                    card.appendChild(rowBtns);
+                    card.appendChild(rowMsg);
+                    listWrap.appendChild(card);
+                });
+            } catch {
+                adminStatus.textContent = "⚠️ Error de red al consultar órdenes pendientes.";
+            } finally {
+                btnCargar.disabled = false;
+            }
+        }
+
+        btnCargar.addEventListener("click", cargarPendientes);
+        body.appendChild(authRow);
+        body.appendChild(adminStatus);
+        body.appendChild(listWrap);
+        box.appendChild(body);
+        overlay.appendChild(box);
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) {
+                adminSecretMem = "";
+                overlay.style.display = "none";
+            }
+        });
+        document.body.appendChild(overlay);
     }
 
     /* ======================================================================
@@ -2742,11 +3210,11 @@
         // Menú desplegable "6 Suites ERP ▾" en todas las páginas
         const SUITES_PORTAL = [
             { icon: "⚡", title: "1. Inicio & Portal SRI", desc: "Panel General, Multi-RUC y Sincronización XML/RIDE", href: "index.html#suite-inicio-sri" },
-            { icon: "🧾", title: "2. Comercial & Facturación POS .p12", desc: "Firma XAdES-BES .p12, IVA 0/5/8/15% y RIDE", href: "index.html#suite-comercial-pos" },
-            { icon: "📦", title: "3. Inventario, Kardex & Cartera", desc: "Multi-bodega, Kardex promedio y CxC/CxP", href: "index.html#suite-inventario-cartera" },
-            { icon: "📊", title: "4. Contabilidad NIIF & Nómina IESS", desc: "Libro Diario, Balances NIIF, roles y décimos", href: "index.html#suite-contabilidad-niif" },
-            { icon: "🔍", title: "5. Impuestos, Auditoría & Consultas", desc: "EFOS, Masiva RUC, ATS XSD y Form. 103/104", href: "index.html#suite-impuestos-auditoria" },
-            { icon: "🛡️", title: "6. Sistema, Red LAN & Seguridad", desc: "AES-256-GCM, Red LAN, Oficina+Casa y .tfbkp", href: "index.html#suite-sistema-lan" },
+            { icon: "🧾", title: "2. Comercial & Facturación POS .p12", desc: "Atajos F2/F4/F8/F12, Farmacias FIFO y RIDE", href: "index.html#suite-comercial-pos" },
+            { icon: "📦", title: "3. Inventario, Kardex & Cartera", desc: "FIFO/Caducidad, Multi-bodega y CxC/CxP", href: "index.html#suite-inventario-cartera" },
+            { icon: "📊", title: "4. Contabilidad NIIF & Nómina IESS", desc: "Libro Diario, Balances NIIF, roles y RDEP", href: "index.html#suite-contabilidad-niif" },
+            { icon: "🔍", title: "5. Impuestos, Auditoría & Consultas", desc: "Auditor Fantasma, RIMPE, Clasificador AGP y ATS", href: "index.html#suite-impuestos-auditoria" },
+            { icon: "🛡️", title: "6. Sistema, IA, Centralis & .nxbackup", desc: "Copiloto IA Local, WhatsApp/Telegram y Red LAN", href: "index.html#suite-sistema-lan" },
         ];
 
         const navRoot = obtenerPrefijoRuta();
@@ -2774,7 +3242,7 @@
             const panel = dd.querySelector(".nav-dropdown-panel");
             if (!(trigger instanceof HTMLElement) || !(panel instanceof HTMLElement)) return;
 
-            const header = crearEl("div", "nav-dropdown-header", `6 Suites Reales — TributaFlow ERP v${runtimeVersion} (Edición 2026 · QUORATEC)`);
+            const header = crearEl("div", "nav-dropdown-header", `6 Suites Reales — QuoraTec ERP v${runtimeVersion} (Edición 2026 · QuoraTec)`);
             const grid = crearEl("div", "nav-dropdown-grid");
 
             SUITES_PORTAL.forEach((suite) => {
@@ -2880,7 +3348,7 @@
             if (el instanceof HTMLAnchorElement) {
                 el.setAttribute("data-tf-canal-seguro", "correo");
                 vincularCopiaCorreo(el, () =>
-                    construirPlantillaSoporte(`TributaFlow ERP v${runtimeVersion}`, "")
+                    construirPlantillaSoporte(`QuoraTec ERP v${runtimeVersion}`, "")
                 );
             }
         });
@@ -2985,6 +3453,17 @@
             });
         });
 
+        // Modal Administrativo ligero (en memoria, sin guardar secretos)
+        document.querySelectorAll("[data-open-admin-modal]").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                asegurarModalAdmin();
+            });
+        });
+        if (currentHash === "#admin") {
+            asegurarModalAdmin();
+        }
+
         // Triggers de descarga por SO (desktop -> modal instalador; móvil/iPadOS -> bloqueo amigable sin GitHub)
         document.querySelectorAll("[data-download-os]").forEach((btn) => {
             btn.addEventListener("click", (e) => {
@@ -3015,6 +3494,565 @@
             }
         });
 
+        function inicializarPanelEquipo() {
+            const authGate = document.getElementById("teamAuthGate");
+            const workspace = document.getElementById("teamWorkspace");
+            if (!(authGate instanceof HTMLElement) || !(workspace instanceof HTMLElement)) return;
+
+            const loginForm = document.getElementById("teamLoginForm");
+            const emailInput = document.getElementById("teamEmail");
+            const passInput = document.getElementById("teamPassword");
+            const mfaGate = document.getElementById("teamMfaGate");
+            const mfaEnrollBox = document.getElementById("teamMfaEnrollBox");
+            const mfaQrImg = document.getElementById("teamMfaQrImg");
+            const mfaSecretText = document.getElementById("teamMfaSecretText");
+            const mfaWelcome = document.getElementById("teamMfaWelcome");
+            const totpForm = document.getElementById("teamTotpForm");
+            const totpInput = document.getElementById("teamTotpCode");
+            const resetAuthBtn = document.getElementById("teamResetAuthBtn");
+            const authStatus = document.getElementById("teamAuthStatus");
+
+            const roleBadge = document.getElementById("teamRoleBadge");
+            const staffNameEl = document.getElementById("teamStaffName");
+            const staffCityEl = document.getElementById("teamStaffCityRole");
+            const refreshBtn = document.getElementById("teamRefreshBtn");
+            const logoutBtn = document.getElementById("teamLogoutBtn");
+            const globalToast = document.getElementById("teamGlobalToast");
+
+            const founderSection = document.getElementById("teamFounderSection");
+            const agentSection = document.getElementById("teamAgentSection");
+
+            const TOKEN_KEY = "qt_team_aal2_token";
+            let aal1State = { token: "", factorId: "", challengeId: "" };
+
+            function getAal2Token() {
+                try {
+                    return sessionStorage.getItem(TOKEN_KEY) || "";
+                } catch {
+                    return "";
+                }
+            }
+
+            function setAal2Token(tok) {
+                try {
+                    if (tok) sessionStorage.setItem(TOKEN_KEY, tok);
+                    else sessionStorage.removeItem(TOKEN_KEY);
+                } catch {
+                    // ignore storage restriction
+                }
+            }
+
+            function setStatusText(el, msg, isError = false) {
+                if (!(el instanceof HTMLElement)) return;
+                el.textContent = msg;
+                el.hidden = !msg;
+                el.classList.toggle("is-error", Boolean(isError));
+            }
+
+            function limpiarHijos(el) {
+                if (!(el instanceof HTMLElement)) return;
+                while (el.firstChild) el.removeChild(el.firstChild);
+            }
+
+            function crearCelda(texto, esCode = false) {
+                const td = document.createElement("td");
+                if (esCode) {
+                    const code = document.createElement("code");
+                    code.textContent = String(texto ?? "—");
+                    td.appendChild(code);
+                } else {
+                    td.textContent = String(texto ?? "—");
+                }
+                return td;
+            }
+
+            function descargarArchivoLic(filename, envelopeObj) {
+                const jsonStr = JSON.stringify(envelopeObj, null, 2);
+                const blob = new Blob([jsonStr], { type: "application/json" });
+                const objUrl = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = objUrl;
+                a.download = filename || "QuoraTec_Licencia.lic";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                setTimeout(() => URL.revokeObjectURL(objUrl), 4000);
+            }
+
+            async function apiTeamFetch(path, { method = "GET", body = null, token = "" } = {}) {
+                const headers = { Accept: "application/json" };
+                if (body !== null) headers["Content-Type"] = "application/json";
+                if (token) headers.Authorization = `Bearer ${token}`;
+                const resp = await fetch(path, {
+                    method,
+                    headers,
+                    body: body !== null ? JSON.stringify(body) : undefined,
+                });
+                const data = await resp.json().catch(() => ({}));
+                return { ok: resp.ok, status: resp.status, data };
+            }
+
+            function cerrarSesionEquipo(msg = "") {
+                setAal2Token("");
+                aal1State = { token: "", factorId: "", challengeId: "" };
+                workspace.hidden = true;
+                if (founderSection) founderSection.hidden = true;
+                if (agentSection) agentSection.hidden = true;
+                authGate.hidden = false;
+                if (mfaGate) mfaGate.hidden = true;
+                if (mfaEnrollBox) mfaEnrollBox.hidden = true;
+                if (totpInput instanceof HTMLInputElement) totpInput.value = "";
+                setStatusText(authStatus, msg, Boolean(msg));
+            }
+
+            function renderTickets(tickets, token) {
+                const box = document.getElementById("teamTicketsContainer");
+                if (!(box instanceof HTMLElement)) return;
+                limpiarHijos(box);
+
+                if (!Array.isArray(tickets) || tickets.length === 0) {
+                    const empty = document.createElement("p");
+                    empty.className = "muted-note";
+                    empty.textContent = "Sin tickets registrados por el momento.";
+                    box.appendChild(empty);
+                    return;
+                }
+
+                tickets.forEach((tk) => {
+                    const card = document.createElement("div");
+                    card.className = "team-item-card";
+
+                    const head = document.createElement("div");
+                    head.className = "team-item-head";
+
+                    const title = document.createElement("strong");
+                    title.textContent = `${tk.client_name || "Cliente"} · RUC ${tk.empresa_ruc || "N/D"}`;
+                    const badge = document.createElement("span");
+                    badge.className = "badge-chip";
+                    badge.textContent = `${tk.status || "open"} · v${tk.app_version || "3.0.0"}`;
+                    head.appendChild(title);
+                    head.appendChild(badge);
+                    card.appendChild(head);
+
+                    const desc = document.createElement("p");
+                    desc.className = "muted-note";
+                    desc.textContent = tk.description || "";
+                    card.appendChild(desc);
+
+                    const actions = document.createElement("div");
+                    actions.className = "team-item-actions";
+
+                    const diagSlot = document.createElement("div");
+                    diagSlot.className = "muted-note";
+
+                    if (tk.diagnostic_zip_path) {
+                        const btnZip = document.createElement("button");
+                        btnZip.type = "button";
+                        btnZip.className = "btn-glow team-mini-btn";
+                        btnZip.textContent = "Descargar Diagnóstico .zip (URL 60 s)";
+                        btnZip.addEventListener("click", async () => {
+                            btnZip.disabled = true;
+                            diagSlot.textContent = "Generando enlace firmado de 60 segundos...";
+                            const res = await apiTeamFetch("/api/team/diagnostic-url", {
+                                method: "POST",
+                                token,
+                                body: { ticket_id: tk.id },
+                            });
+                            btnZip.disabled = false;
+                            if (!res.ok || !res.data?.signed_url) {
+                                diagSlot.textContent = res.data?.error || "No se pudo firmar el diagnóstico .zip.";
+                                return;
+                            }
+                            limpiarHijos(diagSlot);
+                            const dlLink = document.createElement("a");
+                            dlLink.href = res.data.signed_url;
+                            dlLink.target = "_blank";
+                            dlLink.rel = "noopener noreferrer";
+                            dlLink.className = "btn-support-link";
+                            dlLink.textContent = `⬇ Descargar ${res.data.filename || "diagnostico.zip"} (expira en 60s)`;
+                            diagSlot.appendChild(dlLink);
+                        });
+                        actions.appendChild(btnZip);
+                    }
+
+                    [
+                        { status: "in_progress", label: "En Revisión" },
+                        { status: "escalated", label: "Escalar a Founder" },
+                        { status: "resolved", label: "Marcar Resuelto" },
+                    ].forEach((act) => {
+                        const btnSt = document.createElement("button");
+                        btnSt.type = "button";
+                        btnSt.className = "btn-glass team-mini-btn";
+                        btnSt.textContent = act.label;
+                        btnSt.addEventListener("click", async () => {
+                            btnSt.disabled = true;
+                            const res = await apiTeamFetch("/api/team/tickets", {
+                                method: "POST",
+                                token,
+                                body: { ticket_id: tk.id, status: act.status },
+                            });
+                            btnSt.disabled = false;
+                            if (res.ok) {
+                                setStatusText(globalToast, `Ticket actualizado a ${act.status}.`);
+                                cargarDashboardEquipo();
+                            } else {
+                                setStatusText(globalToast, res.data?.error || "Error actualizando ticket.", true);
+                            }
+                        });
+                        actions.appendChild(btnSt);
+                    });
+
+                    card.appendChild(actions);
+                    card.appendChild(diagSlot);
+                    box.appendChild(card);
+                });
+            }
+
+            function renderFounderDashboard(payload) {
+                const s = payload.summary || {};
+                const setTxt = (id, val) => {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = String(val ?? 0);
+                };
+                setTxt("kpiActiveLicenses", s.active_licenses ?? 0);
+                setTxt("kpiFounderLicenses", s.founder_licenses ?? 0);
+                setTxt("kpiDemoLicenses", s.demo_licenses ?? 0);
+                setTxt("kpiEscalatedAndSeats", `${s.escalated_tickets ?? 0} / ${s.active_seats_total ?? 0}`);
+
+                const licBody = document.getElementById("founderLicensesBody");
+                if (licBody instanceof HTMLElement) {
+                    limpiarHijos(licBody);
+                    (payload.licenses || []).forEach((lic) => {
+                        const tr = document.createElement("tr");
+                        tr.appendChild(crearCelda(lic.license_id, true));
+                        tr.appendChild(crearCelda(`${lic.holder_ruc || "—"} · ${lic.holder_name || ""}`));
+                        tr.appendChild(
+                            crearCelda(
+                                `${lic.plan_name || "—"} (${lic.max_rucs || 1} RUC · ${lic.max_seats || 1} PC · ${lic.cloud_gb ?? 0} GB${lic.is_founder ? " · Fundador" : ""})`,
+                            ),
+                        );
+                        tr.appendChild(crearCelda(`${lic.environment || "production"} · ${String(lic.expires_at || "").slice(0, 10)}`));
+                        licBody.appendChild(tr);
+                    });
+                }
+
+                const auditBody = document.getElementById("founderAuditLogsBody");
+                if (auditBody instanceof HTMLElement) {
+                    limpiarHijos(auditBody);
+                    (payload.audit_logs || []).forEach((log) => {
+                        const tr = document.createElement("tr");
+                        tr.appendChild(crearCelda(String(log.created_at || "").replace("T", " ").slice(0, 19)));
+                        tr.appendChild(crearCelda(`${log.actor_role || "—"} (${log.actor_city || "—"})`));
+                        tr.appendChild(crearCelda(log.action, true));
+                        tr.appendChild(crearCelda(`${log.target_table || ""}:${log.target_id || ""}`));
+                        tr.appendChild(crearCelda(log.ip_address || "—"));
+                        auditBody.appendChild(tr);
+                    });
+                }
+            }
+
+            function renderAgentDashboard(payload) {
+                const quotaBadge = document.getElementById("agentDemoQuotaBadge");
+                const q = payload.demo_quota || { used_today: 0, limit_per_day: 3, remaining_today: 3 };
+                if (quotaBadge) {
+                    quotaBadge.textContent = `Cupo hoy: ${q.used_today} / ${q.limit_per_day} (${q.remaining_today} disponibles)`;
+                }
+
+                const guidesList = document.getElementById("teamWhatsappGuidesList");
+                if (guidesList instanceof HTMLElement) {
+                    limpiarHijos(guidesList);
+                    (payload.video_guides || []).forEach((g) => {
+                        const item = document.createElement("div");
+                        item.className = "team-item-card";
+
+                        const head = document.createElement("div");
+                        head.className = "team-item-head";
+                        const tit = document.createElement("strong");
+                        tit.textContent = g.title;
+                        const dur = document.createElement("span");
+                        dur.className = "video-duration-pill";
+                        dur.textContent = g.duration || "2 min";
+                        head.appendChild(tit);
+                        head.appendChild(dur);
+                        item.appendChild(head);
+
+                        const actions = document.createElement("div");
+                        actions.className = "team-item-actions";
+
+                        const btnCopy = document.createElement("button");
+                        btnCopy.type = "button";
+                        btnCopy.className = "btn-glow team-mini-btn";
+                        btnCopy.textContent = "📋 Copiar para WhatsApp";
+                        btnCopy.addEventListener("click", async () => {
+                            try {
+                                await navigator.clipboard.writeText(g.whatsapp_text || g.url);
+                                btnCopy.textContent = "✓ Copiado para WhatsApp";
+                                setTimeout(() => {
+                                    btnCopy.textContent = "📋 Copiar para WhatsApp";
+                                }, 2500);
+                            } catch {
+                                setStatusText(globalToast, g.whatsapp_text || g.url);
+                            }
+                        });
+
+                        const linkView = document.createElement("a");
+                        linkView.href = g.url;
+                        linkView.className = "btn-glass team-mini-btn";
+                        linkView.textContent = "Abrir Guía";
+
+                        actions.appendChild(btnCopy);
+                        actions.appendChild(linkView);
+                        item.appendChild(actions);
+                        guidesList.appendChild(item);
+                    });
+                }
+            }
+
+            async function cargarDashboardEquipo() {
+                const token = getAal2Token();
+                if (!token) {
+                    cerrarSesionEquipo("");
+                    return;
+                }
+                const res = await apiTeamFetch("/api/team/dashboard", { method: "GET", token });
+                if (!res.ok || !res.data?.ok) {
+                    cerrarSesionEquipo(res.data?.message || "Sesión expirada o sin 2FA TOTP aal2 válido.");
+                    return;
+                }
+
+                const d = res.data;
+                authGate.hidden = true;
+                workspace.hidden = false;
+
+                if (roleBadge) roleBadge.textContent = `2FA TOTP (aal2) · Rol: ${d.role}`;
+                if (staffNameEl) staffNameEl.textContent = d.staff?.full_name || "Equipo QuoraTec";
+                if (staffCityEl) staffCityEl.textContent = `${d.staff?.city || "Ecuador"} · Perfil activo en staff_roles`;
+
+                if (d.role === "founder") {
+                    if (founderSection) founderSection.hidden = false;
+                    if (agentSection) agentSection.hidden = true;
+                    renderFounderDashboard(d);
+                } else {
+                    if (founderSection) founderSection.hidden = true;
+                    if (agentSection) agentSection.hidden = false;
+                    renderAgentDashboard(d);
+                }
+                renderTickets(d.tickets || [], token);
+            }
+
+            if (loginForm instanceof HTMLFormElement) {
+                loginForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const email = emailInput instanceof HTMLInputElement ? emailInput.value.trim() : "";
+                    const password = passInput instanceof HTMLInputElement ? passInput.value : "";
+                    setStatusText(authStatus, "Validando credenciales en Supabase Auth...");
+                    const res = await apiTeamFetch("/api/team/auth", {
+                        method: "POST",
+                        body: { action: "login", email, password },
+                    });
+                    if (!res.ok || !res.data?.mfa_required) {
+                        setStatusText(authStatus, res.data?.message || res.data?.error || "Acceso denegado.", true);
+                        return;
+                    }
+
+                    aal1State = {
+                        token: res.data.aal1_token || "",
+                        factorId: res.data.factor_id || "",
+                        challengeId: res.data.challenge_id || "",
+                    };
+                    if (passInput instanceof HTMLInputElement) passInput.value = "";
+
+                    if (mfaWelcome && res.data.staff_preview) {
+                        mfaWelcome.textContent = `Hola ${res.data.staff_preview.full_name} (${res.data.staff_preview.city}). Ingresa tu código TOTP de 6 dígitos.`;
+                    }
+                    if (mfaEnrollBox && !res.data.mfa_enrolled) {
+                        mfaEnrollBox.hidden = false;
+                        if (mfaQrImg instanceof HTMLImageElement && res.data.qr_code) {
+                            mfaQrImg.src = res.data.qr_code;
+                        }
+                        if (mfaSecretText) {
+                            mfaSecretText.textContent = res.data.totp_secret || "—";
+                        }
+                    } else if (mfaEnrollBox) {
+                        mfaEnrollBox.hidden = true;
+                    }
+                    if (mfaGate) mfaGate.hidden = false;
+                    if (totpInput instanceof HTMLInputElement) totpInput.focus();
+                    setStatusText(authStatus, "Paso 1 aprobado. Completa el 2FA TOTP (aal2).");
+                });
+            }
+
+            if (totpForm instanceof HTMLFormElement) {
+                totpForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const code = totpInput instanceof HTMLInputElement ? totpInput.value.trim() : "";
+                    setStatusText(authStatus, "Verificando 2FA TOTP...");
+                    const res = await apiTeamFetch("/api/team/auth", {
+                        method: "POST",
+                        body: {
+                            action: "mfa_verify",
+                            aal1_token: aal1State.token,
+                            factor_id: aal1State.factorId,
+                            challenge_id: aal1State.challengeId,
+                            code,
+                        },
+                    });
+                    if (!res.ok || !res.data?.access_token) {
+                        setStatusText(authStatus, res.data?.message || res.data?.error || "Código TOTP inválido.", true);
+                        return;
+                    }
+                    setAal2Token(res.data.access_token);
+                    aal1State = { token: "", factorId: "", challengeId: "" };
+                    setStatusText(authStatus, "");
+                    cargarDashboardEquipo();
+                });
+            }
+
+            if (resetAuthBtn) resetAuthBtn.addEventListener("click", () => cerrarSesionEquipo(""));
+            if (logoutBtn) logoutBtn.addEventListener("click", () => cerrarSesionEquipo("Sesión cerrada correctamente."));
+            if (refreshBtn) refreshBtn.addEventListener("click", () => cargarDashboardEquipo());
+
+            // Auto-completar valores por plan para el emisor anual del Founder
+            const annualPlanSelect = document.getElementById("annualPlanSelect");
+            if (annualPlanSelect instanceof HTMLSelectElement) {
+                annualPlanSelect.addEventListener("change", () => {
+                    const p = PLANES_V240[annualPlanSelect.value];
+                    if (!p) return;
+                    const rInp = document.getElementById("annualMaxRucs");
+                    const sInp = document.getElementById("annualMaxSeats");
+                    const cInp = document.getElementById("annualCloudGb");
+                    const mSel = document.getElementById("annualStorageModes");
+                    if (rInp instanceof HTMLInputElement) rInp.value = String(p.rucsMax);
+                    if (sInp instanceof HTMLInputElement) sInp.value = String(p.estacionesBase);
+                    if (cInp instanceof HTMLInputElement) cInp.value = String(p.nubeGbBase);
+                    if (mSel instanceof HTMLSelectElement) {
+                        mSel.value = p.nubeGbBase >= 150 ? "local,hybrid,cloud_dedicated" : p.nubeGbBase > 0 ? "local,hybrid" : "local";
+                    }
+                });
+            }
+
+            // Emisor Anual (Founder)
+            const annualForm = document.getElementById("teamAnnualForm");
+            if (annualForm instanceof HTMLFormElement) {
+                annualForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const resBox = document.getElementById("annualIssueResult");
+                    setStatusText(resBox, "Firmando licencia anual en backend...");
+                    const payload = {
+                        mode: "annual",
+                        plan_name: document.getElementById("annualPlanSelect")?.value || "CONTADOR",
+                        environment: document.getElementById("annualEnvSelect")?.value || "production",
+                        holder_name: document.getElementById("annualHolderName")?.value?.trim() || "",
+                        holder_ruc: document.getElementById("annualHolderRuc")?.value?.trim() || "",
+                        hwid_inicial: document.getElementById("annualHwid")?.value?.trim() || "",
+                        storage_modes: document.getElementById("annualStorageModes")?.value || "local",
+                        max_rucs: Number(document.getElementById("annualMaxRucs")?.value || 1),
+                        max_seats: Number(document.getElementById("annualMaxSeats")?.value || 1),
+                        cloud_gb: Number(document.getElementById("annualCloudGb")?.value || 0),
+                        is_founder: Boolean(document.getElementById("annualIsFounder")?.checked),
+                    };
+                    const res = await apiTeamFetch("/api/team/issue-license", {
+                        method: "POST",
+                        token: getAal2Token(),
+                        body: payload,
+                    });
+                    if (!res.ok || !res.data?.lic_envelope) {
+                        setStatusText(resBox, res.data?.message || res.data?.error || "Error emitiendo licencia.", true);
+                        return;
+                    }
+                    descargarArchivoLic(res.data.lic_filename, res.data.lic_envelope);
+                    setStatusText(resBox, `Licencia ${res.data.license?.license_id} emitida y descargada.`);
+                    cargarDashboardEquipo();
+                });
+            }
+
+            // Emisor Demo 15 Días (Support Agent / Founder)
+            const demoForm = document.getElementById("teamDemoForm");
+            if (demoForm instanceof HTMLFormElement) {
+                demoForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const resBox = document.getElementById("demoIssueResult");
+                    setStatusText(resBox, "Generando Demo de 15 días en servidor...");
+                    const payload = {
+                        mode: "demo",
+                        holder_name: document.getElementById("demoHolderName")?.value?.trim() || "",
+                        holder_ruc: document.getElementById("demoHolderRuc")?.value?.trim() || "",
+                        hwid_inicial: document.getElementById("demoHwid")?.value?.trim() || "",
+                    };
+                    const res = await apiTeamFetch("/api/team/issue-license", {
+                        method: "POST",
+                        token: getAal2Token(),
+                        body: payload,
+                    });
+                    if (!res.ok || !res.data?.lic_envelope) {
+                        setStatusText(resBox, res.data?.message || res.data?.error || "No se pudo emitir la demo.", true);
+                        return;
+                    }
+                    descargarArchivoLic(res.data.lic_filename, res.data.lic_envelope);
+                    setStatusText(resBox, `Demo 15 días ${res.data.license?.license_id} emitida y descargada.`);
+                    cargarDashboardEquipo();
+                });
+            }
+
+            // Consulta Solo Lectura por RUC
+            const lookupForm = document.getElementById("teamLookupForm");
+            if (lookupForm instanceof HTMLFormElement) {
+                lookupForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const ruc = document.getElementById("teamLookupRucInput")?.value?.trim() || "";
+                    const outBox = document.getElementById("teamLookupResult");
+                    if (!(outBox instanceof HTMLElement)) return;
+                    limpiarHijos(outBox);
+                    const loading = document.createElement("p");
+                    loading.className = "muted-note";
+                    loading.textContent = "Consultando licencia...";
+                    outBox.appendChild(loading);
+
+                    const res = await apiTeamFetch("/api/team/license-lookup", {
+                        method: "POST",
+                        token: getAal2Token(),
+                        body: { holder_ruc: ruc },
+                    });
+                    limpiarHijos(outBox);
+                    if (!res.ok) {
+                        const err = document.createElement("p");
+                        err.className = "muted-note";
+                        err.textContent = res.data?.error || "Error consultando RUC.";
+                        outBox.appendChild(err);
+                        return;
+                    }
+                    const list = res.data?.licenses || [];
+                    if (list.length === 0) {
+                        const none = document.createElement("p");
+                        none.className = "muted-note";
+                        none.textContent = `No se encontraron licencias para el RUC/Cédula ${ruc}.`;
+                        outBox.appendChild(none);
+                        return;
+                    }
+                    const wrap = document.createElement("div");
+                    wrap.className = "team-lookup-cards";
+                    list.forEach((lic) => {
+                        const card = document.createElement("div");
+                        card.className = "team-item-card";
+                        const h = document.createElement("strong");
+                        h.textContent = `${lic.plan_name} · ${lic.status} (${lic.environment})`;
+                        const meta = document.createElement("p");
+                        meta.className = "muted-note";
+                        meta.textContent = `${lic.holder_name} · ID ${lic.license_id} · Máx ${lic.max_rucs} RUCs / ${lic.max_seats} PCs · ${lic.cloud_gb ?? 0} GB · Equipos activos: ${res.data.active_seats_count ?? 0} · Vence: ${String(lic.expires_at || "").slice(0, 10)}`;
+                        card.appendChild(h);
+                        card.appendChild(meta);
+                        wrap.appendChild(card);
+                    });
+                    outBox.appendChild(wrap);
+                });
+            }
+
+            if (getAal2Token()) {
+                cargarDashboardEquipo();
+            }
+        }
+
+        inicializarPanelEquipo();
         leerParametrosUrlSeguros();
     });
 
