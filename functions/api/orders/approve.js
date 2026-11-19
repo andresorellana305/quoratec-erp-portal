@@ -15,6 +15,7 @@ import {
     verifyAdminSecret,
     verifyAndIssueLicense,
 } from "../../_lib/license_issuer.js";
+import { recordApprovedOrderCommission } from "../../_lib/commission_service.js";
 
 const CAMPOS_PERMITIDOS = ["order_id", "order_ref"];
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -73,6 +74,17 @@ export async function onRequestPost(context) {
         return jsonSegura({ ok: false, error: result.error }, result.status || 500);
     }
 
+    let commissionResult = null;
+    if (result.order?.referral_code && !result.idempotent) {
+        commissionResult = await recordApprovedOrderCommission(
+            supa,
+            env,
+            result.order,
+            result.license,
+            Number(result.order.monto_autorizado_usd),
+        );
+    }
+
     return jsonSegura({
         ok: true,
         idempotent: result.idempotent,
@@ -82,5 +94,6 @@ export async function onRequestPost(context) {
         lic_storage_path: result.lic_storage_path,
         email_sent: result.email_sent,
         email_error: result.email_error || null,
+        commission: commissionResult,
     }, 200);
 }

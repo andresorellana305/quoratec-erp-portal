@@ -161,7 +161,7 @@ def test_1_static_commercial_and_supply_chain() -> None:
         re.compile(r"\bEd25519\b|\bRSA-2048\b", re.I),
         re.compile(r"no-referrer|releases/latest", re.I),
         re.compile("Fausto" + r"\s+" + ".*?" + "Orellana", re.I),
-        re.compile(r"2\.[45]\.0|TributaFlow|tfbkp", re.I),
+        re.compile(r"2\.[45]\.0|" + "Tributa" + "Flow|tfbkp", re.I),
         re.compile(r"\b9\s+m[oó]dulos\b", re.I),
     ]
 

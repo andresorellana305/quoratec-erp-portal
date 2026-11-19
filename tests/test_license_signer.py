@@ -3,7 +3,7 @@
 Pruebas unitarias para `functions/_lib/license_signer.js` (Ed25519 v2).
 Genera sobres `.lic` reales usando Node.js WebCrypto + `ed25519_private_key.pem`
 y los verifica tanto con `cryptography` (clave pública embebida) como con
-`TributaFlow_Pro/core/license_manager.py` en modo solo lectura (`dont_write_bytecode`).
+`QuoraTec_ERP/core/license_manager.py` en modo solo lectura (`dont_write_bytecode`).
 """
 
 import base64
@@ -16,7 +16,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-# Regla estricta de solo lectura sobre TributaFlow_Pro: no escribir .pyc/__pycache__ allí.
+# Regla estricta de solo lectura sobre QuoraTec_ERP: no escribir .pyc/__pycache__ allí.
 sys.dont_write_bytecode = True
 
 from cryptography.hazmat.primitives import serialization
@@ -24,8 +24,8 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 
 PORTAL_DIR = Path(__file__).resolve().parents[1]
 WORKSPACE_DIR = PORTAL_DIR.parent
-TRIBUTAFLOW_PRO_DIR = WORKSPACE_DIR / "TributaFlow_Pro"
-PRIVATE_KEY_PATH = TRIBUTAFLOW_PRO_DIR / "ed25519_private_key.pem"
+QUORATEC_ERP_DIR = WORKSPACE_DIR / "QuoraTec_ERP"
+PRIVATE_KEY_PATH = QUORATEC_ERP_DIR / "ed25519_private_key.pem"
 SIGNER_JS_PATH = PORTAL_DIR / "functions" / "_lib" / "license_signer.js"
 
 EMBEDDED_ED25519_PUB_PEM = b"""-----BEGIN PUBLIC KEY-----
@@ -73,11 +73,11 @@ class TestLicenseSignerEd25519(unittest.TestCase):
         assert isinstance(cls.pub_key, Ed25519PublicKey)
 
         # Preparar entorno aislado para importar core.license_manager sin tocar disco fuera de temp
-        cls._tmp_dir = tempfile.TemporaryDirectory(prefix="tf_signer_test_")
-        os.environ["TRIBUTAFLOW_ENV"] = "test"
-        os.environ["TRIBUTAFLOW_ANCHOR_TEST_DIR"] = cls._tmp_dir.name
-        if str(TRIBUTAFLOW_PRO_DIR) not in sys.path:
-            sys.path.insert(0, str(TRIBUTAFLOW_PRO_DIR))
+        cls._tmp_dir = tempfile.TemporaryDirectory(prefix="qt_signer_test_")
+        os.environ["QUORATEC_ENV"] = "test"
+        os.environ["QUORATEC_ANCHOR_TEST_DIR"] = cls._tmp_dir.name
+        if str(QUORATEC_ERP_DIR) not in sys.path:
+            sys.path.insert(0, str(QUORATEC_ERP_DIR))
 
         from core.license_manager import verificar_licencia_ed25519
 
@@ -130,7 +130,7 @@ class TestLicenseSignerEd25519(unittest.TestCase):
         self.assertEqual(payload["cliente"], "Juan Pérez")
         self.assertEqual(payload["ruc_titular"], "1712345678001")
 
-        # Verificar con motor oficial TributaFlow_Pro en el HWID autorizado
+        # Verificar con motor oficial QuoraTec_ERP en el HWID autorizado
         ok, info = self.verificar_licencia_ed25519(json.dumps(envelope), hwid_actual=hwid)
         self.assertTrue(ok, f"Falló verificación en license_manager: {info}")
         self.assertEqual(info["tier"], "PERSONAL_PRO")

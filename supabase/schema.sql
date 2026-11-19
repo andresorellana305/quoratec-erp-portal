@@ -451,3 +451,179 @@ $$;
 
 revoke all on function public.get_guest_order_status(text, text, text) from public, anon, authenticated;
 grant execute on function public.get_guest_order_status(text, text, text) to service_role;
+
+-- ============================================================================
+-- 10. EXTENSIONES V3.0.0: REFERIDOS, PAYPHONE ID, RELEASES Y CENTRALIS BRIDGE
+-- ============================================================================
+alter table public.orders add column if not exists referral_code text;
+alter table public.orders add column if not exists payphone_transaction_id text;
+alter table public.orders add column if not exists sale_type text not null default 'new_sale';
+create index if not exists idx_orders_payphone_tx on public.orders(payphone_transaction_id) where payphone_transaction_id is not null;
+
+create table if not exists public.commission_policies (
+    id text primary key default 'default',
+    new_sale_rate numeric(5, 2) not null default 25.00 check (new_sale_rate >= 0 and new_sale_rate <= 50),
+    renewal_rate numeric(5, 2) not null default 15.00 check (renewal_rate >= 0 and renewal_rate <= 50),
+    hold_days integer not null default 7 check (hold_days >= 0 and hold_days <= 90),
+    updated_by uuid references auth.users(id) on delete set null,
+    updated_at timestamptz not null default now()
+);
+
+create table if not exists public.referral_commissions (
+    id uuid primary key default gen_random_uuid(),
+    order_id uuid unique references public.orders(id) on delete set null,
+    license_id uuid references public.licenses(id) on delete set null,
+    referral_code text not null,
+    advisor_name text,
+    sale_type text not null default 'new_sale' check (sale_type in ('new_sale', 'renewal')),
+    payment_type text not null default 'first_payment' check (payment_type in ('first_payment', 'renewal')),
+    commission_rate numeric(5, 2) not null default 25.00 check (commission_rate >= 0 and commission_rate <= 50),
+    base_amount_usd numeric(10, 2) not null check (base_amount_usd >= 0),
+    net_collected_usd numeric(10, 2) not null default 0 check (net_collected_usd >= 0),
+    list_price_usd numeric(10, 2),
+    discount_applied_usd numeric(10, 2) not null default 0 check (discount_applied_usd >= 0),
+    commission_usd numeric(10, 2) not null check (commission_usd >= 0),
+    hold_days integer not null default 7 check (hold_days >= 0 and hold_days <= 90),
+    approved_at timestamptz,
+    eligible_at timestamptz,
+    status text not null default 'pending_settlement' check (status in ('pending_payment', 'pending_settlement', 'payable', 'paid', 'reversed')),
+    reversal_reason text,
+    paid_at timestamptz,
+    created_at timestamptz not null default now()
+);
+
+alter table public.referral_commissions add column if not exists sale_type text not null default 'new_sale';
+alter table public.referral_commissions add column if not exists net_collected_usd numeric(10, 2) not null default 0;
+alter table public.referral_commissions add column if not exists list_price_usd numeric(10, 2);
+alter table public.referral_commissions add column if not exists discount_applied_usd numeric(10, 2) not null default 0;
+alter table public.referral_commissions add column if not exists hold_days integer not null default 7;
+alter table public.referral_commissions add column if not exists approved_at timestamptz;
+alter table public.referral_commissions add column if not exists eligible_at timestamptz;
+alter table public.referral_commissions add column if not exists reversal_reason text;
+
+create index if not exists idx_referral_commissions_code_status on public.referral_commissions(referral_code, status, created_at desc);
+create index if not exists idx_referral_commissions_eligible on public.referral_commissions(status, eligible_at);
+
+create table if not exists public.app_config_releases (
+    id uuid primary key default gen_random_uuid(),
+    config_key text not null check (config_key in ('reglas_sri', 'desktop_release')),
+    version text not null,
+    payload_json jsonb not null default '{}'::jsonb,
+    sha256 text,
+    published_by uuid references auth.users(id) on delete set null,
+    published_at timestamptz not null default now()
+);
+
+create index if not exists idx_app_config_releases_key_pub on public.app_config_releases(config_key, published_at desc);
+
+create table if not exists public.centralis_api_keys (
+    id uuid primary key default gen_random_uuid(),
+    org_token text not null,
+    empresa_ruc text not null,
+    api_key_hash text not null,
+    label text,
+    is_active boolean not null default true,
+    created_at timestamptz not null default now(),
+    unique (empresa_ruc, api_key_hash)
+);
+
+create index if not exists idx_centralis_api_keys_ruc on public.centralis_api_keys(empresa_ruc, is_active);
+
+create table if not exists public.centralis_catalog_items (
+    id uuid primary key default gen_random_uuid(),
+    org_token text not null,
+    empresa_ruc text not null,
+    sku text not null,
+    nombre text not null,
+    precio_detalle numeric(12, 4) not null default 0,
+    precio_mayor numeric(12, 4) not null default 0,
+    iva_pct numeric(5, 2) not null default 15,
+    stock_disponible numeric(12, 4) not null default 0,
+    activo boolean not null default true,
+    updated_at timestamptz not null default now(),
+    unique (empresa_ruc, sku)
+);
+
+create index if not exists idx_centralis_catalog_ruc on public.centralis_catalog_items(empresa_ruc, activo);
+
+alter table public.referral_commissions enable row level security;
+alter table public.app_config_releases enable row level security;
+alter table public.centralis_api_keys enable row level security;
+alter table public.centralis_catalog_items enable row level security;
+
+revoke all on public.referral_commissions from anon, public;
+revoke all on public.centralis_api_keys from anon, public;
+revoke all on public.centralis_catalog_items from anon, public;
+
+drop policy if exists "referral_commissions_founder_all" on public.referral_commissions;
+create policy "referral_commissions_founder_all"
+    on public.referral_commissions for all
+    to authenticated
+    using (public.current_staff_role() = 'founder')
+    with check (public.current_staff_role() = 'founder');
+
+drop policy if exists "app_config_releases_public_select" on public.app_config_releases;
+create policy "app_config_releases_public_select"
+    on public.app_config_releases for select
+    to anon, authenticated
+    using (true);
+
+drop policy if exists "app_config_releases_founder_write" on public.app_config_releases;
+create policy "app_config_releases_founder_write"
+    on public.app_config_releases for all
+    to authenticated
+    using (public.current_staff_role() = 'founder')
+    with check (public.current_staff_role() = 'founder');
+
+alter table public.commission_policies enable row level security;
+revoke all on public.commission_policies from anon, public;
+
+drop policy if exists "commission_policies_founder_all" on public.commission_policies;
+create policy "commission_policies_founder_all"
+    on public.commission_policies for all
+    to authenticated
+    using (public.current_staff_role() = 'founder')
+    with check (public.current_staff_role() = 'founder');
+
+-- ============================================================================
+-- 11. SEPARACIÓN ESTRICTA DE ROLES: ASESORA / VENDEDORA (sales_agent) + RLS
+-- ============================================================================
+alter table public.staff_roles add column if not exists referral_code text;
+create unique index if not exists idx_staff_roles_referral_code on public.staff_roles(upper(referral_code)) where referral_code is not null;
+
+do $$
+begin
+    alter table public.staff_roles drop constraint if exists staff_roles_role_check;
+    alter table public.staff_roles add constraint staff_roles_role_check check (role in ('founder', 'support_agent', 'sales_agent'));
+exception
+    when others then null;
+end $$;
+
+create or replace function public.current_staff_referral_code()
+returns text
+language sql
+stable
+security definer
+set search_path = public
+as $$
+    select sr.referral_code
+    from public.staff_roles sr
+    where sr.user_id = auth.uid()
+      and sr.is_active = true
+      and sr.role = 'sales_agent'
+      and public.is_aal2_session()
+    limit 1;
+$$;
+
+revoke all on function public.current_staff_referral_code() from public;
+grant execute on function public.current_staff_referral_code() to authenticated, service_role;
+
+drop policy if exists "referral_commissions_sales_agent_select_own" on public.referral_commissions;
+create policy "referral_commissions_sales_agent_select_own"
+    on public.referral_commissions for select
+    to authenticated
+    using (
+        public.current_staff_role() = 'sales_agent'
+        and public.current_staff_referral_code() is not null
+        and upper(referral_code) = upper(public.current_staff_referral_code())
+    );

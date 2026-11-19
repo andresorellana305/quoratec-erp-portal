@@ -50,7 +50,7 @@ export async function onRequestPost(context) {
             return jsonSegura({ ok: false, error: esquema.error }, esquema.status);
         }
 
-        const auth = await exigirStaffAutenticado(request, env, { requireAal2: true });
+        const auth = await exigirStaffAutenticado(request, env, { requireAal2: true, allowedRoles: ["founder", "support_agent"] });
         if (!auth.ok) return auth.response;
 
         const ticketId = String(body.data.ticket_id || "").trim();

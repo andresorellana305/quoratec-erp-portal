@@ -24,7 +24,7 @@
   },
   "precio_seat_extra_usd": 49.0,
   "iva_nota": "Precios netos en dólares USD por suscripción anual (365 días). Todas las funcionalidades incluidas en los 5 planes.",
-  "politica_expiracion": "Al finalizar los 15 días de prueba gratuita o vencer la licencia anual, QuoraTec ERP transiciona de forma segura al Modo Solo Lectura sin eliminar bases de datos ni respaldos .nxbackup locales hasta renovar mediante archivo .lic.",
+  "politica_expiracion": "Al finalizar los 15 días de prueba gratuita o vencer la licencia anual, QuoraTec ERP transiciona de forma segura al Modo Solo Lectura sin eliminar bases de datos ni respaldos .tfbackup locales hasta renovar mediante archivo .lic.",
   "politica_reembolsos": "No aplican devoluciones ni reembolsos una vez emitido e instalado el archivo de licencia .lic, al disponerse previamente de 15 días gratis con todas las funcionalidades desbloqueadas para validar el software en el equipo.",
   "payphone_habilitado": false,
   "payphone_estado": "Próximamente / En actualización",
@@ -100,7 +100,7 @@
   "arquitectura_seguridad": {
     "cifrado_local": "AES-256-GCM",
     "modo": "Local-First + Nube Híbrida",
-    "respaldo_extension": ".nxbackup",
+    "respaldo_extension": ".tfbackup",
     "nube_opcional": "Desde Nube opcional (+$29/año - 10 GB) en Emprendedor hasta 150 GB en Enterprise",
     "cumplimiento_legal": "LOPDP Ecuador + EULA + Deslinde Tributario"
   },

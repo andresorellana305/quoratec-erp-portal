@@ -328,7 +328,7 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
         "version_2_3_0": re.compile(r"2\.3\.0|v230", re.I),
         "version_2_4_0_or_2_5_0": re.compile(r"2\.[45]\.0", re.I),
         "legacy_github_owner": re.compile("Fausto" + r"\s*" + ".*" + "Orellana", re.I),
-        "legacy_brand": re.compile(r"TributaFlow|tfbkp", re.I),
+        "legacy_brand": re.compile("Tributa" + "Flow|tfbkp", re.I),
         "trial_14_dias": re.compile(r"\b14\s+d[ií]as|\b14d\b", re.I),
         "ruc_2": re.compile(r"\b2\s+RUCs?\b", re.I),
         "lineas_15_50_200": re.compile(r"\b(?:15|50|200)\s+l[ií]neas\b", re.I),
@@ -662,7 +662,7 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         ("modulos/auditor-fantasma.html", "72h"),
         ("modulos/generador-ats.html", "ATMMAAAA.xml"),
         ("modulos/busqueda-ruc.html", "Excel / PDF"),
-        ("modulos/ajustes-seguridad.html", "7. Respaldos .nxbackup"),
+        ("modulos/ajustes-seguridad.html", "7. Respaldos .tfbackup"),
     ]
     for mod_rel, marker in module_specs:
         _assert(marker in pages_html[mod_rel][0], f"Falta especificación '{marker}' en {mod_rel}")

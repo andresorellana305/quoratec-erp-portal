@@ -202,7 +202,7 @@
             pasos: [
                 "1. Descarga y descomprime QuoraTec_ERP_v3.0.0_Windows_x64.zip (86.3 MB) en una carpeta local.",
                 "2. Verifica el SHA-256 (ca49bcd4...33a0c051) antes de ejecutar QuoraTec_ERP.exe.",
-                "3. Tus datos, claves SRI y firma .p12 quedan cifrados localmente con AES-256-GCM y respaldos .nxbackup.",
+                "3. Tus datos, claves SRI y firma .p12 quedan cifrados localmente con AES-256-GCM y respaldos .tfbackup.",
             ],
         },
         macos: {
@@ -312,7 +312,7 @@
             ],
         },
         licenciamiento: {
-            titulo: "Reembolsos, Traslado .nxbackup y Soporte Oficial QuoraTec",
+            titulo: "Reembolsos, Traslado .tfbackup y Soporte Oficial QuoraTec",
             secciones: [
                 {
                     sub: "1. Actualizaciones Normativas SRI 2026 y Soporte Técnico",
@@ -320,7 +320,7 @@
                 },
                 {
                     sub: "2. Renovación, Modo Solo Lectura y Traslado sin Borrado de Datos",
-                    txt: "Si tu licencia o prueba de 15 días expira, conservas acceso en Modo Solo Lectura sin pérdida de datos hasta cargar una nueva llave .lic. Ofrecemos soporte para traslado por cambio o daño de PC mediante respaldo cifrado .nxbackup.",
+                    txt: "Si tu licencia o prueba de 15 días expira, conservas acceso en Modo Solo Lectura sin pérdida de datos hasta cargar una nueva llave .lic. Ofrecemos soporte para traslado por cambio o daño de PC mediante respaldo cifrado .tfbackup.",
                 },
             ],
         },
@@ -1000,7 +1000,7 @@
         const notaEdicion = crearEl(
             "div",
             "enterprise-lan-notice",
-            "Incluye 15 días gratis con todas las funcionalidades 100 % desbloqueadas (sin tarjeta). Al expirar, transiciona de forma segura a Modo Solo Lectura sin borrar datos ni respaldos .nxbackup locales."
+            "Incluye 15 días gratis con todas las funcionalidades 100 % desbloqueadas (sin tarjeta). Al expirar, transiciona de forma segura a Modo Solo Lectura sin borrar datos ni respaldos .tfbackup locales."
         );
 
         const btnDownload = crearEl("a", "btn-glow", `⬇ Descargar ${soMeta.archivo}`);
@@ -1740,7 +1740,7 @@
         [
             "✓ 15 días gratis con todas las funcionalidades 100 % desbloqueadas (sin tarjeta).",
             "✓ Fundadores QuoraTec: 25 % DTO vitalicio para los primeros 30 clientes.",
-            "✓ Modo Solo Lectura al expirar: tus datos y respaldos .nxbackup nunca se eliminan.",
+            "✓ Modo Solo Lectura al expirar: tus datos y respaldos .tfbackup nunca se eliminan.",
             "✓ Emisión .lic tras validar pago Deuna! / Transferencia (no reembolsable tras emitirse la llave).",
         ].forEach((regla) => rulesBox.appendChild(crearEl("div", "", regla)));
 
@@ -2954,7 +2954,7 @@
             });
             if (countEl) {
                 countEl.textContent = visibles === 0
-                    ? "0 coincidencias. Prueba: nxbackup, firma .p12, fifo, rimpe, agp, fantasma, centralis, copiloto, ats, rdep o cxc."
+                    ? "0 coincidencias. Prueba: tfbackup, firma .p12, fifo, rimpe, agp, fantasma, centralis, copiloto, ats, rdep o cxc."
                     : `Mostrando ${visibles} de ${cards.length} rutas oficiales de QuoraTec ERP v${runtimeVersion}`;
             }
         }
@@ -3214,7 +3214,7 @@
             { icon: "📦", title: "3. Inventario, Kardex & Cartera", desc: "FIFO/Caducidad, Multi-bodega y CxC/CxP", href: "index.html#suite-inventario-cartera" },
             { icon: "📊", title: "4. Contabilidad NIIF & Nómina IESS", desc: "Libro Diario, Balances NIIF, roles y RDEP", href: "index.html#suite-contabilidad-niif" },
             { icon: "🔍", title: "5. Impuestos, Auditoría & Consultas", desc: "Auditor Fantasma, RIMPE, Clasificador AGP y ATS", href: "index.html#suite-impuestos-auditoria" },
-            { icon: "🛡️", title: "6. Sistema, IA, Centralis & .nxbackup", desc: "Copiloto IA Local, WhatsApp/Telegram y Red LAN", href: "index.html#suite-sistema-lan" },
+            { icon: "🛡️", title: "6. Sistema, IA, Centralis & .tfbackup", desc: "Copiloto IA Local, WhatsApp/Telegram y Red LAN", href: "index.html#suite-sistema-lan" },
         ];
 
         const navRoot = obtenerPrefijoRuta();
@@ -4053,8 +4053,80 @@
         }
 
         inicializarPanelEquipo();
+        inicializarAddonsAutoservicio();
         leerParametrosUrlSeguros();
     });
+
+    function inicializarAddonsAutoservicio() {
+        const form = document.getElementById("addonsSelfServiceForm");
+        if (!form) return;
+        const preview = document.getElementById("addonsTotalPreview");
+        const resultBox = document.getElementById("addonsResultBox");
+        const checkboxes = Array.from(form.querySelectorAll('input[name="addons"]'));
+
+        const updateTotal = () => {
+            const total = checkboxes
+                .filter((cb) => cb.checked)
+                .reduce((acc, cb) => acc + Number(cb.getAttribute("data-addon-usd") || 0), 0);
+            if (preview) {
+                preview.textContent = `Total seleccionado: $${total.toFixed(2)} USD`;
+            }
+        };
+
+        checkboxes.forEach((cb) => cb.addEventListener("change", updateTotal));
+        updateTotal();
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const selectedAddons = checkboxes.filter((cb) => cb.checked).map((cb) => cb.value);
+            if (selectedAddons.length === 0) {
+                if (resultBox) {
+                    resultBox.textContent = "Selecciona al menos una ampliación (Add-on) para continuar.";
+                }
+                return;
+            }
+            const rucOrToken = String(document.getElementById("addonRucOrToken")?.value || "").trim();
+            const email = String(document.getElementById("addonEmail")?.value || "").trim();
+            const paymentChannel = String(document.getElementById("addonPaymentChannel")?.value || "DEUNA_PERSONAL");
+            const voucherRef = String(document.getElementById("addonVoucherRef")?.value || "").trim();
+
+            if (resultBox) {
+                resultBox.textContent = "Procesando solicitud de ampliación...";
+            }
+
+            try {
+                const resp = await fetch("/api/licenses/addons", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        ruc_or_token: rucOrToken,
+                        email,
+                        addons: selectedAddons,
+                        payment_channel: paymentChannel,
+                        voucher_ref: voucherRef || undefined,
+                    }),
+                });
+                const data = await resp.json().catch(() => ({}));
+                if (!resp.ok || !data.ok) {
+                    if (resultBox) {
+                        resultBox.textContent = `Error: ${data.message || data.error || "No se pudo procesar la ampliación."}`;
+                    }
+                    return;
+                }
+                if (data.payphone_url) {
+                    window.location.href = data.payphone_url;
+                    return;
+                }
+                if (resultBox) {
+                    resultBox.textContent = data.message || `Solicitud registrada (${data.order_ref || data.license_key || "OK"}).`;
+                }
+            } catch {
+                if (resultBox) {
+                    resultBox.textContent = "Error de red al conectar con /api/licenses/addons.";
+                }
+            }
+        });
+    }
 
     if (!Object.prototype.hasOwnProperty.call(window, "__TF_SECURITY__")) {
         Object.defineProperty(window, "__TF_SECURITY__", {

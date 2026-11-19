@@ -66,8 +66,8 @@
   {
     "output": "modulos/ajustes-seguridad.html",
     "template": "pages/modulos/ajustes-seguridad.html",
-    "title": "Ajustes, Red LAN TCP/IP y Respaldos .nxbackup | QuoraTec ERP v3.0.0",
-    "description": "Matriz de permisos ✓/🔒, Red LAN TCP/IP centralizada, nube híbrida/dedicada, Copiloto IA Local, Centralis Engine y backups .nxbackup cifrados.",
+    "title": "Ajustes, Red LAN TCP/IP y Respaldos .tfbackup | QuoraTec ERP v3.0.0",
+    "description": "Matriz de permisos ✓/🔒, Red LAN TCP/IP centralizada, nube híbrida/dedicada, Copiloto IA Local, Centralis Engine y backups .tfbackup cifrados.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
@@ -211,7 +211,7 @@
     "output": "modulos/mis-contribuyentes.html",
     "template": "pages/modulos/mis-contribuyentes.html",
     "title": "Mis Contribuyentes (Multi-RUC) | QuoraTec ERP v3.0.0",
-    "description": "Gestión multi-empresa aislada con SQLite cifrada por HWID (PBKDF2 + AES-256-GCM + HMAC), clave SRI local y respaldo .nxbackup.",
+    "description": "Gestión multi-empresa aislada con SQLite cifrada por HWID (PBKDF2 + AES-256-GCM + HMAC), clave SRI local y respaldo .tfbackup.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
@@ -323,7 +323,7 @@
     "output": "politicas.html",
     "template": "pages/politicas.html",
     "title": "Acuerdo de Licencia (EULA), LOPDP y Políticas v3.0.0 | QuoraTec ERP — QuoraTec",
-    "description": "Acuerdo de Licencia de Usuario Final (EULA) y Condiciones de Uso de QuoraTec ERP Edición 2026 (v3.0.0) por QuoraTec: prueba gratis 15 días, Modo Solo Lectura, privacidad Local-First AES-256-GCM, LOPDP Ecuador y respaldos .nxbackup.",
+    "description": "Acuerdo de Licencia de Usuario Final (EULA) y Condiciones de Uso de QuoraTec ERP Edición 2026 (v3.0.0) por QuoraTec: prueba gratis 15 días, Modo Solo Lectura, privacidad Local-First AES-256-GCM, LOPDP Ecuador y respaldos .tfbackup.",
     "active_nav": "politicas",
     "nav_cta": "link",
     "pre_footer": {

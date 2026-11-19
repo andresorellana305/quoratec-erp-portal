@@ -3,16 +3,17 @@
    ========================================================================== */
 
 :root {
-    --bg-base: #030712;
-    --bg-surface: #0b1120;
-    --bg-card: #111827;
-    --bg-card-alt: #0f172a;
-    --border-subtle: rgba(148, 163, 184, 0.16);
-    --border-highlight: rgba(56, 189, 248, 0.45);
-    --primary: #2563eb;
+    --bg-base: #0B1221;
+    --bg-surface: #0F172A;
+    --bg-card: #0F172A;
+    --bg-card-alt: #0B1221;
+    --border-subtle: #1E293B;
+    --border-highlight: rgba(16, 185, 129, 0.45);
+    --primary: #2563EB;
     --primary-hover: #1d4ed8;
-    --accent: #38bdf8;
-    --success: #10b981;
+    --accent: #34D399;
+    --accent-product: #34D399;
+    --success: #10B981;
     --warning: #f59e0b;
     --danger: #ef4444;
     --deuna: #6d28d9;
@@ -4686,3 +4687,48 @@ html, body {
 
 
 
+
+/* Sello Matriz QuoraTec en Footer & Módulo Autoservicio Add-ons */
+.footer-matriz-seal {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-matriz-seal .muted-note {
+    margin: 0;
+}
+
+.addons-selfservice-card {
+    margin-top: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+}
+
+.addons-selfservice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 18px 0;
+}
+
+.addon-option-card {
+    background: var(--bg-base);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.addon-option-card:has(input:checked) {
+    border-color: var(--success);
+    box-shadow: 0 0 0 1px var(--success);
+}

@@ -16,7 +16,7 @@ import {
     validarBearerTokenHeader,
 } from "../../_shared/security.js";
 
-export const VALID_STAFF_ROLES = new Set(["founder", "support_agent"]);
+export const VALID_STAFF_ROLES = new Set(["founder", "support_agent", "sales_agent"]);
 
 export const WHATSAPP_VIDEO_GUIDES = Object.freeze([
     Object.freeze({
@@ -78,10 +78,10 @@ export const WHATSAPP_VIDEO_GUIDES = Object.freeze([
     Object.freeze({
         id: "vid-8",
         duration: "2 min",
-        title: "8. Copiloto IA Local, Centralis Engine y Backups .nxbackup",
+        title: "8. Copiloto IA Local, Centralis Engine y Backups .tfbackup",
         url: "https://erp.quoratec.com/modulos/ajustes-seguridad.html",
         whatsapp_text:
-            "Hola 👋 Activa tu Copiloto IA Local, pedidos WhatsApp/Telegram con Centralis Engine y respaldos .nxbackup: https://erp.quoratec.com/modulos/ajustes-seguridad.html",
+            "Hola 👋 Activa tu Copiloto IA Local, pedidos WhatsApp/Telegram con Centralis Engine y respaldos .tfbackup: https://erp.quoratec.com/modulos/ajustes-seguridad.html",
     }),
 ]);
 
@@ -133,7 +133,7 @@ export async function obtenerPerfilStaffActivo(supaCfg, userId) {
     if (!supaCfg?.configured || !supaCfg?.serviceRoleKey || !userId) return null;
     const res = await supabaseRestRequest(
         supaCfg,
-        `staff_roles?user_id=eq.${encodeURIComponent(userId)}&is_active=eq.true&select=user_id,full_name,city,role,is_active&limit=1`,
+        `staff_roles?user_id=eq.${encodeURIComponent(userId)}&is_active=eq.true&select=user_id,full_name,city,role,referral_code,is_active&limit=1`,
         { method: "GET", serviceRole: true },
     );
     if (!res.ok || !Array.isArray(res.data) || res.data.length === 0) return null;

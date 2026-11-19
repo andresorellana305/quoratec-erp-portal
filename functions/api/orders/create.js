@@ -32,6 +32,8 @@ const CAMPOS_PERMITIDOS = [
     "razon_social",
     "payment_channel",
     "hwid_inicial",
+    "referral_code",
+    "sale_type",
 ];
 
 const CAMPOS_PROHIBIDOS_TAMPERING = [
@@ -49,6 +51,13 @@ const CAMPOS_PROHIBIDOS_TAMPERING = [
     "user_id",
     "order_token",
     "order_token_hash",
+    "commission_rate",
+    "commission_usd",
+    "net_collected_usd",
+    "hold_days",
+    "eligible_at",
+    "approved_at",
+    "list_price_usd",
 ];
 
 const RAZON_SOCIAL_REGEX = /^[A-Za-zÁÉÍÓÚáéíóúÑñÜü0-9 .,&()\/-]{2,120}$/;
