@@ -15,7 +15,7 @@ import {
 } from "../../_shared/security.js";
 import { getServiceSupabaseConfig, supabaseServiceRest } from "../../_lib/license_issuer.js";
 
-const CAMPOS_PERMITIDOS = ["ruc_or_token", "email", "addons", "payment_channel", "voucher_ref"];
+const CAMPOS_PERMITIDOS = ["ruc_or_token", "email", "addons", "extra_seats", "payment_channel", "voucher_ref", "referral_code"];
 const CAMPOS_PROHIBIDOS_TAMPERING = [
     "price",
     "precio",
@@ -52,9 +52,11 @@ export async function onRequestPost(context) {
     const {
         ruc_or_token: rucOrTokenRaw,
         email: emailRaw,
-        addons,
+        addons = [],
+        extra_seats: extraSeatsRaw = 0,
         payment_channel: paymentChannelRaw = "DEUNA_PERSONAL",
         voucher_ref: voucherRefRaw,
+        referral_code: referralCodeRaw,
     } = body.data;
 
     const rucOrToken = String(rucOrTokenRaw || "").trim();
@@ -68,7 +70,12 @@ export async function onRequestPost(context) {
     if (errEmail) {
         return jsonSegura({ ok: false, error: errEmail }, 400);
     }
-    if (!Array.isArray(addons) || addons.length === 0 || addons.length > 10) {
+    const extraSeatsRequested = Number.isInteger(Number(extraSeatsRaw)) ? Number(extraSeatsRaw) : 0;
+    const addonsList = Array.isArray(addons) ? [...addons] : [];
+    for (let i = 0; i < extraSeatsRequested; i += 1) {
+        addonsList.push("PC_EXTRA");
+    }
+    if (addonsList.length === 0 || addonsList.length > 20) {
         return jsonSegura({ ok: false, error: "ADDONS_ARRAY_REQUIRED" }, 400);
     }
 
@@ -78,7 +85,7 @@ export async function onRequestPost(context) {
     let cloudDelta = 0;
     const resolvedAddons = [];
 
-    for (const rawId of addons) {
+    for (const rawId of addonsList) {
         const key = String(rawId || "").trim().toUpperCase();
         const item = ADDON_CATALOG[key];
         if (!item) {
@@ -124,6 +131,19 @@ export async function onRequestPost(context) {
     }
 
     const lic = licRes.data[0];
+    const currentPlan = String(lic.plan_name || lic.plan_id || "").trim().toUpperCase();
+    const currentCloudGb = Number(lic.cloud_gb || 0);
+    const hasCloudAfterAddon = currentCloudGb + cloudDelta > 0;
+
+    // Regla de Negocio: Multi-PC = Nube Obligatoria (Almacenamiento + Sincronización unificados)
+    if (currentPlan === "EMPRENDEDOR" && seatsDelta > 0 && !hasCloudAfterAddon) {
+        return jsonSegura({
+            ok: false,
+            error: "CLOUD_REQUIRED_FOR_MULTI_PC",
+            message: "Para conectar 2 o más computadoras necesitas tener activo el Respaldo y Sincronización en la Nube. Agrega el paquete Nube (+$29/año) o sube al plan Comercial Pro ($149/año).",
+        }, 400);
+    }
+
     const projectedQuotas = {
         org_token: lic.org_token,
         holder_ruc: lic.holder_ruc,
@@ -168,6 +188,8 @@ export async function onRequestPost(context) {
                 : "DEUNA_PERSONAL",
             status: "pendiente_verificacion",
             voucher_ref: voucherRefRaw ? String(voucherRefRaw).trim().slice(0, 64) : null,
+            referral_code: referralCodeRaw ? String(referralCodeRaw).trim().toUpperCase().slice(0, 32) : null,
+            sale_type: "upgrade",
         },
     });
 

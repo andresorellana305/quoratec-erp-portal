@@ -4732,3 +4732,347 @@ html, body {
     border-color: var(--success);
     box-shadow: 0 0 0 1px var(--success);
 }
+
+/* ==========================================================================
+   Sub-fase 2B: Checkout 2 Columnas (PC) / 2 Pasos (Móvil) — Flat Design 2026
+   ========================================================================== */
+.modal-overlay {
+    z-index: 10050;
+}
+
+.whatsapp-float {
+    z-index: 9900;
+}
+
+.checkout-2col-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(290px, 1fr);
+    gap: 16px;
+    align-items: start;
+}
+
+.checkout-col-main,
+.checkout-col-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.checkout-flat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.checkout-col-summary .checkout-flat-card {
+    position: sticky;
+    top: 12px;
+}
+
+.checkout-step-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.checkout-step-heading h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.checkout-2col-layout .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.checkout-2col-layout .field-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-soft);
+}
+
+.checkout-2col-layout .text-input,
+.checkout-2col-layout .mono-input,
+.checkout-2col-layout select.text-input {
+    height: 40px;
+    min-height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    background: var(--bg-base);
+    color: var(--text-main);
+    box-shadow: none;
+}
+
+.checkout-2col-layout .mono-input {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+.payment-method-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.payment-method-tab {
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    background: var(--bg-base);
+    color: var(--text-soft);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+}
+
+.payment-method-tab.is-active {
+    border-color: var(--success);
+    color: var(--text-main);
+    background: rgba(16, 185, 129, 0.12);
+}
+
+.checkout-summary-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--text-soft);
+}
+
+.checkout-summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-subtle);
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--text-main);
+}
+
+.checkout-summary-total .checkout-amount {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    color: var(--accent);
+}
+
+.checkout-mobile-steps {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.checkout-mobile-step-btn {
+    min-height: 44px;
+    padding: 8px 10px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    background: var(--bg-base);
+    color: var(--text-soft);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.checkout-mobile-step-btn.is-active {
+    border-color: var(--primary);
+    color: var(--text-main);
+    background: rgba(37, 99, 235, 0.16);
+}
+
+.checkout-mobile-next-wrap {
+    display: none;
+}
+
+@media (max-width: 859px) {
+    .checkout-2col-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-mobile-steps {
+        display: grid;
+    }
+
+    .checkout-mobile-next-wrap {
+        display: flex;
+        gap: 10px;
+    }
+
+    .checkout-col-main[data-active-step="1"] .checkout-step-2-card {
+        display: none;
+    }
+
+    .checkout-col-main[data-active-step="2"] .checkout-step-1-card {
+        display: none;
+    }
+
+    .payment-method-tabs {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-bottom: 84px;
+    }
+
+    .modal-content {
+        padding-bottom: 92px;
+    }
+
+    .checkout-2col-layout button,
+    .checkout-2col-layout .btn-glow,
+    .checkout-2col-layout .btn-open-checkout,
+    .checkout-2col-layout .btn-wp-confirm,
+    .checkout-2col-layout .btn-email-confirm,
+    .checkout-2col-layout .btn-glass,
+    .checkout-2col-layout .btn-copy-mini,
+    .payment-method-tab {
+        min-height: 44px;
+    }
+}
+
+/* ==========================================================================
+   Fase 2: Dashboards Especializados por Rol — Flat Design QuoraTec 2026
+   ========================================================================== */
+.dashboard-role-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.dashboard-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 12px;
+}
+
+.dashboard-kpi-card {
+    background: var(--bg-base);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dashboard-kpi-card span {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.dashboard-kpi-card strong {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    font-size: 18px;
+    color: var(--text-main);
+}
+
+.dashboard-section-card {
+    background: var(--bg-base);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dashboard-row-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    font-size: 13px;
+}
+
+/* ==========================================================================
+   Fase 3: Flat Design 2026 — Comparativa 1px, Tarjetas Confianza y FAQ
+   ========================================================================== */
+:root {
+    --bg-base: #0B1120;
+    --accent-sky: #0EA5E9;
+}
+
+.compare-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+}
+
+.flat-compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+}
+
+.flat-compare-table th,
+.flat-compare-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.flat-compare-table th {
+    background: var(--bg-base);
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+.flat-compare-table tr:last-child td {
+    border-bottom: none;
+}
+
+.trust-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.flat-trust-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.flat-trust-card h3 {
+    margin: 0;
+    font-size: 16px;
+    color: var(--text-main);
+}
+
+.flat-trust-card p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-soft);
+}

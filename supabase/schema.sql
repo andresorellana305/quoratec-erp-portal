@@ -462,8 +462,8 @@ create index if not exists idx_orders_payphone_tx on public.orders(payphone_tran
 
 create table if not exists public.commission_policies (
     id text primary key default 'default',
-    new_sale_rate numeric(5, 2) not null default 25.00 check (new_sale_rate >= 0 and new_sale_rate <= 50),
-    renewal_rate numeric(5, 2) not null default 15.00 check (renewal_rate >= 0 and renewal_rate <= 50),
+    new_sale_rate numeric(5, 2) not null default 20.00 check (new_sale_rate >= 0 and new_sale_rate <= 50),
+    renewal_rate numeric(5, 2) not null default 10.00 check (renewal_rate >= 0 and renewal_rate <= 50),
     hold_days integer not null default 7 check (hold_days >= 0 and hold_days <= 90),
     updated_by uuid references auth.users(id) on delete set null,
     updated_at timestamptz not null default now()
@@ -475,9 +475,9 @@ create table if not exists public.referral_commissions (
     license_id uuid references public.licenses(id) on delete set null,
     referral_code text not null,
     advisor_name text,
-    sale_type text not null default 'new_sale' check (sale_type in ('new_sale', 'renewal')),
+    sale_type text not null default 'new_sale' check (sale_type in ('new_sale', 'upgrade', 'renewal')),
     payment_type text not null default 'first_payment' check (payment_type in ('first_payment', 'renewal')),
-    commission_rate numeric(5, 2) not null default 25.00 check (commission_rate >= 0 and commission_rate <= 50),
+    commission_rate numeric(5, 2) not null default 20.00 check (commission_rate >= 0 and commission_rate <= 50),
     base_amount_usd numeric(10, 2) not null check (base_amount_usd >= 0),
     net_collected_usd numeric(10, 2) not null default 0 check (net_collected_usd >= 0),
     list_price_usd numeric(10, 2),

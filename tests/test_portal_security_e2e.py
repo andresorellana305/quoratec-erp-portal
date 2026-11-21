@@ -550,7 +550,7 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         html, dom = pages_html[comerciales_rel]
         _log(f"Reglas comerciales 5 planes + Fundadores 25% + 15 días gratis -> {comerciales_rel}")
         _assert("15 días" in html and "100 %" in html, f"Falta prueba 15 días gratis o 100 % desbloqueado en {comerciales_rel}")
-        _assert("Fundadores QuoraTec" in html and "25 % DTO vitalicio" in html, f"Falta banner Fundadores QuoraTec en {comerciales_rel}")
+        _assert("Fundadores QuoraTec" in html and "Tarifa Anual Congelada por 3 años" in html, f"Falta banner Fundadores QuoraTec en {comerciales_rel}")
         _assert("Modo Solo Lectura" in html, f"Falta aviso Modo Solo Lectura en {comerciales_rel}")
         _assert("Próximamente / En actualización" in html, f"Falta aviso PayPhone Próximamente en {comerciales_rel}")
         for plan_id, price in PRECIOS_ESPERADOS.items():
@@ -561,11 +561,11 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
     planes_html, planes_dom = pages_html["planes.html"]
     for id_req in ("calcPlanSelect", "addonPcInput", "addonRucInput", "addonCloudInput", "calcTotalNormal", "calcTotalFundadores", "btnCalcAddonsCheckout"):
         _assert(id_req in planes_dom.ids, f"Falta control calculadora Add-ons #{id_req} en planes.html")
-    _assert("Centralis Engine" in planes_html and "data-billing-view" in planes_html, "Falta mención Centralis Engine o selector Anual/Mensual en planes.html")
+    _assert("Asistente de Ventas y Consultas por WhatsApp y Telegram" in planes_html and "data-billing-view" in planes_html, "Falta mención WhatsApp/Telegram o selector Anual/Mensual en planes.html")
 
     # descargas.html (conectado a version.json) y soporte.html dedicadas
     desc_html, desc_dom = pages_html["descargas.html"]
-    _assert("tabla-sha256" in desc_dom.ids and "smartscreen" in desc_dom.ids and "version.json" in desc_html and "SmartScreen" in desc_html, "Falta tabla SHA-256, conexión version.json o guía SmartScreen en descargas.html")
+    _assert("tabla-sha256" in desc_dom.ids and "smartscreen" in desc_dom.ids and "version.json" in desc_html and "Instalador Oficial Verificado para Windows" in desc_html, "Falta tabla verificación, conexión version.json o guía Windows en descargas.html")
     for _, (expected_url, expected_sha) in EXPECTED_DOWNLOADS.items():
         _assert(expected_url in desc_dom.hrefs and expected_sha in desc_html, f"Falta enlace/hash v3.0.0 en descargas.html: {expected_url}")
 
@@ -610,7 +610,7 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
         "✓ POS F2/F4/F8/F12 + .p12",
         "✓ Farmacias FIFO &amp; Auditor Fantasma",
         "✓ RIMPE, AGP, NIIF &amp; IESS/RDEP",
-        "✓ IA Local + Centralis Engine",
+        "✓ Asistente Contable Inteligente + Asistente de Ventas y Consultas por WhatsApp y Telegram",
         "Antes vs. Con QuoraTec ERP",
         "IVA 0% · 5% · 8% · 15%",
     ):
@@ -626,10 +626,10 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
     guia_html, guia_dom = pages_html["guia-uso.html"]
     for tab_id, expected_snippet in [
         ("emprendedor", "Modo Local"),
-        ("comercial", "Nube Híbrida"),
+        ("comercial", "Respaldo y Sincronización en la Nube"),
         ("estudio", "40 RUCs"),
         ("enterprise", "150 GB"),
-        ("rapida", "SmartScreen"),
+        ("rapida", "Instalador Oficial Verificado para Windows"),
     ]:
         _assert(tab_id in guia_dom.guide_tabs, f"Falta pestaña guía '{tab_id}' en guia-uso.html")
         _assert(tab_id in guia_dom.guide_panels, f"Falta panel guía '{tab_id}' en guia-uso.html")
@@ -650,7 +650,7 @@ def test_dom_plans_payments_and_navigation(base_url: str) -> dict[str, int]:
     # Validar los 14 módulos reales y sus pestañas internas
     module_specs = [
         ("modulos/panel-general.html", "9no dígito"),
-        ("modulos/mis-contribuyentes.html", "HWID"),
+        ("modulos/mis-contribuyentes.html", "Equipo Autorizado"),
         ("modulos/sincronizar-sri.html", "cada 20 documentos"),
         ("modulos/importar-comprobantes.html", "49 dígitos"),
         ("modulos/bandeja-documentos.html", "Compras / Recibidos"),

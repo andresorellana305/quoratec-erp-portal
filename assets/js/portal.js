@@ -113,7 +113,7 @@
             estacionesBase: 1,
             estacionesLabel: "1 PC",
             nubeGbBase: 10,
-            modoLabel: "Local + Nube Híbrida (10 GB)",
+            modoLabel: "Respaldo y Sincronización en la Nube (10 GB)",
             esEnterprise: false,
             permiteExtraSeats: true,
         },
@@ -129,7 +129,7 @@
             estacionesBase: 1,
             estacionesLabel: "1 PC",
             nubeGbBase: 20,
-            modoLabel: "Local + Nube Híbrida (20 GB)",
+            modoLabel: "Respaldo y Sincronización en la Nube (20 GB)",
             esEnterprise: false,
             permiteExtraSeats: true,
         },
@@ -141,11 +141,11 @@
             precioUsd: 449,
             rucsMax: 40,
             rucsLabel: "Hasta 40 RUCs",
-            masivaLabel: "Todas las funciones desbloqueadas · 40 RUCs · 3 PCs · Nube Total + Híbrido + Oficina (50 GB)",
+            masivaLabel: "Todas las funciones desbloqueadas · 40 RUCs · 3 PCs · Respaldo y Sincronización Total en la Nube (50 GB)",
             estacionesBase: 3,
             estacionesLabel: "3 PCs",
             nubeGbBase: 50,
-            modoLabel: "Nube Total + Híbrido + Oficina (50 GB)",
+            modoLabel: "Respaldo y Sincronización Total en la Nube (50 GB)",
             esEnterprise: true,
             permiteExtraSeats: true,
         },
@@ -184,7 +184,7 @@
             pasos: [
                 "1. Descarga Setup_QuoraTec_ERP_v3.0.0.exe (66.2 MB) o la versión Portable .zip (86.3 MB).",
                 "2. Verifica el SHA-256 oficial (350a7f2c...c4c9e232) con certutil antes de ejecutar.",
-                "3. Ante Windows SmartScreen (ejecutable nuevo): haz clic en 'Más información' ➔ 'Ejecutar de todas formas'.",
+                "3. Instalador Oficial Verificado para Windows: haz clic en 'Más información' ➔ 'Ejecutar de todas formas'.",
             ],
         },
         windows_zip: {
@@ -239,7 +239,7 @@
             pasos: [
                 "1. Verifica el SHA-256 (2c5e48ae...5c2d052a) e instala con: sudo apt install ./QuoraTec_ERP_v3.0.0_Linux_amd64.deb",
                 "2. Para otras distros (Fedora/Arch), usa el paquete genérico .tar.gz (123.3 MB).",
-                "3. Opera con bóveda Local-First SQLite AES-256-GCM y transición segura a Solo Lectura al expirar.",
+                "3. Opera con Trabajo en esta PC (Sin Internet) y transición segura a Solo Lectura al expirar.",
             ],
         },
         linux_tar: {
@@ -264,8 +264,8 @@
             id: "sha256sums",
             etiqueta: "SHA256SUMS.txt",
             modalId: "modalDescargaSha256",
-            titulo: "Manifiesto Oficial de Sumas SHA-256 (v3.0.0)",
-            badge: "VERIFICACIÓN SHA-256",
+            titulo: "Instalador Oficial Verificado (v3.0.0)",
+            badge: "VERIFICACIÓN DE SEGURIDAD",
             archivo: "SHA256SUMS.txt",
             tamano: "Manifiesto Maestro v3.0.0 (111 B)",
             url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
@@ -286,7 +286,7 @@
             secciones: [
                 {
                     sub: "1. Suscripción Anual (365 Días) — Todas las Funcionalidades Desbloqueadas",
-                    txt: "QuoraTec otorga licencia anual de 365 días para QuoraTec ERP — Edición 2026 con todas las funciones 100 % desbloqueadas en los 5 planes: Emprendedor ($69/año, 1 RUC/Cédula, 1 PC, Modo Local), Comercial Pro ($149/año, 1 RUC, 1 PC, Nube Híbrida 10 GB), Contador ($239/año, hasta 15 RUCs, 1 PC, Nube Híbrida 20 GB), Estudio Contable ($449/año, hasta 40 RUCs, 3 PCs, Nube Total + Híbrido + Oficina 50 GB) y Enterprise ($849/año, hasta 100 RUCs, 10 PCs, Nube Dedicada 150 GB). Tras los 15 días gratis o al vencer sin renovar, pasa a Modo Solo Lectura sin borrar datos.",
+                    txt: "QuoraTec otorga licencia anual de 365 días para QuoraTec ERP — Edición 2026 con todas las funciones 100 % desbloqueadas en los 5 planes: Emprendedor ($69/año, 1 RUC/Cédula, 1 PC, Modo Local), Comercial Pro ($149/año, 1 RUC, 1 PC, Respaldo y Sincronización en la Nube 10 GB), Contador ($239/año, hasta 15 RUCs, 1 PC, Respaldo y Sincronización en la Nube 20 GB), Estudio Contable ($449/año, hasta 40 RUCs, 3 PCs, Respaldo y Sincronización Total en la Nube 50 GB) y Enterprise ($849/año, hasta 100 RUCs, 10 PCs, Nube Dedicada 150 GB). Tras los 15 días gratis o al vencer sin renovar, pasa a Modo Solo Lectura sin borrar datos.",
                 },
                 {
                     sub: "2. Deslinde Tributario y Responsabilidad Profesional",
@@ -303,11 +303,11 @@
             secciones: [
                 {
                     sub: "1. Cifrado AES-256-GCM y Cero Almacenamiento Central de Credenciales",
-                    txt: "Bajo arquitectura Local-First, la base contable SQLite, tus claves del SRI en Línea, certificados de firma electrónica .p12 y el Copiloto IA Local operan cifrados con AES-256-GCM. QuoraTec no recopila, vende ni expone tus credenciales tributarias.",
+                    txt: "Bajo arquitectura Local-First, la base contable en esta PC, tus claves del SRI en Línea, certificados de firma electrónica .p12 y el Asistente Contable Inteligente operan cifrados con AES-256-GCM. QuoraTec no recopila, vende ni expone tus credenciales tributarias.",
                 },
                 {
-                    sub: "2. Cumplimiento LOPDP Ecuador y Nube Híbrida / Dedicada",
-                    txt: "El tratamiento de datos personales de licenciamiento cumple estrictamente la Ley Orgánica de Protección de Datos Personales (LOPDP) del Ecuador. La sincronización en Nube Híbrida/Dedicada opera bajo políticas aisladas Supabase RLS bajo control directo del titular.",
+                    sub: "2. Cumplimiento LOPDP Ecuador y Respaldo y Sincronización Total en la Nube",
+                    txt: "El tratamiento de datos personales de licenciamiento cumple estrictamente la Ley Orgánica de Protección de Datos Personales (LOPDP) del Ecuador. La sincronización en Respaldo y Sincronización en la Nube/Dedicada opera bajo políticas aisladas Supabase RLS bajo control directo del titular.",
                 },
             ],
         },
@@ -316,7 +316,7 @@
             secciones: [
                 {
                     sub: "1. Actualizaciones Normativas SRI 2026 y Soporte Técnico",
-                    txt: "Incluye actualizaciones normativas SRI/IESS (POS F2/F4/F8/F12, FIFO farmacias, Auditor Fantasma, Termómetro RIMPE, Clasificador AGP, NIIF, RDEP, Centralis Engine) durante los 365 días de vigencia, más soporte oficial por WhatsApp (+593 99 645 9771) y correo (soporte@quoratec.com).",
+                    txt: "Incluye actualizaciones normativas SRI/IESS (POS F2/F4/F8/F12, FIFO farmacias, Auditor Fantasma, Termómetro RIMPE, Clasificador AGP, NIIF, RDEP, Asistente de Ventas y Consultas por WhatsApp y Telegram) durante los 365 días de vigencia, más soporte oficial por WhatsApp (+593 99 645 9771) y correo (soporte@quoratec.com).",
                 },
                 {
                     sub: "2. Renovación, Modo Solo Lectura y Traslado sin Borrado de Datos",
@@ -366,6 +366,9 @@
         extraCloudPacks: 0,
         emprendedorCloud: false,
         hwidORef: "",
+        applyFounder: false,
+        activeStep: 1,
+        activePaymentMethod: "DEUNA_PERSONAL",
     };
 
     const telemetriaInterna = {
@@ -706,12 +709,16 @@
         const extraRucs = Math.max(0, Math.min(50, Number(estadoModalPago.extraRucsPacks || 0)));
         const extraCloud = Math.max(0, Math.min(50, Number(estadoModalPago.extraCloudPacks || 0)));
         const optNube = plan.id === "EMPRENDEDOR" && Boolean(estadoModalPago.emprendedorCloud);
-        const totalUsd =
-            plan.precioUsd +
+        const addonsUsd =
             extras * CONFIG_COMERCIAL.PRECIO_SEAT_EXTRA_USD +
             extraRucs * CONFIG_COMERCIAL.PRECIO_RUCS_PACK_USD +
             extraCloud * CONFIG_COMERCIAL.PRECIO_CLOUD_PACK_USD +
             (optNube ? CONFIG_COMERCIAL.PRECIO_EMPRENDEDOR_NUBE_USD : 0);
+        const subtotalUsd = plan.precioUsd + addonsUsd;
+        const founderDiscountUsd = estadoModalPago.applyFounder
+            ? Math.round(subtotalUsd * 0.25 * 100) / 100
+            : 0;
+        const totalUsd = Math.round((subtotalUsd - founderDiscountUsd) * 100) / 100;
         const estacionesTotales = plan.estacionesBase + extras;
         const rucsTotales = plan.rucsMax + extraRucs * 5;
         const cloudGbTotales = plan.nubeGbBase + (optNube ? 10 : 0) + extraCloud * 50;
@@ -726,6 +733,9 @@
             optNube,
             rucsTotales,
             cloudGbTotales,
+            addonsUsd,
+            subtotalUsd,
+            founderDiscountUsd,
             totalUsd,
             montoTexto: formatearUsd(totalUsd),
             estacionesTotales,
@@ -980,8 +990,8 @@
 
         const shaBox = crearEl("div", "os-sha-box");
         const shaHead = crearEl("div", "os-sha-head");
-        shaHead.appendChild(crearEl("span", "os-sha-label", "Verificación SHA-256 Oficial:"));
-        const btnCopySha = crearEl("button", "btn-sha-copy", "📋 Copiar SHA-256");
+        shaHead.appendChild(crearEl("span", "os-sha-label", "Código de verificación de seguridad:"));
+        const btnCopySha = crearEl("button", "btn-sha-copy", "📋 Copiar código de verificación");
         btnCopySha.type = "button";
         btnCopySha.addEventListener("click", () => {
             copiarAlPortapapeles(soMeta.sha256, `SHA-256 ${soMeta.etiqueta}`);
@@ -1150,46 +1160,76 @@
 
         const content = crearEl("div", "modal-content");
 
-        const summary = crearEl("div", "checkout-summary");
-        const sumLeft = crearEl("div");
-        const lblResumenPlan = crearEl("strong", "", "QuoraTec ERP Contador • Hasta 15 RUCs • 1 PC • 20 GB Nube");
-        lblResumenPlan.id = "pagoResumenMeta";
-        const lblDescVig = crearEl("small", "", "Suscripción anual (365 días) · Todas las funcionalidades 100 % desbloqueadas");
-        lblDescVig.style.display = "block";
-        lblDescVig.style.color = "#cbd5e1";
-        sumLeft.appendChild(lblResumenPlan);
-        sumLeft.appendChild(lblDescVig);
+        // Navegación móvil de 2 pasos
+        const mobileStepsBar = crearEl("div", "checkout-mobile-steps");
+        const mobStep1Btn = crearEl("button", "checkout-mobile-step-btn is-active", "1. Titular y Equipo");
+        mobStep1Btn.type = "button";
+        const mobStep2Btn = crearEl("button", "checkout-mobile-step-btn", "2. Método de Pago");
+        mobStep2Btn.type = "button";
+        mobileStepsBar.appendChild(mobStep1Btn);
+        mobileStepsBar.appendChild(mobStep2Btn);
 
-        const amountEl = crearEl("div", "checkout-amount", "$239.00");
-        amountEl.id = "pagoMontoTotal";
-        summary.appendChild(sumLeft);
-        summary.appendChild(amountEl);
+        const twoColLayout = crearEl("div", "checkout-2col-layout");
+        const colMain = crearEl("div", "checkout-col-main");
+        colMain.setAttribute("data-active-step", "1");
+        const colSummary = crearEl("div", "checkout-col-summary");
 
-        const controlsGrid = crearEl("div", "checkout-controls-grid");
+        const setMobileStep = (stepNum) => {
+            estadoModalPago.activeStep = stepNum;
+            colMain.setAttribute("data-active-step", String(stepNum));
+            mobStep1Btn.classList.toggle("is-active", stepNum === 1);
+            mobStep2Btn.classList.toggle("is-active", stepNum === 2);
+        };
+        mobStep1Btn.addEventListener("click", () => setMobileStep(1));
+        mobStep2Btn.addEventListener("click", () => setMobileStep(2));
 
-        const gPlan = crearEl("div", "field-group");
-        const lPlan = crearEl("label", "", "Plan Seleccionado:");
-        lPlan.htmlFor = "pagoPlanSelect";
-        const selPlan = crearEl("select", "text-input");
-        selPlan.id = "pagoPlanSelect";
-        Object.values(PLANES_V240).forEach((p) => {
-            const opt = document.createElement("option");
-            opt.value = p.id;
-            opt.textContent = `${p.nombre} — ${formatearUsd(p.precioUsd)} USD/año`;
-            selPlan.appendChild(opt);
+        // --- PASO 1: TITULAR Y EQUIPO ---
+        const step1Card = crearEl("div", "checkout-flat-card checkout-step-1-card");
+        const step1Head = crearEl("div", "checkout-step-heading");
+        step1Head.appendChild(crearEl("h4", "", "Paso 1 — Titular y Equipo"));
+        step1Head.appendChild(crearEl("span", "muted-note", "Licencia Digital Oficial"));
+        step1Card.appendChild(step1Head);
+
+        const mkField = (id, label, placeholder, type = "text", maxLen = 120, isMono = false) => {
+            const g = crearEl("div", "field-group");
+            const l = crearEl("label", "", label);
+            l.htmlFor = id;
+            const inp = crearEl("input", isMono ? "mono-input" : "text-input");
+            inp.type = type;
+            inp.id = id;
+            inp.placeholder = placeholder;
+            inp.maxLength = maxLen;
+            g.appendChild(l);
+            g.appendChild(inp);
+            return { g, inp };
+        };
+
+        const step1Grid = crearEl("div", "hybrid-form-grid");
+        const fRuc = mkField("checkoutRucInput", "Cédula o RUC (10 o 13 dígitos) *", "1790012345001", "text", 13, true);
+        const fRazon = mkField("checkoutRazonInput", "Razón Social / Nombre *", "ESTUDIO CONTABLE DEMO S.A.", "text", 120);
+        const fEmail = mkField("checkoutEmailInput", "Correo Electrónico (entrega de .lic) *", "contador@estudio.ec", "email", 120);
+        const fReferral = mkField("checkoutReferralInput", "Código de Asesora / Referido (opcional)", "EJ: ASESORA01", "text", 32, true);
+
+        fEmail.inp.addEventListener("input", () => {
+            fEmail.inp.value = sanitizarCorreoInput(fEmail.inp.value);
         });
-        selPlan.addEventListener("change", () => {
-            estadoModalPago.planId = resolverPlan(selPlan.value);
-            if (estadoModalPago.planId !== "EMPRENDEDOR") {
-                estadoModalPago.emprendedorCloud = false;
-            }
-            actualizarVistaModalPago();
+        fRuc.inp.addEventListener("input", () => {
+            fRuc.inp.value = fRuc.inp.value.replace(/\D/g, "").slice(0, 13);
         });
-        gPlan.appendChild(lPlan);
-        gPlan.appendChild(selPlan);
+        fRazon.inp.addEventListener("input", () => {
+            fRazon.inp.value = sanitizarRazonInput(fRazon.inp.value);
+        });
+        fReferral.inp.addEventListener("input", () => {
+            fReferral.inp.value = fReferral.inp.value.toUpperCase().replace(/[^A-Z0-9_-]/g, "").slice(0, 32);
+        });
+
+        step1Grid.appendChild(fRuc.g);
+        step1Grid.appendChild(fRazon.g);
+        step1Grid.appendChild(fEmail.g);
+        step1Grid.appendChild(fReferral.g);
 
         const gHwid = crearEl("div", "field-group");
-        const lHwid = crearEl("label", "", "HWID del Equipo * (Obligatorio):");
+        const lHwid = crearEl("label", "", "HWID del Equipo * (Obligatorio para 1 PC):");
         lHwid.id = "pagoHwidLabel";
         lHwid.htmlFor = "pagoHwidInput";
         const inHwid = crearEl("input", "mono-input");
@@ -1208,378 +1248,76 @@
         const hwidHelp = crearEl(
             "small",
             "muted-note",
-            "Obligatorio para planes de 1 PC. Cópialo desde: QuoraTec ERP -> Configuración -> 4. Plan y Licencia."
+            "Guía rápida: abre QuoraTec ERP → Configuración → 4. Plan y Licencia → Copiar HWID del Equipo."
         );
         hwidHelp.id = "pagoHwidHelp";
         gHwid.appendChild(lHwid);
         gHwid.appendChild(inHwid);
         gHwid.appendChild(hwidHelp);
 
-        controlsGrid.appendChild(gPlan);
-        controlsGrid.appendChild(gHwid);
+        const mobNextWrap = crearEl("div", "checkout-mobile-next-wrap");
+        const btnMobNext = crearEl("button", "btn-glow", "Continuar a Método de Pago ➔");
+        btnMobNext.type = "button";
+        btnMobNext.style.width = "100%";
+        btnMobNext.addEventListener("click", () => setMobileStep(2));
+        mobNextWrap.appendChild(btnMobNext);
 
-        const extraBar = crearEl("div", "extra-seats-bar");
-        extraBar.id = "pagoExtraSeatsBar";
-        const extraLabel = crearEl(
-            "span",
-            "",
-            "+1 PC Extra ($49/año c/u · compatible con +5 RUCs $59 y +50 GB $59 en Planes):"
-        );
-        const stepper = crearEl("div", "seats-stepper");
-        const btnMenos = crearEl("button", "", "−");
-        btnMenos.type = "button";
-        btnMenos.setAttribute("aria-label", "Restar estación adicional");
-        const numInput = crearEl("input", "mono-input");
-        numInput.type = "number";
-        numInput.id = "pagoExtraSeatsInput";
-        numInput.min = "0";
-        numInput.max = "50";
-        numInput.value = "0";
-        numInput.style.width = "68px";
-        numInput.style.textAlign = "center";
-        numInput.setAttribute("aria-label", "Cantidad de PCs adicionales");
-        const btnMas = crearEl("button", "", "+");
-        btnMas.type = "button";
-        btnMas.setAttribute("aria-label", "Sumar estación adicional");
-        const lblEstTotales = crearEl("strong", "", "1 PC total");
-        lblEstTotales.id = "pagoEstacionesTotales";
+        step1Card.appendChild(step1Grid);
+        step1Card.appendChild(gHwid);
+        step1Card.appendChild(mobNextWrap);
 
-        btnMenos.addEventListener("click", () => {
-            estadoModalPago.extraSeats = Math.max(0, estadoModalPago.extraSeats - 1);
-            actualizarVistaModalPago();
-        });
-        btnMas.addEventListener("click", () => {
-            estadoModalPago.extraSeats = Math.min(50, estadoModalPago.extraSeats + 1);
-            actualizarVistaModalPago();
-        });
-        numInput.addEventListener("input", () => {
-            const parsed = parseInt(numInput.value || "0", 10);
-            estadoModalPago.extraSeats = Number.isNaN(parsed) ? 0 : Math.max(0, Math.min(50, parsed));
-            actualizarVistaModalPago();
-        });
+        // --- PASO 2: MÉTODO DE PAGO ---
+        const step2Card = crearEl("div", "checkout-flat-card checkout-step-2-card");
+        const step2Head = crearEl("div", "checkout-step-heading");
+        step2Head.appendChild(crearEl("h4", "", "Paso 2 — Método de Pago"));
+        step2Head.appendChild(crearEl("span", "muted-note", "Emisión automática .lic"));
+        step2Card.appendChild(step2Head);
 
-        stepper.appendChild(btnMenos);
-        stepper.appendChild(numInput);
-        stepper.appendChild(btnMas);
-        stepper.appendChild(lblEstTotales);
-        extraBar.appendChild(extraLabel);
-        extraBar.appendChild(stepper);
-
-        const refBanner = crearEl("div", "ref-banner");
-        const refLeft = crearEl("div");
-        refLeft.appendChild(crearEl("span", "", "Referencia Única de Pago: "));
-        const refCodeEl = crearEl("span", "ref-code", "QT-CONTADOR-WEB01");
-        refCodeEl.id = "pagoReferenciaTexto";
-        refLeft.appendChild(refCodeEl);
-        const btnCopyRef = crearEl("button", "btn-copy-mini", "📋 Copiar Referencia");
-        btnCopyRef.type = "button";
-        btnCopyRef.addEventListener("click", () => {
-            copiarAlPortapapeles(calcularResumenCheckout().referencia, "Referencia de Pago");
-        });
-        refBanner.appendChild(refLeft);
-        refBanner.appendChild(btnCopyRef);
-
-        // Selector Híbrido: Modo Invitado (order_token) vs Cuenta Supabase + 4 Pasarelas
-        const hybridTabs = crearEl("div", "hybrid-tabs-bar");
-        const tabGuestBtn = crearEl("button", "hybrid-tab-btn is-active", "⚡ Compra Rápida (Invitado)");
-        tabGuestBtn.type = "button";
-        tabGuestBtn.id = "hybridTabGuestBtn";
-        const tabAccountBtn = crearEl("button", "hybrid-tab-btn", "🔐 Usar / Crear Cuenta Supabase");
-        tabAccountBtn.type = "button";
-        tabAccountBtn.id = "hybridTabAccountBtn";
-        hybridTabs.appendChild(tabGuestBtn);
-        hybridTabs.appendChild(tabAccountBtn);
-
-        const hybridGuestPanel = crearEl("div", "hybrid-panel");
-        hybridGuestPanel.id = "hybridGuestPanel";
-        hybridGuestPanel.appendChild(
-            crearEl(
-                "small",
-                "muted-note",
-                "Modo Invitado sin contraseña previa: ingresa tu Correo, RUC/Cédula y Nombre/Razón Social para generar tu order_token criptográfico único."
-            )
-        );
-        const guestFields = crearEl("div", "hybrid-form-grid");
-        const mkField = (id, label, placeholder, type = "text", maxLen = 120) => {
-            const g = crearEl("div", "field-group");
-            const l = crearEl("label", "", label);
-            l.htmlFor = id;
-            const inp = crearEl("input", "text-input");
-            inp.type = type;
-            inp.id = id;
-            inp.placeholder = placeholder;
-            inp.maxLength = maxLen;
-            g.appendChild(l);
-            g.appendChild(inp);
-            return { g, inp };
-        };
-        const fEmail = mkField("checkoutEmailInput", "Correo Electrónico *", "contador@estudio.ec", "email", 120);
-        const fRuc = mkField("checkoutRucInput", "RUC / Cédula Ecuador *", "1790012345001", "text", 13);
-        const fRazon = mkField("checkoutRazonInput", "Nombre o Razón Social *", "ESTUDIO CONTABLE DEMO S.A.", "text", 120);
-        fEmail.inp.addEventListener("input", () => {
-            fEmail.inp.value = sanitizarCorreoInput(fEmail.inp.value);
-        });
-        fRuc.inp.addEventListener("input", () => {
-            fRuc.inp.value = fRuc.inp.value.replace(/\D/g, "").slice(0, 13);
-        });
-        fRazon.inp.addEventListener("input", () => {
-            fRazon.inp.value = sanitizarRazonInput(fRazon.inp.value);
-        });
-        guestFields.appendChild(fEmail.g);
-        guestFields.appendChild(fRuc.g);
-        guestFields.appendChild(fRazon.g);
-        hybridGuestPanel.appendChild(guestFields);
-
-        const hybridAccountBox = crearEl("div", "hybrid-panel");
-        hybridAccountBox.id = "hybridAccountPanel";
-        hybridAccountBox.style.display = "none";
-        hybridAccountBox.appendChild(
-            crearEl(
-                "small",
-                "muted-note",
-                "Autenticación segura Supabase Auth (contraseñas cifradas en servidor). Consulta órdenes, licencias y equipos +1 PC Adicional."
-            )
-        );
-        const accBtnRow = crearEl("div", "flex-wrap-actions");
-        const accStatusText = crearEl("span", "muted-note", "Sesión no iniciada");
-        accStatusText.id = "checkoutAccountStatus";
-        const btnOpenSupaAuth = crearEl("button", "btn-glass", "🔐 Iniciar Sesión / Crear Cuenta Supabase");
-        btnOpenSupaAuth.type = "button";
-        btnOpenSupaAuth.addEventListener("click", () => {
-            asegurarModalCuenta("account");
-        });
-        accBtnRow.appendChild(btnOpenSupaAuth);
-        accBtnRow.appendChild(accStatusText);
-        hybridAccountBox.appendChild(accBtnRow);
-
-        tabGuestBtn.addEventListener("click", () => {
-            estadoHibrido.mode = "guest";
-            tabGuestBtn.classList.add("is-active");
-            tabAccountBtn.classList.remove("is-active");
-            hybridAccountBox.style.display = "none";
-        });
-        tabAccountBtn.addEventListener("click", () => {
-            estadoHibrido.mode = "account";
-            tabAccountBtn.classList.add("is-active");
-            tabGuestBtn.classList.remove("is-active");
-            hybridAccountBox.style.display = "flex";
-        });
-
-        // Selector de 4 Pasarelas (2 Activas ahora + 2 Próximamente con Feature Flags)
-        const gatewayGrid = crearEl("div", "gateway-selector-grid");
-        const gatewaysMeta = [
-            { id: "DEUNA_PERSONAL", title: "Deuna! Personal (Pichincha)", badge: "Activo · 0 %", cls: "active is-selected", disabled: false },
-            { id: "TRANSFERENCIA", title: "Transferencia Bancaria", badge: "Activo · Ecuador", cls: "active", disabled: false },
-            { id: "DEUNA_NEGOCIOS", title: "Deuna! Negocios API", badge: "Próximamente", cls: "soon is-soon", disabled: true },
-            { id: "PAYPHONE_BUSINESS", title: "PayPhone Business", badge: "Próximamente", cls: "soon is-soon", disabled: true },
+        const payMethodTabs = crearEl("div", "payment-method-tabs");
+        const methodsMeta = [
+            { id: "DEUNA_PERSONAL", label: "Deuna! (QR instantáneo)" },
+            { id: "PAYPHONE_BUSINESS", label: "Tarjeta (PayPhone Business)" },
+            { id: "TRANSFERENCIA", label: "Transferencia Bancaria" },
         ];
-        const gatewayButtons = [];
-        gatewaysMeta.forEach((gw) => {
-            const btnGw = crearEl("button", `gateway-option-card ${gw.cls}`);
-            btnGw.type = "button";
-            btnGw.disabled = gw.disabled;
-            btnGw.setAttribute("data-gateway-id", gw.id);
-            const tag = crearEl("span", `gateway-status-tag ${gw.disabled ? "soon" : "active"}`, gw.badge);
-            const lbl = crearEl("strong", "", gw.title);
-            btnGw.appendChild(tag);
-            btnGw.appendChild(lbl);
-            if (!gw.disabled) {
-                btnGw.addEventListener("click", () => {
-                    estadoHibrido.gateway = gw.id;
-                    gatewayButtons.forEach((b) => b.classList.remove("is-selected"));
-                    btnGw.classList.add("is-selected");
-                });
-            }
-            gatewayButtons.push(btnGw);
-            gatewayGrid.appendChild(btnGw);
-        });
+        const methodTabBtns = [];
 
-        const orderActionRow = crearEl("div", "flex-wrap-actions mt-8");
-        const btnCrearOrden = crearEl("button", "btn-glow", "🛡️ Generar Orden Oficial y Token de Seguimiento ➔");
-        btnCrearOrden.type = "button";
-        btnCrearOrden.id = "btnCrearOrdenHibrida";
-        orderActionRow.appendChild(btnCrearOrden);
+        const panelDeuna = crearEl("div", "pay-box pay-deuna");
+        panelDeuna.id = "checkoutPanelDeuna";
+        const panelPayphone = crearEl("div", "pay-box pay-card");
+        panelPayphone.id = "checkoutPanelPayphone";
+        panelPayphone.style.display = "none";
+        const panelTransfer = crearEl("div", "pay-box pay-deuna");
+        panelTransfer.id = "checkoutPanelTransfer";
+        panelTransfer.style.display = "none";
 
-        const orderResultBox = crearEl("div", "receipt-upload-box");
-        orderResultBox.id = "checkoutOrderResultBox";
-        orderResultBox.style.display = "none";
+        const selectPaymentMethod = (methodId) => {
+            estadoModalPago.activePaymentMethod = methodId;
+            estadoHibrido.gateway = methodId;
+            methodTabBtns.forEach((b) => {
+                b.classList.toggle("is-active", b.getAttribute("data-pay-method") === methodId);
+            });
+            panelDeuna.style.display = methodId === "DEUNA_PERSONAL" ? "flex" : "none";
+            panelPayphone.style.display = methodId === "PAYPHONE_BUSINESS" ? "flex" : "none";
+            panelTransfer.style.display = methodId === "TRANSFERENCIA" ? "flex" : "none";
+        };
 
-        const receiptUploadWrap = crearEl("div", "receipt-upload-box");
-        receiptUploadWrap.appendChild(
-            crearEl("strong", "", "Subir Referencia o Comprobante Deuna! / Transferencia (estado: pendiente_verificacion)")
-        );
-        const recGrid = crearEl("div", "hybrid-form-grid");
-        const fVoucher = mkField("checkoutVoucherInput", "Nº de Comprobante / Referencia *", "PICH-998877", "text", 40);
-        const fFileWrap = crearEl("div", "field-group");
-        const fFileLbl = crearEl("label", "", "Adjuntar Imagen / PDF (opcional)");
-        fFileLbl.htmlFor = "checkoutReceiptFile";
-        const fFile = document.createElement("input");
-        fFile.type = "file";
-        fFile.id = "checkoutReceiptFile";
-        fFile.accept = ".png,.jpg,.jpeg,.webp,.pdf";
-        fFile.className = "text-input";
-        fFileWrap.appendChild(fFileLbl);
-        fFileWrap.appendChild(fFile);
-        recGrid.appendChild(fVoucher.g);
-        recGrid.appendChild(fFileWrap);
-
-        const btnEnviarComprobanteApi = crearEl("button", "btn-open-checkout", "📤 Registrar Comprobante (Pendiente de Verificación)");
-        btnEnviarComprobanteApi.type = "button";
-        btnEnviarComprobanteApi.id = "btnEnviarComprobanteApi";
-        const receiptApiFeedback = crearEl("small", "muted-note", "");
-        receiptApiFeedback.id = "checkoutReceiptFeedback";
-
-        receiptUploadWrap.appendChild(recGrid);
-        receiptUploadWrap.appendChild(btnEnviarComprobanteApi);
-        receiptUploadWrap.appendChild(receiptApiFeedback);
-
-        btnCrearOrden.addEventListener("click", async () => {
-            const emailVal = sanitizarCorreoInput(fEmail.inp.value);
-            const rucVal = String(fRuc.inp.value || "").trim();
-            const razonVal = sanitizarRazonInput(fRazon.inp.value).trim();
-            if (!emailVal || !emailVal.includes("@") || !/^\d{10}(\d{3})?$/.test(rucVal) || razonVal.length < 2) {
-                mostrarToastCopia("⚠️ Completa Correo válido, RUC/Cédula (10 o 13 dígitos) y Razón Social.");
-                return;
-            }
-            const res = calcularResumenCheckout();
-            const planesHwidObligatorio = ["EMPRENDEDOR", "COMERCIAL_PRO", "CONTADOR"];
-            if (planesHwidObligatorio.includes(res.plan.id) && (!res.hwidORef || res.hwidORef === "SIN_ESPECIFICAR")) {
-                mostrarToastCopia("⚠️ Ingresa el HWID del Equipo (QuoraTec ERP -> Configuración -> 4. Plan y Licencia).");
-                const inHwidEl = document.getElementById("pagoHwidInput");
-                if (inHwidEl instanceof HTMLInputElement) inHwidEl.focus();
-                return;
-            }
-            btnCrearOrden.disabled = true;
-            const resp = await postJsonSeguroApi(
-                "api/orders/create",
-                {
-                    checkout_mode: estadoHibrido.mode === "account" && estadoHibrido.accessToken ? "account" : "guest",
-                    plan_id: res.plan.id,
-                    extra_seats: res.extras,
-                    extra_rucs_packs: res.extraRucs,
-                    extra_cloud_packs: res.extraCloud,
-                    cloud_opcional_emprendedor: res.optNube,
-                    email: emailVal,
-                    ruc_cedula: rucVal,
-                    razon_social: razonVal,
-                    payment_channel: estadoHibrido.gateway,
-                    hwid_inicial: res.hwidORef !== "SIN_ESPECIFICAR" ? res.hwidORef : undefined,
-                },
-                estadoHibrido.mode === "account" ? estadoHibrido.accessToken : null
+        methodsMeta.forEach((m) => {
+            const btn = crearEl(
+                "button",
+                `payment-method-tab${m.id === "DEUNA_PERSONAL" ? " is-active" : ""}`,
+                m.label
             );
-            btnCrearOrden.disabled = false;
-
-            const orderRef = resp.data?.order_ref || res.referencia;
-            const orderToken = resp.data?.order_token || `QTTK-${extraerCodigoCorto(rucVal)}${Date.now().toString(36).toUpperCase()}`;
-            estadoHibrido.lastOrder = {
-                order_ref: orderRef,
-                order_token: orderToken,
-                email: emailVal,
-                offline: !resp.ok,
-            };
-
-            orderResultBox.textContent = "";
-            orderResultBox.style.display = "flex";
-            orderResultBox.appendChild(
-                crearEl(
-                    "span",
-                    "order-status-pill",
-                    resp.ok ? "⏳ Estado: pendiente_verificacion (Orden Registrada)" : "ℹ️ Referencia Generada (Modo Estático)"
-                )
-            );
-            const tokRow = crearEl("div", "bank-row");
-            tokRow.appendChild(crearEl("span", "", `Orden: ${orderRef} • Token: ${orderToken}`));
-            const btnCopyTok = crearEl("button", "btn-copy-mini", "Copiar Token");
-            btnCopyTok.type = "button";
-            btnCopyTok.addEventListener("click", () => copiarAlPortapapeles(`${orderRef} | ${orderToken}`, "Orden y Token"));
-            tokRow.appendChild(btnCopyTok);
-            orderResultBox.appendChild(tokRow);
-
-            if (estadoHibrido.mode === "guest") {
-                const claimWrap = crearEl("div", "flex-wrap-actions mt-8");
-                const claimPass = document.createElement("input");
-                claimPass.type = "password";
-                claimPass.placeholder = "Contraseña (mín. 10 chars) para crear cuenta después";
-                claimPass.className = "text-input";
-                claimPass.style.flex = "1 1 220px";
-                const btnClaim = crearEl("button", "btn-glass", "✨ Crear Cuenta y Vincular Orden (1 Clic)");
-                btnClaim.type = "button";
-                btnClaim.addEventListener("click", async () => {
-                    if (claimPass.value.length < 10) {
-                        mostrarToastCopia("⚠️ La contraseña debe tener al menos 10 caracteres.");
-                        return;
-                    }
-                    const clResp = await postJsonSeguroApi("api/orders/claim", {
-                        order_ref: orderRef,
-                        order_token: orderToken,
-                        email: emailVal,
-                        password: claimPass.value,
-                    });
-                    if (clResp.ok) {
-                        mostrarToastCopia("✅ Cuenta Supabase creada y orden vinculada.");
-                    } else {
-                        mostrarToastCopia(`ℹ️ ${clResp.data?.error || "Activa SUPABASE_URL en Cloudflare Pages para vincular en la nube."}`);
-                    }
-                });
-                claimWrap.appendChild(claimPass);
-                claimWrap.appendChild(btnClaim);
-                orderResultBox.appendChild(claimWrap);
-            }
+            btn.type = "button";
+            btn.setAttribute("data-pay-method", m.id);
+            btn.addEventListener("click", () => selectPaymentMethod(m.id));
+            methodTabBtns.push(btn);
+            payMethodTabs.appendChild(btn);
         });
+        step2Card.appendChild(payMethodTabs);
 
-        const MIMES_COMPROBANTE = new Set(["image/png", "image/jpeg", "image/webp", "application/pdf"]);
-        const MAX_COMPROBANTE_BYTES = 5 * 1024 * 1024;
-        fFile.addEventListener("change", () => {
-            const candidate = fFile.files && fFile.files[0] ? fFile.files[0] : null;
-            if (!candidate) return;
-            if (!MIMES_COMPROBANTE.has(String(candidate.type || "").toLowerCase()) || candidate.size <= 0 || candidate.size > MAX_COMPROBANTE_BYTES) {
-                fFile.value = "";
-                mostrarToastCopia("⛔ Comprobante rechazado: solo PNG, JPG, WEBP o PDF de hasta 5 MB.");
-            }
-        });
-
-        btnEnviarComprobanteApi.addEventListener("click", async () => {
-            const voucher = String(fVoucher.inp.value || "").trim().toUpperCase();
-            if (!/^[A-Z0-9-]{4,40}$/.test(voucher)) {
-                mostrarToastCopia("⚠️ Ingresa un número de comprobante válido (4-40 caracteres alfanuméricos).");
-                return;
-            }
-            const fileObj = fFile.files && fFile.files[0] ? fFile.files[0] : null;
-            if (fileObj && (!MIMES_COMPROBANTE.has(String(fileObj.type || "").toLowerCase()) || fileObj.size <= 0 || fileObj.size > MAX_COMPROBANTE_BYTES)) {
-                mostrarToastCopia("⛔ Archivo inválido: solo PNG, JPG, WEBP o PDF hasta 5 MB.");
-                return;
-            }
-            const fileSha = fileObj ? await calcularSha256Archivo(fileObj) : null;
-            const orderInfo = estadoHibrido.lastOrder;
-            if (!orderInfo) {
-                mostrarToastCopia("⚠️ Primero haz clic en 'Generar Orden Oficial y Token' arriba.");
-                return;
-            }
-            const resp = await postJsonSeguroApi(
-                "api/orders/receipt",
-                {
-                    order_ref: orderInfo.order_ref,
-                    order_token: orderInfo.order_token,
-                    voucher_ref: voucher,
-                    banco_origen: estadoHibrido.gateway === "TRANSFERENCIA" ? "Transferencia Ecuador" : "Deuna! / Banco Pichincha",
-                    comprobante_nombre: fileObj ? sanitizarNombrePlano(fileObj.name).replace(/\s+/g, "_") : undefined,
-                    comprobante_mime: fileObj && fileObj.type ? fileObj.type.toLowerCase() : undefined,
-                    comprobante_sha256: fileSha || undefined,
-                    comprobante_size_bytes: fileObj ? fileObj.size : undefined,
-                },
-                estadoHibrido.accessToken
-            );
-            receiptApiFeedback.textContent = resp.ok
-                ? `✅ Comprobante ${voucher} registrado en estado pendiente_verificacion.`
-                : `📲 Modo estático: envía tu comprobante ${voucher} por WhatsApp (0996459771) usando los botones inferiores.`;
-        });
-
-        const channelsGrid = crearEl("div", "payment-channels-grid");
-
-        // Columna 1: Deuna! / Transferencia Directa (QR protegido exclusivamente dentro del modal)
-        const boxDeuna = crearEl("div", "pay-box pay-deuna");
-        boxDeuna.appendChild(crearEl("h4", "", "1. Deuna! / Transferencia Bancaria Directa (0 % Comisión)"));
-
+        // Panel Deuna!
+        panelDeuna.style.flexDirection = "column";
+        panelDeuna.style.gap = "12px";
         const deunaLayout = crearEl("div", "deuna-layout");
         const qrWrap = crearEl("div", "qr-preview-wrap");
         const qrImg = document.createElement("img");
@@ -1587,12 +1325,30 @@
         qrImg.src = obtenerSrcQrDeuna();
         qrImg.alt = "Código QR Oficial Deuna QuoraTec — QuoraTec ERP";
         qrWrap.appendChild(qrImg);
-
         const stepsList = crearEl("ul", "deuna-steps");
         stepsList.id = "pagoDeunaPasos";
         deunaLayout.appendChild(qrWrap);
         deunaLayout.appendChild(stepsList);
+        panelDeuna.appendChild(deunaLayout);
 
+        const refBanner = crearEl("div", "ref-banner");
+        const refLeft = crearEl("div");
+        refLeft.appendChild(crearEl("span", "", "Referencia Única: "));
+        const refCodeEl = crearEl("span", "ref-code", "QT-CONTADOR-WEB01");
+        refCodeEl.id = "pagoReferenciaTexto";
+        refLeft.appendChild(refCodeEl);
+        const btnCopyRef = crearEl("button", "btn-copy-mini", "📋 Copiar");
+        btnCopyRef.type = "button";
+        btnCopyRef.addEventListener("click", () => {
+            copiarAlPortapapeles(calcularResumenCheckout().referencia, "Referencia de Pago");
+        });
+        refBanner.appendChild(refLeft);
+        refBanner.appendChild(btnCopyRef);
+        panelDeuna.appendChild(refBanner);
+
+        // Panel Transferencia Bancaria
+        panelTransfer.style.flexDirection = "column";
+        panelTransfer.style.gap = "12px";
         const bankRows = crearEl("div", "bank-rows");
         const rowsMeta = [
             ["Titular:", CONFIG_COMERCIAL.TITULAR_RECAUDO, "pagoBankTitular", "Titular"],
@@ -1609,154 +1365,365 @@
             left.appendChild(strong);
             const btnC = crearEl("button", "btn-copy-mini", "Copiar");
             btnC.type = "button";
-            btnC.addEventListener("click", () => {
-                copiarAlPortapapeles(strong.textContent, copyLabel);
-            });
+            btnC.addEventListener("click", () => copiarAlPortapapeles(strong.textContent, copyLabel));
             row.appendChild(left);
             row.appendChild(btnC);
             bankRows.appendChild(row);
         });
+        panelTransfer.appendChild(crearEl("p", "deuna-titular-note", CONFIG_COMERCIAL.TITULAR_NOTA_BANCO));
+        panelTransfer.appendChild(bankRows);
+
+        // Bloque compartido Orden + Comprobante (Deuna! y Transferencia)
+        const manualOrderWrap = crearEl("div", "receipt-upload-box");
+        const btnCrearOrden = crearEl("button", "btn-glow", "🛡️ Generar Orden Oficial y Registrar Pago ➔");
+        btnCrearOrden.type = "button";
+        btnCrearOrden.id = "btnCrearOrdenHibrida";
+        const orderResultBox = crearEl("div", "receipt-upload-box");
+        orderResultBox.id = "checkoutOrderResultBox";
+        orderResultBox.style.display = "none";
+
+        const recGrid = crearEl("div", "hybrid-form-grid");
+        const fVoucher = mkField("checkoutVoucherInput", "Nº de Comprobante / Referencia *", "PICH-998877", "text", 40, true);
+        const fFileWrap = crearEl("div", "field-group");
+        const fFileLbl = crearEl("label", "", "Adjuntar Imagen / PDF (opcional)");
+        fFileLbl.htmlFor = "checkoutReceiptFile";
+        const fFile = document.createElement("input");
+        fFile.type = "file";
+        fFile.id = "checkoutReceiptFile";
+        fFile.accept = ".png,.jpg,.jpeg,.webp,.pdf";
+        fFile.className = "text-input";
+        fFileWrap.appendChild(fFileLbl);
+        fFileWrap.appendChild(fFile);
+        recGrid.appendChild(fVoucher.g);
+        recGrid.appendChild(fFileWrap);
+
+        const btnEnviarComprobanteApi = crearEl("button", "btn-open-checkout", "📤 Enviar Comprobante para Verificación");
+        btnEnviarComprobanteApi.type = "button";
+        btnEnviarComprobanteApi.id = "btnEnviarComprobanteApi";
+        const receiptApiFeedback = crearEl("small", "muted-note", "");
+        receiptApiFeedback.id = "checkoutReceiptFeedback";
 
         const deunaActions = crearEl("div", "checkout-actions-row");
-        const btnWp = crearEl("a", "btn-wp-confirm", "📲 Enviar Comprobante por WhatsApp");
+        const btnWp = crearEl("a", "btn-wp-confirm", "📲 Enviar por WhatsApp");
         btnWp.id = "btnEnviarComprobanteWp";
-        const btnCorreoDeuna = crearEl("a", "btn-email-confirm", "📧 Enviar Comprobante por Correo");
+        const btnCorreoDeuna = crearEl("a", "btn-email-confirm", "📧 Enviar por Correo");
         btnCorreoDeuna.id = "btnEnviarComprobanteCorreo";
         vincularCopiaCorreo(btnCorreoDeuna, () =>
-            construirPlantillaComprobante(calcularResumenCheckout(), "Deuna! / Banco Pichincha")
+            construirPlantillaComprobante(calcularResumenCheckout(), estadoModalPago.activePaymentMethod === "TRANSFERENCIA" ? "Transferencia Bancaria" : "Deuna! / Banco Pichincha")
         );
         deunaActions.appendChild(btnWp);
         deunaActions.appendChild(btnCorreoDeuna);
 
-        const deunaSupportBar = crearEl("div", "support-inline-bar");
-        deunaSupportBar.appendChild(crearEl("span", "", "¿Dudas antes de pagar?"));
-        const deunaSupportLinks = crearEl("div", "support-inline-links");
-        const btnSoporteDeunaWp = crearEl("a", "btn-support-link", "💬 Soporte Oficial (WhatsApp)");
-        btnSoporteDeunaWp.id = "btnSoporteDeunaWp";
-        const btnSoporteDeunaCorreo = crearEl("a", "btn-support-link", "✉️ Soporte Oficial (Correo)");
-        btnSoporteDeunaCorreo.id = "btnSoporteDeunaCorreo";
-        vincularCopiaCorreo(btnSoporteDeunaCorreo, () => {
-            const r = calcularResumenCheckout();
-            return construirPlantillaSoporte(r.plan.nombreComercial, r.referencia);
-        });
-        deunaSupportLinks.appendChild(btnSoporteDeunaWp);
-        deunaSupportLinks.appendChild(btnSoporteDeunaCorreo);
-        deunaSupportBar.appendChild(deunaSupportLinks);
+        manualOrderWrap.appendChild(btnCrearOrden);
+        manualOrderWrap.appendChild(orderResultBox);
+        manualOrderWrap.appendChild(recGrid);
+        manualOrderWrap.appendChild(btnEnviarComprobanteApi);
+        manualOrderWrap.appendChild(receiptApiFeedback);
+        manualOrderWrap.appendChild(deunaActions);
 
-        boxDeuna.appendChild(deunaLayout);
-        boxDeuna.appendChild(crearEl("p", "deuna-titular-note", CONFIG_COMERCIAL.TITULAR_NOTA_BANCO));
-        boxDeuna.appendChild(bankRows);
-        boxDeuna.appendChild(deunaActions);
-        boxDeuna.appendChild(deunaSupportBar);
-
-        // Columna 2: PayPhone (En actualización temporal) / Bloque Corporativo Enterprise
-        const boxCard = crearEl("div", "pay-box pay-card");
-        const cardTitle = crearEl("h4", "", "2. Tarjeta (PayPhone) — Próximamente / En actualización");
-        cardTitle.id = "pagoCardTitulo";
-
-        const payphonePanel = crearEl("div", "payphone-paused-box");
-        payphonePanel.id = "pagoPayphonePanel";
-        payphonePanel.style.display = "flex";
-        payphonePanel.style.flexDirection = "column";
-        payphonePanel.style.gap = "12px";
-
-        const badgeSoon = crearEl("span", "badge-soon", "Próximamente / En actualización");
-        payphonePanel.appendChild(badgeSoon);
-
-        payphonePanel.appendChild(
+        // Panel PayPhone Business (Tarjeta)
+        panelPayphone.style.flexDirection = "column";
+        panelPayphone.style.gap = "12px";
+        panelPayphone.appendChild(crearEl("h4", "", "Pago Inmediato con Tarjeta — PayPhone Business"));
+        panelPayphone.appendChild(
             crearEl(
                 "p",
-                "",
-                "Estamos renovando nuestros enlaces de pago con tarjeta en PayPhone para QuoraTec ERP Edición 2026."
+                "muted-note",
+                "Paga con Visa, Mastercard, Diners, Discover o Alia. Al aprobarse el pago, tu licencia .lic oficial vinculada a tu HWID se descarga y envía automáticamente a tu correo."
             )
         );
         const badgesWrap = crearEl("div", "pay-badges");
         ["Visa", "Mastercard", "Diners", "Discover", "Alia"].forEach((marca) => {
             badgesWrap.appendChild(crearEl("span", "pay-badge-pill", marca));
         });
-        badgesWrap.setAttribute("aria-label", CONFIG_COMERCIAL.PAYPHONE_BADGES);
-        payphonePanel.appendChild(badgesWrap);
+        panelPayphone.appendChild(badgesWrap);
 
-        const btnPayphone = crearEl(
-            "button",
-            "btn-payphone-disabled",
-            "⏳ PayPhone — Próximamente / En actualización"
-        );
+        const btnPayphone = crearEl("button", "btn-glow", "💳 Pagar con Tarjeta (PayPhone Business) ➔");
         btnPayphone.type = "button";
-        btnPayphone.disabled = true;
-        btnPayphone.setAttribute("aria-disabled", "true");
         btnPayphone.id = "btnPagarPayphoneModal";
-        payphonePanel.appendChild(btnPayphone);
+        const payphoneFeedback = crearEl("small", "muted-note", "");
+        payphoneFeedback.id = "pagoPayphoneFeedback";
+        panelPayphone.appendChild(btnPayphone);
+        panelPayphone.appendChild(payphoneFeedback);
+        panelPayphone.appendChild(crearEl("div", "pay-security-note", CONFIG_COMERCIAL.PAYPHONE_GARANTIA));
 
-        payphonePanel.appendChild(crearEl("div", "pay-security-note", CONFIG_COMERCIAL.PAYPHONE_GARANTIA));
-
-        const payphoneSupportBar = crearEl("div", "support-inline-bar");
-        payphoneSupportBar.appendChild(crearEl("span", "", "¿Asistencia para activar con Deuna!?"));
-        const payphoneSupportLinks = crearEl("div", "support-inline-links");
-        const btnSoportePayphoneWp = crearEl("a", "btn-support-link", "💬 Contactar Soporte Oficial");
-        btnSoportePayphoneWp.id = "btnSoportePayphoneWp";
-        const btnSoportePayphoneCorreo = crearEl("a", "btn-support-link", "✉️ soporte@quoratec.com");
-        btnSoportePayphoneCorreo.id = "btnSoportePayphoneCorreo";
-        vincularCopiaCorreo(btnSoportePayphoneCorreo, () => {
-            const r = calcularResumenCheckout();
-            return construirPlantillaSoporte(r.plan.nombreComercial, r.referencia);
+        btnPayphone.addEventListener("click", async () => {
+            const emailVal = sanitizarCorreoInput(fEmail.inp.value);
+            const rucVal = String(fRuc.inp.value || "").trim();
+            const razonVal = sanitizarRazonInput(fRazon.inp.value).trim();
+            const referralVal = String(fReferral.inp.value || "").trim().toUpperCase();
+            if (!emailVal || !emailVal.includes("@") || !/^\d{10}(\d{3})?$/.test(rucVal) || razonVal.length < 2) {
+                mostrarToastCopia("⚠️ Completa Cédula/RUC, Razón Social y Correo en el Paso 1.");
+                setMobileStep(1);
+                return;
+            }
+            const res = calcularResumenCheckout();
+            const planesHwidObligatorio = ["EMPRENDEDOR", "COMERCIAL_PRO", "CONTADOR"];
+            if (planesHwidObligatorio.includes(res.plan.id) && (!res.hwidORef || res.hwidORef === "SIN_ESPECIFICAR")) {
+                mostrarToastCopia("⚠️ Ingresa el HWID del Equipo en el Paso 1.");
+                setMobileStep(1);
+                return;
+            }
+            btnPayphone.disabled = true;
+            payphoneFeedback.textContent = "Conectando con PayPhone Business...";
+            const resp = await postJsonSeguroApi("api/payphone/prepare", {
+                plan_id: res.plan.id,
+                ruc_cedula: rucVal,
+                razon_social: razonVal,
+                email: emailVal,
+                extra_seats: res.extras,
+                hwid: res.hwidORef !== "SIN_ESPECIFICAR" ? res.hwidORef : undefined,
+                referral_code: referralVal || undefined,
+                apply_founder_discount: Boolean(estadoModalPago.applyFounder),
+            });
+            btnPayphone.disabled = false;
+            if (!resp.ok || !resp.data?.ok) {
+                payphoneFeedback.textContent = resp.data?.message || "PayPhone Business en activación. Usa Deuna! o Transferencia.";
+                return;
+            }
+            const payUrl = resp.data.payWithCard || resp.data.payWithPayPhone;
+            if (payUrl && typeof payUrl === "string" && payUrl.startsWith("https://")) {
+                window.location.href = payUrl;
+            } else {
+                payphoneFeedback.textContent = "Transacción preparada. Redirigiendo a PayPhone...";
+            }
         });
-        payphoneSupportLinks.appendChild(btnSoportePayphoneWp);
-        payphoneSupportLinks.appendChild(btnSoportePayphoneCorreo);
-        payphoneSupportBar.appendChild(payphoneSupportLinks);
-        payphonePanel.appendChild(payphoneSupportBar);
 
-        const lanPanel = crearEl("div", "enterprise-lan-notice");
-        lanPanel.id = "pagoEnterpriseLanPanel";
-        lanPanel.style.display = "none";
-        const lanTexto = crearEl("p", "", "");
-        lanTexto.id = "pagoEnterpriseLanTexto";
-        const lanSupportBar = crearEl("div", "support-inline-bar");
-        lanSupportBar.style.marginTop = "10px";
-        lanSupportBar.appendChild(crearEl("span", "", "Asesoría corporativa previa:"));
-        const lanSupportLinks = crearEl("div", "support-inline-links");
-        const btnSoporteEnterpriseWp = crearEl("a", "btn-support-link", "💬 Contactar Soporte Oficial");
-        btnSoporteEnterpriseWp.id = "btnSoporteEnterpriseWp";
-        const btnSoporteEnterpriseCorreo = crearEl("a", "btn-support-link", "✉️ soporte@quoratec.com");
-        btnSoporteEnterpriseCorreo.id = "btnSoporteEnterpriseCorreo";
-        vincularCopiaCorreo(btnSoporteEnterpriseCorreo, () => {
-            const r = calcularResumenCheckout();
-            return construirPlantillaSoporte(r.plan.nombreComercial, r.referencia);
+        step2Card.appendChild(panelDeuna);
+        step2Card.appendChild(panelTransfer);
+        step2Card.appendChild(manualOrderWrap);
+        step2Card.appendChild(panelPayphone);
+
+        // Conectar Crear Orden y Comprobante
+        btnCrearOrden.addEventListener("click", async () => {
+            const emailVal = sanitizarCorreoInput(fEmail.inp.value);
+            const rucVal = String(fRuc.inp.value || "").trim();
+            const razonVal = sanitizarRazonInput(fRazon.inp.value).trim();
+            const referralVal = String(fReferral.inp.value || "").trim().toUpperCase();
+            if (!emailVal || !emailVal.includes("@") || !/^\d{10}(\d{3})?$/.test(rucVal) || razonVal.length < 2) {
+                mostrarToastCopia("⚠️ Completa Cédula/RUC, Razón Social y Correo válidos.");
+                setMobileStep(1);
+                return;
+            }
+            const res = calcularResumenCheckout();
+            const planesHwidObligatorio = ["EMPRENDEDOR", "COMERCIAL_PRO", "CONTADOR"];
+            if (planesHwidObligatorio.includes(res.plan.id) && (!res.hwidORef || res.hwidORef === "SIN_ESPECIFICAR")) {
+                mostrarToastCopia("⚠️ Ingresa el HWID del Equipo.");
+                setMobileStep(1);
+                return;
+            }
+            btnCrearOrden.disabled = true;
+            const resp = await postJsonSeguroApi(
+                "api/orders/create",
+                {
+                    checkout_mode: "guest",
+                    plan_id: res.plan.id,
+                    extra_seats: res.extras,
+                    extra_rucs_packs: res.extraRucs,
+                    extra_cloud_packs: res.extraCloud,
+                    cloud_opcional_emprendedor: res.optNube,
+                    email: emailVal,
+                    ruc_cedula: rucVal,
+                    razon_social: razonVal,
+                    payment_channel: estadoModalPago.activePaymentMethod === "TRANSFERENCIA" ? "TRANSFERENCIA" : "DEUNA_PERSONAL",
+                    hwid_inicial: res.hwidORef !== "SIN_ESPECIFICAR" ? res.hwidORef : undefined,
+                    referral_code: referralVal || undefined,
+                },
+                null
+            );
+            btnCrearOrden.disabled = false;
+
+            const orderRef = resp.data?.order_ref || res.referencia;
+            const orderToken = resp.data?.order_token || `QTTK-${extraerCodigoCorto(rucVal)}${Date.now().toString(36).toUpperCase()}`;
+            estadoHibrido.lastOrder = { order_ref: orderRef, order_token: orderToken, email: emailVal, offline: !resp.ok };
+
+            orderResultBox.textContent = "";
+            orderResultBox.style.display = "flex";
+            orderResultBox.appendChild(
+                crearEl("span", "order-status-pill", resp.ok ? "⏳ Orden Registrada (pendiente_verificacion)" : "ℹ️ Referencia Generada")
+            );
+            const tokRow = crearEl("div", "bank-row");
+            tokRow.appendChild(crearEl("span", "", `Orden: ${orderRef} • Token: ${orderToken}`));
+            const btnCopyTok = crearEl("button", "btn-copy-mini", "Copiar");
+            btnCopyTok.type = "button";
+            btnCopyTok.addEventListener("click", () => copiarAlPortapapeles(`${orderRef} | ${orderToken}`, "Orden y Token"));
+            tokRow.appendChild(btnCopyTok);
+            orderResultBox.appendChild(tokRow);
         });
-        lanSupportLinks.appendChild(btnSoporteEnterpriseWp);
-        lanSupportLinks.appendChild(btnSoporteEnterpriseCorreo);
-        lanSupportBar.appendChild(lanSupportLinks);
-        lanPanel.appendChild(lanTexto);
-        lanPanel.appendChild(lanSupportBar);
 
-        boxCard.appendChild(cardTitle);
-        boxCard.appendChild(payphonePanel);
-        boxCard.appendChild(lanPanel);
+        const MIMES_COMPROBANTE = new Set(["image/png", "image/jpeg", "image/webp", "application/pdf"]);
+        const MAX_COMPROBANTE_BYTES = 5 * 1024 * 1024;
+        fFile.addEventListener("change", () => {
+            const candidate = fFile.files && fFile.files[0] ? fFile.files[0] : null;
+            if (!candidate) return;
+            if (!MIMES_COMPROBANTE.has(String(candidate.type || "").toLowerCase()) || candidate.size <= 0 || candidate.size > MAX_COMPROBANTE_BYTES) {
+                fFile.value = "";
+                mostrarToastCopia("⛔ Comprobante rechazado: solo PNG, JPG, WEBP o PDF de hasta 5 MB.");
+            }
+        });
 
-        channelsGrid.appendChild(boxDeuna);
-        channelsGrid.appendChild(boxCard);
+        btnEnviarComprobanteApi.addEventListener("click", async () => {
+            const voucher = String(fVoucher.inp.value || "").trim().toUpperCase();
+            if (!/^[A-Z0-9-]{4,40}$/.test(voucher)) {
+                mostrarToastCopia("⚠️ Ingresa un número de comprobante válido (4-40 caracteres).");
+                return;
+            }
+            const fileObj = fFile.files && fFile.files[0] ? fFile.files[0] : null;
+            const fileSha = fileObj ? await calcularSha256Archivo(fileObj) : null;
+            const orderInfo = estadoHibrido.lastOrder;
+            if (!orderInfo) {
+                mostrarToastCopia("⚠️ Primero genera tu Orden Oficial arriba.");
+                return;
+            }
+            const resp = await postJsonSeguroApi("api/orders/receipt", {
+                order_ref: orderInfo.order_ref,
+                order_token: orderInfo.order_token,
+                voucher_ref: voucher,
+                banco_origen: estadoModalPago.activePaymentMethod === "TRANSFERENCIA" ? "Transferencia Ecuador" : "Deuna! / Banco Pichincha",
+                comprobante_nombre: fileObj ? sanitizarNombrePlano(fileObj.name).replace(/\s+/g, "_") : undefined,
+                comprobante_mime: fileObj && fileObj.type ? fileObj.type.toLowerCase() : undefined,
+                comprobante_sha256: fileSha || undefined,
+                comprobante_size_bytes: fileObj ? fileObj.size : undefined,
+            });
+            receiptApiFeedback.textContent = resp.ok
+                ? `✅ Comprobante ${voucher} registrado. Al validarse, recibirás tu .lic en tu correo.`
+                : `📲 Envía tu comprobante ${voucher} por WhatsApp (0996459771) usando los botones inferiores.`;
+        });
+
+        // Contenedor de confirmación PayPhone + Descarga directa .lic
+        const payphoneSuccessBox = crearEl("div", "receipt-upload-box");
+        payphoneSuccessBox.id = "checkoutLicSuccessBox";
+        payphoneSuccessBox.style.display = "none";
+        step2Card.appendChild(payphoneSuccessBox);
+
+        colMain.appendChild(step1Card);
+        colMain.appendChild(step2Card);
+
+        // --- COLUMNA DERECHA: RESUMEN DE ORDEN ---
+        const summaryCard = crearEl("div", "checkout-flat-card");
+        const sumHead = crearEl("div", "checkout-step-heading");
+        sumHead.appendChild(crearEl("h4", "", "Resumen de Orden"));
+        sumHead.appendChild(crearEl("span", "muted-note", "365 días"));
+        summaryCard.appendChild(sumHead);
+
+        const gPlan = crearEl("div", "field-group");
+        const lPlan = crearEl("label", "", "Plan Seleccionado");
+        lPlan.htmlFor = "pagoPlanSelect";
+        const selPlan = crearEl("select", "text-input");
+        selPlan.id = "pagoPlanSelect";
+        Object.values(PLANES_V240).forEach((p) => {
+            const opt = document.createElement("option");
+            opt.value = p.id;
+            opt.textContent = `${p.nombre} — ${formatearUsd(p.precioUsd)} USD/año`;
+            selPlan.appendChild(opt);
+        });
+        selPlan.addEventListener("change", () => {
+            estadoModalPago.planId = resolverPlan(selPlan.value);
+            if (estadoModalPago.planId !== "EMPRENDEDOR") estadoModalPago.emprendedorCloud = false;
+            actualizarVistaModalPago();
+        });
+        gPlan.appendChild(lPlan);
+        gPlan.appendChild(selPlan);
+        summaryCard.appendChild(gPlan);
+
+        // Steppers de Add-ons en tiempo real
+        const mkAddonStepper = (labelTxt, inputId, getVal, setVal) => {
+            const row = crearEl("div", "checkout-summary-line");
+            row.appendChild(crearEl("span", "", labelTxt));
+            const st = crearEl("div", "seats-stepper");
+            const bm = crearEl("button", "", "−");
+            bm.type = "button";
+            const inp = crearEl("input", "mono-input");
+            inp.type = "number";
+            inp.id = inputId;
+            inp.min = "0";
+            inp.max = "50";
+            inp.value = String(getVal());
+            inp.style.width = "54px";
+            inp.style.textAlign = "center";
+            const bp = crearEl("button", "", "+");
+            bp.type = "button";
+            bm.addEventListener("click", () => { setVal(Math.max(0, getVal() - 1)); actualizarVistaModalPago(); });
+            bp.addEventListener("click", () => { setVal(Math.min(50, getVal() + 1)); actualizarVistaModalPago(); });
+            inp.addEventListener("input", () => {
+                const v = parseInt(inp.value || "0", 10);
+                setVal(Number.isNaN(v) ? 0 : Math.max(0, Math.min(50, v)));
+                actualizarVistaModalPago();
+            });
+            st.appendChild(bm);
+            st.appendChild(inp);
+            st.appendChild(bp);
+            row.appendChild(st);
+            return row;
+        };
+
+        summaryCard.appendChild(mkAddonStepper("+1 PC ($49/año)", "pagoExtraSeatsInput", () => estadoModalPago.extraSeats, (v) => { estadoModalPago.extraSeats = v; }));
+        summaryCard.appendChild(mkAddonStepper("+5 RUCs ($59/año)", "pagoExtraRucsInput", () => estadoModalPago.extraRucsPacks, (v) => { estadoModalPago.extraRucsPacks = v; }));
+        summaryCard.appendChild(mkAddonStepper("+50 GB ($59/año)", "pagoExtraCloudInput", () => estadoModalPago.extraCloudPacks, (v) => { estadoModalPago.extraCloudPacks = v; }));
+
+        const founderCheckWrap = crearEl("label", "checkout-summary-line");
+        founderCheckWrap.style.cursor = "pointer";
+        const founderChk = document.createElement("input");
+        founderChk.type = "checkbox";
+        founderChk.id = "checkoutFounderCheck";
+        founderChk.addEventListener("change", () => {
+            estadoModalPago.applyFounder = founderChk.checked;
+            actualizarVistaModalPago();
+        });
+        founderCheckWrap.appendChild(crearEl("span", "", "Tarifa Fundadores (-25 %)"));
+        founderCheckWrap.appendChild(founderChk);
+        summaryCard.appendChild(founderCheckWrap);
+
+        const lblResumenPlan = crearEl("div", "muted-note", "");
+        lblResumenPlan.id = "pagoResumenMeta";
+        const linePlan = crearEl("div", "checkout-summary-line");
+        linePlan.appendChild(crearEl("span", "", "Plan Base:"));
+        const linePlanVal = crearEl("strong", "", "$239.00");
+        linePlanVal.id = "pagoSummaryPlanUsd";
+        linePlan.appendChild(linePlanVal);
+
+        const lineAddons = crearEl("div", "checkout-summary-line");
+        lineAddons.appendChild(crearEl("span", "", "Add-ons:"));
+        const lineAddonsVal = crearEl("strong", "", "$0.00");
+        lineAddonsVal.id = "pagoSummaryAddonsUsd";
+        lineAddons.appendChild(lineAddonsVal);
+
+        const lineDiscount = crearEl("div", "checkout-summary-line");
+        lineDiscount.appendChild(crearEl("span", "", "Descuento Fundadores:"));
+        const lineDiscountVal = crearEl("strong", "", "-$0.00");
+        lineDiscountVal.id = "pagoSummaryDiscountUsd";
+        lineDiscount.appendChild(lineDiscountVal);
+
+        const totalRow = crearEl("div", "checkout-summary-total");
+        totalRow.appendChild(crearEl("span", "", "Total USD"));
+        const amountEl = crearEl("div", "checkout-amount", "$239.00");
+        amountEl.id = "pagoMontoTotal";
+        totalRow.appendChild(amountEl);
+
+        const estTotalesEl = crearEl("small", "muted-note", "1 PC(s) totales");
+        estTotalesEl.id = "pagoEstacionesTotales";
 
         const rulesBox = crearEl("div", "rules-box");
         [
-            "✓ 15 días gratis con todas las funcionalidades 100 % desbloqueadas (sin tarjeta).",
-            "✓ Fundadores QuoraTec: 25 % DTO vitalicio para los primeros 30 clientes.",
-            "✓ Modo Solo Lectura al expirar: tus datos y respaldos .tfbackup nunca se eliminan.",
-            "✓ Emisión .lic tras validar pago Deuna! / Transferencia (no reembolsable tras emitirse la llave).",
+            "✓ 15 días gratis con todo desbloqueado (sin tarjeta).",
+            "✓ Tarifa Congelada por 3 años (25 % DTO primeros 30 clientes).",
+            "✓ Respaldos .tfbackup cifrados ante daño o robo.",
         ].forEach((regla) => rulesBox.appendChild(crearEl("div", "", regla)));
 
-        content.appendChild(summary);
-        content.appendChild(controlsGrid);
-        content.appendChild(extraBar);
-        content.appendChild(hybridTabs);
-        content.appendChild(hybridGuestPanel);
-        content.appendChild(hybridAccountBox);
-        content.appendChild(gatewayGrid);
-        content.appendChild(orderActionRow);
-        content.appendChild(orderResultBox);
-        content.appendChild(refBanner);
-        content.appendChild(channelsGrid);
-        content.appendChild(receiptUploadWrap);
-        content.appendChild(rulesBox);
+        summaryCard.appendChild(lblResumenPlan);
+        summaryCard.appendChild(linePlan);
+        summaryCard.appendChild(lineAddons);
+        summaryCard.appendChild(lineDiscount);
+        summaryCard.appendChild(totalRow);
+        summaryCard.appendChild(estTotalesEl);
+        summaryCard.appendChild(rulesBox);
+
+        colSummary.appendChild(summaryCard);
+        twoColLayout.appendChild(colMain);
+        twoColLayout.appendChild(colSummary);
+
+        content.appendChild(mobileStepsBar);
+        content.appendChild(twoColLayout);
 
         box.appendChild(top);
         box.appendChild(content);
@@ -1767,26 +1734,44 @@
 
     function actualizarVistaModalPago() {
         const res = calcularResumenCheckout();
-        const { plan, extras, extraRucs, extraCloud, optNube, rucsTotales, cloudGbTotales, montoTexto, estacionesTotales, referencia } = res;
+        const {
+            plan,
+            extras,
+            extraRucs,
+            extraCloud,
+            optNube,
+            rucsTotales,
+            cloudGbTotales,
+            addonsUsd,
+            founderDiscountUsd,
+            montoTexto,
+            estacionesTotales,
+            referencia,
+        } = res;
 
         const elTitulo = document.getElementById("pagoModalTitulo");
         const elBadge = document.getElementById("pagoModalBadge");
         const elMeta = document.getElementById("pagoResumenMeta");
         const elMonto = document.getElementById("pagoMontoTotal");
+        const elPlanUsd = document.getElementById("pagoSummaryPlanUsd");
+        const elAddonsUsd = document.getElementById("pagoSummaryAddonsUsd");
+        const elDiscountUsd = document.getElementById("pagoSummaryDiscountUsd");
+
         if (elTitulo) elTitulo.textContent = `${plan.nombre} — Suscripción Anual`;
         if (elBadge) {
-            elBadge.textContent = plan.esEnterprise
-                ? `ACTIVACIÓN CORPORATIVA DEUNA / TRANSFERENCIA v${runtimeVersion}`
-                : `CHECKOUT OFICIAL DEUNA! / TRANSFERENCIA QUORATEC v${runtimeVersion}`;
+            elBadge.textContent = `CHECKOUT OFICIAL QUORATEC v${runtimeVersion}`;
         }
         if (elMeta) {
             const addonsTxt = [
                 optNube ? "+Nube 10 GB" : "",
-                extraRucs > 0 ? `+${extraRucs * 5} RUCs` : "",
+                extraRucs > 0 ? `+${extraRucs * 5} Cédulas/RUCs` : "",
                 extraCloud > 0 ? `+${extraCloud * 50} GB` : "",
             ].filter(Boolean).join(" ");
-            elMeta.textContent = `${plan.nombreComercial} • ${rucsTotales} RUC(s) • ${estacionesTotales} PC(s) • ${cloudGbTotales} GB${addonsTxt ? ` (${addonsTxt})` : ""}`;
+            elMeta.textContent = `${plan.nombreComercial} • ${rucsTotales} Cédula(s)/RUC(s) • ${estacionesTotales} PC(s) • ${cloudGbTotales} GB${addonsTxt ? ` (${addonsTxt})` : ""}`;
         }
+        if (elPlanUsd) elPlanUsd.textContent = `${formatearUsd(plan.precioUsd)} USD`;
+        if (elAddonsUsd) elAddonsUsd.textContent = `${formatearUsd(addonsUsd)} USD`;
+        if (elDiscountUsd) elDiscountUsd.textContent = `-${formatearUsd(founderDiscountUsd)} USD`;
         if (elMonto) elMonto.textContent = `${montoTexto} USD`;
 
         const sel = document.getElementById("pagoPlanSelect");
@@ -1805,16 +1790,20 @@
         }
         if (hwidHelpEl) {
             hwidHelpEl.textContent = hwidRequiere
-                ? "Obligatorio para planes de 1 PC. Cópialo desde: QuoraTec ERP -> Configuración -> 4. Plan y Licencia."
+                ? "Guía rápida: abre QuoraTec ERP → Configuración → 4. Plan y Licencia → Copiar HWID del Equipo."
                 : "Opcional: podrás vincular tus equipos con la misma licencia .lic.";
         }
 
-        const extraBar = document.getElementById("pagoExtraSeatsBar");
         const extraIn = document.getElementById("pagoExtraSeatsInput");
+        const extraRucsIn = document.getElementById("pagoExtraRucsInput");
+        const extraCloudIn = document.getElementById("pagoExtraCloudInput");
+        const founderChk = document.getElementById("checkoutFounderCheck");
         const estTot = document.getElementById("pagoEstacionesTotales");
-        if (extraBar instanceof HTMLElement) extraBar.style.display = "flex";
         if (extraIn instanceof HTMLInputElement) extraIn.value = String(extras);
-        if (estTot instanceof HTMLElement) estTot.textContent = `${estacionesTotales} PC(s) totales`;
+        if (extraRucsIn instanceof HTMLInputElement) extraRucsIn.value = String(extraRucs);
+        if (extraCloudIn instanceof HTMLInputElement) extraCloudIn.value = String(extraCloud);
+        if (founderChk instanceof HTMLInputElement) founderChk.checked = Boolean(estadoModalPago.applyFounder);
+        if (estTot instanceof HTMLElement) estTot.textContent = `${estacionesTotales} Computadora(s) incluidas`;
 
         const elRef = document.getElementById("pagoReferenciaTexto");
         const elBankMonto = document.getElementById("pagoBankMonto");
@@ -1833,7 +1822,7 @@
                 "1. Abre Deuna! o Banca Móvil Banco Pichincha.",
                 "2. Escanea el QR de la izquierda.",
                 `3. Ingresa ${montoTexto} USD exactos y la referencia ${referencia}.`,
-                "4. Envía tu comprobante por WhatsApp o correo para emitir tu archivo .lic.",
+                "4. Registra tu comprobante abajo para emitir tu archivo .lic.",
             ].forEach((txt) => pasosUl.appendChild(crearEl("li", "", txt)));
         }
 
@@ -1848,36 +1837,6 @@
             construirUrlMailto(deunaTemplate.asunto, deunaTemplate.cuerpo),
             "correo"
         );
-
-        const soporteTemplate = construirPlantillaSoporte(plan.nombreComercial, referencia);
-        const soporteWpUrl = construirUrlWhatsapp(soporteTemplate.cuerpo);
-        const soporteCorreoUrl = construirUrlMailto(soporteTemplate.asunto, soporteTemplate.cuerpo);
-        ["btnSoporteDeunaWp", "btnSoportePayphoneWp", "btnSoporteEnterpriseWp"].forEach((id) => {
-            asignarEnlaceSeguro(document.getElementById(id), soporteWpUrl, "whatsapp");
-        });
-        ["btnSoporteDeunaCorreo", "btnSoportePayphoneCorreo", "btnSoporteEnterpriseCorreo"].forEach((id) => {
-            asignarEnlaceSeguro(document.getElementById(id), soporteCorreoUrl, "correo");
-        });
-
-        const payphonePanel = document.getElementById("pagoPayphonePanel");
-        const lanPanel = document.getElementById("pagoEnterpriseLanPanel");
-        const lanTexto = document.getElementById("pagoEnterpriseLanTexto");
-        const cardTitle = document.getElementById("pagoCardTitulo");
-
-        if (plan.esEnterprise && payphonePanel instanceof HTMLElement && lanPanel instanceof HTMLElement) {
-            if (cardTitle) cardTitle.textContent = "2. Activación Corporativa Red LAN / Nube (Deuna! / Transferencia)";
-            payphonePanel.style.display = "none";
-            lanPanel.style.display = "block";
-            if (lanTexto) {
-                lanTexto.textContent =
-                    `El plan ${plan.nombreComercial} (${montoTexto} USD / año para ${estacionesTotales} PCs) ` +
-                    `se activa con 0 % comisión mediante QR Deuna! o Transferencia Bancaria Directa QUORATEC usando la referencia ${referencia}.`;
-            }
-        } else if (payphonePanel instanceof HTMLElement && lanPanel instanceof HTMLElement) {
-            if (cardTitle) cardTitle.textContent = "2. Tarjeta (PayPhone) — Próximamente / En actualización";
-            payphonePanel.style.display = "flex";
-            lanPanel.style.display = "none";
-        }
     }
 
     function abrirModalPago(planIdRaw, extraSeatsOverride, addonOpts) {
@@ -2056,13 +2015,13 @@
             detalle = "Hasta 100 RUCs | 10 PCs | Nube Total Dedicada (150 GB) + add-ons (+1 PC $49, +5 RUCs $59, +50 GB $59).";
         } else if (rucs > 15 || pcs >= 2) {
             planId = "ESTUDIO_CONTABLE";
-            detalle = "Hasta 40 RUCs | 3 PCs | Nube Total + Híbrido + Oficina (50 GB) con todas las herramientas desbloqueadas.";
+            detalle = "Hasta 40 RUCs | 3 PCs | Respaldo y Sincronización Total en la Nube (50 GB) con todas las herramientas desbloqueadas.";
         } else if (rucs > 1) {
             planId = "CONTADOR";
-            detalle = "Hasta 15 RUCs | 1 PC | Local + Nube Híbrida (20 GB) con Descarga Masiva SRI, AGP, NIIF, IA Local y Centralis.";
+            detalle = "Hasta 15 RUCs | 1 PC | Respaldo y Sincronización en la Nube (20 GB) con Descarga Masiva SRI, AGP, NIIF, IA Local y Centralis.";
         } else if (docs >= 120) {
             planId = "COMERCIAL_PRO";
-            detalle = "1 RUC | 1 PC | Local + Nube Híbrida (10 GB) ideal para comercios POS y Farmacias FIFO.";
+            detalle = "1 RUC | 1 PC | Respaldo y Sincronización en la Nube (10 GB) ideal para comercios POS y Farmacias FIFO.";
         }
 
         const planMeta = PLAN_LOOKUP[planId];
@@ -2574,6 +2533,57 @@
         if (rawNorm && esClaveSegura(rawNorm) && (PLAN_LOOKUP[rawNorm] || PLAN_ALIASES[rawNorm])) {
             abrirModalPago(rawNorm);
         }
+
+        const rawRef = params.get("ref") || "";
+        const refClean = String(rawRef).trim().toUpperCase().replace(/[^A-Z0-9_-]/g, "").slice(0, 32);
+        if (refClean.length >= 3) {
+            try {
+                if (typeof window.sessionStorage !== "undefined") {
+                    window.sessionStorage.setItem("qt_ref_code", refClean);
+                }
+            } catch {
+                // Silencioso
+            }
+            const refInput = document.getElementById("checkoutReferralInput");
+            if (refInput instanceof HTMLInputElement) refInput.value = refClean;
+        }
+
+        const payphoneStatus = params.get("payphone");
+        const ppId = params.get("id");
+        const ppClientTxId = params.get("clientTransactionId");
+        if (payphoneStatus === "return" && ppId && ppClientTxId) {
+            confirmarRetornoPayphone(ppId, ppClientTxId);
+        }
+    }
+
+    async function confirmarRetornoPayphone(transactionId, clientTxId) {
+        abrirModalPago("CONTADOR");
+        const box = document.getElementById("checkoutLicSuccessBox");
+        if (box instanceof HTMLElement) {
+            box.style.display = "flex";
+            box.textContent = "Validando pago con PayPhone Business y firmando tu licencia .lic oficial...";
+        }
+        const resp = await postJsonSeguroApi("api/payphone/confirm", {
+            id: Number(transactionId),
+            clientTxId: String(clientTxId),
+        });
+        if (!(box instanceof HTMLElement)) return;
+        box.textContent = "";
+        if (!resp.ok || !resp.data?.ok) {
+            box.appendChild(
+                crearEl("span", "order-status-pill", `⚠️ ${resp.data?.message || resp.data?.error || "No se pudo confirmar el pago PayPhone."}`)
+            );
+            return;
+        }
+        box.appendChild(
+            crearEl("span", "order-status-pill", "✅ Pago Aprobado · Licencia Oficial Emitida y Enviada a tu Correo")
+        );
+        if (resp.data.license_key) {
+            const dlLink = crearEl("a", "btn-glow", `⬇ Descargar Licencia .lic (${resp.data.license_key})`);
+            dlLink.href = `/api/licenses/download?license_key=${encodeURIComponent(resp.data.license_key)}`;
+            dlLink.setAttribute("download", `${resp.data.license_key}.lic`);
+            box.appendChild(dlLink);
+        }
     }
 
     function inicializarTemaVisual() {
@@ -2654,7 +2664,7 @@
             const box = crearEl("div", "modal-box");
             const top = crearEl("div", "modal-top");
             const tw = crearEl("div");
-            tw.appendChild(crearEl("span", "modal-badge", "PORTAL CLIENTES & INVITADOS — SUPABASE AUTH"));
+            tw.appendChild(crearEl("span", "modal-badge", "PORTAL CLIENTES & INVITADOS — NUBE SEGURA QUORATEC"));
             tw.appendChild(crearEl("h3", "", "Mi Cuenta, Órdenes y Equipos (+1 PC Adicional)"));
             const btnX = crearEl("button", "btn-close", "×");
             btnX.type = "button";
@@ -2667,7 +2677,7 @@
             const tabs = crearEl("div", "hybrid-tabs-bar");
             const bGuest = crearEl("button", "hybrid-tab-btn is-active", "🔍 Consultar Orden (Invitado)");
             bGuest.type = "button";
-            const bAcc = crearEl("button", "hybrid-tab-btn", "🔐 Mi Cuenta (Supabase Auth)");
+            const bAcc = crearEl("button", "hybrid-tab-btn", "🔐 Mi Cuenta (Nube Segura QuoraTec)");
             bAcc.type = "button";
             tabs.appendChild(bGuest);
             tabs.appendChild(bAcc);
@@ -2748,7 +2758,7 @@
             aActions.appendChild(bSignup);
             aActions.appendChild(bRecover);
 
-            const accOut = crearEl("div", "muted-note", "Las contraseñas se cifran exclusivamente en Supabase Auth.");
+            const accOut = crearEl("div", "muted-note", "Las contraseñas se protegen en Nube Segura QuoraTec.");
             async function runAuth(action) {
                 const resp = await postJsonSeguroApi("api/auth/supabase", {
                     action,
@@ -2760,35 +2770,244 @@
                     estadoHibrido.userEmail = resp.data.user?.email || aEmail.value;
                     const stLbl = document.getElementById("checkoutAccountStatus");
                     if (stLbl) stLbl.textContent = `Sesión activa: ${estadoHibrido.userEmail}`;
-                    const dash = await postJsonSeguroApi("api/auth/supabase", { action: "dashboard" }, estadoHibrido.accessToken);
-                    if (dash.ok) {
-                        accOut.textContent = "";
-                        accOut.appendChild(
-                            crearEl(
-                                "div",
-                                "",
-                                `Sesión ${estadoHibrido.userEmail}: ${dash.data.orders.length} orden(es), ${dash.data.licenses.length} licencia(s) activas.`
-                            )
-                        );
-                        (dash.data.orders || []).forEach((ord) => {
-                            if (ord && ord.status === "verificado" && ord.order_ref) {
-                                const rowOrd = crearEl("div", "flex-wrap-actions mt-8");
-                                rowOrd.appendChild(crearEl("span", "", `${ord.order_ref} (${ord.plan_id || ""})`));
-                                const btnDlAcc = crearEl("button", "btn-glow", "⬇️ Descargar Licencia (.lic)");
-                                btnDlAcc.type = "button";
-                                btnDlAcc.addEventListener("click", () => {
-                                    descargarArchivoLicencia({ order_ref: ord.order_ref }, estadoHibrido.accessToken);
-                                });
-                                rowOrd.appendChild(btnDlAcc);
-                                accOut.appendChild(rowOrd);
-                            }
-                        });
+                    const summaryResp = await fetch("/api/dashboard/summary", {
+                        method: "GET",
+                        headers: { Authorization: `Bearer ${estadoHibrido.accessToken}` },
+                    }).then((r) => r.json().catch(() => null)).catch(() => null);
+
+                    if (summaryResp && summaryResp.ok) {
+                        renderDashboardPorRol(accOut, summaryResp, estadoHibrido.accessToken);
                     } else {
-                        accOut.textContent = `Sesión iniciada correctamente como ${estadoHibrido.userEmail}.`;
+                        const dash = await postJsonSeguroApi("api/auth/supabase", { action: "dashboard" }, estadoHibrido.accessToken);
+                        if (dash.ok) {
+                            renderDashboardPorRol(accOut, {
+                                ok: true,
+                                role: "cliente",
+                                orders: dash.data.orders || [],
+                                licenses: dash.data.licenses || [],
+                                tenants: [],
+                                contador_links: [],
+                            }, estadoHibrido.accessToken);
+                        } else {
+                            accOut.textContent = `Sesión iniciada (${estadoHibrido.userEmail}).`;
+                        }
                     }
+                } else if (action === "recover" && resp.ok) {
+                    accOut.textContent = "Revisa tu correo para completar la recuperación de clave.";
                 } else {
-                    accOut.textContent = resp.data?.message || `ℹ️ ${resp.data?.error || "Configura SUPABASE_URL y SUPABASE_ANON_KEY para habilitar Supabase Auth."}`;
+                    accOut.textContent = resp.data?.message || "No fue posible iniciar sesión. Verifica tus credenciales.";
                 }
+            }
+
+            function renderDashboardPorRol(container, data, accessToken) {
+                container.textContent = "";
+                const wrap = crearEl("div", "dashboard-role-wrap");
+                const role = String(data?.role || "cliente");
+
+                const mkKpi = (label, val) => {
+                    const card = crearEl("div", "dashboard-kpi-card");
+                    card.appendChild(crearEl("span", "", label));
+                    card.appendChild(crearEl("strong", "", val));
+                    return card;
+                };
+
+                if (role === "admin") {
+                    const kpis = data.kpis || {};
+                    const grid = crearEl("div", "dashboard-kpi-grid");
+                    grid.appendChild(mkKpi("Ingresos del Mes", `${formatearUsd(kpis.monthly_revenue_usd || 0)} USD`));
+                    grid.appendChild(mkKpi("Licencias / Pruebas 15d", `${kpis.active_licenses || 0} / ${kpis.trial_licenses || 0}`));
+                    grid.appendChild(mkKpi("Pagos por Validar", String(kpis.pending_orders || 0)));
+                    grid.appendChild(mkKpi("Comisiones por Pagar", `${formatearUsd(kpis.payable_commissions_usd || 0)} USD`));
+                    wrap.appendChild(grid);
+
+                    // Bandeja de aprobación 1 clic
+                    const ordSec = crearEl("div", "dashboard-section-card");
+                    ordSec.appendChild(crearEl("strong", "", "Bandeja de Pagos Deuna! / Transferencia (1 Clic)"));
+                    const pendingOrders = Array.isArray(data.pending_orders) ? data.pending_orders : [];
+                    if (pendingOrders.length === 0) {
+                        ordSec.appendChild(crearEl("span", "muted-note", "No hay pagos pendientes de validación."));
+                    } else {
+                        pendingOrders.slice(0, 15).forEach((ord) => {
+                            const row = crearEl("div", "dashboard-row-item");
+                            row.appendChild(crearEl("span", "", `${ord.order_ref} · ${ord.razon_social} (${ord.plan_id}) · ${formatearUsd(ord.monto_autorizado_usd)}`));
+                            const acts = crearEl("div", "flex-wrap-actions");
+                            const btnOk = crearEl("button", "btn-glow", "✓ Aprobar y Emitir .lic");
+                            btnOk.type = "button";
+                            btnOk.addEventListener("click", async () => {
+                                btnOk.disabled = true;
+                                const res = await postJsonSeguroApi("api/dashboard/admin/approve-order", { order_id: ord.id, action: "approve" }, accessToken);
+                                mostrarToastCopia(res.ok ? `✅ Orden ${ord.order_ref} aprobada y .lic enviada.` : "⚠️ Error al aprobar orden.");
+                                if (res.ok) row.remove();
+                            });
+                            const btnNo = crearEl("button", "btn-glass", "✕ Rechazar");
+                            btnNo.type = "button";
+                            btnNo.addEventListener("click", async () => {
+                                btnNo.disabled = true;
+                                const res = await postJsonSeguroApi("api/dashboard/admin/approve-order", { order_id: ord.id, action: "reject", rejection_reason: "Comprobante no verificado" }, accessToken);
+                                if (res.ok) row.remove();
+                            });
+                            acts.appendChild(btnOk);
+                            acts.appendChild(btnNo);
+                            row.appendChild(acts);
+                            ordSec.appendChild(row);
+                        });
+                    }
+                    wrap.appendChild(ordSec);
+
+                    // Desempeño y liquidación de asesoras
+                    const commSec = crearEl("div", "dashboard-section-card");
+                    commSec.appendChild(crearEl("strong", "", "Comisiones de Asesoras"));
+                    const comms = Array.isArray(data.commissions) ? data.commissions : [];
+                    if (comms.length === 0) {
+                        commSec.appendChild(crearEl("span", "muted-note", "Sin comisiones registradas."));
+                    } else {
+                        comms.slice(0, 20).forEach((c) => {
+                            const row = crearEl("div", "dashboard-row-item");
+                            row.appendChild(crearEl("span", "", `${c.referral_code} · ${c.sale_type || "new_sale"} (${c.commission_rate}%) · ${formatearUsd(c.commission_usd)} [${c.status}]`));
+                            if (c.status === "payable" || c.status === "pending_settlement") {
+                                const btnPay = crearEl("button", "btn-open-checkout", "Marcar Pagada");
+                                btnPay.type = "button";
+                                btnPay.addEventListener("click", async () => {
+                                    btnPay.disabled = true;
+                                    const res = await postJsonSeguroApi("api/dashboard/admin/settle-commission", { commission_id: c.id, override_hold: true }, accessToken);
+                                    mostrarToastCopia(res.ok ? "✅ Comisión marcada como pagada." : "⚠️ No se pudo liquidar.");
+                                });
+                                row.appendChild(btnPay);
+                            }
+                            commSec.appendChild(row);
+                        });
+                    }
+                    wrap.appendChild(commSec);
+
+                    // Control de licencias y equipos
+                    const licSec = crearEl("div", "dashboard-section-card");
+                    licSec.appendChild(crearEl("strong", "", "Control de Licencias y Equipos"));
+                    (data.licenses || []).slice(0, 15).forEach((l) => {
+                        const row = crearEl("div", "dashboard-row-item");
+                        row.appendChild(crearEl("span", "", `${l.license_key} · ${l.holder_ruc} (${l.plan_name})`));
+                        const acts = crearEl("div", "flex-wrap-actions");
+                        const btnExt = crearEl("button", "btn-glass", "+365 días");
+                        btnExt.type = "button";
+                        btnExt.addEventListener("click", async () => {
+                            const res = await postJsonSeguroApi("api/dashboard/admin/manage-license", { license_id: l.id, action: "extend_validity", extra_days: 365 }, accessToken);
+                            mostrarToastCopia(res.ok ? "✅ Vigencia extendida +365 días." : "⚠️ Error al extender.");
+                        });
+                        const btnRel = crearEl("button", "btn-glass", "Liberar Equipo");
+                        btnRel.type = "button";
+                        btnRel.addEventListener("click", async () => {
+                            const res = await postJsonSeguroApi("api/dashboard/admin/manage-license", { license_id: l.id, action: "release_hwid" }, accessToken);
+                            mostrarToastCopia(res.ok ? "✅ Equipo liberado para nueva PC." : "⚠️ Error al liberar.");
+                        });
+                        acts.appendChild(btnExt);
+                        acts.appendChild(btnRel);
+                        row.appendChild(acts);
+                        licSec.appendChild(row);
+                    });
+                    wrap.appendChild(licSec);
+                    container.appendChild(wrap);
+                    return;
+                }
+
+                if (role === "asesora") {
+                    const prof = data.profile || {};
+                    const kpis = data.kpis || {};
+                    const refCard = crearEl("div", "dashboard-section-card");
+                    refCard.appendChild(crearEl("strong", "", `Tu Código de Asesora: ${prof.codigo_referido || ""}`));
+                    const refUrl = prof.referral_url || "";
+                    const refRow = crearEl("div", "dashboard-row-item");
+                    refRow.appendChild(crearEl("code", "", refUrl));
+                    const btnCopyRef = crearEl("button", "btn-copy-mini", "📋 Copiar Enlace");
+                    btnCopyRef.type = "button";
+                    btnCopyRef.addEventListener("click", () => copiarAlPortapapeles(refUrl, "Enlace de Referido"));
+                    refRow.appendChild(btnCopyRef);
+                    refCard.appendChild(refRow);
+                    wrap.appendChild(refCard);
+
+                    const grid = crearEl("div", "dashboard-kpi-grid");
+                    grid.appendChild(mkKpi("Tasa Ventas / Upgrades", `${kpis.new_sale_rate_pct || 20} %`));
+                    grid.appendChild(mkKpi("Tasa Renovaciones", `${kpis.renewal_rate_pct || 10} %`));
+                    grid.appendChild(mkKpi("Saldo Aprobado", `${formatearUsd(kpis.approved_payable_usd || 0)} USD`));
+                    grid.appendChild(mkKpi("Saldo Pendiente", `${formatearUsd(kpis.pending_usd || 0)} USD`));
+                    wrap.appendChild(grid);
+
+                    const refSec = crearEl("div", "dashboard-section-card");
+                    refSec.appendChild(crearEl("strong", "", "Clientes Referidos y Seguimiento"));
+                    (data.referred_clients || []).slice(0, 20).forEach((rc) => {
+                        const row = crearEl("div", "dashboard-row-item");
+                        row.appendChild(crearEl("span", "", `${rc.razon_social} (${rc.ruc_cedula}) · ${rc.plan_id} · ${rc.status}`));
+                        refSec.appendChild(row);
+                    });
+                    wrap.appendChild(refSec);
+
+                    const lookupSec = crearEl("div", "dashboard-section-card");
+                    lookupSec.appendChild(crearEl("strong", "", "Buscador Rápido de Soporte (Reenviar .lic)"));
+                    const lRow = crearEl("div", "flex-wrap-actions");
+                    const lIn = crearEl("input", "text-input");
+                    lIn.placeholder = "Cédula, RUC o correo del cliente";
+                    const lBtn = crearEl("button", "btn-glow", "Buscar y Reenviar .lic");
+                    lBtn.type = "button";
+                    const lOut = crearEl("span", "muted-note", "");
+                    lBtn.addEventListener("click", async () => {
+                        const q = encodeURIComponent(String(lIn.value || "").trim());
+                        const res = await fetch(`/api/dashboard/asesora/lookup-client?q=${q}&resend=1`, {
+                            headers: { Authorization: `Bearer ${accessToken}` },
+                        }).then((r) => r.json().catch(() => null)).catch(() => null);
+                        lOut.textContent = res && res.ok
+                            ? `Licencias: ${(res.licenses || []).length} · Reenvío correo: ${res.resent_email ? "Enviado" : "Solo consulta"}`
+                            : "No se encontraron registros.";
+                    });
+                    lRow.appendChild(lIn);
+                    lRow.appendChild(lBtn);
+                    lookupSec.appendChild(lRow);
+                    lookupSec.appendChild(lOut);
+                    wrap.appendChild(lookupSec);
+                    container.appendChild(wrap);
+                    return;
+                }
+
+                // Vista Cliente / Estudio Contable
+                const licSec = crearEl("div", "dashboard-section-card");
+                licSec.appendChild(crearEl("strong", "", "Mis Licencias Activas (.lic)"));
+                const lics = Array.isArray(data.licenses) ? data.licenses : [];
+                if (lics.length === 0) {
+                    licSec.appendChild(crearEl("span", "muted-note", "Aún no tienes licencias emitidas."));
+                } else {
+                    lics.forEach((l) => {
+                        const row = crearEl("div", "dashboard-row-item");
+                        row.appendChild(crearEl("span", "", `${l.plan_name || l.plan_id} · ${l.holder_ruc || l.ruc_cedula || ""} (${l.license_key || "Activa"})`));
+                        if (l.license_key) {
+                            const aDl = crearEl("a", "btn-glow", "⬇ Descargar .lic");
+                            aDl.href = `/api/licenses/download?license_key=${encodeURIComponent(l.license_key)}`;
+                            aDl.setAttribute("download", `${l.license_key}.lic`);
+                            row.appendChild(aDl);
+                        }
+                        licSec.appendChild(row);
+                    });
+                }
+                wrap.appendChild(licSec);
+
+                const contSec = crearEl("div", "dashboard-section-card");
+                contSec.appendChild(crearEl("strong", "", "Cédulas / RUCs y Código de Enlace para tu Contador (8 caracteres)"));
+                const cRow = crearEl("div", "flex-wrap-actions");
+                const cRucIn = crearEl("input", "mono-input");
+                cRucIn.placeholder = "RUC/Cédula (10 o 13 dígitos)";
+                cRucIn.maxLength = 13;
+                const cBtnGen = crearEl("button", "btn-glass", "Generar Código 8 Chars");
+                cBtnGen.type = "button";
+                const cOut = crearEl("span", "muted-note", "");
+                cBtnGen.addEventListener("click", async () => {
+                    const res = await postJsonSeguroApi("api/v1/tenants/link-code", { ruc_cedula: cRucIn.value.trim() }, accessToken);
+                    cOut.textContent = res.ok && res.data?.link_code
+                        ? `Código para tu contador: ${res.data.link_code} (válido 24h)`
+                        : "Ingresa un RUC o Cédula válido.";
+                });
+                cRow.appendChild(cRucIn);
+                cRow.appendChild(cBtnGen);
+                contSec.appendChild(cRow);
+                contSec.appendChild(cOut);
+                wrap.appendChild(contSec);
+
+                container.appendChild(wrap);
             }
             bLogin.addEventListener("click", () => runAuth("login"));
             bSignup.addEventListener("click", () => runAuth("signup"));
@@ -3214,7 +3433,7 @@
             { icon: "📦", title: "3. Inventario, Kardex & Cartera", desc: "FIFO/Caducidad, Multi-bodega y CxC/CxP", href: "index.html#suite-inventario-cartera" },
             { icon: "📊", title: "4. Contabilidad NIIF & Nómina IESS", desc: "Libro Diario, Balances NIIF, roles y RDEP", href: "index.html#suite-contabilidad-niif" },
             { icon: "🔍", title: "5. Impuestos, Auditoría & Consultas", desc: "Auditor Fantasma, RIMPE, Clasificador AGP y ATS", href: "index.html#suite-impuestos-auditoria" },
-            { icon: "🛡️", title: "6. Sistema, IA, Centralis & .tfbackup", desc: "Copiloto IA Local, WhatsApp/Telegram y Red LAN", href: "index.html#suite-sistema-lan" },
+            { icon: "🛡️", title: "6. Sistema, IA, Centralis & .tfbackup", desc: "Asistente Contable Inteligente, WhatsApp/Telegram y Red LAN", href: "index.html#suite-sistema-lan" },
         ];
 
         const navRoot = obtenerPrefijoRuta();
@@ -3845,7 +4064,7 @@
                     e.preventDefault();
                     const email = emailInput instanceof HTMLInputElement ? emailInput.value.trim() : "";
                     const password = passInput instanceof HTMLInputElement ? passInput.value : "";
-                    setStatusText(authStatus, "Validando credenciales en Supabase Auth...");
+                    setStatusText(authStatus, "Validando credenciales en Nube Segura QuoraTec...");
                     const res = await apiTeamFetch("/api/team/auth", {
                         method: "POST",
                         body: { action: "login", email, password },

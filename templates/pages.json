@@ -3,12 +3,12 @@
     "output": "descargas.html",
     "template": "pages/descargas.html",
     "title": "Descargas Oficiales v3.0.0 — Edición 2026 | QuoraTec ERP — QuoraTec",
-    "description": "Descarga oficial de QuoraTec ERP v3.0.0 conectado a version.json para Windows, macOS y Linux con detección de SO, hashes SHA-256 verificables y guía Windows SmartScreen.",
+    "description": "Descarga oficial de QuoraTec ERP v3.0.0 conectado a version.json para Windows, macOS y Linux con detección de SO, hashes SHA-256 verificables y guía Instalador Oficial Verificado para Windows.",
     "active_nav": "descargas",
     "nav_cta": "link",
     "pre_footer": {
       "title": "¿Necesitas activar tu licencia anual tras probar <span data-trial-days>15 días</span> gratis?",
-      "description": "Aprovecha Fundadores QuoraTec (25 % DTO vitalicio primeros 30 clientes) mediante Deuna! Personal o Transferencia en modalidad Invitado o con tu Cuenta Supabase.",
+      "description": "Aprovecha Fundadores QuoraTec (Tarifa Anual Congelada por 3 años (25 % DTO primeros 30 clientes)) mediante Deuna! Personal o Transferencia en modalidad Invitado o con tu Cuenta QuoraTec.",
       "actions": [
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glow\">Ver 5 Planes y Adquirir ➔</a>",
         "<a href=\"{{ROOT}}soporte.html\" class=\"btn-glass\">Consultar Orden o Soporte</a>"
@@ -19,7 +19,7 @@
     "output": "equipo.html",
     "template": "pages/equipo.html",
     "title": "Panel Remoto de Equipo (2FA TOTP Obligatorio) | QuoraTec ERP — QuoraTec",
-    "description": "Consola operativa segura para el equipo QuoraTec con autenticación Supabase y 2FA TOTP (aal2) obligatorio: emisión de licencias, demos 15 días, tickets y diagnósticos.",
+    "description": "Consola operativa segura para el equipo QuoraTec con autenticación Nube Segura QuoraTec y 2FA TOTP (aal2) obligatorio: emisión de licencias, demos 15 días, tickets y diagnósticos.",
     "active_nav": "soporte",
     "nav_cta": "link",
     "pre_footer": {
@@ -35,7 +35,7 @@
     "output": "guia-uso.html",
     "template": "pages/guia-uso.html",
     "title": "Guía de Uso, 8 Video-Tutoriales y Manual Operativo v3.0.0 | QuoraTec ERP — QuoraTec",
-    "description": "Manual operativo y 8 video-tutoriales de 2 minutos de QuoraTec ERP Edición 2026 (v3.0.0) por QuoraTec: POS F2/F4/F8/F12, Farmacias FIFO, Auditor Fantasma, Termómetro RIMPE, AGP, NIIF, IESS/RDEP, IA Local y Centralis Engine.",
+    "description": "Manual operativo y 8 video-tutoriales de 2 minutos de QuoraTec ERP Edición 2026 (v3.0.0) por QuoraTec: POS F2/F4/F8/F12, Farmacias FIFO, Auditor Fantasma, Termómetro RIMPE, AGP, NIIF, IESS/RDEP, Asistente Contable Inteligente y Asistente de Ventas y Consultas por WhatsApp y Telegram.",
     "active_nav": "guia",
     "nav_cta": "link",
     "pre_footer": {
@@ -50,13 +50,13 @@
   {
     "output": "index.html",
     "template": "pages/index.html",
-    "title": "QuoraTec ERP v3.0.0 — Edición 2026 | Suite Contable, POS, IA Local y SRI Ecuador · QuoraTec",
-    "description": "QuoraTec ERP Edición 2026 (v3.0.0) por QuoraTec: todas las funcionalidades 100 % desbloqueadas en los 5 planes. POS F2/F4/F8/F12, Farmacias FIFO, Auditor Fantasma, Termómetro RIMPE, AGP, NIIF, IESS/RDEP, Copiloto IA Local y Centralis Engine. 15 días gratis.",
+    "title": "QuoraTec ERP v3.0.0 — Edición 2026 | Suite Contable, POS, Asistente Contable Inteligente y SRI Ecuador · QuoraTec",
+    "description": "QuoraTec ERP Edición 2026 (v3.0.0) por QuoraTec: todas las funcionalidades 100 % desbloqueadas en los 5 planes. POS F2/F4/F8/F12, Farmacias FIFO, Auditor Fantasma, Termómetro RIMPE, AGP, NIIF, IESS/RDEP, Asistente Contable Inteligente y Asistente de Ventas y Consultas por WhatsApp y Telegram. 15 días gratis.",
     "active_nav": "",
     "nav_cta": "link",
     "pre_footer": {
       "title": "¿Listo para estrenar QuoraTec ERP Edición 2026?",
-      "description": "Prueba gratis por <span data-trial-days>15 días</span> (todas las funcionalidades desbloqueadas, sin tarjeta) o aprovecha Fundadores QuoraTec (25 % DTO vitalicio).",
+      "description": "Prueba gratis por <span data-trial-days>15 días</span> (todas las funcionalidades desbloqueadas, sin tarjeta) o aprovecha Fundadores QuoraTec (Tarifa Anual Congelada por 3 años (25 % DTO)).",
       "actions": [
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glow\">Ver Planes y Adquirir ➔</a>",
         "<a href=\"{{ROOT}}guia-uso.html\" class=\"btn-glass\">Guía de Uso y 8 Video-Tutoriales</a>"
@@ -66,8 +66,8 @@
   {
     "output": "modulos/ajustes-seguridad.html",
     "template": "pages/modulos/ajustes-seguridad.html",
-    "title": "Ajustes, Red LAN TCP/IP y Respaldos .tfbackup | QuoraTec ERP v3.0.0",
-    "description": "Matriz de permisos ✓/🔒, Red LAN TCP/IP centralizada, nube híbrida/dedicada, Copiloto IA Local, Centralis Engine y backups .tfbackup cifrados.",
+    "title": "Ajustes, Sincronización en la Nube y Respaldos .tfbackup | QuoraTec ERP v3.0.0",
+    "description": "Matriz de permisos ✓/🔒, Sincronización en la Nube centralizada, nube híbrida/dedicada, Asistente Contable Inteligente, Asistente de Ventas y Consultas por WhatsApp y Telegram y backups .tfbackup cifrados.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
@@ -131,7 +131,7 @@
     "output": "modulos/cartera-tesoreria.html",
     "template": "pages/modulos/cartera-tesoreria.html",
     "title": "Cartera (CxC / CxP) y Tesorería | QuoraTec ERP v3.0.0",
-    "description": "Gestión de Cuentas por Cobrar, Cuentas por Pagar y Tesorería y Bancos con conciliación contable NIIF y alertas Centralis Engine.",
+    "description": "Gestión de Cuentas por Cobrar, Cuentas por Pagar y Tesorería y Bancos con conciliación contable NIIF y alertas Asistente de Ventas y Consultas por WhatsApp y Telegram.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
@@ -147,7 +147,7 @@
     "output": "modulos/comercial-ribbon.html",
     "template": "pages/modulos/comercial-ribbon.html",
     "title": "Suite Comercial Ribbon (Comercial & POS) | QuoraTec ERP v3.0.0",
-    "description": "Facturas Clientes, Anulación, Secuencias Fact./N.C., Vendedores, Pedidos, Proformas, Guías de Remisión y Arqueo de Caja con Centralis Engine.",
+    "description": "Facturas Clientes, Anulación, Secuencias Fact./N.C., Vendedores, Pedidos, Proformas, Guías de Remisión y Arqueo de Caja con Asistente de Ventas y Consultas por WhatsApp y Telegram.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
@@ -211,7 +211,7 @@
     "output": "modulos/mis-contribuyentes.html",
     "template": "pages/modulos/mis-contribuyentes.html",
     "title": "Mis Contribuyentes (Multi-RUC) | QuoraTec ERP v3.0.0",
-    "description": "Gestión multi-empresa aislada con SQLite cifrada por HWID (PBKDF2 + AES-256-GCM + HMAC), clave SRI local y respaldo .tfbackup.",
+    "description": "Gestión multi-empresa aislada con Base de datos protegida en esta PC por Equipo Autorizado (PBKDF2 + AES-256-GCM + HMAC), clave SRI local y respaldo .tfbackup.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
@@ -274,8 +274,8 @@
   {
     "output": "modulos/panel-general.html",
     "template": "pages/modulos/panel-general.html",
-    "title": "Panel General, Copiloto IA Local y Centralis Engine | QuoraTec ERP v3.0.0",
-    "description": "Módulo Panel General de QuoraTec ERP: KPIs fiscales, Termómetro RIMPE, Copiloto IA Local e integración WhatsApp/Telegram con Centralis Engine.",
+    "title": "Panel General, Asistente Contable Inteligente y Asistente de Ventas y Consultas por WhatsApp y Telegram | QuoraTec ERP v3.0.0",
+    "description": "Módulo Panel General de QuoraTec ERP: KPIs fiscales, Termómetro RIMPE, Asistente Contable Inteligente e integración WhatsApp/Telegram con Asistente de Ventas y Consultas por WhatsApp y Telegram.",
     "active_nav": "modulos",
     "nav_cta": "checkout",
     "pre_footer": {
@@ -307,11 +307,11 @@
     "output": "planes.html",
     "template": "pages/planes.html",
     "title": "Planes Oficiales y Fundadores QuoraTec v3.0.0 — Edición 2026 | QuoraTec ERP",
-    "description": "Compara los 5 planes anuales congelados de QuoraTec ERP Edición 2026 con todas las funcionalidades 100 % desbloqueadas, calculadora de add-ons (+1 PC $49, +5 RUCs $59, +50 GB $59) y 25 % DTO vitalicio Fundadores QuoraTec.",
+    "description": "Compara los 5 planes anuales congelados de QuoraTec ERP Edición 2026 con todas las funcionalidades 100 % desbloqueadas, calculadora de add-ons (+1 PC $49, +5 RUCs $59, +50 GB $59) y Tarifa Anual Congelada por 3 años (25 % DTO) Fundadores QuoraTec.",
     "active_nav": "planes",
     "nav_cta": "checkout",
     "pre_footer": {
-      "title": "¿Dudas sobre cupos de RUCs, PCs o Nube Híbrida para tu firma?",
+      "title": "¿Dudas sobre cupos de RUCs, PCs o Respaldo y Sincronización en la Nube para tu firma?",
       "description": "Revisa los 8 video-tutoriales en la Guía de Uso o escríbenos a <code>soporte@quoratec.com</code> / WhatsApp (<code>0996459771</code>).",
       "actions": [
         "<a href=\"{{ROOT}}guia-uso.html\" class=\"btn-glow\">Ver Guía de Uso y Tutoriales ➔</a>",
@@ -339,12 +339,12 @@
     "output": "soporte.html",
     "template": "pages/soporte.html",
     "title": "Soporte Oficial, Estado de Órdenes y Cuenta | QuoraTec ERP — QuoraTec",
-    "description": "Consulta el estado de órdenes invitado con tu order_token, accede a tu cuenta Supabase y contacta soporte QuoraTec.",
+    "description": "Consulta el estado de órdenes invitado con tu order_token, accede a tu cuenta Nube Segura QuoraTec y contacta soporte QuoraTec.",
     "active_nav": "soporte",
     "nav_cta": "link",
     "pre_footer": {
       "title": "¿Listo para escalar tu estudio con QuoraTec ERP Edición 2026?",
-      "description": "Activa tu suscripción en modalidad Invitado o con Cuenta Supabase mediante Deuna! Personal o Transferencia.",
+      "description": "Activa tu suscripción en modalidad Invitado o con Cuenta QuoraTec mediante Deuna! Personal o Transferencia.",
       "actions": [
         "<a href=\"{{ROOT}}planes.html\" class=\"btn-glow\">Ver 5 Planes y Adquirir ➔</a>",
         "<a href=\"{{ROOT}}descargas.html\" class=\"btn-glass\">Ir a Descargas Oficiales</a>"

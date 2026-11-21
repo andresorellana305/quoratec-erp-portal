@@ -22,8 +22,8 @@ function clampHoldDays(val, fallback) {
 }
 
 export async function getActiveCommissionPolicy(supa, env = {}) {
-    const envNewRate = clampRate(env?.COMMISSION_NEW_SALE_RATE, 25);
-    const envRenewalRate = clampRate(env?.COMMISSION_RENEWAL_RATE, 15);
+    const envNewRate = clampRate(env?.COMMISSION_NEW_SALE_RATE, 20);
+    const envRenewalRate = clampRate(env?.COMMISSION_RENEWAL_RATE, 10);
     const envHoldDays = clampHoldDays(env?.COMMISSION_HOLD_DAYS, 7);
 
     if (supa?.configured) {
@@ -56,10 +56,12 @@ export function computeNetCommission({ netCollectedUsd, saleType = "new_sale", p
     if (!Number.isFinite(net) || net <= 0) {
         return { ok: false, error: "INVALID_NET_COLLECTED_AMOUNT" };
     }
-    const normalizedSaleType = saleType === "renewal" ? "renewal" : "new_sale";
+    const normalizedSaleType = saleType === "renewal"
+        ? "renewal"
+        : (saleType === "upgrade" ? "upgrade" : "new_sale");
     const rate = normalizedSaleType === "renewal"
-        ? clampRate(policy?.renewal_rate, 15)
-        : clampRate(policy?.new_sale_rate, 25);
+        ? clampRate(policy?.renewal_rate, 10)
+        : clampRate(policy?.new_sale_rate, 20);
 
     const commissionUsd = Math.round(net * (rate / 100) * 100) / 100;
     return {
@@ -73,7 +75,7 @@ export function computeNetCommission({ netCollectedUsd, saleType = "new_sale", p
 }
 
 async function resolveSaleType(supa, order) {
-    if (order?.sale_type === "renewal" || order?.sale_type === "new_sale") {
+    if (order?.sale_type === "renewal" || order?.sale_type === "new_sale" || order?.sale_type === "upgrade") {
         return order.sale_type;
     }
     const ruc = String(order?.ruc_cedula || "").trim();

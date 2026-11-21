@@ -7,7 +7,7 @@
                 </div>
                 <span class="eyebrow">Consola Operativa Interna · QuoraTec ERP <span data-app-version-tag>v3.0.0</span></span>
                 <h1>Panel Remoto de Equipo QuoraTec</h1>
-                <p class="lead-sub">Acceso restringido a personal activo en <code>staff_roles</code> mediante Supabase Auth y verificación obligatoria 2FA TOTP (<code>aal2</code>). Emisión criptográfica asimétrica v2 ejecutada exclusivamente en servidor Edge.</p>
+                <p class="lead-sub">Acceso restringido a personal activo en <code>staff_roles</code> mediante Nube Segura QuoraTec y verificación obligatoria 2FA TOTP (<code>aal2</code>). Emisión criptográfica asimétrica v2 ejecutada exclusivamente en servidor Edge.</p>
             </div>
         </section>
 
@@ -17,7 +17,7 @@
                 <div id="teamAuthGate" class="team-gate-shell">
                     <div class="pay-box team-auth-card">
                         <div class="team-auth-header">
-                            <span class="badge-chip">Paso 1 · Credenciales Supabase Auth</span>
+                            <span class="badge-chip">Paso 1 · Credenciales Nube Segura QuoraTec</span>
                             <h4>Acceso Seguro del Equipo QuoraTec</h4>
                             <p class="muted-note mt-6">Solo cuentas autorizadas en <code>staff_roles</code> con segundo factor <strong>TOTP (aal2)</strong> pueden consultar tickets, emitir licencias o descargar diagnósticos.</p>
                         </div>
@@ -136,14 +136,14 @@
                                             <input type="text" id="annualHolderRuc" class="mono-input" inputmode="numeric" pattern="\d{10}(\d{3})?" placeholder="1790012345001" required>
                                         </div>
                                         <div class="field-group">
-                                            <label for="annualHwid">HWID Equipo (Obligatorio 1 PC)</label>
+                                            <label for="annualHwid">Equipo Autorizado Equipo (Obligatorio 1 PC)</label>
                                             <input type="text" id="annualHwid" class="mono-input" placeholder="PC-MATRIZ-001">
                                         </div>
                                         <div class="field-group">
                                             <label for="annualStorageModes">Modos Almacenamiento</label>
                                             <select id="annualStorageModes" class="select-input">
                                                 <option value="local">local (Solo Local)</option>
-                                                <option value="local,hybrid" selected>local,hybrid (Nube Híbrida)</option>
+                                                <option value="local,hybrid" selected>local,hybrid (Respaldo y Sincronización en la Nube)</option>
                                                 <option value="local,hybrid,cloud_dedicated">local,hybrid,cloud_dedicated (Dedicada)</option>
                                             </select>
                                         </div>
@@ -162,7 +162,7 @@
                                     </div>
                                     <label class="team-checkbox-row" for="annualIsFounder">
                                         <input type="checkbox" id="annualIsFounder">
-                                        <span>Marcar como licencia <strong>Fundadores QuoraTec (25 % DTO vitalicio)</strong></span>
+                                        <span>Marcar como licencia <strong>Fundadores QuoraTec (Tarifa Anual Congelada por 3 años (25 % DTO))</strong></span>
                                     </label>
                                     <button type="submit" class="btn-glow team-btn-full" id="btnIssueAnnualLicense">Emitir y Descargar Licencia Anual (.lic)</button>
                                 </form>
@@ -172,7 +172,7 @@
                             <!-- PANEL EJECUTIVO DE LICENCIAS RECIENTES -->
                             <div class="pay-box team-panel-card">
                                 <h4>Dashboard Ejecutivo de Licencias</h4>
-                                <p class="muted-note mt-6">Últimas licencias emitidas en el ecosistema compartido Portal / QuoraTec ERP / Centralis Engine.</p>
+                                <p class="muted-note mt-6">Últimas licencias emitidas en el ecosistema compartido Portal / QuoraTec ERP / Asistente de Ventas y Consultas por WhatsApp y Telegram.</p>
                                 <div class="team-table-scroll mt-12">
                                     <table class="sha-matrix-table team-data-table">
                                         <thead>
@@ -230,7 +230,7 @@
                                         <input type="text" id="demoHolderRuc" class="mono-input" inputmode="numeric" pattern="\d{10}(\d{3})?" placeholder="1712345678001" required>
                                     </div>
                                     <div class="field-group">
-                                        <label for="demoHwid">HWID del Equipo Cliente (1 PC)</label>
+                                        <label for="demoHwid">Equipo Autorizado del Equipo Cliente (1 PC)</label>
                                         <input type="text" id="demoHwid" class="mono-input" placeholder="PC-CLIENTE-001" required>
                                     </div>
                                     <button type="submit" class="btn-glow team-btn-full" id="btnIssueDemoLicense">Generar Demo 15 Días (.lic)</button>

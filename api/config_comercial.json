@@ -9,7 +9,7 @@
   "trial_modalidad": "ESTUDIO_CONTABLE",
   "todas_funcionalidades_desbloqueadas": true,
   "fundadores": {
-    "etiqueta": "Fundadores QuoraTec (25 % DTO vitalicio primeros 30 clientes + 15 días gratis)",
+    "etiqueta": "Fundadores QuoraTec (Tarifa Anual Congelada por 3 años (25 % DTO primeros 30 clientes) + 15 días gratis)",
     "descuento_pct": 25,
     "cupo_clientes": 30,
     "trial_dias": 15
@@ -99,7 +99,7 @@
   },
   "arquitectura_seguridad": {
     "cifrado_local": "AES-256-GCM",
-    "modo": "Local-First + Nube Híbrida",
+    "modo": "Local-First + Respaldo y Sincronización en la Nube",
     "respaldo_extension": ".tfbackup",
     "nube_opcional": "Desde Nube opcional (+$29/año - 10 GB) en Emprendedor hasta 150 GB en Enterprise",
     "cumplimiento_legal": "LOPDP Ecuador + EULA + Deslinde Tributario"
@@ -126,14 +126,14 @@
     {
       "id": "COMERCIAL_PRO",
       "nombre": "Comercial Pro",
-      "subtitulo": "1 RUC | 1 PC | Local + Nube Híbrida (10 GB)",
+      "subtitulo": "1 RUC | 1 PC | Local + Respaldo y Sincronización en la Nube (10 GB)",
       "precio_usd": 149,
       "periodo": "año",
       "equipos": "1 PC",
       "estaciones": 1,
       "rucs": 1,
       "nube_gb": 10,
-      "modalidad": "Local + Nube Híbrida (10 GB)",
+      "modalidad": "Local + Respaldo y Sincronización en la Nube (10 GB)",
       "funcionalidades_completas": true,
       "pago_deuna": true,
       "pago_payphone": false,
@@ -142,14 +142,14 @@
     {
       "id": "CONTADOR",
       "nombre": "Contador",
-      "subtitulo": "Hasta 15 RUCs | 1 PC | Local + Nube Híbrida (20 GB)",
+      "subtitulo": "Hasta 15 RUCs | 1 PC | Local + Respaldo y Sincronización en la Nube (20 GB)",
       "precio_usd": 239,
       "periodo": "año",
       "equipos": "1 PC",
       "estaciones": 1,
       "rucs": 15,
       "nube_gb": 20,
-      "modalidad": "Local + Nube Híbrida (20 GB)",
+      "modalidad": "Local + Respaldo y Sincronización en la Nube (20 GB)",
       "funcionalidades_completas": true,
       "pago_deuna": true,
       "pago_payphone": false,
@@ -158,14 +158,14 @@
     {
       "id": "ESTUDIO_CONTABLE",
       "nombre": "Estudio Contable",
-      "subtitulo": "Hasta 40 RUCs | 3 PCs | Nube Total + Híbrido + Oficina (50 GB)",
+      "subtitulo": "Hasta 40 RUCs | 3 PCs | Respaldo y Sincronización Total en la Nube (50 GB)",
       "precio_usd": 449,
       "periodo": "año",
       "equipos": "3 PCs",
       "estaciones": 3,
       "rucs": 40,
       "nube_gb": 50,
-      "modalidad": "Nube Total + Híbrido + Oficina (50 GB)",
+      "modalidad": "Respaldo y Sincronización Total en la Nube (50 GB)",
       "funcionalidades_completas": true,
       "pago_deuna": true,
       "pago_payphone": false,
@@ -230,7 +230,7 @@
       "url": "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Linux_x64.tar.gz"
     },
     "sha256sums": {
-      "nombre": "Manifiesto Maestro de Verificación (SHA256SUMS.txt)",
+      "nombre": "Instalador Oficial Verificado para Windows de Verificación (SHA256SUMS.txt)",
       "archivo": "SHA256SUMS.txt",
       "version": "3.0.0",
       "tamano": "111 B",

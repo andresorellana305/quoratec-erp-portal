@@ -9,6 +9,7 @@ import {
     hexABytes,
 } from "../_shared/security.js";
 import { signLicenseV2 } from "./license_signer.js";
+import { buildOrderLicenseEmail } from "../utils/email_templates.js";
 
 const DEFAULT_RESEND_FROM = "soporte@quoratec.com";
 const LICENSES_BUCKET = "licenses";
@@ -156,64 +157,22 @@ export async function createSignedStorageUrl(supa, bucket, objectPath, expiresIn
     return `${supa.url}/storage/v1${signed.startsWith("/") ? "" : "/"}${signed}`;
 }
 
-function buildLicenseEmailHtml(order, license) {
-    const plan = escapeHtml(order.plan_id || license.plan_id);
-    const ruc = escapeHtml(order.ruc_cedula || license.ruc_cedula);
-    const razon = escapeHtml(order.razon_social || "Cliente QuoraTec");
-    const licKey = escapeHtml(license.license_key);
-    const expiresAt = escapeHtml(String(license.expires_at || "").slice(0, 10));
-
-    return `<!DOCTYPE html>
-<html lang="es">
-<head><meta charset="utf-8"><title>Licencia QuoraTec ERP</title></head>
-<body style="font-family:Arial,Helvetica,sans-serif;color:#1f2937;background:#f9fafb;padding:24px;">
-  <div style="max-width:600px;margin:0 auto;background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;padding:28px;">
-    <h2 style="margin-top:0;color:#0f172a;">¡Tu Licencia Oficial de QuoraTec ERP está lista!</h2>
-    <p>Estimado/a <strong>${razon}</strong>,</p>
-    <p>Confirmamos la verificación de tu pago. Adjunto encontrarás tu archivo de licencia criptográfica (<code>.lic</code>).</p>
-    <table style="width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;">
-      <tr><td style="padding:8px;border-bottom:1px solid #e5e7eb;color:#6b7280;">Plan</td><td style="padding:8px;border-bottom:1px solid #e5e7eb;"><strong>${plan}</strong></td></tr>
-      <tr><td style="padding:8px;border-bottom:1px solid #e5e7eb;color:#6b7280;">RUC / Cédula</td><td style="padding:8px;border-bottom:1px solid #e5e7eb;"><strong>${ruc}</strong></td></tr>
-      <tr><td style="padding:8px;border-bottom:1px solid #e5e7eb;color:#6b7280;">Clave de Licencia</td><td style="padding:8px;border-bottom:1px solid #e5e7eb;"><code>${licKey}</code></td></tr>
-      <tr><td style="padding:8px;border-bottom:1px solid #e5e7eb;color:#6b7280;">Vigencia hasta</td><td style="padding:8px;border-bottom:1px solid #e5e7eb;"><strong>${expiresAt}</strong></td></tr>
-    </table>
-    <h3 style="color:#0f172a;margin-bottom:8px;">Instrucciones de activación</h3>
-    <ol style="padding-left:20px;line-height:1.6;">
-      <li>Descarga el archivo <code>.lic</code> adjunto a este correo.</li>
-      <li>Abre <strong>QuoraTec ERP</strong> en tu computador autorizado.</li>
-      <li>Ve a <strong>Configuración &rarr; 4. Plan y Licencia &rarr; Cargar archivo .lic</strong>.</li>
-      <li>Selecciona el archivo descargado para activar tu suscripción anual al instante.</li>
-    </ol>
-    <p style="font-size:12px;color:#6b7280;margin-top:24px;">
-      Soporte QuoraTec: soporte@quoratec.com
-    </p>
-  </div>
-</body>
-</html>`;
-}
-
-async function sendLicenseEmailResend(env, order, license, licJsonContent) {
+export async function sendEmailViaResend(env, { to, subject, html, text, attachments = [] }) {
     const apiKey = String(env?.RESEND_API_KEY || "").trim();
     if (!apiKey) {
         return { sent: false, error: "RESEND_API_KEY_NOT_CONFIGURED" };
     }
-
     const fromEmail = String(env?.RESEND_FROM_EMAIL || DEFAULT_RESEND_FROM).trim();
-    const safeRuc = String(order.ruc_cedula || license.ruc_cedula || "RUC").replace(/[^A-Za-z0-9_-]/g, "");
-    const safeKey = String(license.license_key || "LIC").replace(/[^A-Za-z0-9_-]/g, "");
-
     const payload = {
         from: `QuoraTec ERP - QuoraTec <${fromEmail}>`,
-        to: [order.email],
-        subject: `Tu Licencia Oficial de QuoraTec ERP (${license.license_key})`,
-        html: buildLicenseEmailHtml(order, license),
-        attachments: [
-            {
-                filename: `QuoraTec_ERP_${safeRuc}_${safeKey}.lic`,
-                content: toBase64Utf8(licJsonContent),
-            },
-        ],
+        to: Array.isArray(to) ? to : [to],
+        subject,
+        html,
+        text,
     };
+    if (Array.isArray(attachments) && attachments.length > 0) {
+        payload.attachments = attachments;
+    }
 
     const resp = await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -231,6 +190,33 @@ async function sendLicenseEmailResend(env, order, license, licJsonContent) {
 
     const resData = await resp.json().catch(() => ({}));
     return { sent: true, id: resData?.id || null };
+}
+
+async function sendLicenseEmailResend(env, order, license, licJsonContent) {
+    const safeRuc = String(order.ruc_cedula || license.ruc_cedula || "RUC").replace(/[^A-Za-z0-9_-]/g, "");
+    const safeKey = String(license.license_key || "LIC").replace(/[^A-Za-z0-9_-]/g, "");
+    const compiled = buildOrderLicenseEmail({
+        razonSocial: order.razon_social || "Cliente QuoraTec",
+        rucCedula: order.ruc_cedula || license.ruc_cedula || "",
+        planId: order.plan_id || license.plan_id || "COMERCIAL_PRO",
+        orderRef: order.order_ref || "",
+        licenseKey: license.license_key || "",
+        expiresAt: license.expires_at || "",
+        downloadUrl: `https://erp.quoratec.com/api/licenses/download?license_key=${encodeURIComponent(license.license_key || "")}`,
+    });
+
+    return sendEmailViaResend(env, {
+        to: [order.email],
+        subject: compiled.subject,
+        html: compiled.html,
+        text: compiled.text,
+        attachments: [
+            {
+                filename: `QuoraTec_ERP_${safeRuc}_${safeKey}.lic`,
+                content: toBase64Utf8(licJsonContent),
+            },
+        ],
+    });
 }
 
 /**
