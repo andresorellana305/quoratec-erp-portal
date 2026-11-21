@@ -9,6 +9,7 @@ export async function authenticateCentralisRequest(request, env, fallbackRuc = n
     const url = new URL(request.url);
     const ruc = String(
         request.headers.get("x-empresa-ruc") ||
+        request.headers.get("x-ruc") ||
         url.searchParams.get("ruc") ||
         fallbackRuc ||
         "",

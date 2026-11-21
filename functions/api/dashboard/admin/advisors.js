@@ -1,4 +1,4 @@
-﻿/**
+/**
  * POST /api/dashboard/admin/advisors
  * Crea o actualiza perfiles de asesoras y su código de referido en D1 sin usar CLI.
  */

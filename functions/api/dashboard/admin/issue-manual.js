@@ -1,4 +1,4 @@
-﻿/**
+/**
  * POST /api/dashboard/admin/issue-manual
  * Crea una orden administrativa directa y emite la licencia Ed25519 (.lic) enviándola por correo.
  */
@@ -12,7 +12,7 @@ import {
 import { requireDashboardUser } from "../_auth_guard.js";
 import { verifyAndIssueLicense } from "../../../_lib/license_issuer.js";
 
-const CAMPOS_PERMITIDOS = ["email", "ruc_cedula", "razon_social", "plan_id", "days", "estaciones", "environment"];
+const CAMPOS_PERMITIDOS = ["email", "ruc_cedula", "razon_social", "plan_id", "days", "estaciones", "environment", "hwid_inicial"];
 const PLANES_VALIDOS = ["EMPRENDEDOR", "COMERCIAL_PRO", "CONTADOR", "ESTUDIO_CONTABLE", "ENTERPRISE"];
 
 export async function onRequestPost(context) {
@@ -33,10 +33,14 @@ export async function onRequestPost(context) {
     const planId = PLANES_VALIDOS.includes(rawPlan) ? rawPlan : "EMPRENDEDOR";
     const days = Math.min(1095, Math.max(1, Number(body.data.days || 365)));
     const estaciones = Math.min(100, Math.max(1, Number(body.data.estaciones || 1)));
+    const hwidInicial = body.data.hwid_inicial ? String(body.data.hwid_inicial).trim().toUpperCase() : "";
 
     if (!email || validarCamposComunesLicense({ email })) return jsonSegura({ ok: false, error: "INVALID_EMAIL" }, 400);
     if (!/^\d{10}(\d{3})?$/.test(rucCedula)) return jsonSegura({ ok: false, error: "INVALID_RUC_CEDULA" }, 400);
     if (!razonSocial) return jsonSegura({ ok: false, error: "RAZON_SOCIAL_REQUIRED" }, 400);
+    if (["EMPRENDEDOR", "COMERCIAL_PRO", "CONTADOR"].includes(planId) && !hwidInicial) {
+        return jsonSegura({ ok: false, error: "HWID_REQUIRED_FOR_1PC_PLAN" }, 400);
+    }
 
     const orderId = crypto.randomUUID();
     const orderRef = `QT-ADM-${Date.now().toString(36).toUpperCase()}`;
@@ -58,6 +62,7 @@ export async function onRequestPost(context) {
             payment_channel: "TRANSFERENCIA",
             status: "pendiente_verificacion",
             voucher_ref: "EMISION-MANUAL-ADMIN",
+            hwid_inicial: hwidInicial || null,
         },
     });
     if (!ins.ok) {

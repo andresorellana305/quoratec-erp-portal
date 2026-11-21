@@ -37,16 +37,18 @@ export async function onRequestPost(context) {
         return jsonSegura({ ok: false, error: body.error }, body.status);
     }
 
-    const auth = await authenticateCentralisRequest(request, env, body.data?.empresa_ruc);
+    const auth = await authenticateCentralisRequest(request, env, body.data?.empresa_ruc || body.data?.ruc);
     if (!auth.ok) return auth.response;
 
-    const items = Array.isArray(body.data?.items) ? body.data.items : [];
-    if (items.length === 0 || items.length > 500) {
+    const rawItems = Array.isArray(body.data?.items)
+        ? body.data.items
+        : (Array.isArray(body.data?.productos) ? body.data.productos : []);
+    if (rawItems.length === 0 || rawItems.length > 500) {
         return jsonSegura({ ok: false, error: "ITEMS_ARRAY_1_TO_500_REQUIRED" }, 400);
     }
 
     const nowIso = new Date().toISOString();
-    const rows = items.map((item) => ({
+    const rows = rawItems.map((item) => ({
         org_token: auth.org_token,
         empresa_ruc: auth.empresa_ruc,
         sku: String(item.sku || "").trim().slice(0, 64),

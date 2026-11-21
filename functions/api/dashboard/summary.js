@@ -1,4 +1,4 @@
-﻿/**
+/**
  * GET /api/dashboard/summary
  * Devuelve KPIs, licencias, Ã³rdenes o comisiones estrictamente segÃºn el rol del usuario autenticado.
  */

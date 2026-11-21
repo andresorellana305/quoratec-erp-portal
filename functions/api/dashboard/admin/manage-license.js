@@ -1,4 +1,4 @@
-﻿/**
+/**
  * POST /api/dashboard/admin/manage-license
  * Permite al rol admin extender vigencia, liberar HWID, suspender, reactivar, revocar o editar plan/vencimiento.
  */

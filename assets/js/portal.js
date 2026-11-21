@@ -2898,7 +2898,13 @@
 
                             const tblWrap = crearEl("div", "admin-table-wrap");
                             const tbl = crearEl("table", "admin-table");
-                            tbl.innerHTML = "<thead><tr><th>Orden</th><th>Cliente / RUC</th><th>Plan</th><th>Monto</th><th>Canal / Ref.</th><th>Estado</th><th>Acciones</th></tr></thead>";
+                            const theadOrd = document.createElement("thead");
+                            const trHeadOrd = document.createElement("tr");
+                            ["Orden", "Cliente / RUC", "Plan", "Monto", "Canal / Ref.", "Estado", "Acciones"].forEach((h) => {
+                                trHeadOrd.appendChild(crearEl("th", "", h));
+                            });
+                            theadOrd.appendChild(trHeadOrd);
+                            tbl.appendChild(theadOrd);
                             const tbody = document.createElement("tbody");
                             tbl.appendChild(tbody);
                             tblWrap.appendChild(tbl);
@@ -2911,23 +2917,34 @@
                                 const list = f === "all" ? allOrders : allOrders.filter((o) => o.status === f);
                                 if (list.length === 0) {
                                     const tr = document.createElement("tr");
-                                    tr.innerHTML = `<td colspan="7" class="muted-note">No hay órdenes en esta vista.</td>`;
+                                    const tdEmpty = crearEl("td", "muted-note", "No hay órdenes en esta vista.");
+                                    tdEmpty.colSpan = 7;
+                                    tr.appendChild(tdEmpty);
                                     tbody.appendChild(tr);
                                     return;
                                 }
                                 list.forEach((ord) => {
                                     const tr = document.createElement("tr");
                                     const stClass = ord.status === "verificado" ? "ok" : (ord.status === "rechazado" ? "bad" : "warn");
-                                    tr.innerHTML = `
-                                        <td><strong>${ord.order_ref || ""}</strong><br><small>${(ord.created_at || "").slice(0, 10)}</small></td>
-                                        <td>${ord.razon_social || ""}<br><small>${ord.ruc_cedula || ""} · ${ord.email || ""}</small></td>
-                                        <td>${ord.plan_id || ""}</td>
-                                        <td><strong>${formatearUsd(ord.monto_autorizado_usd || 0)}</strong></td>
-                                        <td>${ord.payment_channel || ""}<br><small>Ref: ${ord.voucher_ref || "N/A"}</small></td>
-                                        <td><span class="status-pill ${stClass}">${ord.status}</span></td>
-                                        <td></td>
-                                    `;
-                                    const tdAct = tr.lastElementChild;
+                                    const td1 = document.createElement("td");
+                                    td1.appendChild(crearEl("strong", "", ord.order_ref || ""));
+                                    td1.appendChild(document.createElement("br"));
+                                    td1.appendChild(crearEl("small", "", (ord.created_at || "").slice(0, 10)));
+                                    const td2 = document.createElement("td");
+                                    td2.appendChild(document.createTextNode(ord.razon_social || ""));
+                                    td2.appendChild(document.createElement("br"));
+                                    td2.appendChild(crearEl("small", "", `${ord.ruc_cedula || ""} · ${ord.email || ""}`));
+                                    const td3 = crearEl("td", "", ord.plan_id || "");
+                                    const td4 = document.createElement("td");
+                                    td4.appendChild(crearEl("strong", "", formatearUsd(ord.monto_autorizado_usd || 0)));
+                                    const td5 = document.createElement("td");
+                                    td5.appendChild(document.createTextNode(ord.payment_channel || ""));
+                                    td5.appendChild(document.createElement("br"));
+                                    td5.appendChild(crearEl("small", "", `Ref: ${ord.voucher_ref || "N/A"}`));
+                                    const td6 = document.createElement("td");
+                                    td6.appendChild(crearEl("span", `status-pill ${stClass}`, ord.status));
+                                    const tdAct = document.createElement("td");
+                                    tr.append(td1, td2, td3, td4, td5, td6, tdAct);
                                     if (ord.status === "pendiente_verificacion") {
                                         const acts = crearEl("div", "flex-wrap-actions");
                                         const btnOk = crearEl("button", "btn-glow", "✓ Aprobar y Emitir .lic");
@@ -2974,7 +2991,13 @@
 
                             const tblWrap = crearEl("div", "admin-table-wrap");
                             const tbl = crearEl("table", "admin-table");
-                            tbl.innerHTML = "<thead><tr><th>Clave / Plan</th><th>Titular / RUC</th><th>Vencimiento</th><th>Equipo (HWID)</th><th>Estado</th><th>Acciones</th></tr></thead>";
+                            const theadLic = document.createElement("thead");
+                            const trHeadLic = document.createElement("tr");
+                            ["Clave / Plan", "Titular / RUC", "Vencimiento", "Equipo (HWID)", "Estado", "Acciones"].forEach((h) => {
+                                trHeadLic.appendChild(crearEl("th", "", h));
+                            });
+                            theadLic.appendChild(trHeadLic);
+                            tbl.appendChild(theadLic);
                             const tbody = document.createElement("tbody");
                             tbl.appendChild(tbody);
                             tblWrap.appendChild(tbl);
@@ -2989,22 +3012,30 @@
                                     : lics;
                                 if (filtered.length === 0) {
                                     const tr = document.createElement("tr");
-                                    tr.innerHTML = `<td colspan="6" class="muted-note">No se encontraron licencias.</td>`;
+                                    const tdEmpty = crearEl("td", "muted-note", "No se encontraron licencias.");
+                                    tdEmpty.colSpan = 6;
+                                    tr.appendChild(tdEmpty);
                                     tbody.appendChild(tr);
                                     return;
                                 }
                                 filtered.forEach((l) => {
                                     const tr = document.createElement("tr");
                                     const stClass = l.status === "active" ? "ok" : (l.status === "revoked" ? "bad" : "warn");
-                                    tr.innerHTML = `
-                                        <td><strong>${l.license_key || ""}</strong><br><small>${l.plan_name || ""} (${l.max_seats || 1} PC)</small></td>
-                                        <td>${l.holder_name || ""}<br><small>${l.holder_ruc || ""}</small></td>
-                                        <td>${(l.expires_at || "").slice(0, 10)}</td>
-                                        <td><small>${l.hwid_inicial ? l.hwid_inicial.slice(0, 14) + "…" : "Libre"}</small></td>
-                                        <td><span class="status-pill ${stClass}">${l.status || "active"}</span></td>
-                                        <td></td>
-                                    `;
-                                    const tdAct = tr.lastElementChild;
+                                    const td1 = document.createElement("td");
+                                    td1.appendChild(crearEl("strong", "", l.license_key || ""));
+                                    td1.appendChild(document.createElement("br"));
+                                    td1.appendChild(crearEl("small", "", `${l.plan_name || ""} (${l.max_seats || 1} PC)`));
+                                    const td2 = document.createElement("td");
+                                    td2.appendChild(document.createTextNode(l.holder_name || ""));
+                                    td2.appendChild(document.createElement("br"));
+                                    td2.appendChild(crearEl("small", "", l.holder_ruc || ""));
+                                    const td3 = crearEl("td", "", (l.expires_at || "").slice(0, 10));
+                                    const td4 = document.createElement("td");
+                                    td4.appendChild(crearEl("small", "", l.hwid_inicial ? `${l.hwid_inicial.slice(0, 14)}…` : "Libre"));
+                                    const td5 = document.createElement("td");
+                                    td5.appendChild(crearEl("span", `status-pill ${stClass}`, l.status || "active"));
+                                    const tdAct = document.createElement("td");
+                                    tr.append(td1, td2, td3, td4, td5, tdAct);
                                     const acts = crearEl("div", "flex-wrap-actions");
 
                                     const btnExt = crearEl("button", "btn-glass", "+365d");
@@ -3059,7 +3090,7 @@
                         // TAB 3: EMITIR LICENCIA MANUAL / CORTESÍA
                         if (activeTab === "issue") {
                             const sec = crearEl("div", "dashboard-section-card");
-                            sec.appendChild(crearEl("strong", "", "Emitir Licencia Oficial o Demo Directamente (Ed25519 + Envío Correo)"));
+                            sec.appendChild(crearEl("strong", "", "Emitir Licencia Oficial o Demo Directamente (.lic + Envío Correo)"));
                             const fGrid = crearEl("div", "admin-form-grid");
                             const inRuc = crearEl("input", "text-input"); inRuc.placeholder = "RUC o Cédula (10 o 13 dígitos)"; inRuc.maxLength = 13;
                             const inRaz = crearEl("input", "text-input"); inRaz.placeholder = "Razón Social / Nombre Completo";
@@ -3070,7 +3101,8 @@
                             });
                             const inDays = crearEl("input", "text-input"); inDays.type = "number"; inDays.value = "365"; inDays.placeholder = "Días vigencia";
                             const inSeats = crearEl("input", "text-input"); inSeats.type = "number"; inSeats.value = "1"; inSeats.placeholder = "Estaciones (PCs)";
-                            fGrid.append(inRuc, inRaz, inMail, selPlan, inDays, inSeats);
+                            const inHwid = crearEl("input", "mono-input"); inHwid.placeholder = "HWID Inicial (obligatorio 1 PC)"; inHwid.maxLength = 36;
+                            fGrid.append(inRuc, inRaz, inMail, selPlan, inDays, inSeats, inHwid);
                             sec.appendChild(fGrid);
 
                             const btnGen = crearEl("button", "btn-glow", "🚀 Generar y Enviar Licencia .lic");
@@ -3078,7 +3110,7 @@
                             const outMsg = crearEl("div", "muted-note", "");
                             btnGen.addEventListener("click", async () => {
                                 btnGen.disabled = true;
-                                outMsg.textContent = "Firmando licencia Ed25519 y enviando correo...";
+                                outMsg.textContent = "Firmando licencia .lic y enviando correo...";
                                 const res = await postJsonSeguroApi("api/dashboard/admin/issue-manual", {
                                     ruc_cedula: inRuc.value.trim(),
                                     razon_social: inRaz.value.trim(),
@@ -3086,6 +3118,7 @@
                                     plan_id: selPlan.value,
                                     days: Number(inDays.value || 365),
                                     estaciones: Number(inSeats.value || 1),
+                                    hwid_inicial: inHwid.value.trim().toUpperCase() || undefined,
                                 }, accessToken);
                                 btnGen.disabled = false;
                                 if (res.ok && res.data?.license_key) {

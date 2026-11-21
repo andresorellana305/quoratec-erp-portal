@@ -34,6 +34,7 @@ const CAMPOS_PERMITIDOS = [
     "hwid_inicial",
     "referral_code",
     "sale_type",
+    "apply_founder_discount",
 ];
 
 const CAMPOS_PROHIBIDOS_TAMPERING = [
@@ -87,6 +88,9 @@ export async function onRequestPost(context) {
         razon_social: razonSocial,
         payment_channel: paymentChannel = "DEUNA_PERSONAL",
         hwid_inicial: hwidInicial,
+        referral_code: referralCodeRaw,
+        sale_type: saleTypeRaw,
+        apply_founder_discount: applyFounderDiscount = false,
     } = body.data;
 
     if (!["guest", "account"].includes(String(checkoutMode))) {
@@ -125,6 +129,9 @@ export async function onRequestPost(context) {
     const cotizacion = calcularCotizacionAutoritativa(planId, extraSeats, extraRucsPacks, extraCloudPacks, cloudOptEmp);
     if (!cotizacion.ok) {
         return jsonSegura({ ok: false, error: cotizacion.error }, 400);
+    }
+    if (applyFounderDiscount === true) {
+        cotizacion.montoAutoritativoUsd = Math.round(cotizacion.montoAutoritativoUsd * 0.75 * 100) / 100;
     }
 
     const PLANES_HWID_OBLIGATORIO = new Set(["EMPRENDEDOR", "COMERCIAL_PRO", "CONTADOR"]);

@@ -5,8 +5,8 @@
   "empresa": "QuoraTec",
   "actualizado": "2026",
   "trial_dias": 15,
-  "trial_rucs": 40,
-  "trial_modalidad": "ESTUDIO_CONTABLE",
+  "trial_rucs": 1,
+  "trial_modalidad": "PRUEBA_15D",
   "todas_funcionalidades_desbloqueadas": true,
   "fundadores": {
     "etiqueta": "Fundadores QuoraTec (Tarifa Anual Congelada por 3 años (25 % DTO primeros 30 clientes) + 15 días gratis)",

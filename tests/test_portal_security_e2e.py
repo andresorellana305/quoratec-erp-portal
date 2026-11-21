@@ -296,7 +296,7 @@ def test_static_integrity_and_zero_legacy() -> dict[str, int]:
     cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
     _assert(cfg.get("version") == "3.0.0", f"Versión JSON inesperada: {cfg.get('version')}")
     _assert(cfg.get("trial_dias") == 15, f"trial_dias esperado 15, recibido: {cfg.get('trial_dias')}")
-    _assert(cfg.get("trial_rucs") == 40, f"trial_rucs esperado 40, recibido: {cfg.get('trial_rucs')}")
+    _assert(cfg.get("trial_rucs") == 1, f"trial_rucs esperado 1, recibido: {cfg.get('trial_rucs')}")
     _assert(cfg.get("precio_seat_extra_usd") == 49.0, "precio_seat_extra_usd esperado 49.0")
     _assert(cfg.get("payphone_habilitado") is False, "PayPhone debe figurar pausado (payphone_habilitado=False)")
     _assert(cfg.get("payphone_links") == PAYPHONE_OFICIALES, f"PayPhone JSON alterado: {cfg.get('payphone_links')}")
