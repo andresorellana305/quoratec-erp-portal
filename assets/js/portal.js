@@ -1,4 +1,4 @@
-﻿/**
+/**
  * QuoraTec ERP v3.0.0 (EdiciÃ³n 2026) â€” Motor Comercial, Add-ons, version.json y Blindaje Web
  * Dominio oficial: https://erp.quoratec.com
  * Desarrollado por QuoraTec (Ecuador).
@@ -2605,7 +2605,7 @@
                 if (btn) btn.textContent = "ðŸŒ™";
             } else {
                 rootEl.removeAttribute("data-theme");
-                if (btn) btn.textContent = "â˜€ï¸";
+                if (btn) btn.textContent = "☀️";
             }
             try {
                 if (typeof window.localStorage !== "undefined") {
