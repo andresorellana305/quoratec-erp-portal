@@ -1,6 +1,6 @@
-/**
+﻿/**
  * GET /api/dashboard/summary
- * Devuelve KPIs, licencias, órdenes o comisiones estrictamente según el rol del usuario autenticado.
+ * Devuelve KPIs, licencias, Ã³rdenes o comisiones estrictamente segÃºn el rol del usuario autenticado.
  */
 import { jsonSegura, supabaseRestRequest } from "../../_shared/security.js";
 import { requireDashboardUser } from "./_auth_guard.js";
@@ -59,6 +59,8 @@ export async function onRequestGet(context) {
                 ) / 100,
             },
             pending_orders: orders.filter((o) => o.status === "pendiente_verificacion"),
+            all_orders: orders,
+            advisors: db ? ((await db.prepare("SELECT id, email, full_name, codigo_referido, is_active FROM users WHERE role = 'asesora' ORDER BY full_name ASC").all())?.results || []) : [],
             commissions,
             licenses,
         }, 200);
@@ -140,7 +142,7 @@ export async function onRequestGet(context) {
             ).bind(user.id).all();
             contadorLinks = Array.isArray(cRes?.results) ? cRes.results : [];
         } catch {
-            // Silencioso si D1 aún no tiene tablas aplicadas
+            // Silencioso si D1 aÃºn no tiene tablas aplicadas
         }
     }
 
@@ -161,3 +163,4 @@ export async function onRequest(context) {
     }
     return jsonSegura({ ok: false, error: "METHOD_NOT_ALLOWED" }, 405);
 }
+
