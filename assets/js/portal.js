@@ -1,5 +1,5 @@
 /**
- * QuoraTec ERP v3.0.0 (Edición 2026) â€” Motor Comercial, Add-ons, version.json y Blindaje Web
+ * QuoraTec ERP v3.0.0 (Edición 2026) — Motor Comercial, Add-ons, version.json y Blindaje Web
  * Dominio oficial: https://erp.quoratec.com
  * Desarrollado por QuoraTec (Ecuador).
  */
@@ -53,7 +53,7 @@
         },
         QR_DEUNA_SRC: "assets/qr-deuna.png",
         QR_DEUNA_SUBPAGE_SRC: "../assets/qr-deuna.png",
-        TITULAR_RECAUDO: "QuoraTec â€” Recaudo Oficial QuoraTec ERP",
+        TITULAR_RECAUDO: "QuoraTec — Recaudo Oficial QuoraTec ERP",
         TITULAR_NOTA_BANCO:
             "Canal principal activo: Deuna! y transferencia directa a nombre del recaudo oficial QuoraTec (QuoraTec ERP). Consulta la cuenta vigente por WhatsApp oficial (0996459771).",
         BANCO_RECAUDO: "Banco Pichincha / Deuna!",
@@ -64,7 +64,7 @@
         WHATSAPP_URL_PREFIX: "https://wa.me/593996459771",
         CORREO_SOPORTE: "soporte@quoratec.com",
         MAILTO_URL_PREFIX: "mailto:soporte@quoratec.com",
-        ASUNTO_SOPORTE: "Consulta Soporte Técnico â€” QuoraTec ERP v3.0.0",
+        ASUNTO_SOPORTE: "Consulta Soporte Técnico — QuoraTec ERP v3.0.0",
         DOMINIOS_PAYPHONE: ["ppls.me", "payphone.app"],
         GITHUB_RELEASES_PREFIX: "/andresorellana305/quoratec-erp/releases/download/v3.0.0/",
         PAYPHONE_BADGES: "Visa · Mastercard · Diners · Discover · Alia",
@@ -80,7 +80,7 @@
             FACTOR_AUTOMATIZACION: 0.82,
         },
         DEMO_RUC_PRINCIPAL: "1790012345001",
-        DEMO_RAZON_PRINCIPAL: "EMPRESA DEMOSTRACIÃ“N S.A.",
+        DEMO_RAZON_PRINCIPAL: "EMPRESA DEMOSTRACIÓN S.A.",
         DEMO_RUC_SECUNDARIO: "0999999999001",
     });
 
@@ -172,10 +172,10 @@
             id: "windows",
             etiqueta: "Windows (.exe)",
             modalId: "modalDescargaWindows",
-            titulo: "Descargar para Windows 10 / 11 x64 (Instalador .exe â€” 66.2 MB)",
+            titulo: "Descargar para Windows 10 / 11 x64 (Instalador .exe — 66.2 MB)",
             badge: "INSTALADOR OFICIAL WINDOWS .EXE",
             archivo: "Setup_QuoraTec_ERP_v3.0.0.exe",
-            tamano: "66.2 MB â€¢ Instalador Windows x64",
+            tamano: "66.2 MB • Instalador Windows x64",
             url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/Setup_QuoraTec_ERP_v3.0.0.exe",
             sha256: "350a7f2cb1ba50a8cea87563b7e773357b5f8e9fa9d0f359401e0e9dc4c9e232",
             sha256Url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
@@ -184,17 +184,17 @@
             pasos: [
                 "1. Descarga Setup_QuoraTec_ERP_v3.0.0.exe (66.2 MB) o la versión Portable .zip (86.3 MB).",
                 "2. Verifica el SHA-256 oficial (350a7f2c...c4c9e232) con certutil antes de ejecutar.",
-                "3. Instalador Oficial Verificado para Windows: haz clic en 'Más información' âž” 'Ejecutar de todas formas'.",
+                "3. Instalador Oficial Verificado para Windows: haz clic en 'Más información' ➔ 'Ejecutar de todas formas'.",
             ],
         },
         windows_zip: {
             id: "windows_zip",
             etiqueta: "Windows Portable (.zip)",
             modalId: "modalDescargaWindowsZip",
-            titulo: "Descargar para Windows 10 / 11 x64 (Portable .zip â€” 86.3 MB)",
+            titulo: "Descargar para Windows 10 / 11 x64 (Portable .zip — 86.3 MB)",
             badge: "PORTABLE WINDOWS .ZIP",
             archivo: "QuoraTec_ERP_v3.0.0_Windows_x64.zip",
-            tamano: "86.3 MB â€¢ Portable sin instalación",
+            tamano: "86.3 MB • Portable sin instalación",
             url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Windows_x64.zip",
             sha256: "ca49bcd4eea13b496a618122aa742d5de5c898f176e7eda326ad2d8b33a0c051",
             sha256Url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
@@ -209,10 +209,10 @@
             id: "macos",
             etiqueta: "macOS (.dmg)",
             modalId: "modalDescargaMacos",
-            titulo: "Descargar para macOS Universal (Apple Silicon / Intel â€” 93.6 MB)",
+            titulo: "Descargar para macOS Universal (Apple Silicon / Intel — 93.6 MB)",
             badge: "IMAGEN OFICIAL MACOS .DMG",
             archivo: "QuoraTec_ERP_v3.0.0_macOS.dmg",
-            tamano: "93.6 MB â€¢ Imagen de disco macOS",
+            tamano: "93.6 MB • Imagen de disco macOS",
             url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_macOS.dmg",
             sha256: "374e5ca4444b290662e417403ea0848bb77fe0215243fe52299743d7d8ad24df",
             sha256Url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
@@ -227,10 +227,10 @@
             id: "linux",
             etiqueta: "Linux .deb",
             modalId: "modalDescargaLinux",
-            titulo: "Descargar para Linux Debian / Ubuntu (.deb â€” 95.6 MB)",
+            titulo: "Descargar para Linux Debian / Ubuntu (.deb — 95.6 MB)",
             badge: "PAQUETE OFICIAL LINUX .DEB",
             archivo: "QuoraTec_ERP_v3.0.0_Linux_amd64.deb",
-            tamano: "95.6 MB â€¢ Paquete Debian/Ubuntu amd64",
+            tamano: "95.6 MB • Paquete Debian/Ubuntu amd64",
             url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Linux_amd64.deb",
             sha256: "2c5e48ae14c8dfce3d3e5f975e236a93be663fd138ef6f81dcb9a4ec5c2d052a",
             sha256Url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
@@ -246,10 +246,10 @@
             id: "linux_tar",
             etiqueta: "Linux Genérico (.tar.gz)",
             modalId: "modalDescargaLinuxTar",
-            titulo: "Descargar para Linux Genérico x64 (.tar.gz â€” 123.3 MB)",
+            titulo: "Descargar para Linux Genérico x64 (.tar.gz — 123.3 MB)",
             badge: "ARCHIVO LINUX .TAR.GZ",
             archivo: "QuoraTec_ERP_v3.0.0_Linux_x64.tar.gz",
-            tamano: "123.3 MB â€¢ Distros Linux x64",
+            tamano: "123.3 MB • Distros Linux x64",
             url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/QuoraTec_ERP_v3.0.0_Linux_x64.tar.gz",
             sha256: "b4e5da23885fe7126dabe59a0120ef2fc688ad0a6124407a722bae4429c09b1b",
             sha256Url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
@@ -265,7 +265,7 @@
             etiqueta: "SHA256SUMS.txt",
             modalId: "modalDescargaSha256",
             titulo: "Instalador Oficial Verificado (v3.0.0)",
-            badge: "VERIFICACIÃ“N DE SEGURIDAD",
+            badge: "VERIFICACIÓN DE SEGURIDAD",
             archivo: "SHA256SUMS.txt",
             tamano: "Manifiesto Maestro v3.0.0 (111 B)",
             url: "https://github.com/andresorellana305/quoratec-erp/releases/download/v3.0.0/SHA256SUMS.txt",
@@ -282,11 +282,11 @@
 
     const TEXTOS_LEGALES = congelarProfundo({
         terminos: {
-            titulo: "Acuerdo de Licencia de Usuario Final y Condiciones de Uso â€” v3.0.0 (Edición 2026)",
+            titulo: "Acuerdo de Licencia de Usuario Final y Condiciones de Uso — v3.0.0 (Edición 2026)",
             secciones: [
                 {
-                    sub: "1. Suscripción Anual (365 Días) â€” Todas las Funcionalidades Desbloqueadas",
-                    txt: "QuoraTec otorga licencia anual de 365 días para QuoraTec ERP â€” Edición 2026 con todas las funciones 100 % desbloqueadas en los 5 planes: Emprendedor ($69/año, 1 RUC/Cédula, 1 PC, Modo Local), Comercial Pro ($149/año, 1 RUC, 1 PC, Respaldo y Sincronización en la Nube 10 GB), Contador ($239/año, hasta 15 RUCs, 1 PC, Respaldo y Sincronización en la Nube 20 GB), Estudio Contable ($449/año, hasta 40 RUCs, 3 PCs, Respaldo y Sincronización Total en la Nube 50 GB) y Enterprise ($849/año, hasta 100 RUCs, 10 PCs, Nube Dedicada 150 GB). Tras los 15 días gratis o al vencer sin renovar, pasa a Modo Solo Lectura sin borrar datos.",
+                    sub: "1. Suscripción Anual (365 Días) — Todas las Funcionalidades Desbloqueadas",
+                    txt: "QuoraTec otorga licencia anual de 365 días para QuoraTec ERP — Edición 2026 con todas las funciones 100 % desbloqueadas en los 5 planes: Emprendedor ($69/año, 1 RUC/Cédula, 1 PC, Modo Local), Comercial Pro ($149/año, 1 RUC, 1 PC, Respaldo y Sincronización en la Nube 10 GB), Contador ($239/año, hasta 15 RUCs, 1 PC, Respaldo y Sincronización en la Nube 20 GB), Estudio Contable ($449/año, hasta 40 RUCs, 3 PCs, Respaldo y Sincronización Total en la Nube 50 GB) y Enterprise ($849/año, hasta 100 RUCs, 10 PCs, Nube Dedicada 150 GB). Tras los 15 días gratis o al vencer sin renovar, pasa a Modo Solo Lectura sin borrar datos.",
                 },
                 {
                     sub: "2. Deslinde Tributario y Responsabilidad Profesional",
@@ -500,7 +500,7 @@
         if (!validarDestinoSeguro(url, tipo)) {
             anchorEl.removeAttribute("href");
             registrarBloqueoSeguridad("ASSIGN_INVALID_URL", url);
-            mostrarToastCopia("â›” Canal bloqueado por verificación de integridad.");
+            mostrarToastCopia("⛔ Canal bloqueado por verificación de integridad.");
             return false;
         }
         anchorEl.setAttribute("href", url);
@@ -775,7 +775,7 @@
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard
                 .writeText(limpio)
-                .then(() => mostrarToastCopia(`âœ“ ${etiqueta} copiado: ${limpio}`))
+                .then(() => mostrarToastCopia(`✓ ${etiqueta} copiado: ${limpio}`))
                 .catch(() => mostrarToastCopia(`${etiqueta}: ${limpio}`));
         } else {
             mostrarToastCopia(`${etiqueta}: ${limpio}`);
@@ -815,38 +815,38 @@
             extraCloud > 0 ? `+${extraCloud * 50} GB Nube Extra` : "",
         ].filter(Boolean).join(" · ") || "Sin add-ons adicionales";
         const asunto = `[QUORATEC ERP] Activación Licencia Anual ${referencia} (${metodoPago})`;
-        const campoComprobante = "â€¢ N.º de Comprobante / Autorización bancaria Deuna! (OBLIGATORIO): [Escribir número de transacción]";
+        const campoComprobante = "• N.º de Comprobante / Autorización bancaria Deuna! (OBLIGATORIO): [Escribir número de transacción]";
         const lineaHwidsAdicionales =
             Number(estacionesTotales) >= 2
-                ? "\nâ€¢ Código HWID PC(s) Adicional(es): [Pegar códigos HWID adicionales]"
+                ? "\n• Código HWID PC(s) Adicional(es): [Pegar códigos HWID adicionales]"
                 : "";
         const cuerpo =
             `[QUORATEC ERP v${runtimeVersion}] Hola equipo de QuoraTec, envío mi comprobante de pago real para activar mi licencia anual:\n\n` +
-            `â€¢ Plan seleccionado: ${plan.nombreComercial}\n` +
-            `â€¢ Capacidad: ${rucsTotales} RUC(s) â€¢ ${detalleEstaciones} â€¢ ${cloudGbTotales} GB Nube (${detalleAddons})\n` +
-            `â€¢ Monto USD anual: ${montoTexto} USD / año\n` +
-            `â€¢ Método de pago: ${metodoPago}\n` +
-            `â€¢ Referencia de orden: ${referencia}\n` +
+            `• Plan seleccionado: ${plan.nombreComercial}\n` +
+            `• Capacidad: ${rucsTotales} RUC(s) • ${detalleEstaciones} • ${cloudGbTotales} GB Nube (${detalleAddons})\n` +
+            `• Monto USD anual: ${montoTexto} USD / año\n` +
+            `• Método de pago: ${metodoPago}\n` +
+            `• Referencia de orden: ${referencia}\n` +
             `${campoComprobante}\n` +
-            `â€¢ Código HWID de tu PC (QuoraTec ERP -> Configuración -> 4. Plan y Licencia): ${hwidTexto}` +
+            `• Código HWID de tu PC (QuoraTec ERP -> Configuración -> 4. Plan y Licencia): ${hwidTexto}` +
             `${lineaHwidsAdicionales}\n\n` +
             `Datos para emisión de licencia (.lic):\n` +
-            `â€¢ RUC o Cédula: [Escribir RUC/Cédula]\n` +
-            `â€¢ Nombre / Razón Social: [Escribir nombre o empresa]\n` +
-            `â€¢ Correo para recibir tu archivo .lic: [Escribir correo]\n\n` +
-            `âš ️ Adjunta la captura o PDF del comprobante. El archivo .lic se emite solo tras verificar el abono real (no reembolsable tras su emisión).`;
+            `• RUC o Cédula: [Escribir RUC/Cédula]\n` +
+            `• Nombre / Razón Social: [Escribir nombre o empresa]\n` +
+            `• Correo para recibir tu archivo .lic: [Escribir correo]\n\n` +
+            `⚠️ Adjunta la captura o PDF del comprobante. El archivo .lic se emite solo tras verificar el abono real (no reembolsable tras su emisión).`;
         return { asunto, cuerpo };
     }
 
     function construirPlantillaSoporte(planNombre, referencia) {
         const asunto = CONFIG_COMERCIAL.ASUNTO_SOPORTE;
-        const detallePlan = planNombre ? `\nâ€¢ Plan consultado: ${sanitizarNombrePlano(planNombre)}` : "";
-        const detalleRef = referencia ? `\nâ€¢ Referencia de consulta: ${sanitizarIdentificador(referencia)}` : "";
+        const detallePlan = planNombre ? `\n• Plan consultado: ${sanitizarNombrePlano(planNombre)}` : "";
+        const detalleRef = referencia ? `\n• Referencia de consulta: ${sanitizarIdentificador(referencia)}` : "";
         const cuerpo =
             `${asunto}\n\n` +
             `Hola equipo de QuoraTec (QuoraTec ERP), tengo una consulta técnica o comercial (sin envío de comprobante):` +
             `${detallePlan}${detalleRef}\n` +
-            `â€¢ Detalle de mi consulta: [Escribir consulta técnica o comercial]`;
+            `• Detalle de mi consulta: [Escribir consulta técnica o comercial]`;
         return { asunto, cuerpo };
     }
 
@@ -870,7 +870,7 @@
 
     function asegurarBotonFlotanteSoporte() {
         if (document.getElementById("btnFlotanteSoporte")) return;
-        const btn = crearEl("a", "whatsapp-float", "ðŸ’¬ Soporte QuoraTec");
+        const btn = crearEl("a", "whatsapp-float", "💬 Soporte QuoraTec");
         btn.id = "btnFlotanteSoporte";
         const { cuerpo } = construirPlantillaSoporte(`QuoraTec ERP v${runtimeVersion}`, "");
         asignarEnlaceSeguro(btn, construirUrlWhatsapp(cuerpo), "whatsapp");
@@ -889,12 +889,12 @@
         const box = crearEl("div", "modal-box modal-narrow");
         const top = crearEl("div", "modal-top");
         const tw = crearEl("div");
-        tw.appendChild(crearEl("span", "modal-badge", `INSTALACIÃ“N EN COMPUTADORA v${runtimeVersion}`));
+        tw.appendChild(crearEl("span", "modal-badge", `INSTALACIÓN EN COMPUTADORA v${runtimeVersion}`));
         const h3 = crearEl("h3", "", "Descarga Disponible para PC (Windows, macOS o Linux)");
         h3.id = "modalMovilTitulo";
         tw.appendChild(h3);
 
-        const btnClose = crearEl("button", "btn-close", "Ã—");
+        const btnClose = crearEl("button", "btn-close", "×");
         btnClose.type = "button";
         btnClose.setAttribute("aria-label", "Cerrar aviso de descarga en móvil");
         btnClose.addEventListener("click", () => cerrarModal("modalMovilBloqueado"));
@@ -917,11 +917,11 @@
         urlChip.id = "modalMovilUrlChip";
 
         const actions = crearEl("div", "mobile-actions-stack");
-        const btnWpShare = crearEl("a", "btn-wp-confirm", "ðŸ“² Enviar enlace a mi WhatsApp");
+        const btnWpShare = crearEl("a", "btn-wp-confirm", "📲 Enviar enlace a mi WhatsApp");
         btnWpShare.id = "btnMovilEnviarWp";
         asignarEnlaceSeguro(btnWpShare, construirUrlWhatsappShareDesktop(), "whatsapp_share");
 
-        const btnCopyUrl = crearEl("button", "btn-email-confirm", "ðŸ“‹ Copiar enlace oficial");
+        const btnCopyUrl = crearEl("button", "btn-email-confirm", "📋 Copiar enlace oficial");
         btnCopyUrl.type = "button";
         btnCopyUrl.id = "btnMovilCopiarEnlace";
         btnCopyUrl.addEventListener("click", () => {
@@ -970,7 +970,7 @@
         tw.appendChild(crearEl("span", "modal-badge", soMeta.badge));
         tw.appendChild(crearEl("h3", "", soMeta.titulo));
 
-        const btnClose = crearEl("button", "btn-close", "Ã—");
+        const btnClose = crearEl("button", "btn-close", "×");
         btnClose.type = "button";
         btnClose.setAttribute("aria-label", `Cerrar descarga ${soMeta.id}`);
         btnClose.addEventListener("click", () => cerrarModal(soMeta.modalId));
@@ -984,14 +984,14 @@
         r1.appendChild(crearEl("strong", "mono", soMeta.archivo));
         const r2 = crearEl("div", "bank-row");
         r2.appendChild(crearEl("span", "", "Versión / Paquete:"));
-        r2.appendChild(crearEl("strong", "", `v${runtimeVersion} â€¢ ${soMeta.tamano}`));
+        r2.appendChild(crearEl("strong", "", `v${runtimeVersion} • ${soMeta.tamano}`));
         metaBox.appendChild(r1);
         metaBox.appendChild(r2);
 
         const shaBox = crearEl("div", "os-sha-box");
         const shaHead = crearEl("div", "os-sha-head");
         shaHead.appendChild(crearEl("span", "os-sha-label", "Código de verificación de seguridad:"));
-        const btnCopySha = crearEl("button", "btn-sha-copy", "ðŸ“‹ Copiar código de verificación");
+        const btnCopySha = crearEl("button", "btn-sha-copy", "📋 Copiar código de verificación");
         btnCopySha.type = "button";
         btnCopySha.addEventListener("click", () => {
             copiarAlPortapapeles(soMeta.sha256, `SHA-256 ${soMeta.etiqueta}`);
@@ -1013,7 +1013,7 @@
             "Incluye 15 días gratis con todas las funcionalidades 100 % desbloqueadas (sin tarjeta). Al expirar, transiciona de forma segura a Modo Solo Lectura sin borrar datos ni respaldos .tfbackup locales."
         );
 
-        const btnDownload = crearEl("a", "btn-glow", `â¬‡ Descargar ${soMeta.archivo}`);
+        const btnDownload = crearEl("a", "btn-glow", `⬇ Descargar ${soMeta.archivo}`);
         btnDownload.setAttribute("data-download-direct", soMeta.id);
         btnDownload.setAttribute("download", soMeta.archivo);
         asignarEnlaceSeguro(btnDownload, soMeta.url, "download_release");
@@ -1098,7 +1098,7 @@
 
     async function descargarArchivoLicencia(payload, bearerToken) {
         if (typeof window.fetch !== "function") {
-            mostrarToastCopia("âš ️ Descarga no disponible en este navegador.");
+            mostrarToastCopia("⚠️ Descarga no disponible en este navegador.");
             return;
         }
         const headers = { "Content-Type": "application/json" };
@@ -1112,7 +1112,7 @@
             });
             if (!resp.ok) {
                 const errData = await resp.json().catch(() => ({}));
-                mostrarToastCopia(`âš ️ No se pudo descargar la licencia: ${errData.error || `HTTP ${resp.status}`}`);
+                mostrarToastCopia(`⚠️ No se pudo descargar la licencia: ${errData.error || `HTTP ${resp.status}`}`);
                 return;
             }
             const blob = await resp.blob();
@@ -1127,9 +1127,9 @@
             a.click();
             a.remove();
             setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
-            mostrarToastCopia(`âœ… Licencia descargada: ${filename}`);
+            mostrarToastCopia(`✅ Licencia descargada: ${filename}`);
         } catch {
-            mostrarToastCopia("âš ️ Error de red al descargar el archivo .lic.");
+            mostrarToastCopia("⚠️ Error de red al descargar el archivo .lic.");
         }
     }
 
@@ -1144,14 +1144,14 @@
         const box = crearEl("div", "modal-box");
         const top = crearEl("div", "modal-top");
         const titleWrap = crearEl("div");
-        const badge = crearEl("span", "modal-badge", `ACTIVACIÃ“N OFICIAL QUORATEC â€” QUORATEC ERP v${runtimeVersion}`);
+        const badge = crearEl("span", "modal-badge", `ACTIVACIÓN OFICIAL QUORATEC — QUORATEC ERP v${runtimeVersion}`);
         badge.id = "pagoModalBadge";
         const h3 = crearEl("h3", "", "Adquirir Plan Anual");
         h3.id = "pagoModalTitulo";
         titleWrap.appendChild(badge);
         titleWrap.appendChild(h3);
 
-        const btnClose = crearEl("button", "btn-close", "Ã—");
+        const btnClose = crearEl("button", "btn-close", "×");
         btnClose.type = "button";
         btnClose.setAttribute("aria-label", "Cerrar modal de pago");
         btnClose.addEventListener("click", () => cerrarModal("modalPago"));
@@ -1186,7 +1186,7 @@
         // --- PASO 1: TITULAR Y EQUIPO ---
         const step1Card = crearEl("div", "checkout-flat-card checkout-step-1-card");
         const step1Head = crearEl("div", "checkout-step-heading");
-        step1Head.appendChild(crearEl("h4", "", "Paso 1 â€” Titular y Equipo"));
+        step1Head.appendChild(crearEl("h4", "", "Paso 1 — Titular y Equipo"));
         step1Head.appendChild(crearEl("span", "muted-note", "Licencia Digital Oficial"));
         step1Card.appendChild(step1Head);
 
@@ -1248,7 +1248,7 @@
         const hwidHelp = crearEl(
             "small",
             "muted-note",
-            "Guía rápida: abre QuoraTec ERP â†’ Configuración â†’ 4. Plan y Licencia â†’ Copiar HWID del Equipo."
+            "Guía rápida: abre QuoraTec ERP → Configuración → 4. Plan y Licencia → Copiar HWID del Equipo."
         );
         hwidHelp.id = "pagoHwidHelp";
         gHwid.appendChild(lHwid);
@@ -1256,7 +1256,7 @@
         gHwid.appendChild(hwidHelp);
 
         const mobNextWrap = crearEl("div", "checkout-mobile-next-wrap");
-        const btnMobNext = crearEl("button", "btn-glow", "Continuar a Método de Pago âž”");
+        const btnMobNext = crearEl("button", "btn-glow", "Continuar a Método de Pago ➔");
         btnMobNext.type = "button";
         btnMobNext.style.width = "100%";
         btnMobNext.addEventListener("click", () => setMobileStep(2));
@@ -1266,10 +1266,10 @@
         step1Card.appendChild(gHwid);
         step1Card.appendChild(mobNextWrap);
 
-        // --- PASO 2: MÃ‰TODO DE PAGO ---
+        // --- PASO 2: MÉTODO DE PAGO ---
         const step2Card = crearEl("div", "checkout-flat-card checkout-step-2-card");
         const step2Head = crearEl("div", "checkout-step-heading");
-        step2Head.appendChild(crearEl("h4", "", "Paso 2 â€” Método de Pago"));
+        step2Head.appendChild(crearEl("h4", "", "Paso 2 — Método de Pago"));
         step2Head.appendChild(crearEl("span", "muted-note", "Emisión automática .lic"));
         step2Card.appendChild(step2Head);
 
@@ -1323,7 +1323,7 @@
         const qrImg = document.createElement("img");
         qrImg.id = "pagoQrDeunaImg";
         qrImg.src = obtenerSrcQrDeuna();
-        qrImg.alt = "Código QR Oficial Deuna QuoraTec â€” QuoraTec ERP";
+        qrImg.alt = "Código QR Oficial Deuna QuoraTec — QuoraTec ERP";
         qrWrap.appendChild(qrImg);
         const stepsList = crearEl("ul", "deuna-steps");
         stepsList.id = "pagoDeunaPasos";
@@ -1333,11 +1333,11 @@
 
         const refBanner = crearEl("div", "ref-banner");
         const refLeft = crearEl("div");
-        refLeft.appendChild(crearEl("span", "", "Referencia Ãšnica: "));
+        refLeft.appendChild(crearEl("span", "", "Referencia Única: "));
         const refCodeEl = crearEl("span", "ref-code", "QT-CONTADOR-WEB01");
         refCodeEl.id = "pagoReferenciaTexto";
         refLeft.appendChild(refCodeEl);
-        const btnCopyRef = crearEl("button", "btn-copy-mini", "ðŸ“‹ Copiar");
+        const btnCopyRef = crearEl("button", "btn-copy-mini", "📋 Copiar");
         btnCopyRef.type = "button";
         btnCopyRef.addEventListener("click", () => {
             copiarAlPortapapeles(calcularResumenCheckout().referencia, "Referencia de Pago");
@@ -1375,7 +1375,7 @@
 
         // Bloque compartido Orden + Comprobante (Deuna! y Transferencia)
         const manualOrderWrap = crearEl("div", "receipt-upload-box");
-        const btnCrearOrden = crearEl("button", "btn-glow", "ðŸ›¡️ Generar Orden Oficial y Registrar Pago âž”");
+        const btnCrearOrden = crearEl("button", "btn-glow", "🛡️ Generar Orden Oficial y Registrar Pago ➔");
         btnCrearOrden.type = "button";
         btnCrearOrden.id = "btnCrearOrdenHibrida";
         const orderResultBox = crearEl("div", "receipt-upload-box");
@@ -1397,16 +1397,16 @@
         recGrid.appendChild(fVoucher.g);
         recGrid.appendChild(fFileWrap);
 
-        const btnEnviarComprobanteApi = crearEl("button", "btn-open-checkout", "ðŸ“¤ Enviar Comprobante para Verificación");
+        const btnEnviarComprobanteApi = crearEl("button", "btn-open-checkout", "📤 Enviar Comprobante para Verificación");
         btnEnviarComprobanteApi.type = "button";
         btnEnviarComprobanteApi.id = "btnEnviarComprobanteApi";
         const receiptApiFeedback = crearEl("small", "muted-note", "");
         receiptApiFeedback.id = "checkoutReceiptFeedback";
 
         const deunaActions = crearEl("div", "checkout-actions-row");
-        const btnWp = crearEl("a", "btn-wp-confirm", "ðŸ“² Enviar por WhatsApp");
+        const btnWp = crearEl("a", "btn-wp-confirm", "📲 Enviar por WhatsApp");
         btnWp.id = "btnEnviarComprobanteWp";
-        const btnCorreoDeuna = crearEl("a", "btn-email-confirm", "ðŸ“§ Enviar por Correo");
+        const btnCorreoDeuna = crearEl("a", "btn-email-confirm", "📧 Enviar por Correo");
         btnCorreoDeuna.id = "btnEnviarComprobanteCorreo";
         vincularCopiaCorreo(btnCorreoDeuna, () =>
             construirPlantillaComprobante(calcularResumenCheckout(), estadoModalPago.activePaymentMethod === "TRANSFERENCIA" ? "Transferencia Bancaria" : "Deuna! / Banco Pichincha")
@@ -1424,7 +1424,7 @@
         // Panel PayPhone Business (Tarjeta)
         panelPayphone.style.flexDirection = "column";
         panelPayphone.style.gap = "12px";
-        panelPayphone.appendChild(crearEl("h4", "", "Pago Inmediato con Tarjeta â€” PayPhone Business"));
+        panelPayphone.appendChild(crearEl("h4", "", "Pago Inmediato con Tarjeta — PayPhone Business"));
         panelPayphone.appendChild(
             crearEl(
                 "p",
@@ -1438,7 +1438,7 @@
         });
         panelPayphone.appendChild(badgesWrap);
 
-        const btnPayphone = crearEl("button", "btn-glow", "ðŸ’³ Pagar con Tarjeta (PayPhone Business) âž”");
+        const btnPayphone = crearEl("button", "btn-glow", "💳 Pagar con Tarjeta (PayPhone Business) ➔");
         btnPayphone.type = "button";
         btnPayphone.id = "btnPagarPayphoneModal";
         const payphoneFeedback = crearEl("small", "muted-note", "");
@@ -1453,14 +1453,14 @@
             const razonVal = sanitizarRazonInput(fRazon.inp.value).trim();
             const referralVal = String(fReferral.inp.value || "").trim().toUpperCase();
             if (!emailVal || !emailVal.includes("@") || !/^\d{10}(\d{3})?$/.test(rucVal) || razonVal.length < 2) {
-                mostrarToastCopia("âš ️ Completa Cédula/RUC, Razón Social y Correo en el Paso 1.");
+                mostrarToastCopia("⚠️ Completa Cédula/RUC, Razón Social y Correo en el Paso 1.");
                 setMobileStep(1);
                 return;
             }
             const res = calcularResumenCheckout();
             const planesHwidObligatorio = ["EMPRENDEDOR", "COMERCIAL_PRO", "CONTADOR"];
             if (planesHwidObligatorio.includes(res.plan.id) && (!res.hwidORef || res.hwidORef === "SIN_ESPECIFICAR")) {
-                mostrarToastCopia("âš ️ Ingresa el HWID del Equipo en el Paso 1.");
+                mostrarToastCopia("⚠️ Ingresa el HWID del Equipo en el Paso 1.");
                 setMobileStep(1);
                 return;
             }
@@ -1501,14 +1501,14 @@
             const razonVal = sanitizarRazonInput(fRazon.inp.value).trim();
             const referralVal = String(fReferral.inp.value || "").trim().toUpperCase();
             if (!emailVal || !emailVal.includes("@") || !/^\d{10}(\d{3})?$/.test(rucVal) || razonVal.length < 2) {
-                mostrarToastCopia("âš ️ Completa Cédula/RUC, Razón Social y Correo válidos.");
+                mostrarToastCopia("⚠️ Completa Cédula/RUC, Razón Social y Correo válidos.");
                 setMobileStep(1);
                 return;
             }
             const res = calcularResumenCheckout();
             const planesHwidObligatorio = ["EMPRENDEDOR", "COMERCIAL_PRO", "CONTADOR"];
             if (planesHwidObligatorio.includes(res.plan.id) && (!res.hwidORef || res.hwidORef === "SIN_ESPECIFICAR")) {
-                mostrarToastCopia("âš ️ Ingresa el HWID del Equipo.");
+                mostrarToastCopia("⚠️ Ingresa el HWID del Equipo.");
                 setMobileStep(1);
                 return;
             }
@@ -1540,10 +1540,10 @@
             orderResultBox.textContent = "";
             orderResultBox.style.display = "flex";
             orderResultBox.appendChild(
-                crearEl("span", "order-status-pill", resp.ok ? "⏳ Orden Registrada (pendiente_verificacion)" : "â„¹️ Referencia Generada")
+                crearEl("span", "order-status-pill", resp.ok ? "⏳ Orden Registrada (pendiente_verificacion)" : "ℹ️ Referencia Generada")
             );
             const tokRow = crearEl("div", "bank-row");
-            tokRow.appendChild(crearEl("span", "", `Orden: ${orderRef} â€¢ Token: ${orderToken}`));
+            tokRow.appendChild(crearEl("span", "", `Orden: ${orderRef} • Token: ${orderToken}`));
             const btnCopyTok = crearEl("button", "btn-copy-mini", "Copiar");
             btnCopyTok.type = "button";
             btnCopyTok.addEventListener("click", () => copiarAlPortapapeles(`${orderRef} | ${orderToken}`, "Orden y Token"));
@@ -1558,21 +1558,21 @@
             if (!candidate) return;
             if (!MIMES_COMPROBANTE.has(String(candidate.type || "").toLowerCase()) || candidate.size <= 0 || candidate.size > MAX_COMPROBANTE_BYTES) {
                 fFile.value = "";
-                mostrarToastCopia("â›” Comprobante rechazado: solo PNG, JPG, WEBP o PDF de hasta 5 MB.");
+                mostrarToastCopia("⛔ Comprobante rechazado: solo PNG, JPG, WEBP o PDF de hasta 5 MB.");
             }
         });
 
         btnEnviarComprobanteApi.addEventListener("click", async () => {
             const voucher = String(fVoucher.inp.value || "").trim().toUpperCase();
             if (!/^[A-Z0-9-]{4,40}$/.test(voucher)) {
-                mostrarToastCopia("âš ️ Ingresa un número de comprobante válido (4-40 caracteres).");
+                mostrarToastCopia("⚠️ Ingresa un número de comprobante válido (4-40 caracteres).");
                 return;
             }
             const fileObj = fFile.files && fFile.files[0] ? fFile.files[0] : null;
             const fileSha = fileObj ? await calcularSha256Archivo(fileObj) : null;
             const orderInfo = estadoHibrido.lastOrder;
             if (!orderInfo) {
-                mostrarToastCopia("âš ️ Primero genera tu Orden Oficial arriba.");
+                mostrarToastCopia("⚠️ Primero genera tu Orden Oficial arriba.");
                 return;
             }
             const resp = await postJsonSeguroApi("api/orders/receipt", {
@@ -1586,8 +1586,8 @@
                 comprobante_size_bytes: fileObj ? fileObj.size : undefined,
             });
             receiptApiFeedback.textContent = resp.ok
-                ? `âœ… Comprobante ${voucher} registrado. Al validarse, recibirás tu .lic en tu correo.`
-                : `ðŸ“² Envía tu comprobante ${voucher} por WhatsApp (0996459771) usando los botones inferiores.`;
+                ? `✅ Comprobante ${voucher} registrado. Al validarse, recibirás tu .lic en tu correo.`
+                : `📲 Envía tu comprobante ${voucher} por WhatsApp (0996459771) usando los botones inferiores.`;
         });
 
         // Contenedor de confirmación PayPhone + Descarga directa .lic
@@ -1614,7 +1614,7 @@
         Object.values(PLANES_V240).forEach((p) => {
             const opt = document.createElement("option");
             opt.value = p.id;
-            opt.textContent = `${p.nombre} â€” ${formatearUsd(p.precioUsd)} USD/año`;
+            opt.textContent = `${p.nombre} — ${formatearUsd(p.precioUsd)} USD/año`;
             selPlan.appendChild(opt);
         });
         selPlan.addEventListener("change", () => {
@@ -1631,7 +1631,7 @@
             const row = crearEl("div", "checkout-summary-line");
             row.appendChild(crearEl("span", "", labelTxt));
             const st = crearEl("div", "seats-stepper");
-            const bm = crearEl("button", "", "âˆ’");
+            const bm = crearEl("button", "", "−");
             bm.type = "button";
             const inp = crearEl("input", "mono-input");
             inp.type = "number";
@@ -1705,9 +1705,9 @@
 
         const rulesBox = crearEl("div", "rules-box");
         [
-            "âœ“ 15 días gratis con todo desbloqueado (sin tarjeta).",
-            "âœ“ Tarifa Congelada por 3 años (25 % DTO primeros 30 clientes).",
-            "âœ“ Respaldos .tfbackup cifrados ante daño o robo.",
+            "✓ 15 días gratis con todo desbloqueado (sin tarjeta).",
+            "✓ Tarifa Congelada por 3 años (25 % DTO primeros 30 clientes).",
+            "✓ Respaldos .tfbackup cifrados ante daño o robo.",
         ].forEach((regla) => rulesBox.appendChild(crearEl("div", "", regla)));
 
         summaryCard.appendChild(lblResumenPlan);
@@ -1757,7 +1757,7 @@
         const elAddonsUsd = document.getElementById("pagoSummaryAddonsUsd");
         const elDiscountUsd = document.getElementById("pagoSummaryDiscountUsd");
 
-        if (elTitulo) elTitulo.textContent = `${plan.nombre} â€” Suscripción Anual`;
+        if (elTitulo) elTitulo.textContent = `${plan.nombre} — Suscripción Anual`;
         if (elBadge) {
             elBadge.textContent = `CHECKOUT OFICIAL QUORATEC v${runtimeVersion}`;
         }
@@ -1767,7 +1767,7 @@
                 extraRucs > 0 ? `+${extraRucs * 5} Cédulas/RUCs` : "",
                 extraCloud > 0 ? `+${extraCloud * 50} GB` : "",
             ].filter(Boolean).join(" ");
-            elMeta.textContent = `${plan.nombreComercial} â€¢ ${rucsTotales} Cédula(s)/RUC(s) â€¢ ${estacionesTotales} PC(s) â€¢ ${cloudGbTotales} GB${addonsTxt ? ` (${addonsTxt})` : ""}`;
+            elMeta.textContent = `${plan.nombreComercial} • ${rucsTotales} Cédula(s)/RUC(s) • ${estacionesTotales} PC(s) • ${cloudGbTotales} GB${addonsTxt ? ` (${addonsTxt})` : ""}`;
         }
         if (elPlanUsd) elPlanUsd.textContent = `${formatearUsd(plan.precioUsd)} USD`;
         if (elAddonsUsd) elAddonsUsd.textContent = `${formatearUsd(addonsUsd)} USD`;
@@ -1786,11 +1786,11 @@
         }
         if (hwidInEl instanceof HTMLInputElement) {
             hwidInEl.required = hwidRequiere;
-            hwidInEl.placeholder = hwidRequiere ? "Ej: A1B2-C3D4-E5F6" : "Opcional â€” Ej: A1B2-C3D4-E5F6";
+            hwidInEl.placeholder = hwidRequiere ? "Ej: A1B2-C3D4-E5F6" : "Opcional — Ej: A1B2-C3D4-E5F6";
         }
         if (hwidHelpEl) {
             hwidHelpEl.textContent = hwidRequiere
-                ? "Guía rápida: abre QuoraTec ERP â†’ Configuración â†’ 4. Plan y Licencia â†’ Copiar HWID del Equipo."
+                ? "Guía rápida: abre QuoraTec ERP → Configuración → 4. Plan y Licencia → Copiar HWID del Equipo."
                 : "Opcional: podrás vincular tus equipos con la misma licencia .lic.";
         }
 
@@ -1861,9 +1861,9 @@
 
         const box = crearEl("div", "modal-box modal-narrow");
         const top = crearEl("div", "modal-top");
-        const h3 = crearEl("h3", "", "Marco Legal â€” QuoraTec ERP (QuoraTec)");
+        const h3 = crearEl("h3", "", "Marco Legal — QuoraTec ERP (QuoraTec)");
         h3.id = "modalLegalTitulo";
-        const btnClose = crearEl("button", "btn-close", "Ã—");
+        const btnClose = crearEl("button", "btn-close", "×");
         btnClose.type = "button";
         btnClose.setAttribute("aria-label", "Cerrar modal legal");
         btnClose.addEventListener("click", () => cerrarModal("modalLegal"));
@@ -1923,7 +1923,7 @@
                 const sizeEl = card.querySelector(".os-size");
                 if (sizeEl && !sizeEl.dataset.recMarked) {
                     sizeEl.dataset.recMarked = "1";
-                    sizeEl.textContent = `${sizeEl.textContent} â€¢ Recomendado`;
+                    sizeEl.textContent = `${sizeEl.textContent} • Recomendado`;
                 }
             }
         });
@@ -1931,17 +1931,17 @@
         const btnPrincipalDl = document.getElementById("btnDescargaDetectada");
         if (btnPrincipalDl instanceof HTMLElement) {
             if (soInfo.esMovil || !soInfo.soportado) {
-                btnPrincipalDl.textContent = `â¬‡ Probar Gratis ${CONFIG_COMERCIAL.TRIAL_DIAS} Días (100 % Desbloqueado · Solo PC)`;
+                btnPrincipalDl.textContent = `⬇ Probar Gratis ${CONFIG_COMERCIAL.TRIAL_DIAS} Días (100 % Desbloqueado · Solo PC)`;
             } else {
-                btnPrincipalDl.textContent = `â¬‡ Probar Gratis ${CONFIG_COMERCIAL.TRIAL_DIAS} Días (${soInfo.etiqueta} · 100 % Desbloqueado)`;
+                btnPrincipalDl.textContent = `⬇ Probar Gratis ${CONFIG_COMERCIAL.TRIAL_DIAS} Días (${soInfo.etiqueta} · 100 % Desbloqueado)`;
             }
         }
         const btnPaginaDl = document.getElementById("btnDescargaPaginaPrincipal");
         if (btnPaginaDl instanceof HTMLElement) {
             if (soInfo.esMovil || !soInfo.soportado) {
-                btnPaginaDl.textContent = `â¬‡ Instalador Oficial (Solo Windows/macOS/Linux PC)`;
+                btnPaginaDl.textContent = `⬇ Instalador Oficial (Solo Windows/macOS/Linux PC)`;
             } else {
-                btnPaginaDl.textContent = `â¬‡ Descargar para ${soInfo.etiqueta} (v${runtimeVersion})`;
+                btnPaginaDl.textContent = `⬇ Descargar para ${soInfo.etiqueta} (v${runtimeVersion})`;
             }
         }
 
@@ -2197,7 +2197,7 @@
                 ].filter(Boolean).join(" ");
                 const sufijoExtra = extrasDesc
                     ? ` (${extrasDesc} = ${formatearUsd(sim.precioEstimadoUsd)} USD/año)`
-                    : ` â€” ${formatearUsd(planMeta.precioUsd)} USD/año`;
+                    : ` — ${formatearUsd(planMeta.precioUsd)} USD/año`;
                 planNombreEl.textContent = `${planMeta.nombre}${sufijoExtra}`;
             }
             if (planDetalleEl) {
@@ -2210,7 +2210,7 @@
                 } else {
                     btnComprarEl.removeAttribute("data-checkout-extra-seats");
                 }
-                btnComprarEl.textContent = `ðŸ’³ Adquirir ${planMeta.nombre} (${formatearUsd(sim.precioEstimadoUsd)})`;
+                btnComprarEl.textContent = `💳 Adquirir ${planMeta.nombre} (${formatearUsd(sim.precioEstimadoUsd)})`;
             }
 
             presetBtns.forEach((btn) => {
@@ -2571,15 +2571,15 @@
         box.textContent = "";
         if (!resp.ok || !resp.data?.ok) {
             box.appendChild(
-                crearEl("span", "order-status-pill", `âš ️ ${resp.data?.message || resp.data?.error || "No se pudo confirmar el pago PayPhone."}`)
+                crearEl("span", "order-status-pill", `⚠️ ${resp.data?.message || resp.data?.error || "No se pudo confirmar el pago PayPhone."}`)
             );
             return;
         }
         box.appendChild(
-            crearEl("span", "order-status-pill", "âœ… Pago Aprobado · Licencia Oficial Emitida y Enviada a tu Correo")
+            crearEl("span", "order-status-pill", "✅ Pago Aprobado · Licencia Oficial Emitida y Enviada a tu Correo")
         );
         if (resp.data.license_key) {
-            const dlLink = crearEl("a", "btn-glow", `â¬‡ Descargar Licencia .lic (${resp.data.license_key})`);
+            const dlLink = crearEl("a", "btn-glow", `⬇ Descargar Licencia .lic (${resp.data.license_key})`);
             dlLink.href = `/api/licenses/download?license_key=${encodeURIComponent(resp.data.license_key)}`;
             dlLink.setAttribute("download", `${resp.data.license_key}.lic`);
             box.appendChild(dlLink);
@@ -2602,7 +2602,7 @@
         function aplicarTema(tema) {
             if (tema === "light") {
                 rootEl.setAttribute("data-theme", "light");
-                if (btn) btn.textContent = "ðŸŒ™";
+                if (btn) btn.textContent = "🌙";
             } else {
                 rootEl.removeAttribute("data-theme");
                 if (btn) btn.textContent = "☀️";
@@ -2664,9 +2664,9 @@
             const box = crearEl("div", "modal-box");
             const top = crearEl("div", "modal-top");
             const tw = crearEl("div");
-            tw.appendChild(crearEl("span", "modal-badge", "PORTAL CLIENTES & INVITADOS â€” NUBE SEGURA QUORATEC"));
-            tw.appendChild(crearEl("h3", "", "Mi Cuenta, Ã“rdenes y Equipos (+1 PC Adicional)"));
-            const btnX = crearEl("button", "btn-close", "Ã—");
+            tw.appendChild(crearEl("span", "modal-badge", "PORTAL CLIENTES & INVITADOS — NUBE SEGURA QUORATEC"));
+            tw.appendChild(crearEl("h3", "", "Mi Cuenta, Órdenes y Equipos (+1 PC Adicional)"));
+            const btnX = crearEl("button", "btn-close", "×");
             btnX.type = "button";
             btnX.setAttribute("aria-label", "Cerrar modal de cuenta");
             btnX.addEventListener("click", () => cerrarModal("modalCuentaHibrida"));
@@ -2675,9 +2675,9 @@
 
             const content = crearEl("div", "modal-content");
             const tabs = crearEl("div", "hybrid-tabs-bar");
-            const bGuest = crearEl("button", "hybrid-tab-btn is-active", "ðŸ” Consultar Orden (Invitado)");
+            const bGuest = crearEl("button", "hybrid-tab-btn is-active", "🔍 Consultar Orden (Invitado)");
             bGuest.type = "button";
-            const bAcc = crearEl("button", "hybrid-tab-btn", "ðŸ” Mi Cuenta (Nube Segura QuoraTec)");
+            const bAcc = crearEl("button", "hybrid-tab-btn", "🔐 Mi Cuenta (Nube Segura QuoraTec)");
             bAcc.type = "button";
             tabs.appendChild(bGuest);
             tabs.appendChild(bAcc);
@@ -2712,11 +2712,11 @@
                         crearEl(
                             "div",
                             "",
-                            `Orden ${resp.data.order_ref} â€¢ Estado: ${resp.data.status} â€¢ Monto: ${formatearUsd(resp.data.monto_autorizado_usd)} â€¢ Estaciones: ${resp.data.estaciones_autorizadas} PC(s)`
+                            `Orden ${resp.data.order_ref} • Estado: ${resp.data.status} • Monto: ${formatearUsd(resp.data.monto_autorizado_usd)} • Estaciones: ${resp.data.estaciones_autorizadas} PC(s)`
                         )
                     );
                     if (resp.data.status === "verificado") {
-                        const btnDl = crearEl("button", "btn-glow mt-8", "â¬‡️ Descargar Licencia (.lic)");
+                        const btnDl = crearEl("button", "btn-glow mt-8", "⬇️ Descargar Licencia (.lic)");
                         btnDl.type = "button";
                         btnDl.addEventListener("click", () => {
                             descargarArchivoLicencia({
@@ -2728,7 +2728,7 @@
                         guestOut.appendChild(btnDl);
                     }
                 } else {
-                    guestOut.textContent = `â„¹️ ${resp.data?.message || "No se encontró una orden activa con esa referencia, token y correo."}`;
+                    guestOut.textContent = `ℹ️ ${resp.data?.message || "No se encontró una orden activa con esa referencia, token y correo."}`;
                 }
             });
             pGuest.appendChild(gGrid);
@@ -3192,7 +3192,7 @@
                     const refUrl = prof.referral_url || "";
                     const refRow = crearEl("div", "dashboard-row-item");
                     refRow.appendChild(crearEl("code", "", refUrl));
-                    const btnCopyRef = crearEl("button", "btn-copy-mini", "ðŸ“‹ Copiar Enlace");
+                    const btnCopyRef = crearEl("button", "btn-copy-mini", "📋 Copiar Enlace");
                     btnCopyRef.type = "button";
                     btnCopyRef.addEventListener("click", () => copiarAlPortapapeles(refUrl, "Enlace de Referido"));
                     refRow.appendChild(btnCopyRef);
@@ -3252,7 +3252,7 @@
                         const row = crearEl("div", "dashboard-row-item");
                         row.appendChild(crearEl("span", "", `${l.plan_name || l.plan_id} · ${l.holder_ruc || l.ruc_cedula || ""} (${l.license_key || "Activa"})`));
                         if (l.license_key) {
-                            const aDl = crearEl("a", "btn-glow", "â¬‡ Descargar .lic");
+                            const aDl = crearEl("a", "btn-glow", "⬇ Descargar .lic");
                             aDl.href = `/api/licenses/download?license_key=${encodeURIComponent(l.license_key)}`;
                             aDl.setAttribute("download", `${l.license_key}.lic`);
                             row.appendChild(aDl);
@@ -3493,11 +3493,11 @@
                         crearEl(
                             "div",
                             "",
-                            `âœ… Orden ${resp.data.order_ref} â€¢ Estado: ${resp.data.status} â€¢ Plan: ${resp.data.plan_id} (${resp.data.estaciones_autorizadas} PC) â€¢ Monto: ${formatearUsd(resp.data.monto_autorizado_usd)}`
+                            `✅ Orden ${resp.data.order_ref} • Estado: ${resp.data.status} • Plan: ${resp.data.plan_id} (${resp.data.estaciones_autorizadas} PC) • Monto: ${formatearUsd(resp.data.monto_autorizado_usd)}`
                         )
                     );
                     if (resp.data.status === "verificado") {
-                        const btnDlSup = crearEl("button", "btn-glow mt-8", "â¬‡️ Descargar Licencia (.lic)");
+                        const btnDlSup = crearEl("button", "btn-glow mt-8", "⬇️ Descargar Licencia (.lic)");
                         btnDlSup.type = "button";
                         btnDlSup.addEventListener("click", () => {
                             descargarArchivoLicencia({
@@ -3509,7 +3509,7 @@
                         out.appendChild(btnDlSup);
                     }
                 } else {
-                    out.textContent = `â„¹️ ${resp.data?.message || "No fue posible consultar la orden en este entorno."}`;
+                    out.textContent = `ℹ️ ${resp.data?.message || "No fue posible consultar la orden en este entorno."}`;
                 }
             });
         }
@@ -3533,8 +3533,8 @@
 
         const box = crearEl("div", "modal-box");
         const top = crearEl("div", "modal-top");
-        top.appendChild(crearEl("h3", "", "Administración â€” Aprobación de Ã“rdenes"));
-        const closeBtn = crearEl("button", "modal-close", "âœ•");
+        top.appendChild(crearEl("h3", "", "Administración — Aprobación de Órdenes"));
+        const closeBtn = crearEl("button", "modal-close", "✕");
         closeBtn.type = "button";
         closeBtn.addEventListener("click", () => {
             adminSecretMem = "";
@@ -3550,7 +3550,7 @@
         inpSecret.id = "adminApproveSecretInput";
         inpSecret.placeholder = "Clave maestra ADMIN_APPROVE_SECRET";
         inpSecret.autocomplete = "off";
-        const btnCargar = crearEl("button", "btn-glow", "ðŸ”“ Cargar Ã“rdenes Pendientes");
+        const btnCargar = crearEl("button", "btn-glow", "🔓 Cargar Órdenes Pendientes");
         btnCargar.type = "button";
         authRow.appendChild(inpSecret);
         authRow.appendChild(btnCargar);
@@ -3561,7 +3561,7 @@
         async function cargarPendientes() {
             adminSecretMem = inpSecret.value;
             if (!adminSecretMem) {
-                adminStatus.textContent = "âš ️ Ingresa la clave maestra.";
+                adminStatus.textContent = "⚠️ Ingresa la clave maestra.";
                 return;
             }
             btnCargar.disabled = true;
@@ -3576,12 +3576,12 @@
                 const data = await resp.json().catch(() => ({}));
                 if (!resp.ok || !data.ok) {
                     adminStatus.textContent = resp.status === 401 || resp.status === 403
-                        ? "â›” Clave maestra inválida o no autorizada."
-                        : `âš ️ Error al consultar: ${data.error || `HTTP ${resp.status}`}`;
+                        ? "⛔ Clave maestra inválida o no autorizada."
+                        : `⚠️ Error al consultar: ${data.error || `HTTP ${resp.status}`}`;
                     return;
                 }
                 const orders = Array.isArray(data.orders) ? data.orders : [];
-                adminStatus.textContent = `Ã“rdenes pendientes encontradas: ${orders.length}`;
+                adminStatus.textContent = `Órdenes pendientes encontradas: ${orders.length}`;
                 if (orders.length === 0) {
                     listWrap.appendChild(crearEl("p", "muted-note", "No hay órdenes en estado pendiente_verificacion."));
                     return;
@@ -3592,25 +3592,25 @@
                         crearEl(
                             "strong",
                             "",
-                            `${ord.razon_social || "Cliente"} (${ord.ruc_cedula || ""}) â€” ${ord.plan_id}`
+                            `${ord.razon_social || "Cliente"} (${ord.ruc_cedula || ""}) — ${ord.plan_id}`
                         )
                     );
                     card.appendChild(
                         crearEl(
                             "div",
                             "muted-note",
-                            `Ref: ${ord.order_ref} â€¢ Monto: ${formatearUsd(ord.monto_autorizado_usd)} â€¢ Correo: ${ord.email || ""}`
+                            `Ref: ${ord.order_ref} • Monto: ${formatearUsd(ord.monto_autorizado_usd)} • Correo: ${ord.email || ""}`
                         )
                     );
                     const rowBtns = crearEl("div", "flex-wrap-actions mt-8");
                     if (ord.voucher_signed_url && /^https:\/\//i.test(ord.voucher_signed_url)) {
-                        const linkVoucher = crearEl("a", "btn-glass", "ðŸ–¼️ Ver comprobante");
+                        const linkVoucher = crearEl("a", "btn-glass", "🖼️ Ver comprobante");
                         linkVoucher.href = ord.voucher_signed_url;
                         linkVoucher.target = "_blank";
                         linkVoucher.rel = "noopener noreferrer";
                         rowBtns.appendChild(linkVoucher);
                     }
-                    const btnAprobar = crearEl("button", "btn-glow", "âœ… Aprobar y Enviar .lic");
+                    const btnAprobar = crearEl("button", "btn-glow", "✅ Aprobar y Enviar .lic");
                     btnAprobar.type = "button";
                     const rowMsg = crearEl("small", "muted-note", "");
                     btnAprobar.addEventListener("click", async () => {
@@ -3628,14 +3628,14 @@
                             });
                             const appData = await appResp.json().catch(() => ({}));
                             if (appResp.ok && appData.ok) {
-                                rowMsg.textContent = `âœ… Emitida (${appData.license_key}) â€¢ Correo: ${appData.email_sent ? "enviado" : "pendiente"}`;
+                                rowMsg.textContent = `✅ Emitida (${appData.license_key}) • Correo: ${appData.email_sent ? "enviado" : "pendiente"}`;
                             } else {
                                 btnAprobar.disabled = false;
-                                rowMsg.textContent = `âš ️ Error: ${appData.error || `HTTP ${appResp.status}`}`;
+                                rowMsg.textContent = `⚠️ Error: ${appData.error || `HTTP ${appResp.status}`}`;
                             }
                         } catch {
                             btnAprobar.disabled = false;
-                            rowMsg.textContent = "âš ️ Error de red al aprobar.";
+                            rowMsg.textContent = "⚠️ Error de red al aprobar.";
                         }
                     });
                     rowBtns.appendChild(btnAprobar);
@@ -3644,7 +3644,7 @@
                     listWrap.appendChild(card);
                 });
             } catch {
-                adminStatus.textContent = "âš ️ Error de red al consultar órdenes pendientes.";
+                adminStatus.textContent = "⚠️ Error de red al consultar órdenes pendientes.";
             } finally {
                 btnCargar.disabled = false;
             }
@@ -3702,14 +3702,14 @@
             });
         });
 
-        // Menú desplegable "6 Suites ERP â–¾" en todas las páginas
+        // Menú desplegable "6 Suites ERP ▾" en todas las páginas
         const SUITES_PORTAL = [
-            { icon: "âš¡", title: "1. Inicio & Portal SRI", desc: "Panel General, Multi-RUC y Sincronización XML/RIDE", href: "index.html#suite-inicio-sri" },
-            { icon: "ðŸ§¾", title: "2. Comercial & Facturación POS .p12", desc: "Atajos F2/F4/F8/F12, Farmacias FIFO y RIDE", href: "index.html#suite-comercial-pos" },
-            { icon: "ðŸ“¦", title: "3. Inventario, Kardex & Cartera", desc: "FIFO/Caducidad, Multi-bodega y CxC/CxP", href: "index.html#suite-inventario-cartera" },
-            { icon: "ðŸ“Š", title: "4. Contabilidad NIIF & Nómina IESS", desc: "Libro Diario, Balances NIIF, roles y RDEP", href: "index.html#suite-contabilidad-niif" },
-            { icon: "ðŸ”", title: "5. Impuestos, Auditoría & Consultas", desc: "Auditor Fantasma, RIMPE, Clasificador AGP y ATS", href: "index.html#suite-impuestos-auditoria" },
-            { icon: "ðŸ›¡️", title: "6. Sistema, IA, Centralis & .tfbackup", desc: "Asistente Contable Inteligente, WhatsApp/Telegram y Red LAN", href: "index.html#suite-sistema-lan" },
+            { icon: "⚡", title: "1. Inicio & Portal SRI", desc: "Panel General, Multi-RUC y Sincronización XML/RIDE", href: "index.html#suite-inicio-sri" },
+            { icon: "🧾", title: "2. Comercial & Facturación POS .p12", desc: "Atajos F2/F4/F8/F12, Farmacias FIFO y RIDE", href: "index.html#suite-comercial-pos" },
+            { icon: "📦", title: "3. Inventario, Kardex & Cartera", desc: "FIFO/Caducidad, Multi-bodega y CxC/CxP", href: "index.html#suite-inventario-cartera" },
+            { icon: "📊", title: "4. Contabilidad NIIF & Nómina IESS", desc: "Libro Diario, Balances NIIF, roles y RDEP", href: "index.html#suite-contabilidad-niif" },
+            { icon: "🔍", title: "5. Impuestos, Auditoría & Consultas", desc: "Auditor Fantasma, RIMPE, Clasificador AGP y ATS", href: "index.html#suite-impuestos-auditoria" },
+            { icon: "🛡️", title: "6. Sistema, IA, Centralis & .tfbackup", desc: "Asistente Contable Inteligente, WhatsApp/Telegram y Red LAN", href: "index.html#suite-sistema-lan" },
         ];
 
         const navRoot = obtenerPrefijoRuta();
@@ -3737,7 +3737,7 @@
             const panel = dd.querySelector(".nav-dropdown-panel");
             if (!(trigger instanceof HTMLElement) || !(panel instanceof HTMLElement)) return;
 
-            const header = crearEl("div", "nav-dropdown-header", `6 Suites Reales â€” QuoraTec ERP v${runtimeVersion} (Edición 2026 · QuoraTec)`);
+            const header = crearEl("div", "nav-dropdown-header", `6 Suites Reales — QuoraTec ERP v${runtimeVersion} (Edición 2026 · QuoraTec)`);
             const grid = crearEl("div", "nav-dropdown-grid");
 
             SUITES_PORTAL.forEach((suite) => {
@@ -3763,7 +3763,7 @@
             const allLink = document.createElement("a");
             allLink.href = `${navRoot}index.html#modulos`;
             allLink.className = "nav-dropdown-all";
-            allLink.textContent = "Explorar Mapa de 14 Módulos âž”";
+            allLink.textContent = "Explorar Mapa de 14 Módulos ➔";
             allLink.addEventListener("click", () => cerrarDd());
             footer.appendChild(allLink);
 
@@ -3868,7 +3868,7 @@
                         e.preventDefault();
                         e.stopImmediatePropagation();
                         registrarBloqueoSeguridad("DANGEROUS_CLICK_SCHEME", hrefRaw);
-                        mostrarToastCopia("â›” Enlace peligroso neutralizado por seguridad.");
+                        mostrarToastCopia("⛔ Enlace peligroso neutralizado por seguridad.");
                         return;
                     }
 
@@ -3878,7 +3878,7 @@
                             e.preventDefault();
                             e.stopImmediatePropagation();
                             registrarBloqueoSeguridad("TAMPERED_CHANNEL_CLICK", hrefRaw);
-                            mostrarToastCopia("â›” Enlace bloqueado por seguridad: canal oficial no verificado.");
+                            mostrarToastCopia("⛔ Enlace bloqueado por seguridad: canal oficial no verificado.");
                         }
                     }
                 },
@@ -4053,10 +4053,10 @@
                 const td = document.createElement("td");
                 if (esCode) {
                     const code = document.createElement("code");
-                    code.textContent = String(texto ?? "â€”");
+                    code.textContent = String(texto ?? "—");
                     td.appendChild(code);
                 } else {
-                    td.textContent = String(texto ?? "â€”");
+                    td.textContent = String(texto ?? "—");
                 }
                 return td;
             }
@@ -4164,7 +4164,7 @@
                             dlLink.target = "_blank";
                             dlLink.rel = "noopener noreferrer";
                             dlLink.className = "btn-support-link";
-                            dlLink.textContent = `â¬‡ Descargar ${res.data.filename || "diagnostico.zip"} (expira en 60s)`;
+                            dlLink.textContent = `⬇ Descargar ${res.data.filename || "diagnostico.zip"} (expira en 60s)`;
                             diagSlot.appendChild(dlLink);
                         });
                         actions.appendChild(btnZip);
@@ -4220,10 +4220,10 @@
                     (payload.licenses || []).forEach((lic) => {
                         const tr = document.createElement("tr");
                         tr.appendChild(crearCelda(lic.license_id, true));
-                        tr.appendChild(crearCelda(`${lic.holder_ruc || "â€”"} · ${lic.holder_name || ""}`));
+                        tr.appendChild(crearCelda(`${lic.holder_ruc || "—"} · ${lic.holder_name || ""}`));
                         tr.appendChild(
                             crearCelda(
-                                `${lic.plan_name || "â€”"} (${lic.max_rucs || 1} RUC · ${lic.max_seats || 1} PC · ${lic.cloud_gb ?? 0} GB${lic.is_founder ? " · Fundador" : ""})`,
+                                `${lic.plan_name || "—"} (${lic.max_rucs || 1} RUC · ${lic.max_seats || 1} PC · ${lic.cloud_gb ?? 0} GB${lic.is_founder ? " · Fundador" : ""})`,
                             ),
                         );
                         tr.appendChild(crearCelda(`${lic.environment || "production"} · ${String(lic.expires_at || "").slice(0, 10)}`));
@@ -4237,10 +4237,10 @@
                     (payload.audit_logs || []).forEach((log) => {
                         const tr = document.createElement("tr");
                         tr.appendChild(crearCelda(String(log.created_at || "").replace("T", " ").slice(0, 19)));
-                        tr.appendChild(crearCelda(`${log.actor_role || "â€”"} (${log.actor_city || "â€”"})`));
+                        tr.appendChild(crearCelda(`${log.actor_role || "—"} (${log.actor_city || "—"})`));
                         tr.appendChild(crearCelda(log.action, true));
                         tr.appendChild(crearCelda(`${log.target_table || ""}:${log.target_id || ""}`));
-                        tr.appendChild(crearCelda(log.ip_address || "â€”"));
+                        tr.appendChild(crearCelda(log.ip_address || "—"));
                         auditBody.appendChild(tr);
                     });
                 }
@@ -4277,13 +4277,13 @@
                         const btnCopy = document.createElement("button");
                         btnCopy.type = "button";
                         btnCopy.className = "btn-glow team-mini-btn";
-                        btnCopy.textContent = "ðŸ“‹ Copiar para WhatsApp";
+                        btnCopy.textContent = "📋 Copiar para WhatsApp";
                         btnCopy.addEventListener("click", async () => {
                             try {
                                 await navigator.clipboard.writeText(g.whatsapp_text || g.url);
-                                btnCopy.textContent = "âœ“ Copiado para WhatsApp";
+                                btnCopy.textContent = "✓ Copiado para WhatsApp";
                                 setTimeout(() => {
-                                    btnCopy.textContent = "ðŸ“‹ Copiar para WhatsApp";
+                                    btnCopy.textContent = "📋 Copiar para WhatsApp";
                                 }, 2500);
                             } catch {
                                 setStatusText(globalToast, g.whatsapp_text || g.url);
@@ -4366,7 +4366,7 @@
                             mfaQrImg.src = res.data.qr_code;
                         }
                         if (mfaSecretText) {
-                            mfaSecretText.textContent = res.data.totp_secret || "â€”";
+                            mfaSecretText.textContent = res.data.totp_secret || "—";
                         }
                     } else if (mfaEnrollBox) {
                         mfaEnrollBox.hidden = true;
